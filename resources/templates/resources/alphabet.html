@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="container my-5">
+    Alphabet
+    <br>
+    <ul>
+        <li>english</li>
+        <li>kurdish</li>
+        <li>arabic</li>
+        <li>phonetic</li>
+    </ul>
+    <br>
+    <a href="{% url 'phrases' %}">Phrases</a>
+</section>
+
+{% endblock %}

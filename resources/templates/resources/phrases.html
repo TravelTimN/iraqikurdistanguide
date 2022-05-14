@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="container my-5">
+    Common Phrases
+    <br>
+    <ul>
+        <li>hello</li>
+        <li>goodbye</li>
+        <li>please</li>
+        <li>etc.</li>
+    </ul>
+    <br>
+    <a href="{% url 'alphabet' %}">Alphabet</a>
+</section>
+
+{% endblock %}

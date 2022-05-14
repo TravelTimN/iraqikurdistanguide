@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="container my-5">
+    Resources
+    <br>
+    <ul>
+        <li>books</li>
+        <li>films</li>
+        <li>songs</li>
+        <li>etc.</li>
+    </ul>
+    <br>
+    <a href="{% url 'alphabet' %}">Alphabet</a>
+    <br>
+    <a href="{% url 'phrases' %}">Phrases</a>
+</section>
+
+{% endblock %}
