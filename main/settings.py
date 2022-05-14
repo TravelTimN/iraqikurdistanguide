@@ -100,19 +100,23 @@ AUTHENTICATION_BACKENDS = (
     # `allauth` specific authentication methods, such as login by e-mail
     "allauth.account.auth_backends.AuthenticationBackend",
 )
+
 SITE_ID = 1
+
+# custom adapter: restrict new registrations using ADMIN_EMAILS only
+ADMIN_EMAILS = os.environ.get("ADMIN_EMAILS")
+ACCOUNT_ADAPTER = "accounts.adapter.RestrictEmailAdapter"
+
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_VERIFICATION = "none"  # TODO: enable?
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_SESSION_REMEMBER = False
 ACCOUNT_UNIQUE_EMAIL = True
-# LOGIN_REDIRECT_URL = "/profile/"
+# LOGIN_REDIRECT_URL = "/profile/"  # TODO: create admin page?
 LOGIN_REDIRECT_URL = "/"
-# LOGIN_URL = "/auth/login/"
-LOGIN_URL = "/"
-# ACCOUNT_LOGOUT_REDIRECT_URL = "/auth/login/"
-ACCOUNT_LOGOUT_REDIRECT_URL = "/"
+LOGIN_URL = "/auth/login/"
+ACCOUNT_LOGOUT_REDIRECT_URL = "/auth/login/"
 ACCOUNT_LOGOUT_ON_GET = True  # avoid allauth signout confirmation page
 
 
