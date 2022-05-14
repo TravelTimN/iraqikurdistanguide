@@ -23,6 +23,7 @@
                             data-bs-toggle="dropdown" aria-expanded="false">Account</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-profile">
                             <li><a class="dropdown-item" href="{% url 'destinations' %}">Destinations</a></li>
+                            <li><a class="dropdown-item" href="{% url 'faqs' %}">FAQs</a></li>
                             {% if request.user.is_authenticated %}
                                 <!-- user is logged-in -->
                                 {% if request.user.is_superuser %}
