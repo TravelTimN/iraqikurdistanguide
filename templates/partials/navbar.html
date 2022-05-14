@@ -25,6 +25,7 @@
                             <li><a class="dropdown-item" href="{% url 'destinations' %}">Destinations</a></li>
                             <li><a class="dropdown-item" href="{% url 'faqs' %}">FAQs</a></li>
                             <li><a class="dropdown-item" href="{% url 'reviews' %}">Reviews</a></li>
+                            <li><a class="dropdown-item" href="{% url 'contact' %}">Contact</a></li>
                             {% if request.user.is_authenticated %}
                                 <!-- user is logged-in -->
                                 {% if request.user.is_superuser %}
