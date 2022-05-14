@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="container my-5">
+    FAQs
+    <br>
+    {% if request.user.is_superuser %}
+        <a href="{% url 'add_faq' %}">Add FAQ</a>
+        <br>
+        <a href="{% url 'update_faq' %}">Update FAQ</a>
+    {% endif %}
+</section>
+
+{% endblock %}
