@@ -37,6 +37,55 @@ a, a:hover {
     background-size: cover;
 }
 
+/* OVERLAY */
+aside#overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 888;
+    opacity: 1;
+    visibility: visible;
+    backdrop-filter: blur(3px);
+    transition: all 0.2s ease-in-out;
+    background-color: rgba(var(--black), 0.75);
+}
+
+aside#overlay.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* FLASH MESSAGES + ALERTS */
+#alerts {
+    display: grid;
+    position: absolute;
+    top: 76px;
+    width: 100%;
+}
+
+.alert {
+    height: 76px;
+    width: 100%;
+    z-index: 999;
+    margin-bottom: 2px;
+    box-shadow: 0 2px 9px 0 rgba(var(--black), 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.alert h3 {
+    margin: 0;
+    padding: 0;
+}
+
+.alert-slide {
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    transform: translate3d(0, -20em, 0);
+    overflow: hidden;
+}
+
 /* NAVBAR */
 nav {
     font-weight: bold;
