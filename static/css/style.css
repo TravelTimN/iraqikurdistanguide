@@ -1,0 +1,109 @@
+/* ROOT VARIABLE */
+:root {
+    --dark-grey: 74, 74, 79; /* #4A4A4F */
+    --light-grey: 245, 245, 245; /* #F5F5F5 */
+    --white: 255, 255, 255; /* #FFFFFF */
+    --black: 0, 0, 0; /* #000000 */
+}
+
+/* GLOBAL STYLES */
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    font-family: Montserrat, sans-serif;
+    background-color: rgba(var(--light-grey), 1);
+    color: rgba(var(--dark-grey), 1);
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+#img-admin {
+    background: url("../img/admin-image.jpg") center center no-repeat;
+    background-size: cover;
+}
+
+/* NAVBAR */
+nav {
+    font-weight: bold;
+    background-color: rgba(var(--white), 1);
+    box-shadow: 0 2px 9px 0 rgba(var(--black), 0.2);
+}
+
+nav .nav-item {
+    margin: 0 20px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(var(--black), 1);
+}
+
+.dropdown-menu {
+    min-width: unset;
+}
+
+.dropdown-item {
+    width: unset;
+}
+
+.dropdown-menu[data-bs-popper] {
+    /* accounts for tiny gap on hover between link/menu */
+    top: 98%;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: rgba(var(--black), 1);    
+    background: linear-gradient(48deg, #e54725 50%, #ff3186);
+}
+
+.navbar-light .navbar-toggler {
+    color: rgba(var(--black), 1);
+    border-color: rgba(var(--black), 1);
+}
+
+/* MAIN */
+main {
+    flex: 1 0 auto;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    flex-shrink: 0;
+    color: rgba(var(--light-grey), 1);
+    background-color: rgba(var(--dark-grey), 1);
+}
+
+footer a {
+    color: rgba(var(--light-grey), 1);
+}
+
+footer .fab,
+footer .fas {
+    font-size: 1.5em;
+    margin: 0 20px;
+    vertical-align: middle;
+    color: rgba(var(--light-grey), 1);
+    text-shadow: 2px 2px 2px rgba(var(--black), 0.5);
+    transition: all 0.4s ease-in-out;
+}
+
+footer .fab:hover,
+footer .fas:hover {
+    transform: scale(1.3);
+}
