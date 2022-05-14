@@ -23,9 +23,10 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "accounts",
+    "contact",
     "destinations",
-    "home",
     "faqs",
+    "home",
     "reviews",
 ]
 
