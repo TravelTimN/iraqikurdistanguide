@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="container my-5">
+    Gallery
+    <br>
+    {% if request.user.is_superuser %}
+        <a href="{% url 'add_image' %}">Add Image</a>
+        <br>
+        <a href="{% url 'update_image' %}">Update Image</a>
+    {% endif %}
+</section>
+
+{% endblock %}
