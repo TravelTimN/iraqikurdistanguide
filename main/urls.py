@@ -11,6 +11,7 @@ urlpatterns = [
     path("", include("home.urls")),
     path("destinations/", include("destinations.urls")),
     path("faqs/", include("faqs.urls")),
+    path("reviews/", include("reviews.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = "main.views.handler404"

@@ -24,6 +24,7 @@
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-profile">
                             <li><a class="dropdown-item" href="{% url 'destinations' %}">Destinations</a></li>
                             <li><a class="dropdown-item" href="{% url 'faqs' %}">FAQs</a></li>
+                            <li><a class="dropdown-item" href="{% url 'reviews' %}">Reviews</a></li>
                             {% if request.user.is_authenticated %}
                                 <!-- user is logged-in -->
                                 {% if request.user.is_superuser %}
