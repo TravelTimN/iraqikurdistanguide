@@ -6,6 +6,8 @@ from .views import handler404, handler500
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("profile/", include("accounts.urls")),
+    path("auth/", include("allauth.urls")),
     path("", include("home.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
