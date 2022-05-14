@@ -10,6 +10,7 @@ urlpatterns = [
     path("auth/", include("allauth.urls")),
     path("", include("home.urls")),
     path("destinations/", include("destinations.urls")),
+    path("faqs/", include("faqs.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = "main.views.handler404"
