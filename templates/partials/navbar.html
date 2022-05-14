@@ -1,1 +1,44 @@
-<a href="{% url 'home' %}">Home</a>
+{% load static %}
+
+<header>
+    <!-- nav -->
+    <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center">
+        <div class="container-sm">
+            <!-- logo -->
+            <a href="{% url 'home' %}" class="navbar-brand w-50 align-middle me-auto">
+                <img src="{% static 'img/favicon.webp' %}" alt="Iraqi Kurdistan Guide" class="responsive-img me-3">
+                Iraqi Kurdistan Guide
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#moblile-nav">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="navbar-collapse collapse w-100" id="moblile-nav">
+                <ul class="nav navbar-nav ms-auto w-100 justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link orange-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <!-- profile links -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-profile" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-profile">
+                            {% if request.user.is_authenticated %}
+                                <!-- user is logged-in -->
+                                {% if request.user.is_superuser %}
+                                    <!-- user is superuser -->
+                                    <li><a class="dropdown-item" href="{% url 'admin:index' %}" target="_blank" rel="noopener">Django Admin</a></li>
+                                {% endif %}
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                            {% else %}
+                                <!-- user is not logged-in -->
+                                <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
+                                <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
