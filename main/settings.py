@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     "destinations",
     "faqs",
     "home",
+    "resources",
     "reviews",
 ]
 
