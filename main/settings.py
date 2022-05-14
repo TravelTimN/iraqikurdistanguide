@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     "destinations",
     "home",
     "faqs",
+    "reviews",
 ]
 
 MIDDLEWARE = [
