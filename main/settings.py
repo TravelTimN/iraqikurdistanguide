@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "accounts",
+    "about",
     "contact",
     "destinations",
     "faqs",
