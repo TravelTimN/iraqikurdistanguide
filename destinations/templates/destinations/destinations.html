@@ -11,6 +11,42 @@
         <br>
         <a href="{% url 'update_destination' %}">Update Destination</a>
     {% endif %}
+    
+    <br><br>
+    <div id="map-all-destinations"></div>
 </section>
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+    // basic leaflet map of Iraq
+    const mapUrl = `{{ map_url }}`;
+    let map = L.map("map-all-destinations", {
+        maxBounds: [ // stops users from loading infinite tiles outside of Iraq
+            [28.5, 38],
+            [37.5, 50]
+        ],
+        maxBoundsViscosity: 0.5,
+    }).setView([33.25, 44], 7);
+    let mapTileLayers = L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
+        attribution: "Map data &copy; <a href='https://www.openstreetmap.org/copyright' target='_blank' rel='noopener'>OpenStreetMap</a> contributors, Imagery © <a href='https://www.mapbox.com' target='_blank' rel='noopener'>Mapbox</a>",
+        maxZoom: 18,
+        minZoom: 7,
+        id: "mapbox/streets-v11",
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: mapUrl
+    }).addTo(map);
+
+    
+    {% for destination in destinations %}
+        let lat = {{ destination.latitude }};
+        let lng = {{ destination.longitude }};
+        let marker = L.marker([lat, lng]).addTo(map);
+    {% endfor %}
+
+</script>
 
 {% endblock %}
