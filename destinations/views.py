@@ -1,9 +1,18 @@
 from django.shortcuts import render
+from django.conf import settings
+from .models import Destination
 
 
 def destinations(request):
     """ A view to return the destinations page """
-    return render(request, "destinations/destinations.html")
+    map_url = settings.MAP_URL
+    destinations = Destination.objects.all()
+    template = "destinations/destinations.html"
+    context = {
+        "map_url": map_url,
+        "destinations": destinations,
+    }
+    return render(request, template, context)
 
 
 def add_destination(request):
