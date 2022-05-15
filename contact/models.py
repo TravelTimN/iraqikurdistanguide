@@ -45,10 +45,6 @@ class Contact(models.Model):
         null=False
     )
 
-    class Meta:
-        verbose_name = ("Contact")
-        verbose_name_plural = ("Contacts")
-
     def __str__(self):
         return (
             f"Contact from {self.email} on "
