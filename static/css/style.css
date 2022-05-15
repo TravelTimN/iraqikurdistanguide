@@ -130,6 +130,12 @@ main {
     flex: 1 0 auto;
 }
 
+/* MAPS */
+#map-all-destinations {
+    height: 50vh;
+    width: 50%;
+}
+
 /* FOOTER */
 footer {
     text-align: center;
