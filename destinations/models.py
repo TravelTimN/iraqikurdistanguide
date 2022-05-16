@@ -6,7 +6,13 @@ class Province(models.Model):
         Provinces/Governorates of Iraq, to be used as FKs
         for destinations, tours, gallery, etc.
     """
+    REGION = [
+        ("kur", "Kurdistan"),
+        ("irq", "Iraq"),
+    ]
     name = models.CharField(max_length=25, null=False, blank=False)
+    region = models.CharField(
+        choices=REGION, max_length=10, null=False, blank=False)
 
     def __str__(self):
         return self.name
