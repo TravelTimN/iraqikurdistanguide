@@ -24,28 +24,50 @@
     // basic leaflet map of Iraq
     const mapUrl = `{{ map_url }}`;
     let map = L.map("map-all-destinations", {
-        maxBounds: [ // stops users from loading infinite tiles outside of Iraq
-            [28.5, 38],
-            [37.5, 50]
-        ],
+        // stops users from loading infinite tiles outside of Iraq
+        maxBounds: [[28.5, 38], [38.5, 50]],
         maxBoundsViscosity: 0.5,
     }).setView([33.25, 44], 7);
     let mapTileLayers = L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
         attribution: "Map data &copy; <a href='https://www.openstreetmap.org/copyright' target='_blank' rel='noopener'>OpenStreetMap</a> contributors, Imagery © <a href='https://www.mapbox.com' target='_blank' rel='noopener'>Mapbox</a>",
         maxZoom: 18,
-        minZoom: 7,
+        minZoom: 5,
         id: "mapbox/streets-v11",
         tileSize: 512,
         zoomOffset: -1,
         accessToken: mapUrl
     }).addTo(map);
 
-    
+    // adding custom marker
+    let customIcon = L.Icon.extend({
+        options: {
+            iconSize: [38, 50],
+            iconAnchor: [19, 50],
+        }
+    });
+    // extend from base icon for 'kur' and 'irq' icons
+    let kurIcon = new customIcon({iconUrl: `{% static 'img/marker-kur.png' %}`});
+    let irqIcon = new customIcon({iconUrl: `{% static 'img/marker-irq.png' %}`});
+
+    let lat, lng, marker;
+    let markerArray = [];
+    // loop 'visible' marker destinations and add to map
     {% for destination in destinations %}
-        let lat = {{ destination.latitude }};
-        let lng = {{ destination.longitude }};
-        let marker = L.marker([lat, lng]).addTo(map);
+        {% if destination.is_visible %}
+            lat = {{ destination.latitude }};
+            lng = {{ destination.longitude }};
+            {% if destination.province.region == "kur" %}
+                marker = L.marker([lat, lng], {icon: kurIcon}).addTo(map);
+            {% else %}
+                marker = L.marker([lat, lng], {icon: irqIcon}).addTo(map);
+            {% endif %}
+            markerArray.push(marker);
+        {% endif %}
     {% endfor %}
+
+    // ensure map is zoomed to show only the markers
+    let markerGroup = L.featureGroup(markerArray).addTo(map);
+    map.fitBounds(markerGroup.getBounds().pad(0.5));
 
 </script>
 
