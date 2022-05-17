@@ -4,7 +4,17 @@
 {% block content %}
 
 <section class="container my-5">
-    Update Destination
+    <!-- breadcrumbs -->
+    <div aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'destinations' %}">Destinations</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'destination' destination.id %}">{{ destination }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">ADMIN: Updating {{ destination }}</li>
+        </ol>
+    </div>
+
+    <!-- <a href="{{ request.META.HTTP_REFERER }}">Go Back</a> -->
 </section>
 
 {% endblock %}
