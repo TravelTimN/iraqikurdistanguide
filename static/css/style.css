@@ -131,9 +131,13 @@ main {
 }
 
 /* MAPS */
-#map-all-destinations {
+#map-all-destinations,
+#map-single-destination {
     height: 50vh;
-    width: 50%;
+}
+
+.flag-marker {
+    height: 25px;
 }
 
 /* FOOTER */
