@@ -4,16 +4,48 @@
 {% block content %}
 
 <section class="container my-5">
-    Destinations
-    <br>
+    <!-- breadcrumbs -->
+    <div aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Destinations</li>
+        </ol>
+    </div>
+    <!-- <a href="{{ request.META.HTTP_REFERER }}">Go Back</a> -->
+
     {% if request.user.is_superuser %}
+        ADMIN-ONLY
         <a href="{% url 'add_destination' %}">Add Destination</a>
-        <br>
-        <a href="{% url 'update_destination' %}">Update Destination</a>
     {% endif %}
     
     <br><br>
-    <div id="map-all-destinations"></div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div id="map-all-destinations"></div>
+        </div>
+        <div class="col-12 col-md-6">
+            {% regroup destinations by province.get_region_display as destinations_list %}
+            <ul>
+                {% for province, local_destinations in destinations_list %}
+                    <li>
+                        <img src="{% static '' %}img/marker-{{ province|lower }}.png" alt="{{ province }} flag" class="flag-marker">
+                        {{ province }}
+                        <ul>
+                            {% for destination in local_destinations %}
+                                {% if destination.is_visible %}
+                                    <li>
+                                        <a href="{% url 'destination' destination.id %}">
+                                            {{ destination }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 </section>
 
 {% endblock %}
@@ -41,15 +73,15 @@
     // adding custom marker
     let customIcon = L.Icon.extend({
         options: {
-            iconSize: [38, 50],
-            iconAnchor: [19, 50],
+            iconSize: [25, 35],
+            iconAnchor: [12.5, 35],
         }
     });
     // extend from base icon for 'kur' and 'irq' icons
-    let kurIcon = new customIcon({iconUrl: `{% static 'img/marker-kur.png' %}`});
-    let irqIcon = new customIcon({iconUrl: `{% static 'img/marker-irq.png' %}`});
+    let kurIcon = new customIcon({iconUrl: `{% static 'img/marker-kurdistan.png' %}`});
+    let irqIcon = new customIcon({iconUrl: `{% static 'img/marker-iraq.png' %}`});
 
-    let lat, lng, marker;
+    let lat, lng, marker, region;
     let markerArray = [];
     // loop 'visible' marker destinations and add to map
     {% for destination in destinations %}
@@ -57,17 +89,18 @@
             lat = {{ destination.latitude }};
             lng = {{ destination.longitude }};
             {% if destination.province.region == "kur" %}
-                marker = L.marker([lat, lng], {icon: kurIcon}).addTo(map);
+                region = kurIcon;
             {% else %}
-                marker = L.marker([lat, lng], {icon: irqIcon}).addTo(map);
+                region = irqIcon;
             {% endif %}
+            marker = L.marker([lat, lng], {icon: region}).bindPopup(`<a href="{% url 'destination' destination.id %}">{{ destination }}</a>`).addTo(map);
             markerArray.push(marker);
         {% endif %}
     {% endfor %}
 
     // ensure map is zoomed to show only the markers
     let markerGroup = L.featureGroup(markerArray).addTo(map);
-    map.fitBounds(markerGroup.getBounds().pad(0.5));
+    map.fitBounds(markerGroup.getBounds());
 
 </script>
 
