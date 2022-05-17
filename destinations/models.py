@@ -14,6 +14,9 @@ class Province(models.Model):
     region = models.CharField(
         choices=REGION, max_length=10, null=False, blank=False)
 
+    class Meta:
+        ordering = ["-region", "name"]
+
     def __str__(self):
         return self.name
 
@@ -32,6 +35,32 @@ class Destination(models.Model):
     longitude = models.DecimalField(
         max_digits=9, decimal_places=6, null=False, blank=False)
     is_visible = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ["-province__region", "name"]
+
+    def __str__(self):
+        return self.name
+
+
+class Site(models.Model):
+    """
+        Various POIs / sites, can be used with tours,
+        gallery, maps, contact form, etc.
+        These extend the Destination model.
+    """
+    name = models.CharField(max_length=150, null=False, blank=False)
+    destination = models.ForeignKey(
+        Destination, on_delete=models.CASCADE, null=False, blank=False)
+    description = models.TextField(null=False, blank=False)
+    latitude = models.DecimalField(
+        max_digits=9, decimal_places=6, null=False, blank=False)
+    longitude = models.DecimalField(
+        max_digits=9, decimal_places=6, null=False, blank=False)
+    is_visible = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ["name"]
 
     def __str__(self):
         return self.name
