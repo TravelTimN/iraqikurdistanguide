@@ -9,8 +9,8 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
             <li class="breadcrumb-item"><a href="{% url 'destinations' %}">Destinations</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'destination' destination.id %}">{{ destination }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">ADMIN: Updating {{ destination }}</li>
+            <li class="breadcrumb-item"><a href="{% url 'view_destination' destination.id %}">{{ destination }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Admin: Update</li>
         </ol>
     </div>
 

@@ -9,14 +9,14 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Destinations</li>
+            {% if request.user.is_superuser %}
+                <li class="breadcrumb-item">
+                    <a href="{% url 'add_destination' %}">Add Destination <i class="fas fa-plus-circle"></i></a>
+                </li>
+            {% endif %}
         </ol>
     </div>
     <!-- <a href="{{ request.META.HTTP_REFERER }}">Go Back</a> -->
-
-    {% if request.user.is_superuser %}
-        ADMIN-ONLY
-        <a href="{% url 'add_destination' %}">Add Destination</a>
-    {% endif %}
     
     <br><br>
     <div class="row">
@@ -34,7 +34,7 @@
                             {% for destination in local_destinations %}
                                 {% if destination.is_visible %}
                                     <li>
-                                        <a href="{% url 'destination' destination.id %}">
+                                        <a href="{% url 'view_destination' destination.id %}">
                                             {{ destination }}
                                         </a>
                                     </li>
@@ -93,7 +93,7 @@
             {% else %}
                 region = irqIcon;
             {% endif %}
-            marker = L.marker([lat, lng], {icon: region}).bindPopup(`<a href="{% url 'destination' destination.id %}">{{ destination }}</a>`).addTo(map);
+            marker = L.marker([lat, lng], {icon: region}).bindPopup(`<a href="{% url 'view_destination' destination.id %}">{{ destination }}</a>`).addTo(map);
             markerArray.push(marker);
         {% endif %}
     {% endfor %}
