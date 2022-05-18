@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="container my-5">
+    <!-- breadcrumbs -->
+    <div aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'destinations' %}">Destinations</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+                {{ destination }}
+                {% if request.user.is_superuser %}
+                    <a href="{% url 'update_destination' destination.id %}">Edit <i class="fas fa-edit"></i></a>
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'add_site' destination.id %}">Add Site <i class="fas fa-plus-circle"></i></a>
+                    </li>
+                {% endif %}
+            </li>
+        </ol>
+    </div>
+    <!-- <a href="{{ request.META.HTTP_REFERER }}">Go Back</a> -->
+
+    <br><br>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div id="map-single-destination"></div>
+        </div>
+        <div class="col-12 col-md-6">
+            <ul>
+                {% for site in sites %}
+                    {% if site.is_visible %}
+                        <li>
+                            <a href="{% url 'view_site' destination.id site.id %}">
+                                {{ site }}
+                            </a>
+                        </li>
+                    {% else %}
+                        {% if request.user.is_superuser %}
+                            <li>
+                                <a href="{% url 'view_site' destination.id site.id %}">
+                                    {{ site }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+    // basic leaflet map of Iraq
+    const mapUrl = `{{ map_url }}`;
+    let map = L.map("map-single-destination", {
+        // stops users from loading infinite tiles outside of Iraq
+        maxBounds: [[28.5, 38], [38.5, 50]],
+        maxBoundsViscosity: 0.5,
+    }).setView([`{{ destination.latitude }}`, `{{ destination.longitude }}`], 12);
+    let mapTileLayers = L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
+        attribution: "Map data &copy; <a href='https://www.openstreetmap.org/copyright' target='_blank' rel='noopener'>OpenStreetMap</a> contributors, Imagery © <a href='https://www.mapbox.com' target='_blank' rel='noopener'>Mapbox</a>",
+        maxZoom: 18,
+        minZoom: 5,
+        id: "mapbox/streets-v11",
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: mapUrl
+    }).addTo(map);
+
+    // adding custom marker
+    let customIcon = L.Icon.extend({
+        options: {
+            iconSize: [25, 35],
+            iconAnchor: [12.5, 35],
+        }
+    });
+    // extend from base icon for 'kur' and 'irq' icons
+    let kurIcon = new customIcon({iconUrl: `{% static 'img/marker-kurdistan.png' %}`});
+    let irqIcon = new customIcon({iconUrl: `{% static 'img/marker-iraq.png' %}`});
+
+    let lat, lng, marker;
+    let markerArray = [];
+    // display destination on map
+    lat = {{ destination.latitude }};
+    lng = {{ destination.longitude }};
+    {% if destination.province.region == "kur" %}
+        region = kurIcon;
+    {% else %}
+        region = irqIcon;
+    {% endif %}
+    marker = L.marker([lat, lng], {icon: region}).bindPopup(`{{ destination }}`).addTo(map);
+    markerArray.push(marker);
+    
+    // loop 'visible' marker sites and add to map
+    {% for site in sites %}
+        {% if site.is_visible %}
+            lat = {{ site.latitude }};
+            lng = {{ site.longitude }};
+            {% if site.destination.province.region == "kur" %}
+                region = kurIcon;
+            {% else %}
+                region = irqIcon;
+            {% endif %}
+            marker = L.marker([lat, lng], {icon: region}).bindPopup(`<a href="{% url 'view_site' destination.id site.id %}">{{ site }}</a>`).addTo(map);
+            markerArray.push(marker);
+        {% endif %}
+    {% endfor %}
+
+    // ensure map is zoomed to show only the markers
+    let markerGroup = L.featureGroup(markerArray).addTo(map);
+    map.fitBounds(markerGroup.getBounds().pad(0.5));
+
+</script>
+
+{% endblock %}

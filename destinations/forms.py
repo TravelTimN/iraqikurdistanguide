@@ -1,11 +1,11 @@
 from django import forms
-# from .models import Province
+from .models import Destination
 
 
-# class ProvinceForm(forms.ModelForm):
-#     """
-#         Form to allow admins to manage Provinces.
-#     """
-#     class Meta:
-#         model = Province
-#         fields = "__all__"
+class DestinationForm(forms.ModelForm):
+    """
+        Form to allow admins to manage Destinations.
+    """
+    class Meta:
+        model = Destination
+        fields = "__all__"
