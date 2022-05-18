@@ -38,6 +38,14 @@
                                             {{ destination }}
                                         </a>
                                     </li>
+                                {% else %}
+                                    {% if request.user.is_superuser %}
+                                        <li>
+                                            <a href="{% url 'view_destination' destination.id %}">
+                                                {{ destination }}
+                                            </a>
+                                        </li>
+                                    {% endif %}
                                 {% endif %}
                             {% endfor %}
                         </ul>

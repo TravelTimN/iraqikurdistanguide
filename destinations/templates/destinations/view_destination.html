@@ -30,11 +30,21 @@
         <div class="col-12 col-md-6">
             <ul>
                 {% for site in sites %}
-                    <li>
-                        <a href="{% url 'view_site' destination.id site.id %}">
-                            {{ site }}
-                        </a>
-                    </li>
+                    {% if site.is_visible %}
+                        <li>
+                            <a href="{% url 'view_site' destination.id site.id %}">
+                                {{ site }}
+                            </a>
+                        </li>
+                    {% else %}
+                        {% if request.user.is_superuser %}
+                            <li>
+                                <a href="{% url 'view_site' destination.id site.id %}">
+                                    {{ site }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
                 {% endfor %}
             </ul>
         </div>
