@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="container my-5">
+    <!-- breadcrumbs -->
+    <div aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'destinations' %}">Destinations</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'view_destination' destination.id %}">{{ destination }}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'view_site' destination.id site.id %}">{{ site }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Admin: Update</li>
+        </ol>
+    </div>
+
+    <!-- <a href="{{ request.META.HTTP_REFERER }}">Go Back</a> -->
+</section>
+
+{% endblock %}
