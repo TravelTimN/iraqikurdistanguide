@@ -32,21 +32,11 @@
                         {{ province }}
                         <ul>
                             {% for destination in local_destinations %}
-                                {% if destination.is_visible %}
-                                    <li>
-                                        <a href="{% url 'view_destination' destination.id %}">
-                                            {{ destination }}
-                                        </a>
-                                    </li>
-                                {% else %}
-                                    {% if request.user.is_superuser %}
-                                        <li>
-                                            <a href="{% url 'view_destination' destination.id %}">
-                                                {{ destination }}
-                                            </a>
-                                        </li>
-                                    {% endif %}
-                                {% endif %}
+                                <li>
+                                    <a href="{% url 'view_destination' destination.id %}">
+                                        {{ destination }}
+                                    </a>
+                                </li>
                             {% endfor %}
                         </ul>
                     </li>

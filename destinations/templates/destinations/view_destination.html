@@ -28,23 +28,24 @@
             <div id="map-single-destination"></div>
         </div>
         <div class="col-12 col-md-6">
+            {% regroup sites|dictsort:"category" by category as sites_list %}
             <ul>
-                {% for site in sites %}
-                    {% if site.is_visible %}
-                        <li>
-                            <a href="{% url 'view_site' destination.id site.id %}">
-                                {{ site }}
-                            </a>
-                        </li>
-                    {% else %}
-                        {% if request.user.is_superuser %}
-                            <li>
-                                <a href="{% url 'view_site' destination.id site.id %}">
-                                    {{ site }}
-                                </a>
-                            </li>
-                        {% endif %}
-                    {% endif %}
+                {% for category, local_sites in sites_list %}
+                    <li>
+                        {{ category|title }}
+                        <ul>
+                            {% for site in local_sites %}
+                                <li>
+                                    <a href="{% url 'view_site' destination.id site.id %}">
+                                        {{ site }}
+                                    </a>
+                                    {% if site.is_visible != True %}
+                                        <i class="fas fa-eye-slash" data-bs-toggle="tooltip" data-bs-placement="right" title="Hidden"></i>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
                 {% endfor %}
             </ul>
         </div>
@@ -99,7 +100,7 @@
     
     // loop 'visible' marker sites and add to map
     {% for site in sites %}
-        {% if site.is_visible %}
+        {% if site.is_visible and site.primary_attraction %}
             lat = {{ site.latitude }};
             lng = {{ site.longitude }};
             {% if site.destination.province.region == "kur" %}
