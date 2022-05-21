@@ -1,10 +1,32 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block head %}
+    {{ faq_form.media }}
+{% endblock %}
+
 {% block content %}
 
 <section class="container my-5">
-    Add New FAQ
+    <!-- breadcrumbs -->
+    <div aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'faqs' %}">FAQs</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Admin: New FAQ</li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <form method="POST" action="{% url 'add_faq' %}">
+                {% csrf_token %}
+                {{ faq_form.as_p }}
+                <button type="submit" class="btn btn-success">Submit</button>
+                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
+            </form>
+        </div>
+    </div>
 </section>
 
 {% endblock %}
