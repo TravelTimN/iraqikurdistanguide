@@ -4,4 +4,4 @@ from .models import FAQ
 
 @admin.register(FAQ)
 class FAQAdmin(admin.ModelAdmin):
-    list_display = ("question", "answer", "category")
+    list_display = ("question", "answer", "category", "is_visible")
