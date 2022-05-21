@@ -21,7 +21,29 @@
             <form method="POST" action="{% url 'update_destination' destination.id %}">
                 {% csrf_token %}
                 {{ destination_form.as_p }}
-                <button type="submit">Submit</button>
+                <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+                <button type="submit" class="btn btn-success">Submit</button>
+                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
+                <a class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
+                <!-- Modal -->
+                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Delete {{ destination }}?</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete {{ destination }}?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                                <a href="{% url 'delete_destination' destination.id %}" class="btn btn-success">Yes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
         <div class="col-12 col-md-6">
@@ -69,7 +91,13 @@
     let kurIcon = new customIcon({iconUrl: `{% static 'img/marker-kurdistan.png' %}`});
     let irqIcon = new customIcon({iconUrl: `{% static 'img/marker-iraq.png' %}`});
 
-    let marker = L.marker([origLat, origLng], {draggable: true}).addTo(map);
+    {% if destination.province.region == "kur" %}
+        region = kurIcon;
+    {% else %}
+        region = irqIcon;
+    {% endif %}
+
+    let marker = L.marker([origLat, origLng], {icon: region, draggable: true}).addTo(map);
     // prefill lat/lng values on map-click or marker-drag
     marker.on("dragend", function(e) {
         updateCoords(marker.getLatLng().lat, marker.getLatLng().lng, map.getZoom());
