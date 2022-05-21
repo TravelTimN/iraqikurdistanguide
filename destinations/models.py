@@ -49,15 +49,26 @@ class Site(models.Model):
         gallery, maps, contact form, etc.
         These extend the Destination model.
     """
+    MARKER_TYPE = [
+        ("accommodation", "Accommodation"), ("airport", "Airport"),
+        ("archaeology", "Archaeology"), ("historic", "Historic"),
+        ("memorial", "Memorial"), ("museum", "Museum"),
+        ("nature", "Nature"), ("recreation", "Recreation"),
+        ("religious", "Religious"), ("restaurant", "Restaurant"),
+        ("shopping", "Shopping"), ("tea_shop", "Tea Shop"),
+    ]
     name = models.CharField(max_length=150, null=False, blank=False)
     destination = models.ForeignKey(
         Destination, on_delete=models.CASCADE, null=False, blank=False)
+    category = models.CharField(
+        choices=MARKER_TYPE, max_length=30, null=False, blank=False)
     description = models.TextField(null=False, blank=False)
     latitude = models.DecimalField(
         max_digits=9, decimal_places=6, null=False, blank=False)
     longitude = models.DecimalField(
         max_digits=9, decimal_places=6, null=False, blank=False)
     is_visible = models.BooleanField(default=True)
+    primary_attraction = models.BooleanField(default=False)
 
     class Meta:
         ordering = ["name"]
