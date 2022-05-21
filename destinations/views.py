@@ -11,7 +11,10 @@ MAP_URL = settings.MAP_URL
 
 def destinations(request):
     """ A view to return the destinations page """
-    destinations = Destination.objects.all()
+    if request.user.is_superuser:
+        destinations = Destination.objects.all()
+    else:
+        destinations = Destination.objects.filter(is_visible=True)
     template = "destinations/destinations.html"
     context = {
         "map_url": MAP_URL,
@@ -45,7 +48,10 @@ def add_destination(request):
 def view_destination(request, id):
     """ A view to return the destination-specific page """
     destination = get_object_or_404(Destination, id=id)
-    sites = Site.objects.filter(destination=destination)
+    if request.user.is_superuser:
+        sites = Site.objects.filter(destination=destination)
+    else:
+        sites = Site.objects.filter(destination=destination, is_visible=True)
     template = "destinations/view_destination.html"
     context = {
         "map_url": MAP_URL,
@@ -118,6 +124,10 @@ def add_site(request, id):
 
 def view_site(request, d_id, s_id):
     """ A view to return the site-specific page """
+    if not request.user.is_superuser:
+        # user is not superuser; take them to all destinations
+        messages.error(request, "Access denied. Invalid permissions.")
+        return redirect(reverse("destinations"))
     destination = get_object_or_404(Destination, id=d_id)
     site = get_object_or_404(Site, id=s_id)
     template = "destinations/view_site.html"
