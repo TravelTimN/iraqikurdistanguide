@@ -1,9 +1,18 @@
 from django.shortcuts import render
+from .models import FAQ
 
 
 def faqs(request):
     """ A view to return the FAQs page """
-    return render(request, "faqs/faqs.html")
+    if request.user.is_superuser:
+        faqs = FAQ.objects.all().order_by("category")
+    else:
+        faqs = FAQ.objects.filter(is_visible=True).order_by("category")
+    template = "faqs/faqs.html"
+    context = {
+        "faqs": faqs,
+    }
+    return render(request, template, context)
 
 
 def add_faq(request):
