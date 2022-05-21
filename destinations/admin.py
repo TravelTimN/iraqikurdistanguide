@@ -4,12 +4,12 @@ from .models import Province, Destination, Site
 
 @admin.register(Province)
 class ProvinceAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "region")
+    list_display = ("name", "region")
 
 
 @admin.register(Destination)
 class DestinationAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "province", "region")
+    list_display = ("name", "province", "region", "is_visible")
 
     @admin.display()
     def region(self, response):
@@ -18,7 +18,9 @@ class DestinationAdmin(admin.ModelAdmin):
 
 @admin.register(Site)
 class SiteAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "destination", "province", "region")
+    list_display = (
+        "name", "category", "destination", "province",
+        "region", "is_visible", "primary_attraction")
 
     @admin.display()
     def province(self, response):
