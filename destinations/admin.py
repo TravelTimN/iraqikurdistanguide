@@ -18,7 +18,7 @@ class DestinationAdmin(admin.ModelAdmin):
 
 @admin.register(Site)
 class SiteAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "province", "region")
+    list_display = ("id", "name", "destination", "province", "region")
 
     @admin.display()
     def province(self, response):

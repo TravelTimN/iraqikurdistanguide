@@ -62,7 +62,7 @@
         // stops users from loading infinite tiles outside of Iraq
         maxBounds: [[28.5, 38], [38.5, 50]],
         maxBoundsViscosity: 0.5,
-    }).setView([`{{ destination.latitude }}`, `{{ destination.longitude }}`], 12);
+    }).setView([`{{ destination.latitude }}`, `{{ destination.longitude }}`], 11);
     let mapTileLayers = L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
         attribution: "Map data &copy; <a href='https://www.openstreetmap.org/copyright' target='_blank' rel='noopener'>OpenStreetMap</a> contributors, Imagery © <a href='https://www.mapbox.com' target='_blank' rel='noopener'>Mapbox</a>",
         maxZoom: 18,
@@ -94,7 +94,7 @@
     {% else %}
         region = irqIcon;
     {% endif %}
-    marker = L.marker([lat, lng], {icon: region}).bindPopup(`{{ destination }}`).addTo(map);
+    marker = L.marker([lat, lng]).bindPopup(`{{ destination }}`).addTo(map);
     markerArray.push(marker);
     
     // loop 'visible' marker sites and add to map
