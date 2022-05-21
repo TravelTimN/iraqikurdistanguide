@@ -4,13 +4,53 @@
 {% block content %}
 
 <section class="container my-5">
-    FAQs
-    <br>
-    {% if request.user.is_superuser %}
-        <a href="{% url 'add_faq' %}">Add FAQ</a>
-        <br>
-        <a href="{% url 'update_faq' %}">Update FAQ</a>
-    {% endif %}
+    <!-- breadcrumbs -->
+    <div aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">FAQs</li>
+            {% if request.user.is_superuser %}
+                <li class="breadcrumb-item">
+                    <a href="{% url 'add_faq' %}">Add FAQ <i class="fas fa-plus-circle"></i></a>
+                </li>
+            {% endif %}
+        </ol>
+    </div>
+
+    <br><br>
+
+    <div class="row">
+        <div class="col-12">
+            {% regroup faqs by get_category_display as category_list %}
+            {% for category, faq_group in category_list %}
+                <h2>{{ category }}</h2>
+                <div class="accordion" id="accordion{{ forloop.counter }}">
+                    {% for faq in faq_group %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="header{{ faq.id }}">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse{{ faq.id }}" aria-expanded="false" aria-controls="collapse{{ faq.id }}">
+                                    {% if faq.is_visible != True %}
+                                        <i class="fas fa-eye-slash me-2 text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Hidden"></i>
+                                    {% endif %}
+                                    {{ faq.question }}
+                                </button>
+                            </h2>
+                            <div id="collapse{{ faq.id }}" class="accordion-collapse collapse" aria-labelledby="header{{ faq.id }}" data-bs-parent="#accordion{{ forloop.parentloop.counter }}">
+                                <div class="accordion-body">
+                                    {{ faq.answer|safe }}
+                                    {% if request.user.is_superuser %}
+                                        <a href="{% url 'update_faq' faq.id %}" class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <br><br>
+            {% endfor %}
+        </div>
+    </div>
 </section>
 
 {% endblock %}

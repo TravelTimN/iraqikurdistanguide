@@ -1,10 +1,52 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block head %}
+    {{ faq_form.media }}
+{% endblock %}
+
 {% block content %}
 
 <section class="container my-5">
-    Update FAQ
+    <!-- breadcrumbs -->
+    <div aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'faqs' %}">FAQs</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Admin: Update FAQ</li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <form method="POST" action="{% url 'update_faq' faq.id %}">
+                {% csrf_token %}
+                {{ faq_form.as_p }}
+                <button type="submit" class="btn btn-success">Submit</button>
+                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
+                <a class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
+                <!-- Modal -->
+                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Delete "{{ faq }}"?</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete "{{ faq }}"?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                                <a href="{% url 'delete_faq' faq.id %}" class="btn btn-success">Yes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </section>
 
 {% endblock %}
