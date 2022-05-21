@@ -140,6 +140,10 @@ main {
     height: 25px;
 }
 
+.leaflet-top, .leaflet-bottom {
+    z-index: 777;
+}
+
 /* FOOTER */
 footer {
     text-align: center;
