@@ -144,6 +144,61 @@ main {
     z-index: 777;
 }
 
+/* GALLERY */
+
+.card-img-overlay {
+    transform: translateY(100%);
+    transition: transform 0.18s ease-in;
+    background-color: rgba(var(--black), 1);
+}
+
+.card-img-overlay .card-text {
+    opacity: 0;
+    transform: translateY(-6em);
+    transition: opacity 0.05s ease-in, transform 0.25s ease-in;
+}
+
+.card-img-overlay .btn {
+    opacity: 0;
+    transform: translateY(2em);
+}
+
+.card {
+    overflow: hidden;
+    background-color: #345;
+}
+
+.card img {
+    object-fit: cover;
+    height: 45vh;
+    outline: 1em solid rgba(var(--white), 0.5);
+    outline-offset: -2em;
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover .card-img {
+    mix-blend-mode: overlay;
+    outline: 1em solid transparent;
+}
+
+.card:hover .card-img-overlay {
+    transform: translateY(0);
+    transition: transform .25s ease-out;
+    background-color: rgba(var(--black), 0.5);
+}
+
+.card:hover .card-text {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.5s ease-out, transform 0.2s ease-out;
+}
+
+.card:hover .btn {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.7s ease-out, transform 0.35s ease-out;
+}
+
 /* FOOTER */
 footer {
     text-align: center;
