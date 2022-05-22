@@ -43,9 +43,9 @@ class Destination(models.Model):
         return self.name
 
 
-class Site(models.Model):
+class Sight(models.Model):
     """
-        Various POIs / sites, can be used with tours,
+        Various POIs / sights, can be used with tours,
         gallery, maps, contact form, etc.
         These extend the Destination model.
     """

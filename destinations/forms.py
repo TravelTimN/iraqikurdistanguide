@@ -1,5 +1,5 @@
 from django import forms
-from .models import Destination, Site, Province
+from .models import Destination, Sight, Province
 
 
 class DestinationForm(forms.ModelForm):
@@ -25,11 +25,11 @@ class DestinationForm(forms.ModelForm):
             self.fields["province"].choices.append(provinces)
 
 
-class SiteForm(forms.ModelForm):
+class SightForm(forms.ModelForm):
     """
-        Form to allow admins to manage Sites.
+        Form to allow admins to manage Sights.
     """
     class Meta:
-        model = Site
+        model = Sight
         widgets = {"destination": forms.HiddenInput(),}
         fields = "__all__"
