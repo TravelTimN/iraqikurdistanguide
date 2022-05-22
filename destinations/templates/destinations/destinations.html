@@ -36,6 +36,9 @@
                                     <a href="{% url 'view_destination' destination.id %}">
                                         {{ destination }}
                                     </a>
+                                    {% if destination.is_visible != True %}
+                                        <i class="fas fa-eye-slash text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Hidden"></i>
+                                    {% endif %}
                                 </li>
                             {% endfor %}
                         </ul>

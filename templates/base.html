@@ -26,6 +26,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer">
     <!-- favicon -->
     <link rel="icon" sizes="50x50" href="{% static 'img/favicon.webp' %}" type="image/x-icon">
+    <!-- additional head elements -->
+    {% block head %}{% endblock %}
     <!-- css / styles -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
     {% block css %}{% endblock %}

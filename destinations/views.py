@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Destination, Sight
@@ -23,6 +24,7 @@ def destinations(request):
     return render(request, template, context)
 
 
+@login_required
 def add_destination(request):
     """ A view to add a single destination """
     if not request.user.is_superuser:
@@ -61,6 +63,7 @@ def view_destination(request, id):
     return render(request, template, context)
 
 
+@login_required
 def update_destination(request, id):
     """ A view to update a specific destination """
     if not request.user.is_superuser:
@@ -86,6 +89,7 @@ def update_destination(request, id):
     return render(request, template, context)
 
 
+@login_required
 def delete_destination(request, id):
     """ A view to delete a single destination """
     if not request.user.is_superuser:
