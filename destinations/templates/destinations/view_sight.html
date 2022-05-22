@@ -10,23 +10,23 @@
             <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
             <li class="breadcrumb-item"><a href="{% url 'destinations' %}">Destinations</a></li>
             <li class="breadcrumb-item"><a href="{% url 'view_destination' destination.id %}">{{ destination }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Admin: New Site</li>
+            <li class="breadcrumb-item active" aria-current="page">
+                {{ sight }}
+                {% if request.user.is_superuser %}
+                    <a href="{% url 'update_sight' destination.id sight.id %}">Edit <i class="fas fa-edit"></i></a>
+                {% endif %}
+            </li>
         </ol>
     </div>
     <!-- <a href="{{ request.META.HTTP_REFERER }}">Go Back</a> -->
 
+    <br><br>
     <div class="row">
         <div class="col-12 col-md-6">
-            <form method="POST" action="{% url 'add_site' destination.id %}">
-                {% csrf_token %}
-                {{ site_form.as_p }}
-                <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
-                <button type="submit" class="btn btn-success">Submit</button>
-                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
-            </form>
+            <div id="map-single-destination"></div>
         </div>
         <div class="col-12 col-md-6">
-            <div id="map-single-destination"></div>
+            
         </div>
     </div>
 </section>
@@ -38,17 +38,11 @@
 <script>
     // basic leaflet map of Iraq
     const mapUrl = `{{ map_url }}`;
-    let origLat = document.getElementById("id_latitude").value;
-    let origLng = document.getElementById("id_longitude").value;
-    if (!origLat || !origLng) {
-        origLat = `{{ destination.latitude }}`;
-        origLng = `{{ destination.longitude }}`;
-    }
     let map = L.map("map-single-destination", {
         // stops users from loading infinite tiles outside of Iraq
         maxBounds: [[28.5, 38], [38.5, 50]],
         maxBoundsViscosity: 0.5,
-    }).setView([origLat, origLng], 13);
+    }).setView([`{{ sight.latitude }}`, `{{ sight.longitude }}`], 12);
     let mapTileLayers = L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
         attribution: "Map data &copy; <a href='https://www.openstreetmap.org/copyright' target='_blank' rel='noopener'>OpenStreetMap</a> contributors, Imagery © <a href='https://www.mapbox.com' target='_blank' rel='noopener'>Mapbox</a>",
         maxZoom: 18,
@@ -69,30 +63,20 @@
     // extend from base icon for 'kur' and 'irq' icons
     let kurIcon = new customIcon({iconUrl: `{% static 'img/marker-kurdistan.png' %}`});
     let irqIcon = new customIcon({iconUrl: `{% static 'img/marker-iraq.png' %}`});
-    {% if destination.province.region == "kur" %}
+
+    let lat, lng, marker;
+    let markerArray = [];
+    // add sight to map
+    lat = {{ sight.latitude }};
+    lng = {{ sight.longitude }};
+    {% if sight.destination.province.region == "kur" %}
         region = kurIcon;
     {% else %}
         region = irqIcon;
     {% endif %}
-
-    let marker = L.marker([origLat, origLng], {icon: region, draggable: true}).addTo(map);
-    // prefill lat/lng values on map-click or marker-drag
-    marker.on("dragend", function(e) {
-        updateCoords(marker.getLatLng().lat, marker.getLatLng().lng, map.getZoom());
-    });
-    map.on("click", function(e) {
-        marker.setLatLng(e.latlng);
-        updateCoords(marker.getLatLng().lat, marker.getLatLng().lng, map.getZoom());
-    });
-
-    function updateCoords(lat, lng, zoom) {
-        document.getElementById("id_latitude").value = marker.getLatLng().lat.toFixed(5);
-        document.getElementById("id_longitude").value = marker.getLatLng().lng.toFixed(5);
-        zoom = zoom < 10 ? 10 : zoom;
-        map.flyTo([lat, lng], zoom);
-    }
+    marker = L.marker([lat, lng], {icon: region}).bindPopup(`{{ sight }}`).addTo(map);
+    markerArray.push(marker);
 
 </script>
 
 {% endblock %}
-

@@ -14,7 +14,7 @@
                 {% if request.user.is_superuser %}
                     <a href="{% url 'update_destination' destination.id %}">Edit <i class="fas fa-edit"></i></a>
                     <li class="breadcrumb-item">
-                        <a href="{% url 'add_site' destination.id %}">Add Site <i class="fas fa-plus-circle"></i></a>
+                        <a href="{% url 'add_sight' destination.id %}">Add Sight <i class="fas fa-plus-circle"></i></a>
                     </li>
                 {% endif %}
             </li>
@@ -28,18 +28,18 @@
             <div id="map-single-destination"></div>
         </div>
         <div class="col-12 col-md-6">
-            {% regroup sites|dictsort:"category" by category as sites_list %}
+            {% regroup sights|dictsort:"category" by category as sights_list %}
             <ul>
-                {% for category, local_sites in sites_list %}
+                {% for category, local_sights in sights_list %}
                     <li>
                         {{ category|title }}
                         <ul>
-                            {% for site in local_sites %}
+                            {% for sight in local_sights %}
                                 <li>
-                                    <a href="{% url 'view_site' destination.id site.id %}">
-                                        {{ site }}
+                                    <a href="{% url 'view_sight' destination.id sight.id %}">
+                                        {{ sight }}
                                     </a>
-                                    {% if site.is_visible != True %}
+                                    {% if sight.is_visible != True %}
                                         <i class="fas fa-eye-slash" data-bs-toggle="tooltip" data-bs-placement="right" title="Hidden"></i>
                                     {% endif %}
                                 </li>
@@ -98,17 +98,17 @@
     marker = L.marker([lat, lng]).bindPopup(`{{ destination }}`).addTo(map);
     markerArray.push(marker);
     
-    // loop 'visible' marker sites and add to map
-    {% for site in sites %}
-        {% if site.is_visible and site.primary_attraction %}
-            lat = {{ site.latitude }};
-            lng = {{ site.longitude }};
-            {% if site.destination.province.region == "kur" %}
+    // loop 'visible' marker sights and add to map
+    {% for sight in sights %}
+        {% if sight.is_visible and sight.primary_attraction %}
+            lat = {{ sight.latitude }};
+            lng = {{ sight.longitude }};
+            {% if sight.destination.province.region == "kur" %}
                 region = kurIcon;
             {% else %}
                 region = irqIcon;
             {% endif %}
-            marker = L.marker([lat, lng], {icon: region}).bindPopup(`<a href="{% url 'view_site' destination.id site.id %}">{{ site }}</a>`).addTo(map);
+            marker = L.marker([lat, lng], {icon: region}).bindPopup(`<a href="{% url 'view_sight' destination.id sight.id %}">{{ sight }}</a>`).addTo(map);
             markerArray.push(marker);
         {% endif %}
     {% endfor %}
