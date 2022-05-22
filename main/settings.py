@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "home",
     "resources",
     "reviews",
+    "django_cleanup.apps.CleanupConfig",  # MUST be last
 ]
 
 MIDDLEWARE = [
