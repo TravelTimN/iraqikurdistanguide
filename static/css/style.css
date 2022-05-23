@@ -97,6 +97,12 @@ nav .nav-item {
     margin: 0 20px;
 }
 
+nav .nav-item#nav-item-time {
+    /* time in Kurdistan */
+    margin: 0;
+    width: 5vw;
+}
+
 .navbar-light .navbar-nav .nav-link {
     color: rgba(var(--black), 1);
 }
@@ -163,12 +169,12 @@ main {
     transform: translateY(2em);
 }
 
-.card {
+.card-deck .card {
     overflow: hidden;
     background-color: #345;
 }
 
-.card img {
+.card-deck .card img {
     object-fit: cover;
     height: 45vh;
     outline: 1em solid rgba(var(--white), 0.5);
@@ -176,24 +182,24 @@ main {
     transition: all 0.3s ease-in-out;
 }
 
-.card:hover .card-img {
+.card-deck .card:hover .card-img {
     mix-blend-mode: overlay;
     outline: 1em solid transparent;
 }
 
-.card:hover .card-img-overlay {
+.card-deck .card:hover .card-img-overlay {
     transform: translateY(0);
     transition: transform .25s ease-out;
     background-color: rgba(var(--black), 0.5);
 }
 
-.card:hover .card-text {
+.card-deck .card:hover .card-text {
     opacity: 1;
     transform: translateX(0);
     transition: opacity 0.5s ease-out, transform 0.2s ease-out;
 }
 
-.card:hover .btn {
+.card-deck .card:hover .btn {
     opacity: 1;
     transform: translateX(0);
     transition: opacity 0.7s ease-out, transform 0.35s ease-out;
