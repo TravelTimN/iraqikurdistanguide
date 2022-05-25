@@ -24,25 +24,10 @@
                 <div class="row card-deck d-flex justify-content-center">
                     {% for photo in photo_group %}
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-2">
-                            <figure class="card text-white">
-                                <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" class="card-img">
-                                <figcaption class="d-flex flex-column justify-content-center card-img-overlay text-center">
-                                    <h3 class="card-title">{{ photo.sight }}</h3>
-                                    <p class="card-text">{{ photo.caption }}</p>
-                                    {% if request.user.is_superuser %}
-                                        <a href="{% url 'update_photo' photo.id %}" class="btn btn-success">Edit <i class="fas fa-edit"></i></a>
-                                        {% if photo.is_visible != True %}
-                                            <br><br>
-                                            <span class="text-danger">
-                                                <i class="fas fa-eye-slash me-2"></i>
-                                                Hidden
-                                            </span>
-                                        {% endif %}
-                                    {% endif %}
-                                </figcaption>
-                            </figure>
+                            <!-- include photo-card partial -->
+                            {% include "gallery/partials/photo_card.html" %}
                         </div>
-                {% endfor %}
+                    {% endfor %}
                 </div>
                 <br><hr><br>
             {% endfor %}
