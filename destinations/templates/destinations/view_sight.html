@@ -26,7 +26,14 @@
             <div id="map-single-destination"></div>
         </div>
         <div class="col-12 col-md-6">
-            
+            <div class="row card-deck d-flex justify-content-center">
+                <div class="col">
+                    {% for photo in photo_group %}
+                        <!-- include photo-card partial -->
+                        {% include "gallery/partials/photo_card.html" %}
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 </section>
