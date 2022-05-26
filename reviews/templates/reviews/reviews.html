@@ -4,7 +4,31 @@
 {% block content %}
 
 <section class="container my-5">
-    Reviews
+    <!-- breadcrumbs -->
+    <div aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Reviews</li>
+            {% if request.user.is_superuser %}
+                <li class="breadcrumb-item"><a href="">Admin: Add Review</a></li>
+            {% endif %}
+        </ol>
+    </div>
+
+    <div class="row">
+        <!-- loop reviews -->
+        {% for review in reviews %}
+            <div class="col-12 col-md-4 col-lg-3">
+                    <strong>{{ review }}</strong> <img src="{{ review.country.flag }}" alt=""><br>
+                    {{ review.date|date:"D. d M, Y" }}<br>
+                    {{ review.rating }}<i class="fas fa-star"></i> on
+                    <a href="{{ review.source.url }}" target="_blank" rel="noopener">{{ review.source }}</a>
+                    <br><br>
+                    <strong>{{ review.headline }}</strong><br>
+                    {{ review.review|safe }}
+                </div>
+        {% endfor %}
+    </div>
 </section>
 
 {% endblock %}
