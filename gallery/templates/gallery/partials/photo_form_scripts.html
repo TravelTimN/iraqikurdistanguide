@@ -1,0 +1,20 @@
+<script>
+    // disable first option of each <select> element
+        $("select").each(function() {
+        $(this).children("option:first").prop("disabled", true);
+    });
+
+    // show preview of the image, prior to upload
+    $("#id_image").on("change", function() {
+        let imgPreview = document.getElementById("id_image").files;
+        if (imgPreview) {
+            $("#img-preview-col").removeClass("d-none");
+            try {
+                $("#img-preview").prop("src", window.URL.createObjectURL(imgPreview[0])).on("error", function() {
+                    $("#img-preview").prop("src", `{{ MEDIA_URL }}no-image.png`);
+                });
+            }
+            catch (error) {console.log(error);}
+        }
+    });
+</script>

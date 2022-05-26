@@ -1,5 +1,6 @@
 <figure class="card text-white">
-    <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" class="card-img">
+    <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" class="card-img"
+        onError="this.onerror=null;this.src='{{ MEDIA_URL }}no-image.png';">
     <figcaption class="d-flex flex-column justify-content-center card-img-overlay text-center">
         <h3 class="card-title">{{ photo.sight }}</h3>
         <p class="card-text">{{ photo.caption }}</p>
