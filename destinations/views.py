@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Destination, Sight
 from .forms import DestinationForm, SightForm
+from gallery.models import Photo
 
 
 MAP_URL = settings.MAP_URL
@@ -102,6 +103,7 @@ def delete_destination(request, id):
     return redirect(reverse("destinations"))
 
 
+@login_required
 def add_sight(request, id):
     """ A view to add a single sight/POI """
     if not request.user.is_superuser:
@@ -128,21 +130,23 @@ def add_sight(request, id):
 
 def view_sight(request, d_id, s_id):
     """ A view to return the sight-specific page """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to all destinations
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("destinations"))
     destination = get_object_or_404(Destination, id=d_id)
     sight = get_object_or_404(Sight, id=s_id)
+    if request.user.is_superuser:
+        photo_group = Photo.objects.filter(sight=sight)
+    else:
+        photo_group = Photo.objects.filter(sight=sight, is_visible=True)
     template = "destinations/view_sight.html"
     context = {
         "map_url": MAP_URL,
         "destination": destination,
         "sight": sight,
+        "photo_group": photo_group,
     }
     return render(request, template, context)
 
 
+@login_required
 def update_sight(request, d_id, s_id):
     """ A view to update a specific sight """
     if not request.user.is_superuser:
@@ -170,6 +174,7 @@ def update_sight(request, d_id, s_id):
     return render(request, template, context)
 
 
+@login_required
 def delete_sight(request, d_id, s_id):
     """ A view to delete a single sight """
     if not request.user.is_superuser:

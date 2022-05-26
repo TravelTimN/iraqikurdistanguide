@@ -3,6 +3,30 @@
 // update copyright year
 document.getElementById("year").innerText = new Date().getFullYear();
 
+// get local time in Kurdistan/Iraq
+function updateTime() {
+    let time = new Date().toLocaleTimeString("en-UK", {
+        hour: "numeric",
+        minute: "2-digit",
+        timeZone: "Asia/Baghdad"
+    });
+    // add leading 0 to timestamp if single-digit hour
+    if (!/^([0-9]{2}\:[0-9]{2})$/.test(time)) {
+        time = `0${time}`;
+    }
+    return time;
+}
+
+// toggle 'clock' and 'time' in Kurdistan
+let timeIcon;
+$("#nav-link-time").on("mouseover", function() {
+    timeIcon = $(this).html();
+    $(this).html(updateTime());
+});
+$("#nav-link-time").on("mouseleave", function() {
+    $(this).html(timeIcon);
+});
+
 // auto-hide alerts
 const alerts = document.querySelectorAll("aside.alert");
 let overlay = document.getElementById("overlay");

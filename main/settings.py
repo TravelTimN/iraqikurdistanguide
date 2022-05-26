@@ -1,6 +1,9 @@
 import os
 import dj_database_url
-if os.path.exists("env.py"):
+if os.path.exists(".env"):
+    from dotenv import load_dotenv
+    load_dotenv()
+elif os.path.exists("env.py"):
     import env  # noqa
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
