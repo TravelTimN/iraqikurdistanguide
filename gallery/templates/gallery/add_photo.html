@@ -24,9 +24,10 @@
                 <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
             </form>
         </div>
-        <div class="col-12 col-md-6 card shadow text-center d-none" id="img-preview-col">
-            <h3>Image Preview</h3>
-            <img src="" alt="Preview of Image Being Uploaded" id="img-preview" class="w-100 my-2">
+        <!-- display preview of blog being uploaded -->
+        <div class="col-12 col-md-6 d-none rounded" id="img-preview-col">
+            <img src="" alt="Preview of Image Being Uploaded" id="img-preview"
+                class="card img-fluid img-thumbnail rounded shadow" onError="this.onerror=null;this.src='{{ MEDIA_URL }}no-image.png';">
         </div>
     </div>
 </section>
@@ -35,25 +36,6 @@
 
 
 {% block js %}
-<script>
-    // disable first option of each <select> element
-        $("select").each(function() {
-        $(this).children("option:first").prop("disabled", true);
-    });
-
-    // show preview of the image, prior to upload
-    $("#id_image").on("change", function() {
-        let imgPreview = document.getElementById("id_image").files;
-        if (imgPreview) {
-            $("#img-preview-col").removeClass("d-none");
-            try {
-                $("#img-preview").prop("src", window.URL.createObjectURL(imgPreview[0]));
-                $("#img-preview").on("error", function() {
-                    $("#img-preview").prop("src", "../../../media/no-image.png");
-                })
-            }
-            catch (error) {console.log(error);}
-        }
-    });
-</script>
+    <!-- add/edit photo_form use same logic -->
+    {% include "gallery/partials/photo_form_scripts.html" %}
 {% endblock %}
