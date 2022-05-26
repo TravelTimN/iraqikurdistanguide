@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "allauth",
     "allauth.account",
+    "django_countries",
     "tinymce",
     "accounts",
     "about",
