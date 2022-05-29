@@ -4,6 +4,27 @@
 {% block content %}
 
 <section class="container my-5">
+    <!-- breadcrumbs -->
+    <div aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item dropdown">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownResourceBreadcrumb" data-bs-toggle="dropdown" aria-expanded="false">
+                    Resources
+                </a>
+
+                <!-- breadcrumb dropdown -->
+                <ul class="dropdown-menu" aria-labelledby="dropdownResourceBreadcrumb">
+                    <li><a class="dropdown-item" href="{% url 'resources' %}">Resources</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'alphabet' %}">Alphabet</a></li>
+                    <li><a class="dropdown-item" href="{% url 'phrases' %}">Phrases</a></li>
+                </ul>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Alphabet</li>
+        </ol>
+    </div>
+
     Alphabet
     <br>
     <ul>
@@ -12,8 +33,7 @@
         <li>arabic</li>
         <li>phonetic</li>
     </ul>
-    <br>
-    <a href="{% url 'phrases' %}">Phrases</a>
+
 </section>
 
 {% endblock %}
