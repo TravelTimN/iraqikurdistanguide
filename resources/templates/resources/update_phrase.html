@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    {{ review_form.media }}
+{% endblock %}
+
+{% block content %}
+
+<section class="container my-5">
+    <!-- breadcrumbs -->
+    <div aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item dropdown">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownResourceBreadcrumb" data-bs-toggle="dropdown" aria-expanded="false">
+                    Resources
+                </a>
+
+                <!-- breadcrumb dropdown -->
+                <ul class="dropdown-menu" aria-labelledby="dropdownResourceBreadcrumb">
+                    <li><a class="dropdown-item" href="{% url 'resources' %}">Resources</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'alphabet' %}">Alphabet</a></li>
+                    <li><a class="dropdown-item" href="{% url 'phrases' %}">Phrases</a></li>
+                </ul>
+            </li>
+            <li class="breadcrumb-item"><a href="{% url 'phrases' %}">Phrases</a></li>
+            {% if request.user.is_superuser %}
+                <li class="breadcrumb-item active" aria-current="page">Admin: New Phrase</li>
+            {% endif %}
+        </ol>
+    </div>
+
+    <br><br>
+    <div class="row">
+        <div class="col-12">
+            <form method="POST" action="{% url 'update_phrase' phrase.id %}">
+                {% csrf_token %}
+                {{ phrase_form.as_p }}
+                <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+                <button type="submit" class="btn btn-success">Submit</button>
+                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
+                <a class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
+                <!-- Modal -->
+                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Delete Phrase?</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete this phrase?
+                                <br><br>
+                                <div class="row">
+                                    <div class="col-10 offset-1">
+                                        English: {{ phrase.english_phrase }}
+                                        <br>
+                                        Kurdish: {{ phrase.sorani_script }}
+                                        <br>
+                                        Arabic: {{ phrase.arabic_script }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                                <a href="{% url 'delete_phrase' phrase.id %}" class="btn btn-success">Yes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block js %}
+<script>
+    // disable first option of each <select> element
+        $("select").each(function() {
+        $(this).children("option:first").prop("disabled", true);
+    });
+</script>
+{% endblock %}
