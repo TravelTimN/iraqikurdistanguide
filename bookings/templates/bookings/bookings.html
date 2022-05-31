@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="container my-5">
+    <!-- breadcrumbs -->
+    <div aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Bookings</li>
+            <li class="breadcrumb-item">
+                <a href="{% url 'add_booking' %}">Add Booking <i class="fas fa-plus-circle"></i></a>
+            </li>
+        </ol>
+    </div>
+    
+    <br><br>
+    <div class="row">
+        <div class="col-12">
+            <ul>
+                {% for booking in bookings %}
+                    <li>
+                        <strong>Guide:</strong> {{ booking.get_guide_display }}<br>
+                        <strong>Guest Name:</strong> {{ booking.guest_name }}<br>
+                        <strong>Guest Email:</strong> {{ booking.guest_email }}<br>
+                        <strong>Guest Phone:</strong> {{ booking.guest_phone }}<br>
+                        <strong>Guest Country:</strong>
+                        <img src="{{ booking.guest_country.flag }}" alt="Flag Icon of {{ booking.guest_country.name }}"
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="{{ booking.guest_country.name }}">
+                        {{ booking.guest_country.name }}<br>
+                        <strong>Total Guests:</strong> {{ booking.total_guests }}<br>
+                        <strong>Start Date:</strong> {{ booking.start_date }}<br>
+                        <strong>End Date:</strong> {{ booking.end_date }}<br>
+                        <strong>Total Price:</strong> {{ booking.get_currency_display }}{{ booking.total_price }} {{ booking.currency|upper }}<br>
+                        <strong>Amount Paid:</strong> {{ booking.get_currency_display }}{{ booking.amount_paid }} {{ booking.currency|upper }}<br>
+                        <strong>Itinerary:</strong>
+                        {% for destination in booking.itinerary.all %}
+                            {{ destination }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                        <br>
+                        <strong>Notes:</strong> {{ booking.notes }}<br>
+                        <a href="{% url 'update_booking' booking.id %}" class="btn btn-primary">Edit </a>
+                        <br><br><br>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

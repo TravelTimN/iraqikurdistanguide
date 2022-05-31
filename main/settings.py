@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "tinymce",
     "accounts",
     "about",
+    "bookings",
     "contact",
     "destinations",
     "faqs",
