@@ -4,7 +4,23 @@
 {% block content %}
 
 <section class="container my-5">
-    Contact
+    <!-- breadcrumbs -->
+    <div aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'contact' %}">Contact</a></li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <form method="POST" action="{% url 'contact' %}">
+                {% csrf_token %}
+                {{ contact_form.as_p }}
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
 </section>
 
 {% endblock %}
