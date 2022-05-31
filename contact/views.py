@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse
+from django.contrib import messages
 from .models import Contact
 from .forms import ContactForm
-from django.contrib import messages
 
 
 def contact(request):
