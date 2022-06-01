@@ -14,37 +14,59 @@
             </li>
         </ol>
     </div>
-    
-    <br><br>
+</section>
+
+<section class="container-md">
     <div class="row">
+        <div class="col-12 d-flex justify-content-around">
+            <a class="btn btn-secondary" href="{% url 'bookings' %}?{{ prev_month }}">Previous Month</a>
+            <a class="btn btn-secondary" href="{% url 'bookings' %}?{{ next_month }}">Next Month</a>
+        </div>
+    </div>
+
+    <div class="my-5">
         <div class="col-12">
-            <ul>
-                {% for booking in bookings %}
-                    <li>
-                        <strong>Guide:</strong> {{ booking.get_guide_display }}<br>
-                        <strong>Guest Name:</strong> {{ booking.guest_name }}<br>
-                        <strong>Guest Email:</strong> {{ booking.guest_email }}<br>
-                        <strong>Guest Phone:</strong> {{ booking.guest_phone }}<br>
-                        <strong>Guest Country:</strong>
-                        <img src="{{ booking.guest_country.flag }}" alt="Flag Icon of {{ booking.guest_country.name }}"
-                            data-bs-toggle="tooltip" data-bs-placement="top" title="{{ booking.guest_country.name }}">
-                        {{ booking.guest_country.name }}<br>
-                        <strong>Total Guests:</strong> {{ booking.total_guests }}<br>
-                        <strong>Start Date:</strong> {{ booking.start_date }}<br>
-                        <strong>End Date:</strong> {{ booking.end_date }}<br>
-                        <strong>Total Price:</strong> {{ booking.get_currency_display }}{{ booking.total_price }} {{ booking.currency|upper }}<br>
-                        <strong>Amount Paid:</strong> {{ booking.get_currency_display }}{{ booking.amount_paid }} {{ booking.currency|upper }}<br>
-                        <strong>Itinerary:</strong>
-                        {% for destination in booking.itinerary.all %}
-                            {{ destination }}{% if not forloop.last %}, {% endif %}
-                        {% endfor %}
-                        <br>
-                        <strong>Notes:</strong> {{ booking.notes }}<br>
-                        <a href="{% url 'update_booking' booking.id %}" class="btn btn-primary">Edit </a>
-                        <br><br><br>
-                    </li>
-                {% endfor %}
-            </ul>
+            {{ booking_calendar|safe }}
+
+            {% for booking in bookings %}
+                <!-- Modal -->
+                <div class="modal fade" id="modal{{ booking.id }}" tabindex="-1" aria-labelledby="modal{{ booking.id }}Label"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modal{{ booking.id }}Label">{{ booking.guest_name }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <strong>Guide:</strong> {{ booking.get_guide_display }}<br>
+                                <strong>Guest Name:</strong> {{ booking.guest_name }}<br>
+                                <strong>Guest Email:</strong> {{ booking.guest_email }}<br>
+                                <strong>Guest Phone:</strong> {{ booking.guest_phone }}<br>
+                                <strong>Guest Country:</strong>
+                                <img src="{{ booking.guest_country.flag }}" alt="Flag Icon of {{ booking.guest_country.name }}"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="{{ booking.guest_country.name }}">
+                                {{ booking.guest_country.name }}<br>
+                                <strong>Total Guests:</strong> {{ booking.total_guests }}<br>
+                                <strong>Start Date:</strong> {{ booking.start_date }}<br>
+                                <strong>End Date:</strong> {{ booking.end_date }}<br>
+                                <strong>Total Price:</strong> {{ booking.get_currency_display }}{{ booking.total_price }} {{ booking.currency|upper }}<br>
+                                <strong>Amount Paid:</strong> {{ booking.get_currency_display }}{{ booking.amount_paid }} {{ booking.currency|upper }}<br>
+                                <strong>Itinerary:</strong>
+                                {% for destination in booking.itinerary.all %}
+                                    {{ destination }}{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                                <br>
+                                <strong>Notes:</strong> {{ booking.notes }}<br>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <a href="{% url 'update_booking' booking.id %}" class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 </section>

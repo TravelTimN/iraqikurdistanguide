@@ -219,6 +219,24 @@ main {
     max-height: inherit;
 }
 
+/* BOOKINGS / CALENDAR */
+
+@media (max-width: 768px) {
+    .day {
+        background-color: rgba(var(--white), 1);
+    }
+
+    .day p.row {
+        background-color: #eaeaea;
+    }
+}
+
+@media (min-width: 768px) {
+    .day {
+        min-height: 150px;
+    }
+}
+
 /* FOOTER */
 footer {
     text-align: center;
