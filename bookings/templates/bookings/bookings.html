@@ -16,16 +16,58 @@
     </div>
 </section>
 
-<section class="container-md">
-    <div class="row">
-        <div class="col-12 d-flex justify-content-around">
-            <a class="btn btn-secondary" href="{% url 'bookings' %}?{{ prev_month }}">Previous Month</a>
-            <a class="btn btn-secondary" href="{% url 'bookings' %}?{{ next_month }}">Next Month</a>
+<section class="container-fluid">
+    <div class="row my-5 mx-1">
+        <div class="d-none d-md-block col-md-3">
+            <hr class="w-100">
+            <h3 class="text-center">BOOKINGS</h3>
+            {% for booking in bookings %}
+                <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ booking.id }}">
+                    <div class="card my-2 bg-success text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ booking.guest_name }}</h5>
+                            <p class="card-text">
+                                Start: {{ booking.start_date }}<br>
+                                End: {{ booking.end_date }}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            {% empty %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">No Bookings Found</h5>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-    </div>
-
-    <div class="my-5">
-        <div class="col-12">
+        <div class="col-12 col-md-9">
+            
+            <div class="row">
+                <div class="col-12">
+                    {% now "Y" as current_year %}
+                    {% now "n" as current_month %}
+                    
+                    <a class="btn btn-outline-success" href="{% url 'bookings' %}?month={% now 'Y-n' %}">Today</a>
+                    <a class="btn btn-outline-primary rounded-circle" href="{% url 'bookings' %}?{{ prev_month }}"><i class="fas fa-angle-left"></i></a>
+                    <a class="btn btn-outline-primary rounded-circle" href="{% url 'bookings' %}?{{ next_month }}"><i class="fas fa-angle-right"></i></a>
+                    <br>
+                    <select class="form-select form-select-lg my-1 w-50" name="select_month" id="select_month">
+                        <option value="" disabled>Month</option>
+                        {% with "January February March April May June July August September October November December" as months %}
+                            {% for month in months.split %}
+                                <option value="?month={{ current_year }}-{{ forloop.counter }}" {% if forloop.counter == current_month|add:0 %}selected{% endif %}>{{ month }}</option>
+                            {% endfor %}
+                        {% endwith %}
+                    </select>
+                    <select class="form-select form-select-lg my-1 w-50" name="select_year" id="select_year">
+                        <option value="" disabled>Year</option>
+                        <option value="">{{ current_year|add:-1 }}</option>
+                        <option value="">{{ current_year|add:0 }}</option>
+                        <option value="">{{ current_year|add:1 }}</option>
+                    </select>
+                </div>
+            </div>
             {{ booking_calendar|safe }}
 
             {% for booking in bookings %}
@@ -71,4 +113,13 @@
     </div>
 </section>
 
+{% endblock %}
+
+{% block js %}
+<script>
+    $("#select_month").on("change", function() {
+        let month = $(this).val();
+        window.location = `{% url 'bookings' %}${month}`;
+    });
+</script>
 {% endblock %}
