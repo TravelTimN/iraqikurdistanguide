@@ -3,6 +3,7 @@ from datetime import date, datetime, timedelta
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from .models import Booking
 from .forms import BookingForm
@@ -47,8 +48,6 @@ def bookings(request):
         # user is not superuser; take them home
         messages.error(request, "Access denied. Invalid permissions.")
         return redirect(reverse("home"))
-    # get all bookings
-    bookings = Booking.objects.all()
     # generate utils.BookingCalendar using month-args
     d = get_date(request.GET.get("month", None))
     calendar = BookingCalendar(d.year, d.month)
@@ -56,6 +55,12 @@ def bookings(request):
     # define prev/next months
     prev_month = get_prev_month(d)
     next_month = get_next_month(d)
+    # get all bookings
+    bookings = Booking.objects.filter(
+        Q(start_date__year=d.year, start_date__month=d.month) |
+        Q(start_date__month__lt=d.month, end_date__month=d.month) |
+        Q(start_date__year__lt=d.year, end_date__month=d.month)
+    )
     template = "bookings/bookings.html"
     context = {
         "bookings": bookings,
