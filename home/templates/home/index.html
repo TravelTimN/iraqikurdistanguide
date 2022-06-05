@@ -1,33 +1,315 @@
-{% extends "base.html" %}
 {% load static %}
 
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="container-fluid h-100">
-    <div class="row h-100">
-        <!-- left-side welcome content -->
-        <div class="col-12 col-md-6 d-flex align-items-center justify-content-center text-center">
-            <div class="row">
-                <div class="col">
-                    Home Page
-                    <ul>
-                        <li>navbar</li>
-                        <li>hero image</li>
-                        <li>interactive map?</li>
-                        <li>#1 on trip advisor</li>
-                        <li>is it safe?</li>
-                        <li>main highlights/regions</li>
-                        <li>social media</li>
-                        <li>footer</li>
-                        <li>admin login icon/lock?</li>
-                    </ul>
-                </div>
+<head>
+    {% include "partials/head.html" %}
+</head>
+
+<body>
+    <!-- banner for reviews -->
+    {% include "partials/banner_review.html" %}
+
+    <!-- overlay -->
+    <aside id="overlay" class="hide"></aside>
+
+    
+    <!-- messages -->
+    {% include "partials/messages.html" %}
+    
+    <!-- main content -->
+    <section class="container-fluid m-0 p-0">
+        <div class="row m-0 p-0">
+            <div class="col-12 m-0 p-0">
+                <!-- landing page image with flip-board logo -->
+                <aside id="home-landing-img" class="parallax text-center text-md-start">
+                    <span class="flip-tile text-kur-red">I</span>
+                    <span class="flip-tile text-kur-red">R</span>
+                    <span class="flip-tile text-kur-red">A</span>
+                    <span class="flip-tile text-kur-red">Q</span>
+                    <span class="flip-tile text-kur-red">I</span>
+                    <br>
+                    <span class="flip-tile text-white">K</span>
+                    <span class="flip-tile text-white">U</span>
+                    <span class="flip-tile text-white">R</span>
+                    <span class="flip-tile text-white">D</span>
+                    <span class="flip-tile text-white">I</span>
+                    <span class="flip-tile text-white">S</span>
+                    <span class="flip-tile text-white">T</span>
+                    <span class="flip-tile text-white">A</span>
+                    <span class="flip-tile text-white">N</span>
+                    <br>
+                    <span class="flip-tile text-kur-green">G</span>
+                    <span class="flip-tile text-kur-green">U</span>
+                    <span class="flip-tile text-kur-green">I</span>
+                    <span class="flip-tile text-kur-green">D</span>
+                    <span class="flip-tile text-kur-green">E</span>
+                </aside>
             </div>
         </div>
+    </section>
 
-        <!-- right-side background image -->
-        <div class="col-12 col-md-6" id="img-admin"></div>
-    </div>
-</div>
+    <!-- header / navbar -->
+    {% include "partials/navbar.html" %}
 
-{% endblock %}
+    <main class="container-fluid my-5">
+
+        <!-- introduction and Haval -->
+        <section class="row my-5">
+            <div class="col-12 col-md-10 offset-md-1">
+                <div class="row d-flex align-items-center text-center g-0">
+                    <div class="col-lg-6 order-last order-lg-first">
+                        <img src="{% static 'img/wallpaper/iraqi-kurdistan-guide-haval.jpg' %}" class="img-fluid rounded shadow" alt="Iraqi Kurdistan Guide Haval">
+                    </div>
+                    <div class="col-lg-6 order-first order-lg-last">
+                        <div class="p-4">
+                            <h2>The <strong>original</strong> and <strong>#1 rated</strong> tour guide in Iraqi Kurdistan!</h2>
+                            <div class="position-relative m-5">
+                                <div class="progress">
+                                    <div class="progress-bar bg-danger w-100" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="position-absolute top-0 start-50 translate-middle badge bg-danger p-2 rounded-circle shadow">
+                                    <i class="fas fa-map-marked-alt fs-4"></i>
+                                </span>
+                            </div>
+                            <p>
+                                Hi, I'm <a href="{% url 'about' %}" class="link-success fw-bold">Haval Qaraman</a>, and I've been helping travelers create lifelong memories with my bespoke tours of Kurdistan since 2010.
+                            </p>
+                            <p>
+                                Featured in the 2012 edition of "<cite data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="Lonely Planet Middle East<br><em>(Travel Guide) 2012</em>">Lonely Planet</cite>",
+                                I have a wealth of knowledge around Kurdistan and Iraq,
+                                and it would be my pleasure to show you everything this beautiful country has to offer.
+                            </p>
+                            <p>
+                                My tours operate year-round, and tend to fill-up fast, so be sure to check out the
+                                <a href="{% url 'destinations' %}" class="link-success fw-bold">destinations</a>.
+                                When you're ready, <a href="{% url 'contact' %}" class="link-success fw-bold">contact me</a>, and we'll begin planning the journey of a lifetime!
+                            </p>
+                            <p>
+                                <a href="{% url 'destinations' %}" class="btn btn-lg btn-success">Explore Kurdistan</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- separator / quote from client -->
+        <section class="row bg-dark">
+            <div class="col-12 p-0">
+                <figure class="text-center text-light pt-5 pb-3 px-5 fs-4">
+                    <blockquote class="blockquote">
+                        <p class="fs-3 fw-bold">
+                            Simply incredible!
+                        </p>
+                        <p>
+                            <i class="fas fa-quote-left fs-1 text-kur-gold"></i>
+                            This was, without question, one of the best experiences that I've had in my extensive travels around the world!
+                            <br>
+                            The Kurdish people are the warmest, friendliest, and most open people I have met.
+                            <i class="fas fa-quote-right fs-1 text-kur-gold"></i>
+                        </p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer text-light mt-2">
+                        <a href="https://www.tripadvisor.in/ShowUserReviews-g659505-d14863085-r838591057-Iraqi_Kurdistan_Guide-Erbil_Erbil_Province.html?m=19905"
+                            target="_blank" rel="noopener" class="text-white">
+                            Chris Quinn
+                            on <cite title="TripAdvisor">TripAdvisor</cite>
+                        </a>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- is it safe? -->
+        <section class="row my-5">
+            <div class="col-12 col-md-10 offset-md-1">
+                <div class="row d-flex align-items-center text-center g-0">
+                    <div class="col-lg-6">
+                        <div class="p-4">
+                            <h2>Is it <strong>safe</strong> to travel to Iraqi Kurdistan?</h2>
+                            <div class="position-relative m-5">
+                                <div class="progress">
+                                    <div class="progress-bar bg-danger w-100" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="position-absolute top-0 start-50 translate-middle badge bg-danger p-2 rounded-circle shadow">
+                                    <i class="fas fa-question-circle fs-4"></i>
+                                </span>
+                            </div>
+                            <p>
+                                This is a commonly asked question, especially because Iraq is often viewed as one of the most dangerous countries in the world,
+                                however, it's important to note the difference between <strong>Iraq</strong> and <strong>Iraqi Kurdistan</strong>.
+                            </p>
+                            <p>
+                                Iraqi Kurdistan is a semi-autonomous region in Northern Iraq, and is much safer than the rest of the country.
+                                The travel blog,
+                                <a href="https://againstthecompass.com/en/is-it-safe-to-travel-to-iraq/"
+                                    target="_blank" rel="noopender" class="link-success fw-bold">Against The Compass</a>,
+                                provides a great write-up on the safety of Iraqi Kurdistan, and an excellent guide to traveling the country in general.
+
+                            </p>
+                            <p>
+                                Further information, along with many other frequently asked questions, can be found in the
+                                <a href="{% url 'faqs' %}" class="link-success fw-bold">FAQs</a> section.
+                            </p>
+                            <p>
+                                <a href="{% url 'faqs' %}" class="btn btn-lg btn-success">Read FAQs</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="{% static 'img/wallpaper/erbil-fountains.jpg' %}" class="img-fluid rounded shadow" alt="Iraqi Kurdistan Guide: Erbil Citadel Fountains">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- separator / parallax image -->
+        <section id="home-divider-parallax-01" class="row parallax-fixed text-center">
+            <div class="col-12 p-0 parallax-text-container">
+                <span class="text-parallax-fixed p-3 text-white text-uppercase bg-kur-green">
+                    Iraqi<span class="text-kur-gold">&#8901;</span>Kurdistan<span class="text-kur-gold">&#8901;</span>Guide
+                </span>
+            </div>
+        </section>
+
+        <!-- section: qualifications -->
+        <section class="row bg-dark py-5 text-light">
+            <div class="col-12 col-md-10 offset-md-1">
+                <div class="row d-flex align-items-center g-0">
+                    <div class="col-12 col-md-6 p-4 d-flex flex-column justify-content-center align-items-center align-self-start text-center">
+                        <img src="{% static 'img/icons/licensed-guide.png' %}" alt="Iraqi Kurdistan Guide: Licensed Guide" class="home-qualifications-icon">
+                        <br>
+                        <strong class="fs-3 text-kur-gold">Licensed Tour Operator</strong>
+                        <p class="fs-5">
+                            Registered with the Ministry of Transportation and Communication as a professional tour guide.
+                        </p>
+                    </div>
+                    <div class="col-12 col-md-6 p-4 d-flex flex-column justify-content-center align-items-center align-self-start text-center">
+                        <img src="{% static 'img/icons/advanced-driving.png' %}" alt="Iraqi Kurdistan Guide: Advanced Driving" class="home-qualifications-icon">
+                        <br>
+                        <strong class="fs-3 text-kur-gold">Client Safety First</strong>
+                        <p class="fs-5">
+                            Certified in Defensive Driving, Driver Awareness, and Driving on Unpaved Roads.
+                        </p>
+                    </div>
+                    <div class="col-12 col-md-6 p-4 d-flex flex-column justify-content-center align-items-center align-self-start text-center">
+                        <img src="{% static 'img/icons/detailed-knowledge.png' %}" alt="Iraqi Kurdistan Guide: Detailed Knowledge" class="home-qualifications-icon">
+                        <br>
+                        <strong class="fs-3 text-kur-gold">Detailed Regional Knowledge</strong>
+                        <p class="fs-5">
+                            Longest continuously-running tour guide in Iraqi Kurdistan, providing personalized experiences for my clients.
+                        </p>
+                    </div>
+                    <div class="col-12 col-md-6 p-4 d-flex flex-column justify-content-center align-items-center align-self-start text-center">
+                        <img src="{% static 'img/icons/sights-attractions.png' %}" alt="Iraqi Kurdistan Guide: Sights & Attractions" class="home-qualifications-icon">
+                        <br>
+                        <strong class="fs-3 text-kur-gold">Unrivaled Access to Attractions</strong>
+                        <p class="fs-5">
+                            Ever-growing network of connections throughout the country, allowing priority access to sights and attractions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- separator / quote from client -->
+        <section class="row">
+            <div class="col-12 p-0">
+                <figure class="text-center pt-5 pb-3 px-5 fs-4">
+                    <blockquote class="blockquote">
+                        <p class="fs-3 fw-bold">
+                            One of the best trips we've ever had!
+                        </p>
+                        <p>
+                            <i class="fas fa-quote-left fs-1 text-kur-red"></i>
+                            The entire nation is so friendly and welcoming, constantly being invited-in
+                            <br>
+                            by random strangers to eat or have tea with them, everywhere we went.
+                            <i class="fas fa-quote-right fs-1 text-kur-red"></i>
+                        </p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer mt-2">
+                        <a href="https://www.tripadvisor.in/ShowUserReviews-g659505-d14863085-r837820991-Iraqi_Kurdistan_Guide-Erbil_Erbil_Province.html?m=19905"
+                            target="_blank" rel="noopener" class="text-dark">
+                            Tim Nelson
+                            on <cite title="TripAdvisor">TripAdvisor</cite>
+                        </a>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- separator / parallax image -->
+        <section id="home-divider-parallax-02" class="row parallax-fixed text-center">
+            <div class="col-12 p-0 parallax-text-container">
+                <span class="text-parallax-fixed p-3 text-white text-uppercase bg-kur-green">
+                    Haval<span class="text-kur-gold">&#8901;</span>Qaraman
+                </span>
+            </div>
+        </section>
+
+        <!-- recommended tours -->
+        <!-- TODO: placeholder card example for now -->
+        <!-- TODO: placeholder card example for now -->
+        <!-- TODO: placeholder card example for now -->
+        <section class="row">
+            <div class="col-12">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header">
+                        Featured
+                    </div>
+                    <img src="https://placebear.com/200/300" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        2 days ago
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TODO: placeholder card example for now -->
+        <!-- TODO: placeholder card example for now -->
+        <!-- TODO: placeholder card example for now -->
+
+    </main>
+
+    <!-- footer -->
+    {% include "partials/footer.html" %}
+
+    <!-- scripts -->
+    {% include "partials/scripts.html" %}
+
+    <script>
+
+        // on-scroll
+        $(window).scroll(function(e) {
+            // parrallax effect
+            let scroll = $(this).scrollTop();
+            $(".parallax").css({"background-position": `50% ${scroll/2}px`});
+
+            // update navbar styles
+            let header = $("header").offset().top;
+            let navbar = $(".navbar");
+            if ($(window).scrollTop() >= header) {
+                $(navbar).css({"padding": "0.75em"}).removeClass("bg-dark navbar-dark").addClass("bg-light navbar-light bg-opacity-75");
+            } else {
+                $(navbar).css({"padding": "0.5rem"}).removeClass("bg-light navbar-light bg-opacity-75").addClass("bg-dark navbar-dark");
+            }
+        });
+    </script>
+
+</body>
+</html>

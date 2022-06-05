@@ -58,7 +58,7 @@ class BookingCalendar(calendar.HTMLCalendar):
             else:
                 # part of the current month, but has 0 bookings
                 return f"""
-                <div class="col-md day p-2 border border-left-0 border-top-0 text-truncate d-none d-md-inline-block bg-light">
+                <div class="col-md day p-2 border border-left-0 border-top-0 text-truncate d-none d-md-inline-block">
                     <p class="row align-items-center fs-4">
                         <span class="date col-1">{day}</span>
                         <small class="col d-md-none text-center">{calendar.day_name[weekday]}</small>
