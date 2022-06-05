@@ -9,7 +9,7 @@
         <br>
     {% endif %}
     <strong>{{ review.author }}</strong> |
-    <img src="{{ review.country.flag }}" alt="Flag Icon of {{ review.country.name }}"
+    <img src="{{ review.country.flag }}" class="flag-icon" alt="Flag Icon of {{ review.country.name }}"
         data-bs-toggle="tooltip" data-bs-placement="top" title="{{ review.country.name }}">
     <br>
     {{ review.date|date:"d F, Y" }}<br>
