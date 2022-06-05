@@ -1,5 +1,8 @@
 /* ROOT VARIABLE */
 :root {
+    --kurdish-red: 235, 35, 35; /* #ED2024 */
+    --kurdish-gold: 250, 185, 20; /* #FEBD11 */
+    --kurdish-green: 39, 138, 65; /* #278E43 */
     --dark-grey: 74, 74, 79; /* #4A4A4F */
     --light-grey: 245, 245, 245; /* #F5F5F5 */
     --white: 255, 255, 255; /* #FFFFFF */
@@ -14,15 +17,17 @@
     box-sizing: border-box;
 }
 
-html, body {
-    width: 100%;
+html {
     height: 100%;
 }
 
+body>footer {
+    position: sticky !important;
+    top: 100vh;
+}
+
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+    min-height: 100%;
     font-family: Montserrat, sans-serif;
     background-color: rgba(var(--light-grey), 1);
     color: rgba(var(--dark-grey), 1);
@@ -37,6 +42,19 @@ a, a:hover {
     background-size: cover;
 }
 
+.progress {
+    height: 1px;
+}
+
+/* COLORS */
+.text-kur-red {color: rgba(var(--kurdish-red), 1);}
+.text-kur-gold {color: rgba(var(--kurdish-gold), 1);}
+.text-kur-green {color: rgba(var(--kurdish-green), 1);}
+
+.bg-kur-red {background-color: rgba(var(--kurdish-red), 1);}
+.bg-kur-gold {background-color: rgba(var(--kurdish-gold), 1);}
+.bg-kur-green {background-color: rgba(var(--kurdish-green), 1);}
+
 /* OVERLAY */
 aside#overlay {
     width: 100vw;
@@ -44,7 +62,7 @@ aside#overlay {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 888;
+    z-index: 1000;
     opacity: 1;
     visibility: visible;
     backdrop-filter: blur(3px);
@@ -68,7 +86,7 @@ aside#overlay.hide {
 .alert {
     height: 76px;
     width: 100%;
-    z-index: 999;
+    z-index: 1001;
     margin-bottom: 2px;
     box-shadow: 0 2px 9px 0 rgba(var(--black), 0.2);
     transition: all 0.3s ease-in-out;
@@ -87,10 +105,21 @@ aside#overlay.hide {
 }
 
 /* NAVBAR */
-nav {
+header#navbar-header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+header#navbar-header .bg-dark {
+    background-color: rgba(var(--black), 0.75) !important;
+}
+
+nav.navbar {
     font-weight: bold;
-    background-color: rgba(var(--white), 1);
+    background-color: rgba(var(--black), 0.25);
     box-shadow: 0 2px 9px 0 rgba(var(--black), 0.2);
+    transition: all 0.5s ease-in-out;
 }
 
 nav .nav-item {
@@ -132,8 +161,51 @@ nav .nav-item#nav-item-time {
 }
 
 /* MAIN */
-main {
-    flex: 1 0 auto;
+#home-landing {
+    height: 70vh;
+    background-image: url("../img/wallpaper/newroz-party.png");
+}
+
+#home-landing-01 {
+    height: 50vh;
+    background-image: url("../img/wallpaper/erbil-fountains.jpg");
+}
+
+.parallax {
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+}
+
+.flip-tile {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+    top: 25vh;
+    margin: 10px auto;
+    padding: 0 .1em;
+    transform: translateY(-50%);
+    border-radius: .05em;
+    border: .01em solid rgba(var(--dark-grey), 1);
+    background: rgba(var(--black), 0.8);
+    font-family: monospace;
+    font-size: 11vw;
+    line-height: 1;
+    text-shadow: -1px -2px 2px rgba(var(--black), 1);
+    box-shadow: 0px .02em 0 rgba(var(--light-grey), 1), 0px .05em 0 rgba(var(--black), 1);
+}
+
+.flip-tile::after {
+    content: "";
+    position: absolute;
+    opacity: .8;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    margin-top: -1px;
+    border-top: 2px solid rgba(var(--black), 1);
+    border-bottom: 2px solid rgba(255, 255, 255, .3);
 }
 
 /* MAPS */
@@ -147,11 +219,10 @@ main {
 }
 
 .leaflet-top, .leaflet-bottom {
-    z-index: 777;
+    z-index: 401;
 }
 
 /* GALLERY */
-
 .card-img-overlay {
     transform: translateY(100%);
     transition: transform 0.18s ease-in;
@@ -220,27 +291,17 @@ main {
 }
 
 /* BOOKINGS / CALENDAR */
-
-@media (max-width: 768px) {
-    .day {
-        background-color: rgba(var(--white), 1);
-    }
-
-    .day p.row {
-        background-color: #eaeaea;
-    }
+.day {
+    background-color: rgba(var(--white), 1);
 }
 
-@media (min-width: 768px) {
-    .day {
-        min-height: 150px;
-    }
+.day p.row {
+    background-color: #eaeaea;
 }
 
 /* FOOTER */
 footer {
     text-align: center;
-    flex-shrink: 0;
     color: rgba(var(--light-grey), 1);
     background-color: rgba(var(--dark-grey), 1);
 }
@@ -262,4 +323,42 @@ footer .fas {
 footer .fab:hover,
 footer .fas:hover {
     transform: scale(1.3);
+}
+
+@media (min-width: 768px) {
+    #home-landing {
+        padding-left: 5em;
+    }
+
+    /* flip-tile boards */
+    .flip-tile {
+        top: 20vh;
+        /* margin: 10px auto; */
+        /* padding: 0 .1em; */
+        /* transform: translateY(-50%); */
+        font-size: 7vw;
+    }
+
+    /* calendar */
+    .day {
+        min-height: 150px;
+    }
+    
+    .day p.row {
+        background-color: unset;
+    }
+}
+
+@media (min-width: 992px) {
+    /* flip-tile boards */
+    .flip-tile {
+        top: 20vh;
+    }
+}
+
+@media (min-width: 1200px) {
+    /* flip-tile boards */
+    .flip-tile {
+        top: 17.5vh;
+    }
 }
