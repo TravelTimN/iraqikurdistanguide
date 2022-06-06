@@ -4,7 +4,7 @@ from slugify import slugify
 from django.db import models
 from django.conf import settings
 from PIL import Image, ImageOps
-from destinations.models import Sight
+import destinations.models
 
 
 def upload_to(instance, filename):
@@ -26,7 +26,7 @@ class Photo(models.Model):
         for destinations, sites, tours, etc.
     """
     sight = models.ForeignKey(
-        Sight, on_delete=models.CASCADE, null=False, blank=False)
+        "destinations.Sight", on_delete=models.CASCADE, null=False, blank=False)
     image = models.ImageField(
         default="no-image.png",
         upload_to=upload_to,
@@ -35,6 +35,10 @@ class Photo(models.Model):
         null=False)
     caption = models.CharField(max_length=250, null=False, blank=False)
     is_visible = models.BooleanField(default=True)
+
+    def image_preview(self):
+        from django.utils.html import format_html
+        return format_html(f"<img src='{self.image.url}' height='150'>")
 
     class Meta:
         ordering = ["sight__destination", "sight__name", "image"]
