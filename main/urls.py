@@ -11,6 +11,7 @@ urlpatterns = [
     path("tinymce/", include("tinymce.urls")),
     path("", include("home.urls")),
     path("about/", include("about.urls")),
+    path("bookings/", include("bookings.urls")),
     path("contact/", include("contact.urls")),
     path("destinations/", include("destinations.urls")),
     path("faqs/", include("faqs.urls")),

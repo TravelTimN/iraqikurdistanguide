@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    {{ review_form.media }}
+{% endblock %}
+
+{% block content %}
+
+<section class="container my-5">
+    <!-- breadcrumbs -->
+    <div aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'reviews' %}">Reviews</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Admin: New Review</li>
+        </ol>
+    </div>
+
+    <br><br>
+    <div class="row">
+        <div class="col-12">
+            <form method="POST" action="{% url 'add_review' %}">
+                {% csrf_token %}
+                {{ review_form.as_p }}
+                <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+                <button type="submit" class="btn btn-success">Submit</button>
+                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block js %}
+<script>
+    // disable first option of each <select> element
+        $("select").each(function() {
+        $(this).children("option:first").prop("disabled", true);
+    });
+</script>
+{% endblock %}

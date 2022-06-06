@@ -15,7 +15,7 @@
 
     <br><br>
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 col-md-6">
             <form method="POST" action="{% url 'update_photo' photo.id %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ photo_form.as_p }}
@@ -37,7 +37,8 @@
                                 <br><br>
                                 <div class="row">
                                     <div class="col-6 offset-3">
-                                        <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" class="card-img">
+                                        <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" class="card-img"
+                                            onError="this.onerror=null;this.src='{{ MEDIA_URL }}no-image.png';">
                                     </div>
                                 </div>
                             </div>
@@ -50,14 +51,18 @@
                 </div>
             </form>
         </div>
-    </div>
-
-    <br><br>
-    <div class="row">
-        <div class="col-s12">
-            <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" id="current-photo" class="card-img">
+        <!-- display preview of blog being uploaded -->
+        <div class="col-12 col-md-6" id="img-preview-col">
+            <img src="{{ photo.image.url }}" alt="Preview of Image Being Uploaded" id="img-preview"
+                class="card img-fluid img-thumbnail shadow" onError="this.onerror=null;this.src='{{ MEDIA_URL }}no-image.png';">
         </div>
     </div>
 </section>
 
+{% endblock %}
+
+
+{% block js %}
+    <!-- add/edit photo_form use same logic -->
+    {% include "gallery/partials/photo_form_scripts.html" %}
 {% endblock %}

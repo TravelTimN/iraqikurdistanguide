@@ -4,7 +4,41 @@
 {% block content %}
 
 <section class="container my-5">
-    Reviews
+    <!-- breadcrumbs -->
+    <div aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Reviews</li>
+            {% if request.user.is_superuser %}
+                <li class="breadcrumb-item"><a href="{% url 'add_review' %}">Admin: Add Review</a></li>
+            {% endif %}
+        </ol>
+    </div>
+
+    <div class="row">
+        <!-- loop reviews (regroup by source) -->
+        {% regroup reviews by source.name as reviews_list %}
+        {% for source, review_group in reviews_list reversed %}
+
+            <h2>{{ source }}</h2>
+            {% for review in review_group %}
+                {% if review.source.name == "TripAdvisor" %}
+                    <!-- trip advisor reviews -->
+                    {% include "reviews/partials/trip_advisor_review_card.html" %}
+                {% elif review.source.name == "Google Maps" %}
+                    <!-- google maps reviews -->
+                    {% include "reviews/partials/google_maps_review_card.html" %}
+                {% elif review.source.name == "Facebook" %}
+                    <!-- facebook map reviews -->
+                    {% include "reviews/partials/facebook_review_card.html" %}
+                {% else %}
+                    <span class="text-danger">Unknown Review Source</span>
+                {% endif %}
+            {% endfor %}
+            <hr class="my-4">
+
+        {% endfor %}
+    </div>
 </section>
 
 {% endblock %}
