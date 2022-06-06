@@ -251,38 +251,52 @@
         </section>
 
         <!-- recommended tours -->
-        <!-- TODO: placeholder card example for now -->
-        <!-- TODO: placeholder card example for now -->
-        <!-- TODO: placeholder card example for now -->
-        <section class="row">
-            <div class="col-12">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-header">
-                        Featured
+        <section class="m-3" id="tours">
+            <div class="row justify-content-center">
+                <div id="toursCarousel" class="carousel carousel-dark slide text-center" data-bs-ride="carousel">
+                    <div class="carousel-inner py-5">
+                        {% for tour in tours %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="3000">
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex align-items-stretch">
+                                    <div class="card carousel-card mx-auto shadow">
+                                        <img src="{{ tour.photo.image.url }}" alt="{{ tour.photo }}"
+                                            class="img-fluid img-thumbnail card-img-top carousel-img">
+                                        <div class="card-body">
+                                            <h5 class="card-text fw-bold">{{ tour }}<br>Tours</h5>
+                                            <p>{{ tour.description }}</p>
+                                        </div>
+                                        {% if request.user.is_authenticated and request.user.is_superuser %}
+                                            <div class="card-footer d-flex flex-column align-items-center">
+                                                {% if tour.is_visible != True %}
+                                                    <span class="text-danger">
+                                                        <i class="fas fa-eye-slash"></i>
+                                                        Hidden
+                                                    </span>
+                                                {% endif %}
+                                                <a href="{% url 'update_tour' tour.id %}" class="btn btn-success">Edit</a>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
-                    <img src="https://placebear.com/200/300" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
-                    <div class="card-footer text-muted">
-                        2 days ago
-                    </div>
+                    <a class="carousel-control-prev" href="#toursCarousel" role="button" data-bs-slide="prev">
+                        <i class="fas fa-angle-left fa-fw"></i>
+                    </a>
+                    <a class="carousel-control-next" href="#toursCarousel" role="button" data-bs-slide="next">
+                        <i class="fas fa-angle-right fa-fw"></i>
+                    </a>
                 </div>
             </div>
+            {% if request.user.is_authenticated and request.user.is_superuser %}
+                <div class="row">
+                    <div class="col-12 mx-auto w-100 text-center">
+                        <a href="{% url 'add_tour' %}" class="btn btn-danger btn-lg">Add Tour</a>
+                    </div>
+                </div>
+            {% endif %}
         </section>
-        <!-- TODO: placeholder card example for now -->
-        <!-- TODO: placeholder card example for now -->
-        <!-- TODO: placeholder card example for now -->
 
     </main>
 
@@ -293,7 +307,6 @@
     {% include "partials/scripts.html" %}
 
     <script>
-
         // on-scroll
         $(window).scroll(function(e) {
             // parrallax effect
@@ -307,6 +320,23 @@
                 $(navbar).css({"padding": "0.75em"}).removeClass("bg-dark navbar-dark").addClass("bg-light navbar-light bg-opacity-75");
             } else {
                 $(navbar).css({"padding": "0.5rem"}).removeClass("bg-light navbar-light bg-opacity-75").addClass("bg-dark navbar-dark");
+            }
+        });
+
+        // toursCarousel: handle single-item sliding (using cloning)
+        // https://github.com/jibarradelgado/bootstrap5-carousel-multi
+        let carouselItems = document.querySelectorAll(".carousel .carousel-item");
+        carouselItems.forEach(item => {
+            const cardsPerSlide = 4;
+            let nextCard = item.nextElementSibling;
+            for (let i=1; i<cardsPerSlide; i++) {
+                if (!nextCard) {
+                    // wrap carousel by using first child
+                    nextCard = carouselItems[0];
+                }
+                let cloneChild = nextCard.cloneNode(true);
+                item.appendChild(cloneChild.children[0]);
+                nextCard = nextCard.nextElementSibling;
             }
         });
     </script>

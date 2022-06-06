@@ -3,8 +3,8 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .models import Destination, Sight
-from .forms import DestinationForm, SightForm
+from .models import Destination, Sight, Tour
+from .forms import DestinationForm, SightForm, TourForm
 from gallery.models import Photo
 
 
@@ -185,3 +185,61 @@ def delete_sight(request, d_id, s_id):
     messages.success(request, f"{sight.name} Deleted!")
     sight.delete()
     return redirect(reverse("destinations"))
+
+
+@login_required
+def add_tour(request):
+    """ A view to add a single tour """
+    if not request.user.is_superuser:
+        # user is not superuser; take them to the home page
+        messages.error(request, "Access denied. Invalid permissions.")
+        return redirect(reverse("home"))
+    tour_form = TourForm(request.POST or None)
+    if request.method == "POST":
+        if tour_form.is_valid():
+            tour_form.save()
+            messages.success(request, "Tour Added!")
+            return redirect(reverse("home") + "#tours")
+        messages.error(request, "Error: Please Try Again.")
+    template = "destinations/add_tour.html"
+    context = {
+        "tour_form": tour_form,
+    }
+    return render(request, template, context)
+
+
+@login_required
+def update_tour(request, id):
+    """ A view to update a specific tour """
+    if not request.user.is_superuser:
+        # user is not superuser; take them home
+        messages.error(request, "Access denied. Invalid permissions.")
+        return redirect(reverse("home"))
+    tour = get_object_or_404(Tour, id=id)
+    tour_form = TourForm(request.POST or None, instance=tour)
+    if request.method == "POST":
+        if tour_form.is_valid():
+            tour_form.save()
+            messages.success(request, f"{tour.category} Updated!")
+            return redirect(reverse("home") + "#tours")
+        messages.error(request, "Error: Please Try Again.")
+    tour_form = TourForm(instance=tour)
+    template = "destinations/update_tour.html"
+    context = {
+        "tour": tour,
+        "tour_form": tour_form,
+    }
+    return render(request, template, context)
+
+
+@login_required
+def delete_tour(request, id):
+    """ A view to delete a single tour """
+    if not request.user.is_superuser:
+        # user is not superuser; take them home
+        messages.error(request, "Access denied. Invalid permissions.")
+        return redirect(reverse("home"))
+    tour = get_object_or_404(Tour, id=id)
+    messages.success(request, f"{tour.category} Deleted!")
+    tour.delete()
+    return redirect(reverse("home") + "#tours")
