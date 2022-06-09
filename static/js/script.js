@@ -27,6 +27,25 @@ $("#nav-link-time").on("mouseleave", function() {
     $(this).html(timeIcon);
 });
 
+// localStorage: remember if user closed the "review banner"
+const btnCloseReview = document.getElementById("btn-close-review");
+const reviewBanner = document.getElementById("banner-review");
+
+// check for existing localStorage of "review banner" being closed previously
+if (!JSON.parse(localStorage.getItem("reviewClosed"))) {
+    // none found / allow clicking to close banner
+    btnCloseReview?.addEventListener("click", closeReviewBanner);
+} else {
+    // previously closed / auto-hide banner from now on
+    reviewBanner.classList.remove("show");
+    reviewBanner.classList.add("d-none");
+}
+
+// add localStorage for "review banner" being closed
+function closeReviewBanner() {
+    localStorage.setItem("reviewClosed", JSON.stringify({"reviewClosed": true}));
+}
+
 // auto-hide alerts
 const alerts = document.querySelectorAll("aside.alert");
 let overlay = document.getElementById("overlay");

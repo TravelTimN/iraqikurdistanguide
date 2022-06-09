@@ -245,6 +245,7 @@ nav .nav-item#nav-item-time {
     opacity: 0.75;
     background-color: rgba(var(--white), 0.25);
     transition: all 0.2s ease-in-out;
+    width: fit-content;
 }
 
 .carousel-control-prev i.fas,
@@ -288,6 +289,11 @@ nav .nav-item#nav-item-time {
 
 .carousel-card {
     width: 100%;
+    transition: all 0.2s ease-in-out;
+}
+
+.carousel-card:hover {
+    box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, .175) !important;
 }
 
 /* carousel media-queries - specific ordering */
