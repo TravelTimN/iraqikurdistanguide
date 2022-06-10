@@ -1,28 +1,28 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'destinations' %}">Destinations</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ destination }}</li>
+    {% if request.user.is_superuser %}
+        <li class="breadcrumb-item">
+            <a href="{% url 'update_destination' destination.id %}">
+                <i class="fas fa-edit" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit Destination"></i>
+            </a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="{% url 'add_sight' destination.id %}">
+                <i class="fas fa-plus-square" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Sight"></i>
+            </a>
+        </li>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 
 <section class="container my-5">
-    <!-- breadcrumbs -->
-    <div aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'destinations' %}">Destinations</a></li>
-            <li class="breadcrumb-item active" aria-current="page">
-                {{ destination }}
-                {% if request.user.is_superuser %}
-                    <a href="{% url 'update_destination' destination.id %}">Edit <i class="fas fa-edit"></i></a>
-                    <li class="breadcrumb-item">
-                        <a href="{% url 'add_sight' destination.id %}">Add Sight <i class="fas fa-plus-circle"></i></a>
-                    </li>
-                {% endif %}
-            </li>
-        </ol>
-    </div>
-    <!-- <a href="{{ request.META.HTTP_REFERER }}">Go Back</a> -->
-
-    <br><br>
     <div class="row">
         <div class="col-12 col-md-6">
             <div id="map-single-destination"></div>

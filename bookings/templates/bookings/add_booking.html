@@ -1,19 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'bookings' %}">Bookings</a></li>
+    <li class="breadcrumb-item active" aria-current="page">NEW</li>
+{% endblock %}
+
 {% block content %}
 
 <section class="container my-5">
-    <!-- breadcrumbs -->
-    <div aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'bookings' %}">Bookings</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Admin: New Booking</li>
-        </ol>
-    </div>
-
-    <br><br>
     <div class="row">
         <div class="col-12">
             <form method="POST" action="{% url 'add_booking' %}">

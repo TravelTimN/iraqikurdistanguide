@@ -161,6 +161,80 @@ nav .nav-item#nav-item-time {
     border-color: rgba(var(--black), 1);
 }
 
+/* BREADCRUMBS */
+.breadcrumb-responsive {
+    flex-wrap: nowrap !important;
+    /* overflow-x: auto; */
+}
+
+.breadcrumb-responsive li,
+.breadcrumb-responsive li a {
+    white-space: nowrap !important;
+}
+
+.breadcrumb-item {
+    background-color: #198754;
+    color: rgba(var(--white), 1) !important;
+    height: 40px;
+    padding: 0 2.5vw;
+    line-height: 1;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.breadcrumb-item a {
+    color: rgba(var(--white), 1);
+    text-shadow: 2px 2px 2px rgba(var(--black), 0.5);
+}
+
+.breadcrumb-item::after,
+.breadcrumb-item::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    z-index: 9;
+    background-color: #198754;
+    border-right: 5px solid rgba(var(--white), 1);
+}
+
+.breadcrumb-item::after {
+    top: 0;
+    transform: skewX(45deg);
+}
+
+.breadcrumb-item::before {
+    bottom: 0;
+    transform: skewX(-45deg);
+}
+
+.breadcrumb-item + .breadcrumb-item {
+    padding-left: 25px;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: transparent;
+    content: "";
+    padding-right: 0;
+}
+
+.breadcrumb-item.active,
+.breadcrumb-item.active::before,
+.breadcrumb-item.active::after {
+    color: rgba(var(--black), 1) !important;
+    background-color: #87BEA4;
+}
+
+/* hide all breadcrumbs except the last 2, on mobile only */
+@media (max-width: 500px) {
+    .breadcrumb-item:not(:nth-last-of-type(-n+2)) {
+        display: none;
+    }
+}
+
 /* HOME */
 .parallax,
 .parallax-fixed {
@@ -519,6 +593,10 @@ footer .fas:hover {
         max-height: 10vw;
     }
 
+    .breadcrumb-item {
+        padding: 0 2vw;
+    }
+
     /* flip-tile boards */
     .flip-tile {
         top: 20vh;
@@ -547,6 +625,10 @@ footer .fas:hover {
         max-height: 8vw;
     }
 
+    .breadcrumb-item {
+        padding: 0 1.5vw;
+    }
+
     /* flip-tile boards */
     .flip-tile {
         top: 20vh;
@@ -558,5 +640,9 @@ footer .fas:hover {
     /* flip-tile boards */
     .flip-tile {
         top: 17.5vh;
+    }
+
+    .breadcrumb-item {
+        padding: 0 1vw;
     }
 }

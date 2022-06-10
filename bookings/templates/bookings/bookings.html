@@ -1,20 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block content %}
-
-<section class="container my-5">
+{% block breadcrumbs %}
     <!-- breadcrumbs -->
-    <div aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Bookings</li>
-            <li class="breadcrumb-item">
-                <a href="{% url 'add_booking' %}">Add Booking <i class="fas fa-plus-circle"></i></a>
-            </li>
-        </ol>
-    </div>
-</section>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item active" aria-current="page">Bookings</li>
+    <li class="breadcrumb-item">
+        <a href="{% url 'add_booking' %}">
+            <i class="fas fa-plus-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Booking"></i>
+        </a>
+    </li>
+{% endblock %}
+
+{% block content %}
 
 <section class="container-fluid">
     <div class="row my-5 mx-1">

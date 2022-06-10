@@ -2,22 +2,20 @@
 {% load static %}
 
 {% block head %}
+    <!-- TinyMCE Widget -->
     {{ review_form.media }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'reviews' %}">Reviews</a></li>
+    <li class="breadcrumb-item active" aria-current="page">NEW</li>
 {% endblock %}
 
 {% block content %}
 
 <section class="container my-5">
-    <!-- breadcrumbs -->
-    <div aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'reviews' %}">Reviews</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Admin: New Review</li>
-        </ol>
-    </div>
-
-    <br><br>
     <div class="row">
         <div class="col-12">
             <form method="POST" action="{% url 'add_review' %}">
