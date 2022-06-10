@@ -1,20 +1,22 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item active" aria-current="page">Reviews</li>
+    {% if request.user.is_superuser %}
+        <li class="breadcrumb-item">
+            <a href="{% url 'add_review' %}">
+                <i class="fas fa-plus-square" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Review"></i>
+            </a>
+        </li>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 
 <section class="container my-5">
-    <!-- breadcrumbs -->
-    <div aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Reviews</li>
-            {% if request.user.is_superuser %}
-                <li class="breadcrumb-item"><a href="{% url 'add_review' %}">Admin: Add Review</a></li>
-            {% endif %}
-        </ol>
-    </div>
-
     <div class="row">
         <!-- loop reviews (regroup by source) -->
         {% regroup reviews by source.name as reviews_list %}

@@ -1,18 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item active" aria-current="page" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ tour.category }}">Tours: EDIT</li>
+{% endblock %}
+
 {% block content %}
 
 <section class="container my-5">
-    <!-- breadcrumbs -->
-    <div aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item">{{ tour.category }} Tours</li>
-            <li class="breadcrumb-item active" aria-current="page">Admin: Update</li>
-        </ol>
-    </div>
-
     <div class="row">
         <div class="col-12 col-md-6">
             <form method="POST" action="{% url 'update_tour' tour.id %}">

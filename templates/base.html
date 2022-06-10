@@ -20,6 +20,14 @@
     <!-- header / navbar -->
     {% include "partials/navbar.html" %}
 
+    <!-- breadcrumbs -->
+    <section aria-label="breadcrumb" class="bg-success bg-opacity-50">
+        <ol class="breadcrumb breadcrumb-responsive m-0">
+            {% block breadcrumbs %}
+            {% endblock %}
+        </ol>
+    </section>
+
     <!-- messages -->
     {% include "partials/messages.html" %}
 

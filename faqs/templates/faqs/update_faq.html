@@ -2,21 +2,20 @@
 {% load static %}
 
 {% block head %}
+    <!-- TinyMCE Widget -->
     {{ faq_form.media }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'faqs' %}">FAQs</a></li>
+    <li class="breadcrumb-item active" aria-current="page">EDIT</li>
 {% endblock %}
 
 {% block content %}
 
 <section class="container my-5">
-    <!-- breadcrumbs -->
-    <div aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'faqs' %}">FAQs</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Admin: Update FAQ</li>
-        </ol>
-    </div>
-
     <div class="row">
         <div class="col-12">
             <form method="POST" action="{% url 'update_faq' faq.id %}">

@@ -1,26 +1,24 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'destinations' %}">Destinations</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'view_destination' destination.id %}">{{ destination }}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ sight }}</li>
+    {% if request.user.is_superuser %}
+    <li class="breadcrumb-item">
+        <a href="{% url 'update_sight' destination.id sight.id %}">
+            <i class="fas fa-edit" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit Sight"></i>
+        </a>
+    </li>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 
 <section class="container my-5">
-    <!-- breadcrumbs -->
-    <div aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'destinations' %}">Destinations</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'view_destination' destination.id %}">{{ destination }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">
-                {{ sight }}
-                {% if request.user.is_superuser %}
-                    <a href="{% url 'update_sight' destination.id sight.id %}">Edit <i class="fas fa-edit"></i></a>
-                {% endif %}
-            </li>
-        </ol>
-    </div>
-    <!-- <a href="{{ request.META.HTTP_REFERER }}">Go Back</a> -->
-
-    <br><br>
     <div class="row">
         <div class="col-12 col-md-6">
             <div id="map-single-destination"></div>

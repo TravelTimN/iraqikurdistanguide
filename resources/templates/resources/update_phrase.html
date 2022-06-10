@@ -2,37 +2,35 @@
 {% load static %}
 
 {% block head %}
+    <!-- TinyMCE Widget -->
     {{ review_form.media }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item dropdown">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownResourceBreadcrumb" data-bs-toggle="dropdown" aria-expanded="false">
+            Resources
+        </a>
+
+        <!-- breadcrumb dropdown -->
+        <ul class="dropdown-menu" aria-labelledby="dropdownResourceBreadcrumb">
+            <li><a class="dropdown-item" href="{% url 'resources' %}">Resources</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'alphabet' %}">Alphabet</a></li>
+            <li><a class="dropdown-item" href="{% url 'phrases' %}">Phrases</a></li>
+        </ul>
+    </li>
+    <li class="breadcrumb-item"><a href="{% url 'phrases' %}">Phrases</a></li>
+    {% if request.user.is_superuser %}
+        <li class="breadcrumb-item active" aria-current="page">EDIT</li>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
 
 <section class="container my-5">
-    <!-- breadcrumbs -->
-    <div aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item dropdown">
-                <a class="dropdown-toggle" href="#" role="button" id="dropdownResourceBreadcrumb" data-bs-toggle="dropdown" aria-expanded="false">
-                    Resources
-                </a>
-
-                <!-- breadcrumb dropdown -->
-                <ul class="dropdown-menu" aria-labelledby="dropdownResourceBreadcrumb">
-                    <li><a class="dropdown-item" href="{% url 'resources' %}">Resources</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="{% url 'alphabet' %}">Alphabet</a></li>
-                    <li><a class="dropdown-item" href="{% url 'phrases' %}">Phrases</a></li>
-                </ul>
-            </li>
-            <li class="breadcrumb-item"><a href="{% url 'phrases' %}">Phrases</a></li>
-            {% if request.user.is_superuser %}
-                <li class="breadcrumb-item active" aria-current="page">Admin: New Phrase</li>
-            {% endif %}
-        </ol>
-    </div>
-
-    <br><br>
     <div class="row">
         <div class="col-12">
             <form method="POST" action="{% url 'update_phrase' phrase.id %}">
