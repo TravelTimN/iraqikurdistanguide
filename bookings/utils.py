@@ -16,12 +16,11 @@ class BookingCalendar(calendar.HTMLCalendar):
     def formatday(self, day, weekday, month, year, bookings):
         # add booking to every day that a guest's trip exists
         bookings_per_day = bookings.filter(
-            Q(start_date__day__lte=day, end_date__day__gte=day) |
-            Q(start_date__day__lte=day, end_date__month__gt=month) |
-            Q(start_date__month__lt=month, end_date__day__gte=day) |
-            Q(start_date__year__lt=year, end_date__day__gte=day) |
-            Q(start_date__day__lte=day, end_date__year__gt=year)
+            (Q(start_date__day__lte=day) | Q(start_date__month__lt=month) | Q(start_date__year__lt=year)) &
+            (Q(end_date__day__gte=day) | Q(end_date__month__gt=month) | Q(end_date__year__gt=year)) &
+            (Q(start_date__year=year) | Q(end_date__year__gte=year))
         )
+
         d = ""
         for booking in bookings_per_day:
             # truncate longer guest names
@@ -29,8 +28,8 @@ class BookingCalendar(calendar.HTMLCalendar):
             d += f"<a href='#' class='d-block py-1 px-2 w-100 mb-1 rounded text-truncate small bg-success text-white' data-bs-toggle='modal' data-bs-target='#modal{booking.id}'>{guest}</a>"
 
         if day != 0:
-            # if the day of month is "today"
-            if day == datetime.now().day and month == datetime.now().month:
+            # if the day of month is "today", this year specifically
+            if day == datetime.now().day and month == datetime.now().month and year == datetime.now().year:
                 return f"""
                 <div class="col-md day p-2 bg-warning bg-opacity-25 text-truncate">
                     <p class="row align-items-center fs-4">
@@ -98,7 +97,7 @@ class BookingCalendar(calendar.HTMLCalendar):
         )
         # build the month/year header
         booking_calendar = f"""<header>
-            <h4 class="display-4 text-center">{calendar.month_name[self.month]} {self.year}</h4>
+            <h4 id="calendar-header" class="display-4 text-center">{calendar.month_name[self.month]} {self.year}</h4>
             <div class="row d-none d-md-flex p-1 bg-dark text-white">
         """
         # loop days of week header

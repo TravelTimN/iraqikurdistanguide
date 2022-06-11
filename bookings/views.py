@@ -51,11 +51,11 @@ def bookings(request):
     # define prev/next months
     prev_month = get_prev_month(d)
     next_month = get_next_month(d)
-    # get all bookings
+    # get all bookings filtered by start/end, according to current Calendar view
     bookings = Booking.objects.filter(
-        Q(start_date__year=d.year, start_date__month=d.month) |
-        Q(start_date__month__lt=d.month, end_date__month=d.month) |
-        Q(start_date__year__lt=d.year, end_date__month=d.month)
+        (Q(start_date__month=d.month) | Q(start_date__month__lt=d.month) | Q(start_date__year__lt=d.year)) &
+        (Q(end_date__month=d.month) | Q(end_date__month__gt=d.month) | Q(end_date__year__gt=d.year)) &
+        (Q(start_date__year=d.year) | Q(end_date__year__gte=d.year))
     )
     template = "bookings/bookings.html"
     context = {
