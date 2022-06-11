@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Review
 from .forms import ReviewForm
+from main.decorators import validate_user
 
 
 
@@ -20,13 +20,9 @@ def reviews(request):
     return render(request, template, context)
 
 
-@login_required
+@validate_user()
 def add_review(request):
     """ A view to add a single review """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to all reviews
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("reviews"))
     review_form = ReviewForm(request.POST or None, request.FILES or None)
     if request.method == "POST":
         if review_form.is_valid():
@@ -42,13 +38,9 @@ def add_review(request):
     return render(request, template, context)
 
 
-@login_required
+@validate_user()
 def update_review(request, id):
     """ A view to update a single review """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to all reviews
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("reviews"))
     review = get_object_or_404(Review, id=id)
     review_form = ReviewForm(request.POST or None, request.FILES or None, instance=review)
     if request.method == "POST":
@@ -66,13 +58,9 @@ def update_review(request, id):
     return render(request, template, context)
 
 
-@login_required
+@validate_user()
 def delete_review(request, id):
     """ A view to delete a specific review """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to all reviews
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("reviews"))
     review = get_object_or_404(Review, id=id)
     review.delete()
     messages.success(request, "Review Deleted!")

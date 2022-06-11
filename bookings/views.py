@@ -1,13 +1,13 @@
 import calendar
 from datetime import date, datetime, timedelta
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from .models import Booking
 from .forms import BookingForm
 from .utils import BookingCalendar
+from main.decorators import validate_user
 
 
 def get_date(d):
@@ -41,13 +41,9 @@ def get_next_month(d):
     return month
 
 
-@login_required()
+@validate_user()
 def bookings(request):
     """ A view to return the admin-only Bookings page """
-    if not request.user.is_superuser:
-        # user is not superuser; take them home
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("home"))
     # generate utils.BookingCalendar using month-args
     d = get_date(request.GET.get("month", None))
     calendar = BookingCalendar(d.year, d.month)
@@ -71,13 +67,9 @@ def bookings(request):
     return render(request, template, context)
 
 
-@login_required
+@validate_user()
 def add_booking(request):
     """ A view to add a single booking """
-    if not request.user.is_superuser:
-        # user is not superuser; take them home
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("home"))
     booking_form = BookingForm(request.POST or None)
     if request.method == "POST":
         if booking_form.is_valid():
@@ -93,13 +85,9 @@ def add_booking(request):
     return render(request, template, context)
 
 
-@login_required
+@validate_user()
 def update_booking(request, id):
     """ A view to update a single booking """
-    if not request.user.is_superuser:
-        # user is not superuser; take them home
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("home"))
     booking = get_object_or_404(Booking, id=id)
     booking_form = BookingForm(request.POST or None, instance=booking)
     if request.method == "POST":
@@ -117,13 +105,9 @@ def update_booking(request, id):
     return render(request, template, context)
 
 
-@login_required
+@validate_user()
 def delete_booking(request, id):
     """ A view to delete a specific booking """
-    if not request.user.is_superuser:
-        # user is not superuser; take them home
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("home"))
     booking = get_object_or_404(Booking, id=id)
     booking.delete()
     messages.success(request, "Booking Deleted!")
