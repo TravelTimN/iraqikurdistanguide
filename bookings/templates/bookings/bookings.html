@@ -43,35 +43,44 @@
             
             <div class="row">
                 <div class="col-12">
-                    {% now "Y" as current_year %}
-                    {% now "n" as current_month %}
-                    
                     <a class="btn btn-outline-success" href="{% url 'bookings' %}?month={% now 'Y-n' %}">Today</a>
                     <a class="btn btn-outline-primary rounded-circle" href="{% url 'bookings' %}?{{ prev_month }}"><i class="fas fa-angle-left"></i></a>
                     <a class="btn btn-outline-primary rounded-circle" href="{% url 'bookings' %}?{{ next_month }}"><i class="fas fa-angle-right"></i></a>
-                    <br>
-                    <select class="form-select form-select-lg my-1 w-50" name="select_month" id="select_month">
+                </div>
+            </div>
+
+            <!-- get current month/year -->
+            <div class="row">
+                <!-- month dropdown -->
+                <div class="col-12 col-md-6">
+                    <select class="form-select form-select-lg my-1 month-year" name="select_month" id="select_month">
                         <option value="" disabled>Month</option>
                         {% with "January February March April May June July August September October November December" as months %}
                             {% for month in months.split %}
-                                <option value="?month={{ current_year }}-{{ forloop.counter }}" {% if forloop.counter == current_month|add:0 %}selected{% endif %}>{{ month }}</option>
+                                <option data-month="{{ month }}" data-counter="{{ forloop.counter }}">{{ month }}</option>
                             {% endfor %}
                         {% endwith %}
                     </select>
-                    <select class="form-select form-select-lg my-1 w-50" name="select_year" id="select_year">
+                </div>
+                <!-- year dropdown -->
+                {% now "Y" as current_year %}
+                <div class="col-12 col-md-6">
+                    <select class="form-select form-select-lg my-1 month-year" name="select_year" id="select_year">
                         <option value="" disabled>Year</option>
-                        <option value="">{{ current_year|add:-1 }}</option>
-                        <option value="">{{ current_year|add:0 }}</option>
-                        <option value="">{{ current_year|add:1 }}</option>
+                        <option data-year="{{ current_year|add:-1 }}">{{ current_year|add:-1 }}</option>
+                        <option data-year="{{ current_year|add:0 }}">{{ current_year|add:0 }}</option>
+                        <option data-year="{{ current_year|add:1 }}">{{ current_year|add:1 }}</option>
+                        <option data-year="{{ current_year|add:2 }}">{{ current_year|add:2 }}</option>
                     </select>
                 </div>
             </div>
+
+            <!-- full calendar -->
             {{ booking_calendar|safe }}
 
             {% for booking in bookings %}
                 <!-- Modal -->
-                <div class="modal fade" id="modal{{ booking.id }}" tabindex="-1" aria-labelledby="modal{{ booking.id }}Label"
-                    aria-hidden="true">
+                <div class="modal fade" id="modal{{ booking.id }}" tabindex="-1" aria-labelledby="modal{{ booking.id }}Label" aria-hidden="true">
                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -115,9 +124,19 @@
 
 {% block js %}
 <script>
-    $("#select_month").on("change", function() {
-        let month = $(this).val();
-        window.location = `{% url 'bookings' %}${month}`;
-    });
+    // update <select> fields for month/year with current data
+    const getMonthYear = $("#calendar-header").text();
+    const getMonth = getMonthYear.split(" ")[0];
+    const getYear = getMonthYear.split(" ")[1];
+    $(`[data-month="${getMonth}"]`).prop("selected", true);
+    $(`[data-year="${getYear}"]`).prop("selected", true);
+
+    // on month|year selection, update the URL accordingly
+    $(".month-year").on("change", getNewMonthYear);
+    function getNewMonthYear() {
+        let selectedMonth = $("#select_month").find(":selected").data("counter");
+        let selectedYear = $("#select_year").find(":selected").data("year");
+        window.location = `{% url 'bookings' %}?month=${selectedYear}-${selectedMonth}`;
+    }
 </script>
 {% endblock %}
