@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Phrase
 from .forms import PhraseForm
+from main.decorators import validate_user
 
 
 def resources(request):
@@ -34,13 +34,9 @@ def phrases(request):
     return render(request, template, context)
 
 
-@login_required
+@validate_user()
 def add_phrase(request):
     """ A view to add a single phrase """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to all phrases
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("phrases"))
     phrase_form = PhraseForm(request.POST or None)
     if request.method == "POST":
         if phrase_form.is_valid():
@@ -56,13 +52,9 @@ def add_phrase(request):
     return render(request, template, context)
 
 
-@login_required
+@validate_user()
 def update_phrase(request, id):
     """ A view to update a single phrase """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to all phrases
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("phrases"))
     phrase = get_object_or_404(Phrase, id=id)
     phrase_form = PhraseForm(request.POST or None, instance=phrase)
     if request.method == "POST":
@@ -80,13 +72,9 @@ def update_phrase(request, id):
     return render(request, template, context)
 
 
-@login_required
+@validate_user()
 def delete_phrase(request, id):
     """ A view to delete a specific phrase """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to all phrases
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("phrases"))
     phrase = get_object_or_404(Phrase, id=id)
     phrase.delete()
     messages.success(request, "Phrase Deleted!")
