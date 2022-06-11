@@ -27,29 +27,5 @@
 {% endblock %}
 
 {% block js %}
-<script>
-    // disable first option of each <select> element
-        $("select:not(#id_guide)").each(function() {
-        $(this).children("option:first").prop("disabled", true);
-    });
-
-    // ensure start/end dates are not before "today", and end-date comes on/after start-date
-    let now = new Date(),
-    minDate = now.toISOString().substring(0,10);
-    $("#id_start_date").prop("min", minDate);
-    $("#id_start_date").on("change", setEndDateMin);
-    $("#id_end_date").on("change", setEndDateMin);
-    function setEndDateMin() {
-        let startDate = $("#id_start_date").val();
-        $("#id_end_date").prop("min", startDate);
-    }
-
-    // set the 'max' value for "amount-paid" no higher than the "total-price"
-    $("#id_total_price").on("change", setMaxPaidPrice);
-    $("#id_amount_paid").on("change", setMaxPaidPrice);
-    function setMaxPaidPrice() {
-        let totalPrice = $("#id_total_price").val();
-        $("#id_amount_paid").prop("max", totalPrice);
-    }
-</script>
+    <script src="{% static 'bookings/js/booking_scripts.js' %}"></script>
 {% endblock %}
