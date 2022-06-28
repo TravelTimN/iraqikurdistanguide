@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Province, Destination, Site
+from .models import Province, Destination, Sight, Tour
 
 
 @admin.register(Province)
@@ -16,8 +16,8 @@ class DestinationAdmin(admin.ModelAdmin):
         return response.province.get_region_display()
 
 
-@admin.register(Site)
-class SiteAdmin(admin.ModelAdmin):
+@admin.register(Sight)
+class SightAdmin(admin.ModelAdmin):
     list_display = (
         "name", "category", "destination", "province",
         "region", "is_visible", "primary_attraction")
@@ -28,3 +28,9 @@ class SiteAdmin(admin.ModelAdmin):
 
     def region(self, response):
         return response.destination.province.get_region_display()
+
+
+@admin.register(Tour)
+class TourAdmin(admin.ModelAdmin):
+    readonly_fields = ("image_preview", )
+    list_display = ("category", "image_preview", "description", "is_visible")

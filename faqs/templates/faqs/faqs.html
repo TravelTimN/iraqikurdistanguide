@@ -1,24 +1,22 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item active" aria-current="page">FAQs</li>
+    {% if request.user.is_superuser %}
+        <li class="breadcrumb-item">
+            <a href="{% url 'add_faq' %}">
+                <i class="fas fa-plus-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add FAQ"></i>
+            </a>
+        </li>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 
 <section class="container my-5">
-    <!-- breadcrumbs -->
-    <div aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">FAQs</li>
-            {% if request.user.is_superuser %}
-                <li class="breadcrumb-item">
-                    <a href="{% url 'add_faq' %}">Add FAQ <i class="fas fa-plus-circle"></i></a>
-                </li>
-            {% endif %}
-        </ol>
-    </div>
-
-    <br><br>
-
     <div class="row">
         <div class="col-12">
             {% regroup faqs by get_category_display as category_list %}

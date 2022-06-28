@@ -1,4 +1,6 @@
 env.py
+.env
 __pycache__/
 *.py[cod]
 db.sqlite3
+media/uploads/

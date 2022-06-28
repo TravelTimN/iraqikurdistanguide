@@ -1,6 +1,9 @@
 import os
 import dj_database_url
-if os.path.exists("env.py"):
+if os.path.exists(".env"):
+    from dotenv import load_dotenv
+    load_dotenv()
+elif os.path.exists("env.py"):
     import env  # noqa
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,9 +25,11 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "allauth",
     "allauth.account",
+    "django_countries",
     "tinymce",
     "accounts",
     "about",
+    "bookings",
     "contact",
     "destinations",
     "faqs",
@@ -32,6 +37,7 @@ INSTALLED_APPS = [
     "home",
     "resources",
     "reviews",
+    "django_cleanup.apps.CleanupConfig",  # MUST be last
 ]
 
 MIDDLEWARE = [
@@ -54,6 +60,7 @@ TEMPLATES = [
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
+                "django.template.context_processors.media",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
@@ -112,7 +119,7 @@ ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_VERIFICATION = "none"  # TODO: enable?
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_SESSION_REMEMBER = False
+ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_UNIQUE_EMAIL = True
 # LOGIN_REDIRECT_URL = "/profile/"  # TODO: create admin page?
 LOGIN_REDIRECT_URL = "/"

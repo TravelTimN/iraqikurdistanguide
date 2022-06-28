@@ -1,19 +1,110 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item dropdown">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownResourceBreadcrumb" data-bs-toggle="dropdown" aria-expanded="false">
+            Resources
+        </a>
+
+        <!-- breadcrumb dropdown -->
+        <ul class="dropdown-menu" aria-labelledby="dropdownResourceBreadcrumb">
+            <li><a class="dropdown-item" href="{% url 'resources' %}">Resources</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'alphabet' %}">Alphabet</a></li>
+            <li><a class="dropdown-item" href="{% url 'phrases' %}">Phrases</a></li>
+        </ul>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Phrases</li>
+    {% if request.user.is_superuser %}
+        <li class="breadcrumb-item">
+            <a href="{% url 'add_phrase' %}">
+                <i class="fas fa-plus-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Phrase"></i>
+            </a>
+        </li>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 
 <section class="container my-5">
-    Common Phrases
-    <br>
-    <ul>
-        <li>hello</li>
-        <li>goodbye</li>
-        <li>please</li>
-        <li>etc.</li>
-    </ul>
-    <br>
-    <a href="{% url 'alphabet' %}">Alphabet</a>
+    <div class="row mt-5">
+
+        <!-- loop phrases (regroup by category) -->
+        {% regroup phrases by get_category_display as phrases_list %}
+        {% for category, phrase_group in phrases_list %}
+
+            <h2 class="text-center my-4">
+                <span class="badge rounded-pill bg-secondary fs-2">{{ category }}</span>
+            </h2>
+
+            {% for phrase in phrase_group %}
+
+                <div class="col-12 col-lg-6">
+                    <div class="card text-center my-3 shadow">
+
+                        <!-- english -->
+                        <div class="card-header bg-dark text-light d-flex align-items-center">
+                            <img src="{% static 'img/flags/usa.png' %}" class="flex-shrink-1 img-fluid rounded ms-2"
+                                alt="Flag of USA" data-bs-toggle="tooltip" data-bs-placement="right" title="English">
+                            <span class="card-title fs-3 w-100">
+                                {{ phrase.english_phrase }}
+                            </span>
+                            <img src="{% static 'img/flags/uk.png' %}" class="flex-shrink-1 img-fluid rounded ms-2"
+                                alt="Flag of UK" data-bs-toggle="tooltip" data-bs-placement="left" title="English">
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row card-text fs-2">
+
+                                <!-- kurdish -->
+                                <div class="col-12 d-flex align-items-center justify-content-end">
+                                    <span class="text-end" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ phrase.sorani_latin }}">
+                                        {{ phrase.sorani_script }}
+                                    </span>
+                                    <img src="{% static 'img/flags/kurdistan.png' %}" class="img-fluid rounded ms-2"
+                                        alt="Flag of Kurdistan" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Kurdish">
+                                </div>
+
+                                <hr class="w-75 mx-auto my-2">
+
+                                <!-- arabic -->
+                                <div class="col-12 d-flex align-items-center justify-content-end">
+                                    <span class="text-end" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ phrase.arabic_latin }}">
+                                        {{ phrase.arabic_script }}
+                                    </span>
+                                    <img src="{% static 'img/flags/iraq.png' %}" class="img-fluid rounded ms-2"
+                                        alt="Flag of Iraq" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Arabic">
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- superuser footer details -->
+                        {% if request.user.is_superuser %}
+                            <div class="card-footer d-flex align-items-center justify-content-center">
+                                <span class="w-100">
+                                    <a href="{% url 'update_phrase' phrase.id %}" class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
+                                </span>
+                                {% if phrase.is_visible != True %}
+                                    <i class="fas fa-eye-slash text-danger fs-3" data-bs-toggle="tooltip" data-bs-placement="left" title="Hidden"></i>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+            {% endfor %}
+
+            <br><br>
+            <hr class="my-5">
+            <br><br>
+
+        {% endfor %}
+    </div>
+
 </section>
 
 {% endblock %}

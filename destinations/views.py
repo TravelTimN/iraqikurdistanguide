@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .models import Destination, Site
-from .forms import DestinationForm, SiteForm
+from .models import Destination, Sight, Tour
+from .forms import DestinationForm, SightForm, TourForm
+from gallery.models import Photo
+from main.decorators import validate_user
 
 
 MAP_URL = settings.MAP_URL
@@ -24,13 +25,9 @@ def destinations(request):
     return render(request, template, context)
 
 
-@login_required
+@validate_user()
 def add_destination(request):
     """ A view to add a single destination """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to all destinations
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("destinations"))
     destination_form = DestinationForm(request.POST or None)
     if request.method == "POST":
         if destination_form.is_valid():
@@ -51,25 +48,21 @@ def view_destination(request, id):
     """ A view to return the destination-specific page """
     destination = get_object_or_404(Destination, id=id)
     if request.user.is_superuser:
-        sites = Site.objects.filter(destination=destination)
+        sights = Sight.objects.filter(destination=destination)
     else:
-        sites = Site.objects.filter(destination=destination, is_visible=True)
+        sights = Sight.objects.filter(destination=destination, is_visible=True)
     template = "destinations/view_destination.html"
     context = {
         "map_url": MAP_URL,
         "destination": destination,
-        "sites": sites,
+        "sights": sights,
     }
     return render(request, template, context)
 
 
-@login_required
+@validate_user()
 def update_destination(request, id):
     """ A view to update a specific destination """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to all destinations
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("destinations"))
     destination = get_object_or_404(Destination, id=id)
     destination_form = DestinationForm(request.POST or None, instance=destination)
     if request.method == "POST":
@@ -89,97 +82,128 @@ def update_destination(request, id):
     return render(request, template, context)
 
 
-@login_required
+@validate_user()
 def delete_destination(request, id):
     """ A view to delete a single destination """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to all destinations
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("destinations"))
     destination = get_object_or_404(Destination, id=id)
     messages.success(request, f"{destination.name} Deleted!")
     destination.delete()
     return redirect(reverse("destinations"))
 
 
-@login_required
-def add_site(request, id):
-    """ A view to add a single site/POI """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to all destinations
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("destinations"))
+@validate_user()
+def add_sight(request, id):
+    """ A view to add a single sight/POI """
     destination = get_object_or_404(Destination, id=id)
-    site_form = SiteForm(request.POST or None, initial={"destination": id})
+    sight_form = SightForm(request.POST or None, initial={"destination": id})
     if request.method == "POST":
-        if site_form.is_valid():
+        if sight_form.is_valid():
             next = request.POST.get("next", "/")
-            new_site = site_form.save()
-            messages.success(request, f"{new_site.name} Added!")
+            new_sight = sight_form.save()
+            messages.success(request, f"{new_sight.name} Added!")
             return HttpResponseRedirect(next)
         messages.error(request, "Error: Please Try Again.")
-    template = "destinations/add_site.html"
+    template = "destinations/add_sight.html"
     context = {
         "map_url": MAP_URL,
         "destination": destination,
-        "site_form": site_form,
+        "sight_form": sight_form,
     }
     return render(request, template, context)
 
 
-def view_site(request, d_id, s_id):
-    """ A view to return the site-specific page """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to all destinations
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("destinations"))
+def view_sight(request, d_id, s_id):
+    """ A view to return the sight-specific page """
     destination = get_object_or_404(Destination, id=d_id)
-    site = get_object_or_404(Site, id=s_id)
-    template = "destinations/view_site.html"
+    sight = get_object_or_404(Sight, id=s_id)
+    if request.user.is_superuser:
+        photo_group = Photo.objects.filter(sight=sight)
+    else:
+        photo_group = Photo.objects.filter(sight=sight, is_visible=True)
+    template = "destinations/view_sight.html"
     context = {
         "map_url": MAP_URL,
         "destination": destination,
-        "site": site,
+        "sight": sight,
+        "photo_group": photo_group,
     }
     return render(request, template, context)
 
 
-@login_required
-def update_site(request, d_id, s_id):
-    """ A view to update a specific site """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to all destinations
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("destinations"))
+@validate_user()
+def update_sight(request, d_id, s_id):
+    """ A view to update a specific sight """
     destination = get_object_or_404(Destination, id=d_id)
-    site = get_object_or_404(Site, id=s_id)
-    site_form = SiteForm(request.POST or None, instance=site)
+    sight = get_object_or_404(Sight, id=s_id)
+    sight_form = SightForm(request.POST or None, instance=sight)
     if request.method == "POST":
-        if site_form.is_valid():
+        if sight_form.is_valid():
             next = request.POST.get("next", "/")
-            updated_site = site_form.save()
-            messages.success(request, f"{updated_site.name} Updated!")
+            updated_sight = sight_form.save()
+            messages.success(request, f"{updated_sight.name} Updated!")
             return HttpResponseRedirect(next)
         messages.error(request, "Error: Please Try Again.")
-    site_form = SiteForm(instance=site)
-    template = "destinations/update_site.html"
+    sight_form = SightForm(instance=sight)
+    template = "destinations/update_sight.html"
     context = {
         "map_url": MAP_URL,
         "destination": destination,
-        "site": site,
-        "site_form": site_form,
+        "sight": sight,
+        "sight_form": sight_form,
     }
     return render(request, template, context)
 
 
-@login_required
-def delete_site(request, d_id, s_id):
-    """ A view to delete a single site """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to all destinations
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("destinations"))
-    site = get_object_or_404(Site, id=s_id)
-    messages.success(request, f"{site.name} Deleted!")
-    site.delete()
+@validate_user()
+def delete_sight(request, d_id, s_id):
+    """ A view to delete a single sight """
+    sight = get_object_or_404(Sight, id=s_id)
+    messages.success(request, f"{sight.name} Deleted!")
+    sight.delete()
     return redirect(reverse("destinations"))
+
+
+@validate_user()
+def add_tour(request):
+    """ A view to add a single tour """
+    tour_form = TourForm(request.POST or None)
+    if request.method == "POST":
+        if tour_form.is_valid():
+            tour_form.save()
+            messages.success(request, "Tour Added!")
+            return redirect(reverse("home") + "#tours")
+        messages.error(request, "Error: Please Try Again.")
+    template = "destinations/add_tour.html"
+    context = {
+        "tour_form": tour_form,
+    }
+    return render(request, template, context)
+
+
+@validate_user()
+def update_tour(request, id):
+    """ A view to update a specific tour """
+    tour = get_object_or_404(Tour, id=id)
+    tour_form = TourForm(request.POST or None, instance=tour)
+    if request.method == "POST":
+        if tour_form.is_valid():
+            tour_form.save()
+            messages.success(request, f"{tour.category} Updated!")
+            return redirect(reverse("home") + "#tours")
+        messages.error(request, "Error: Please Try Again.")
+    tour_form = TourForm(instance=tour)
+    template = "destinations/update_tour.html"
+    context = {
+        "tour": tour,
+        "tour_form": tour_form,
+    }
+    return render(request, template, context)
+
+
+@validate_user()
+def delete_tour(request, id):
+    """ A view to delete a single tour """
+    tour = get_object_or_404(Tour, id=id)
+    messages.success(request, f"{tour.category} Deleted!")
+    tour.delete()
+    return redirect(reverse("home") + "#tours")

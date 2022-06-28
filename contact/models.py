@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from destinations.models import Destination
 
 
 class Contact(models.Model):
@@ -15,9 +16,10 @@ class Contact(models.Model):
         blank=False,
         null=False
     )
-    destinations= models.JSONField(
-        blank=False,
-        null=False
+    destinations= models.ManyToManyField(
+        Destination,
+        blank=True,
+        related_name="contact_destinations"
     )
     start_date = models.DateField(
         blank=False,
@@ -46,8 +48,4 @@ class Contact(models.Model):
     )
 
     def __str__(self):
-        return (
-            f"Contact from {self.email} on "
-            f"{self.msg_date.strftime('%d%b%y').upper()} @ "
-            f"{self.msg_date.strftime('%H:%M')}"
-        )
+        return self.email

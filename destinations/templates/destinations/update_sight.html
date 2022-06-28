@@ -1,25 +1,23 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'destinations' %}">Destinations</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'view_destination' destination.id %}">{{ destination }}</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'view_sight' destination.id sight.id %}">{{ sight }}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">EDIT</li>
+{% endblock %}
+
 {% block content %}
 
 <section class="container my-5">
-    <!-- breadcrumbs -->
-    <div aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'destinations' %}">Destinations</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'view_destination' destination.id %}">{{ destination }}</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'view_site' destination.id site.id %}">{{ site }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Admin: Update</li>
-        </ol>
-    </div>
-
     <div class="row">
         <div class="col-12 col-md-6">
-            <form method="POST" action="{% url 'update_site' destination.id site.id %}">
+            <form method="POST" action="{% url 'update_sight' destination.id sight.id %}">
                 {% csrf_token %}
-                {{ site_form.as_p }}
+                {{ sight_form.as_p }}
                 <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
                 <button type="submit" class="btn btn-success">Submit</button>
                 <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
@@ -29,16 +27,16 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="deleteModalLabel">Delete {{ site }}?</h5>
+                                <h5 class="modal-title" id="deleteModalLabel">Delete {{ sight }}?</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                Are you sure you want to delete {{ site }}?
+                                Are you sure you want to delete {{ sight }}?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-                                <a href="{% url 'delete_site' destination.id site.id %}" class="btn btn-success">Yes</a>
+                                <a href="{% url 'delete_sight' destination.id sight.id %}" class="btn btn-success">Yes</a>
                             </div>
                         </div>
                     </div>

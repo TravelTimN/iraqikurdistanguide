@@ -1,8 +1,8 @@
 {% load static %}
 
-<header>
+<header id="navbar-header" class="bg-dark bg-opacity-50">
     <!-- nav -->
-    <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center">
+    <nav class="navbar navbar-dark bg-dark navbar-expand-md justify-content-center">
         <div class="container-sm">
             <!-- logo -->
             <a href="{% url 'home' %}" class="navbar-brand w-50 align-middle me-auto">
@@ -15,7 +15,7 @@
             <div class="navbar-collapse collapse w-100" id="moblile-nav">
                 <ul class="nav navbar-nav ms-auto w-100 justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link orange-link" href="{% url 'home' %}">Home</a>
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
                     </li>
                     <!-- profile links -->
                     <li class="nav-item dropdown">
@@ -33,6 +33,7 @@
                                 <!-- user is logged-in -->
                                 {% if request.user.is_superuser %}
                                     <!-- user is superuser -->
+                                    <li><a class="dropdown-item" href="{% url 'bookings' %}">Bookings</a></li>
                                     <li><a class="dropdown-item" href="{% url 'admin:index' %}" target="_blank" rel="noopener">Django Admin</a></li>
                                 {% endif %}
                                 <li><hr class="dropdown-divider"></li>
@@ -43,6 +44,12 @@
                                 <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
                             {% endif %}
                         </ul>
+                    </li>
+                    <!-- time in Kurdistan/Iraq -->
+                    <li class="nav-item d-none d-lg-block position-absolute end-0 me-3" id="nav-item-time">
+                        <span class="nav-link text-center" id="nav-link-time">
+                            <i class="fas fa-clock"></i>
+                        </span>
                     </li>
                 </ul>
             </div>

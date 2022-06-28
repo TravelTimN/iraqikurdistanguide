@@ -1,25 +1,22 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'destinations' %}">Destinations</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'view_destination' destination.id %}">{{ destination }}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">NEW</li>
+{% endblock %}
+
 {% block content %}
 
 <section class="container my-5">
-    <!-- breadcrumbs -->
-    <div aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'destinations' %}">Destinations</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'view_destination' destination.id %}">{{ destination }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Admin: New Site</li>
-        </ol>
-    </div>
-    <!-- <a href="{{ request.META.HTTP_REFERER }}">Go Back</a> -->
-
     <div class="row">
         <div class="col-12 col-md-6">
-            <form method="POST" action="{% url 'add_site' destination.id %}">
+            <form method="POST" action="{% url 'add_sight' destination.id %}">
                 {% csrf_token %}
-                {{ site_form.as_p }}
+                {{ sight_form.as_p }}
                 <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
                 <button type="submit" class="btn btn-success">Submit</button>
                 <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>

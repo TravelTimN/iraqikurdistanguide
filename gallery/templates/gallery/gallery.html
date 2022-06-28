@@ -1,16 +1,39 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+    {% if request.user.is_superuser %}
+        <li class="breadcrumb-item">
+            <a href="{% url 'add_photo' %}">
+                <i class="fas fa-plus-square" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Photo"></i>
+            </a>
+        </li>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 
 <section class="container my-5">
-    Gallery
-    <br>
-    {% if request.user.is_superuser %}
-        <a href="{% url 'add_image' %}">Add Image</a>
-        <br>
-        <a href="{% url 'update_image' %}">Update Image</a>
-    {% endif %}
+    <div class="row">
+        <div class="col-12 text-center">
+            {% regroup photos by sight.destination as photo_list %}
+            {% for sight, photo_group in photo_list %}
+                <h2>{{ sight }}</h2>
+                <div class="row card-deck d-flex justify-content-center">
+                    {% for photo in photo_group %}
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-2">
+                            <!-- include photo-card partial -->
+                            {% include "gallery/partials/photo_card.html" %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <br><hr><br>
+            {% endfor %}
+        </div>
+    </div>
 </section>
 
 {% endblock %}
