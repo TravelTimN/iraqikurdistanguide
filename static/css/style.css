@@ -110,6 +110,15 @@ header#navbar-header {
     position: sticky;
     top: 0;
     z-index: 999;
+    transition: all 0.2s ease-in-out;
+}
+
+header#navbar-header .bg-dark:hover {
+    background-color: rgba(var(--black), 1) !important;
+}
+
+header#navbar-header .bg-light:hover {
+    background-color: rgba(var(--white), 1) !important;
 }
 
 header#navbar-header .bg-dark {
@@ -538,6 +547,81 @@ nav .nav-item#nav-item-time {
     max-height: inherit;
 }
 
+/* FAQs */
+#header-faq {
+    margin: 0 auto;
+    width: fit-content;
+    padding: 0.25em;
+    border-bottom: 4px solid rgba(var(--kurdish-red), 1);
+}
+
+.faq-container {
+    scroll-margin-top: 3em;
+}
+
+.faq-icon {
+    width: 50px;
+}
+
+.accordion-body table tbody tr td p {
+    margin: 0 1em;
+}
+
+.accordion-body table tbody tr td h3 {
+    margin: 0 1rem;
+}
+
+.accordion-body table tbody tr td {
+    border: 2px solid rgba(var(--black), 1);
+    vertical-align: middle;
+}
+
+.accordion-body table {
+    margin: 1em;
+}
+
+.accordion-body {
+    text-align: center;
+}
+
+.accordion-body *:not(a) {
+    text-align: left;
+}
+
+.accordion-button {
+    transition: all 0.2s ease-in-out;
+}
+
+.accordion-button:hover {
+    background-color: rgba(var(--black), 1) !important;
+}
+
+.accordion-button.collapsed::after,
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-button:focus {
+    border-color: rgba(var(--black), 0);
+    box-shadow: 0 0 0 0.25rem rgba(var(--black), 0);
+}
+
+.accordion-item {
+    border: none;
+}
+
+.accordion-item:not(:last-child) {
+    border-bottom: 1px solid rgba(var(--kurdish-gold), 0.5);
+}
+
+.filter-invert {
+    filter: invert(100%);
+}
+
+.filter-green {
+    filter: invert(50%) sepia(59%) saturate(534%) hue-rotate(84deg) brightness(75%) contrast(90%);
+}
+
 /* REVIEWS */
 .flag-icon {
     border-radius: 1px;
@@ -595,6 +679,11 @@ footer .fas:hover {
 
     .breadcrumb-item {
         padding: 0 2vw;
+    }
+
+    /* faqs */
+    .accordion-button:hover {
+        padding-left: 2em;
     }
 
     /* flip-tile boards */
