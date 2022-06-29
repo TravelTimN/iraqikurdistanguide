@@ -25,9 +25,11 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "allauth",
     "allauth.account",
+    "django_countries",
     "tinymce",
     "accounts",
     "about",
+    "bookings",
     "contact",
     "destinations",
     "faqs",
@@ -117,7 +119,7 @@ ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_VERIFICATION = "none"  # TODO: enable?
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_SESSION_REMEMBER = False
+ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_UNIQUE_EMAIL = True
 # LOGIN_REDIRECT_URL = "/profile/"  # TODO: create admin page?
 LOGIN_REDIRECT_URL = "/"

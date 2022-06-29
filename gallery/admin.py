@@ -4,7 +4,8 @@ from .models import Photo
 
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
-    list_display = ("sight", "destination", "image", "is_visible")
+    readonly_fields = ("image_preview", )
+    list_display = ("sight", "destination", "image_preview", "image", "is_visible")
 
     @admin.display()
     def destination(self, response):

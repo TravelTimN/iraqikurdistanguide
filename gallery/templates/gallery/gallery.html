@@ -1,21 +1,22 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+    {% if request.user.is_superuser %}
+        <li class="breadcrumb-item">
+            <a href="{% url 'add_photo' %}">
+                <i class="fas fa-plus-square" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Photo"></i>
+            </a>
+        </li>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 
 <section class="container my-5">
-    <!-- breadcrumbs -->
-    <div aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Gallery</li>
-            {% if request.user.is_superuser %}
-                <li class="breadcrumb-item"><a href="{% url 'add_photo' %}">Admin: New Photo</a></li>
-            {% endif %}
-        </ol>
-    </div>
-    
-    <br><br>
     <div class="row">
         <div class="col-12 text-center">
             {% regroup photos by sight.destination as photo_list %}
