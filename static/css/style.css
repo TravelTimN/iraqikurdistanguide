@@ -580,14 +580,6 @@ nav .nav-item#nav-item-time {
     margin: 1em;
 }
 
-.accordion-body {
-    text-align: center;
-}
-
-.accordion-body *:not(a) {
-    text-align: left;
-}
-
 .accordion-button {
     transition: all 0.2s ease-in-out;
 }
