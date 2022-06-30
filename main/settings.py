@@ -144,3 +144,9 @@ MEDIA_URL = "/media/"
 
 # Leaflet Maps
 MAP_URL = os.environ.get("MAP_URL")
+
+# TinyMCE WYSIWYG - https://www.tiny.cloud/docs/plugins/opensource
+TINYMCE_DEFAULT_CONFIG = {
+    "plugins": "quickbars lists advlist autolink link preview searchreplace table paste help wordcount",
+    "toolbar": "undo redo | styleselect forecolor backcolor | copy paste | bold italic underline removeformat | numlist bullist | link",
+}
