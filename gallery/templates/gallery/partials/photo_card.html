@@ -1,11 +1,19 @@
 <figure class="card text-white">
-    <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" class="card-img"
+    <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" class="card-img img-fluid"
         onError="this.onerror=null;this.src='{{ MEDIA_URL }}no-image.png';">
     <figcaption class="d-flex flex-column justify-content-center card-img-overlay text-center">
         <h3 class="card-title">{{ photo.sight }}</h3>
-        <p class="card-text">{{ photo.caption }}</p>
+        <p class="card-text">{{ photo.sight.destination }}</p>
+        <!-- lightbox setup -->
+        <a href="{{ photo.image.url }}" class="btn btn-primary" data-toggle="lightbox"
+            data-gallery="lightbox-gallery" data-caption="{{ photo.caption }} ({{ photo.sight.destination }})">
+            Full Size
+            <i class="fas fa-expand fa-fw"></i>
+        </a>
+        <br>
+        <!-- superuser 'Edit' tools -->
         {% if request.user.is_superuser %}
-            <a href="{% url 'update_photo' photo.id %}" class="btn btn-success">Edit <i class="fas fa-edit"></i></a>
+            <a href="{% url 'update_photo' photo.id %}" class="btn btn-success">Edit <i class="fas fa-edit fa-fw"></i></a>
             {% if photo.is_visible != True %}
                 <br><br>
                 <span class="text-danger">
