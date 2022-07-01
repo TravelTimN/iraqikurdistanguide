@@ -22,7 +22,7 @@
 <div class="container-fluid py-5">
     <div class="row">
         <div class="col-12 text-center">
-            <h1 id="header-faq" class="text-dark fw-bold">FAQs</h1>
+            <h1 id="page-header" class="text-dark fw-bold">FAQs</h1>
         </div>
     </div>
     <div class="row mt-4">
@@ -39,7 +39,7 @@
 
 <!-- loop through each FAQ (sorted by category, then ID) -->
 {% for category, faq_group in category_list %}
-    <section id="{{ category|lower|cut:' '|cut:'-'|cut:'&' }}" class="container-fluid faq-container {% cycle 'bg-secondary bg-opacity-25' 'bg-light' %}">
+    <section id="{{ category|lower|cut:' '|cut:'-'|cut:'&' }}" class="container-fluid scroll-margin-top {% cycle 'bg-secondary bg-opacity-25' 'bg-light' %}">
         <div class="row py-5 px-md-5">
             <div class="col-12">
                 <!-- the category header -->

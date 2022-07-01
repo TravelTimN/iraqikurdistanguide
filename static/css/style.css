@@ -322,17 +322,37 @@ nav .nav-item#nav-item-time {
     max-height: 20vw;
 }
 
+/* MODAL */
+.modal {
+    backdrop-filter: blur(3px);
+    background-color: rgba(var(--white), 0.5);
+}
+
+.modal.lightbox .modal-dialog {
+    width: 100vw;
+    /* margin: 0 auto; */
+    margin: 1.7rem auto;
+}
+
 /* CAROUSEL */
 .carousel-control-next,
 .carousel-control-prev {
     opacity: 0.75;
+    height: 100% !important;
     background-color: rgba(var(--white), 0.25);
     transition: all 0.2s ease-in-out;
     width: fit-content;
 }
 
+[id^="#lightboxCarousel-"][id$="-prev"],
+[id^="#lightboxCarousel-"][id$="-next"] {
+    background-color: rgba(var(--black), 1);
+}
+
 .carousel-control-prev i.fas,
-.carousel-control-next i.fas {
+.carousel-control-next i.fas,
+[id^="#lightboxCarousel-"][id$="-prev"] span.carousel-control-prev-icon,
+[id^="#lightboxCarousel-"][id$="-next"] span.carousel-control-next-icon {
     font-size: 3.5em;
     border-radius: 50%;
     background-color: rgba(var(--black), 1);
@@ -379,24 +399,25 @@ nav .nav-item#nav-item-time {
     box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, .175) !important;
 }
 
-/* carousel media-queries - specific ordering */
-@media (max-width: 576px) {
-    .carousel-inner .carousel-item>div {
-        display: none;
-    }
-
-    .carousel-inner .carousel-item>div:first-child {
-        display: block;
-    }
+.carousel-item.active .ratio {
+    background-color: rgba(var(--black), 1) !important;
 }
 
-.carousel-inner .carousel-item.active,
-.carousel-inner .carousel-item-next,
-.carousel-inner .carousel-item-prev {
+.modal.lightbox .carousel-inner {
+    box-shadow: 0 0 2em 1em rgba(var(--black), 0.5);
+}
+
+#toursCarousel .carousel-inner .carousel-item.active,
+#toursCarousel .carousel-inner .carousel-item-next,
+#toursCarousel .carousel-inner .carousel-item-prev {
     display: flex;
 }
 
 @media (min-width: 576px) {
+    .modal.lightbox .modal-dialog {
+        max-width: 80vw;
+    }
+
     .carousel-card {
         width: 90%;
     }
@@ -547,18 +568,24 @@ nav .nav-item#nav-item-time {
     max-height: inherit;
 }
 
-/* FAQs */
-#header-faq {
+p.lightbox-caption {
+    font-size: 100%;
+    color: rgba(var(--white), 1) !important;
+    background-color: rgba(var(--black), 1);
+}
+
+#page-header {
     margin: 0 auto;
     width: fit-content;
     padding: 0.25em;
     border-bottom: 4px solid rgba(var(--kurdish-red), 1);
 }
 
-.faq-container {
+.scroll-margin-top {
     scroll-margin-top: 3em;
 }
 
+/* FAQs */
 .faq-icon {
     width: 50px;
 }
@@ -671,6 +698,11 @@ footer .fas:hover {
 
     .breadcrumb-item {
         padding: 0 2vw;
+    }
+
+    /* gallery */
+    p.lightbox-caption {
+        font-size: 3vw;
     }
 
     /* faqs */
