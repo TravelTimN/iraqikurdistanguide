@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.conf import settings
 from django.contrib import messages
@@ -14,9 +15,25 @@ MAP_URL = settings.MAP_URL
 def destinations(request):
     """ A view to return the destinations page """
     if request.user.groups.filter(name="Site Admin"):
-        destinations = Destination.objects.all()
+        get_destinations = Destination.objects.all()
     else:
-        destinations = Destination.objects.filter(is_visible=True)
+        get_destinations = Destination.objects.filter(is_visible=True)
+    destinations = []
+    for destination in get_destinations:
+        # grab a random (visible) image from each destination, if available
+        imgs = list(Photo.objects.filter(sight__destination=destination, is_visible=True))
+        img = None
+        if len(imgs) > 0:
+            # image found
+            random_img = random.sample(imgs, 1)
+            img = random.sample(imgs, 1)[0]
+        else:
+            # no image found
+            img = None
+        destinations.append({
+            "destination": destination,
+            "img": img,
+        })
     template = "destinations/destinations.html"
     context = {
         "map_url": MAP_URL,
@@ -47,7 +64,7 @@ def add_destination(request):
 def view_destination(request, id):
     """ A view to return the destination-specific page """
     destination = get_object_or_404(Destination, id=id)
-    if request.user.is_superuser:
+    if request.user.groups.filter(name="Site Admin"):
         sights = Sight.objects.filter(destination=destination)
     else:
         sights = Sight.objects.filter(destination=destination, is_visible=True)
@@ -116,7 +133,7 @@ def view_sight(request, d_id, s_id):
     """ A view to return the sight-specific page """
     destination = get_object_or_404(Destination, id=d_id)
     sight = get_object_or_404(Sight, id=s_id)
-    if request.user.is_superuser:
+    if request.user.groups.filter(name="Site Admin"):
         photo_group = Photo.objects.filter(sight=sight)
     else:
         photo_group = Photo.objects.filter(sight=sight, is_visible=True)

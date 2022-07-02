@@ -16,44 +16,69 @@
 {% endblock %}
 
 {% block content %}
+<!-- map -->
+<div id="map-all-destinations" class="shadow"></div>
 
-<section class="container my-5">
-    
-    <br><br>
+<div class="container-fluid py-5">
     <div class="row">
-        <div class="col-12 col-md-6">
-            <div id="map-all-destinations"></div>
-        </div>
-        <div class="col-12 col-md-6">
-            {% regroup destinations by province.get_region_display as destinations_list %}
-            <ul>
-                {% for province, local_destinations in destinations_list %}
-                    <li>
-                        <img src="{% static '' %}img/marker-{{ province|lower }}.png" alt="{{ province }} flag" class="flag-marker">
-                        {{ province }}
-                        <ul>
-                            {% for destination in local_destinations %}
-                                <li>
-                                    <a href="{% url 'view_destination' destination.id %}">
-                                        {{ destination }}
-                                    </a>
-                                    {% if destination.is_visible != True %}
-                                        <i class="fas fa-eye-slash text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Hidden"></i>
-                                    {% endif %}
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                {% endfor %}
-            </ul>
+        <div class="col-12 text-center">
+            <h1 id="page-header" class="text-dark fw-bold">Destinations</h1>
         </div>
     </div>
-</section>
+    <div class="row mt-5">
+        <div class="col-12 text-center fs-4">
+            <i class="fas fa-heart text-kur-red"></i>
+            Add destinations to your Wishlist for easier planning via the
+            <a href="{% url 'contact' %}" class="text-kur-green fw-bold">Contact</a> page!
+        </div>
+    </div>
+</div>
 
+<!-- loop each destination cards -->
+<section class="container mb-5">
+    <div class="row">
+        {% for destination in destinations|dictsort:"destination.name" %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <a href="{% url 'view_destination' destination.destination.id %}">
+                    <div class="card destination-card bg-dark text-light my-3 mx-2 shadow">
+                        <!-- corner ribbon -->
+                        <div class="ribbon">
+                            <span class="{{ destination.destination.province.get_region_display|lower|cut:' '|cut:'-' }}">
+                                {{ destination.destination.province.get_region_display }}
+                            </span>
+                        </div>
+                        <!-- card image -->
+                        <img src="{{ destination.img.image.url }}" alt="{{ destination.img.caption }}"
+                            class="card-img destination-card-img img-fluid opacity-50"
+                            onError="this.onerror=null;this.src='{{ MEDIA_URL }}no-image.png';">
+                        <!-- card overlay -->
+                        <div class="card-img-overlay d-flex align-items-center justify-content-center">
+                            <h5 class="card-title text-center fs-1 text-shadow-thick"
+                                data-bs-toggle="tooltip" data-bs-placement="top" title="view {{ destination.destination }}">
+                                {{ destination.destination }}
+                                {% if destination.destination.is_visible != True %}
+                                    <!-- hidden destination -->
+                                    <br>
+                                    <small>
+                                        <i class="fas fa-eye-slash text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Hidden"></i>
+                                    </small>
+                                {% endif %}
+                            </h5>
+                            <!-- wishlist footer / handled via main script.js -->
+                            <p class="card-text destination-card-text bg-dark w-100" data-destination="{{ destination.destination }}">
+                                <i id="wishlist-icon_{{ destination.destination }}" class="far fa-heart text-kur-red"></i>
+                                <span id="wishlist-text_{{ destination.destination }}">add to</span> wishlist
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</section>
 {% endblock %}
 
 {% block js %}
-
 <script>
     // basic leaflet map of Iraq
     const mapUrl = `{{ map_url }}`;
@@ -61,7 +86,7 @@
         // stops users from loading infinite tiles outside of Iraq
         maxBounds: [[28.5, 38], [38.5, 50]],
         maxBoundsViscosity: 0.5,
-    }).setView([33.25, 44], 7);
+    }).setView([33.25, 44], 5);
     let mapTileLayers = L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
         attribution: "Map data &copy; <a href='https://www.openstreetmap.org/copyright' target='_blank' rel='noopener'>OpenStreetMap</a> contributors, Imagery © <a href='https://www.mapbox.com' target='_blank' rel='noopener'>Mapbox</a>",
         maxZoom: 18,
@@ -87,23 +112,20 @@
     let markerArray = [];
     // loop 'visible' marker destinations and add to map
     {% for destination in destinations %}
-        {% if destination.is_visible %}
-            lat = {{ destination.latitude }};
-            lng = {{ destination.longitude }};
-            {% if destination.province.region == "kur" %}
+        {% if destination.destination.is_visible %}
+            lat = {{ destination.destination.latitude }};
+            lng = {{ destination.destination.longitude }};
+            {% if destination.destination.province.region == "kur" %}
                 region = kurIcon;
             {% else %}
                 region = irqIcon;
             {% endif %}
-            marker = L.marker([lat, lng], {icon: region}).bindPopup(`<a href="{% url 'view_destination' destination.id %}">{{ destination }}</a>`).addTo(map);
+            marker = L.marker([lat, lng], {icon: region}).bindPopup(`<a href="{% url 'view_destination' destination.destination.id %}">{{ destination.destination }}</a>`).addTo(map);
             markerArray.push(marker);
         {% endif %}
     {% endfor %}
 
     // ensure map is zoomed to show only the markers
     let markerGroup = L.featureGroup(markerArray).addTo(map);
-    map.fitBounds(markerGroup.getBounds());
-
 </script>
-
 {% endblock %}
