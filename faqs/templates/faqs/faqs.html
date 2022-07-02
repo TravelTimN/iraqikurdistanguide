@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
+{% load custom_filters %}
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
     <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
     <li class="breadcrumb-item active" aria-current="page">FAQs</li>
-    {% if request.user.is_superuser %}
+    {% if request.user|has_group:"Site Admin" %}
         <li class="breadcrumb-item">
             <a href="{% url 'add_faq' %}">
                 <i class="fas fa-plus-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add FAQ"></i>
@@ -64,7 +65,7 @@
                             <!-- the 'answer' to FAQ -->
                             <div id="collapse{{ faq.id }}" class="accordion-collapse collapse" aria-labelledby="header{{ faq.id }}" data-bs-parent="#accordion{{ forloop.parentloop.counter }}">
                                 <div class="accordion-body">
-                                    {% if request.user.is_superuser and faq.is_visible != True %}
+                                    {% if request.user|has_group:"Site Admin" and faq.is_visible != True %}
                                     <!-- admin-only notice of hidden FAQ -->
                                         <p class="w-100 text-center mx-auto text-danger fw-bold">
                                             FAQ hidden from public view
@@ -73,7 +74,7 @@
                                     <!-- the FAQ in "safe" format -->
                                     {{ faq.answer|safe }}
                                     <!-- admin-only edit button -->
-                                    {% if request.user.is_superuser %}
+                                    {% if request.user|has_group:"Site Admin" %}
                                         <hr>
                                         <p class="w-100 text-center my-0 mx-auto">
                                             <a href="{% url 'update_faq' faq.id %}" class="btn btn-success">Edit <i class="fas fa-edit"></i></a>

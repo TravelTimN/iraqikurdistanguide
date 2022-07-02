@@ -7,7 +7,7 @@ from main.decorators import validate_user
 
 def faqs(request):
     """ A view to return the FAQs page """
-    if request.user.is_superuser:
+    if request.user.groups.filter(name="Site Admin"):
         faqs = FAQ.objects.all().order_by("category")
     else:
         faqs = FAQ.objects.filter(is_visible=True).order_by("category")

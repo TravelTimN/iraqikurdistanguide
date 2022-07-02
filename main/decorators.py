@@ -8,7 +8,7 @@ def validate_user(redirect_url="home", redirect_kwargs={}):
     def decorator(view_function):
         @wraps(view_function)
         def wrapped_view(request, *args, **kwargs):
-            authorized = request.user.is_superuser
+            authorized = request.user.groups.filter(name="Site Admin")
 
             if not authorized and redirect_url:
                 messages.error(request, "Access denied. Invalid permissions.")
