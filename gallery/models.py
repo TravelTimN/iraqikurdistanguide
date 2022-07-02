@@ -6,6 +6,9 @@ from django.conf import settings
 from PIL import Image, ImageOps
 import destinations.models
 
+REPLACEMENT_FILE = True
+LOCATION_CHANGED = False
+
 
 def upload_to(instance, filename):
     """
@@ -46,6 +49,14 @@ class Photo(models.Model):
     def __str__(self):
         return self.sight.name
 
+    def replace_file(self, boolean):
+        global REPLACEMENT_FILE
+        REPLACEMENT_FILE = boolean
+
+    def change_location(self, boolean):
+        global LOCATION_CHANGED
+        LOCATION_CHANGED = boolean
+
     def save(self, *args, **kwargs):
         """
         - installed 'django-cleanup' to auto-remove old image.
@@ -53,7 +64,7 @@ class Photo(models.Model):
         - above does not apply to .gif files.
         """
         super(Photo, self).save(*args, **kwargs)
-        if self.image:
+        if REPLACEMENT_FILE or LOCATION_CHANGED:
             img = Image.open(self.image)
             # continue if image format is not .gif
             if img.format.lower() != "gif":
