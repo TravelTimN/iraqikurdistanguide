@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.conf import settings
 from django.contrib import messages
@@ -14,9 +15,25 @@ MAP_URL = settings.MAP_URL
 def destinations(request):
     """ A view to return the destinations page """
     if request.user.is_superuser:
-        destinations = Destination.objects.all()
+        get_destinations = Destination.objects.all()
     else:
-        destinations = Destination.objects.filter(is_visible=True)
+        get_destinations = Destination.objects.filter(is_visible=True)
+    destinations = []
+    for destination in get_destinations:
+        # grab a random (visible) image from each destination, if available
+        imgs = list(Photo.objects.filter(sight__destination=destination, is_visible=True))
+        img = None
+        if len(imgs) > 0:
+            # image found
+            random_img = random.sample(imgs, 1)
+            img = random.sample(imgs, 1)[0]
+        else:
+            # no image found
+            img = None
+        destinations.append({
+            "destination": destination,
+            "img": img,
+        })
     template = "destinations/destinations.html"
     context = {
         "map_url": MAP_URL,
