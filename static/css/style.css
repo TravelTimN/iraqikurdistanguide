@@ -34,7 +34,9 @@ body {
 }
 
 a, a:hover {
+    transition: all 0.2s ease-in-out;
     text-decoration: none;
+    color: inherit;
 }
 
 #img-admin {
@@ -54,6 +56,27 @@ a, a:hover {
 .bg-kur-red {background-color: rgba(var(--kurdish-red), 1);}
 .bg-kur-gold {background-color: rgba(var(--kurdish-gold), 1);}
 .bg-kur-green {background-color: rgba(var(--kurdish-green), 1);}
+
+
+.text-shadow-thick {
+    text-shadow:
+        0 1px rgba(var(--black), 1),
+        -1px 0 rgba(var(--black), 1),
+        -1px 2px rgba(var(--black), 0.7),
+        -2px 1px rgba(var(--black), 0.7),
+        -2px 3px rgba(var(--black), 0.6),
+        -3px 2px rgba(var(--black), 0.6),
+        -3px 4px rgba(var(--black), 0.5),
+        -4px 3px rgba(var(--black), 0.5),
+        -4px 5px rgba(var(--black), 0.4),
+        -5px 4px rgba(var(--black), 0.4),
+        -5px 6px rgba(var(--black), 0.3),
+        -6px 5px rgba(var(--black), 0.3),
+        -6px 7px rgba(var(--black), 0.2),
+        -7px 6px rgba(var(--black), 0.2),
+        -7px 8px rgba(var(--black), 0.1),
+        -8px 7px rgba(var(--black), 0.1);
+}
 
 /* OVERLAY */
 aside#overlay {
@@ -162,7 +185,7 @@ nav .nav-item#nav-item-time {
 .dropdown-item.active,
 .dropdown-item:active {
     background-color: rgba(var(--black), 1);    
-    background: linear-gradient(48deg, #e54725 50%, #ff3186);
+    background: linear-gradient(48deg, rgba(var(--kurdish-green), 1) 50%, rgba(var(--kurdish-green), 0.5));
 }
 
 .navbar-light .navbar-toggler {
@@ -485,11 +508,145 @@ nav .nav-item#nav-item-time {
     transform: translateX(0);
 }
 
+/* DESTINATIONS */
+.destination-card {
+    position: relative;
+    height: 250px;
+    justify-content: center;
+    background: linear-gradient(rgba(var(--black), 0.5), rgba(var(--black), 0.25));
+    transition: all 0.2s ease-in-out;
+}
+
+.destination-card:hover {
+    transform: scale(1.025);
+    background: none;
+    background: linear-gradient(rgba(var(--white), 0.5), rgba(var(--white), 0.25));
+    box-shadow: 0 0.5rem 1rem rgba(var(--black), 0.75) !important;
+}
+
+.destination-card-img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.destination-card-text {
+    padding: 1em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease-in-out;
+}
+
+.destination-card:hover .destination-card-text {
+    opacity: 1;
+    visibility: visible;
+}
+
+.destination-card-text:hover {
+    background-color: rgba(var(--black), 1) !important;
+}
+
+/* RIBBONS */
+.ribbon {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    z-index: 1;
+    overflow: hidden;
+    width: 93px;
+    height: 93px;
+    text-align: right;
+}
+
+.ribbon span {
+    font-size: 0.75em;
+    color: rgba(var(--black), 1);
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    line-height: 32px;
+    transform: rotate(45deg);
+    width: 125px;
+    display: block;
+    box-shadow: 0 3px 10px -5px rgba(var(--black), 1);
+    position: absolute;
+    top: 17px;
+    right: -29px;
+}
+
+.ribbon span::before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 100%;
+    z-index: -1;
+}
+
+.ribbon span::after {
+    content: "";
+    position: absolute;
+    right: 0%;
+    top: 100%;
+    z-index: -1;
+}
+
+/* kurdistan ribbons */
+.ribbon span.kurdistan {
+    background: rgba(var(--kurdish-green), 1);
+    background:
+        linear-gradient(rgba(var(--kurdish-red),1), rgba(var(--kurdish-red),1)),
+        linear-gradient(rgba(var(--white),1), rgba(var(--white),1)),
+        linear-gradient(rgba(var(--kurdish-green),1), rgba(var(--kurdish-green),1));
+    background-size: 100% 33%, 100% 66%, 100%;
+    background-repeat: no-repeat;
+}
+
+.ribbon span.kurdistan::before {
+    border-left: 3px solid rgba(var(--kurdish-green), 1);
+    border-right: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-top: 3px solid rgba(var(--kurdish-green), 1);
+}
+
+.ribbon span.kurdistan::after {
+    border-right: 3px solid rgba(var(--kurdish-green), 1);
+    border-left: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-top: 3px solid rgba(var(--kurdish-green), 1);
+}
+
+/* iraq ribbons */
+.ribbon span.iraq {
+    background: rgba(var(--black), 1);
+    background:
+        linear-gradient(rgba(var(--kurdish-red),1), rgba(var(--kurdish-red),1)),
+        linear-gradient(rgba(var(--white),1), rgba(var(--white),1)),
+        linear-gradient(rgba(var(--black),1), rgba(var(--black),1));
+    background-size: 100% 33%, 100% 66%, 100%;
+    background-repeat: no-repeat;
+}
+
+.ribbon span.iraq::before {
+    border-left: 3px solid rgba(var(--black), 1);
+    border-right: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-top: 3px solid rgba(var(--black), 1);
+}
+
+.ribbon span.iraq::after {
+    border-right: 3px solid rgba(var(--black), 1);
+    border-left: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-top: 3px solid rgba(var(--black), 1);
+}
 
 /* MAPS */
 #map-all-destinations,
 #map-single-destination {
-    height: 50vh;
+    height: 25vh;
 }
 
 .flag-marker {
@@ -500,20 +657,45 @@ nav .nav-item#nav-item-time {
     z-index: 401;
 }
 
+/* leaflet popup styles */
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    border: 1px solid rgba(var(--black), 1);
+    background-color: rgba(var(--black), 0.95);
+}
+
+.leaflet-popup-content-wrapper a {
+    font-size: 150%;
+    font-weight: bold;
+    color: rgba(var(--white), 1);
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+    color: rgba(var(--white), 1);
+    font-size: 2em;
+    text-shadow: 2px 2px 2px rgba(var(--black), 1);
+    transition: all 0.2s ease-in-out;
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover {
+    color: rgba(var(--kurdish-red), 1);
+    text-shadow: none;
+}
+
 /* GALLERY */
-.card-img-overlay {
+figcaption.card-img-overlay {
     transform: translateY(100%);
     transition: transform 0.18s ease-in;
     background-color: rgba(var(--black), 1);
 }
 
-.card-img-overlay .card-text {
+figcaption.card-img-overlay .card-text {
     opacity: 0;
     transform: translateY(-6em);
     transition: opacity 0.05s ease-in, transform 0.25s ease-in;
 }
 
-.card-img-overlay .btn {
+figcaption.card-img-overlay .btn {
     opacity: 0;
     transform: translateY(2em);
 }
@@ -537,7 +719,7 @@ nav .nav-item#nav-item-time {
     transform: scale(1.25);
 }
 
-.card-deck .card:hover .card-img-overlay {
+.card-deck .card:hover figcaption.card-img-overlay {
     transform: translateY(0);
     transition: transform .25s ease-out;
     background-color: rgba(var(--black), 0.75);
@@ -740,6 +922,12 @@ footer .fas:hover {
 
     .breadcrumb-item {
         padding: 0 1.5vw;
+    }
+
+    /* maps */
+    #map-all-destinations,
+    #map-single-destination {
+        height: 40vh;
     }
 
     /* flip-tile boards */
