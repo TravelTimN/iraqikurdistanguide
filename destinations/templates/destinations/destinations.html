@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
+{% load custom_filters %}
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
     <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
     <li class="breadcrumb-item active" aria-current="page">Destinations</li>
-    {% if request.user.is_superuser %}
+    {% if request.user|has_group:"Site Admin" %}
         <li class="breadcrumb-item">
             <a href="{% url 'add_destination' %}">
                 <i class="fas fa-plus-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Destination"></i>

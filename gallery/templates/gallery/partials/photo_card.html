@@ -1,3 +1,5 @@
+{% load custom_filters %}
+
 <figure class="card text-white">
     <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" class="card-img img-fluid"
         onError="this.onerror=null;this.src='{{ MEDIA_URL }}no-image.png';">
@@ -12,7 +14,7 @@
         </a>
         <br>
         <!-- superuser 'Edit' tools -->
-        {% if request.user.is_superuser %}
+        {% if request.user|has_group:"Site Admin" %}
             <a href="{% url 'update_photo' photo.id %}" class="btn btn-success">Edit <i class="fas fa-edit fa-fw"></i></a>
             {% if photo.is_visible != True %}
                 <br><br>
