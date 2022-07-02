@@ -41,9 +41,17 @@ def add_photo(request):
 def update_photo(request, id):
     """ A view to update a single photo """
     photo = get_object_or_404(Photo, id=id)
-    photo_form = PhotoForm(request.POST or None, request.FILES or None, instance=photo)
+    photo_form = PhotoForm(instance=photo)
+    original_sight = photo_form["sight"].value()
     if request.method == "POST":
+        photo_form = PhotoForm(request.POST, request.FILES, instance=photo)
         if photo_form.is_valid():
+            photo.replace_file(
+                True if "image" in request.FILES else False
+            )
+            photo.change_location(
+                True if request.POST["sight"] != str(original_sight) else False
+            )
             next = request.POST.get("next", "/")
             photo_form.save()
             messages.success(request, "Photo Updated!")
