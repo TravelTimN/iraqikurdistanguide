@@ -13,7 +13,7 @@ MAP_URL = settings.MAP_URL
 
 def destinations(request):
     """ A view to return the destinations page """
-    if request.user.is_superuser:
+    if request.user.groups.filter(name="Site Admin"):
         destinations = Destination.objects.all()
     else:
         destinations = Destination.objects.filter(is_visible=True)
