@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_filters %}
 
 <header id="navbar-header" class="bg-dark bg-opacity-50">
     <!-- nav -->
@@ -31,9 +32,12 @@
                             <li><a class="dropdown-item" href="{% url 'contact' %}">Contact</a></li>
                             {% if request.user.is_authenticated %}
                                 <!-- user is logged-in -->
+                                {% if request.user|has_group:"Site Admin" %}
+                                    <!-- user is a Site Admin -->
+                                    <li><a class="dropdown-item" href="{% url 'bookings' %}">Bookings</a></li>
+                                {% endif %}
                                 {% if request.user.is_superuser %}
                                     <!-- user is superuser -->
-                                    <li><a class="dropdown-item" href="{% url 'bookings' %}">Bookings</a></li>
                                     <li><a class="dropdown-item" href="{% url 'admin:index' %}" target="_blank" rel="noopener">Django Admin</a></li>
                                 {% endif %}
                                 <li><hr class="dropdown-divider"></li>

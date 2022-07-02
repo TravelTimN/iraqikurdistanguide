@@ -9,7 +9,7 @@ from main.decorators import validate_user
 
 def reviews(request):
     """ A view to return the reviews page """
-    if request.user.is_superuser:
+    if request.user.groups.filter(name="Site Admin"):
         reviews = Review.objects.all().order_by("source", "-date", "-rating")
     else:
         reviews = Review.objects.filter(is_visible=True).order_by("source", "-date", "-rating")

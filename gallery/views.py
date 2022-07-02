@@ -8,7 +8,7 @@ from main.decorators import validate_user
 
 def gallery(request):
     """ A view to return the gallery page """
-    if request.user.is_superuser:
+    if request.user.groups.filter(name="Site Admin"):
         photos = Photo.objects.all().order_by("sight__destination")
     else:
         photos = Photo.objects.filter(is_visible=True).order_by("sight__destination")

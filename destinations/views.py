@@ -14,7 +14,7 @@ MAP_URL = settings.MAP_URL
 
 def destinations(request):
     """ A view to return the destinations page """
-    if request.user.is_superuser:
+    if request.user.groups.filter(name="Site Admin"):
         get_destinations = Destination.objects.all()
     else:
         get_destinations = Destination.objects.filter(is_visible=True)
@@ -64,7 +64,7 @@ def add_destination(request):
 def view_destination(request, id):
     """ A view to return the destination-specific page """
     destination = get_object_or_404(Destination, id=id)
-    if request.user.is_superuser:
+    if request.user.groups.filter(name="Site Admin"):
         sights = Sight.objects.filter(destination=destination)
     else:
         sights = Sight.objects.filter(destination=destination, is_visible=True)
@@ -133,7 +133,7 @@ def view_sight(request, d_id, s_id):
     """ A view to return the sight-specific page """
     destination = get_object_or_404(Destination, id=d_id)
     sight = get_object_or_404(Sight, id=s_id)
-    if request.user.is_superuser:
+    if request.user.groups.filter(name="Site Admin"):
         photo_group = Photo.objects.filter(sight=sight)
     else:
         photo_group = Photo.objects.filter(sight=sight, is_visible=True)
