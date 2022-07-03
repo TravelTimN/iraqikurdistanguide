@@ -123,8 +123,8 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_UNIQUE_EMAIL = True
 # LOGIN_REDIRECT_URL = "/profile/"  # TODO: create admin page?
 LOGIN_REDIRECT_URL = "/"
-LOGIN_URL = "/auth/login/"
-ACCOUNT_LOGOUT_REDIRECT_URL = "/auth/login/"
+LOGIN_URL = f"/{os.environ.get('AUTH_URL')}/login"
+ACCOUNT_LOGOUT_REDIRECT_URL = f"/{os.environ.get('AUTH_URL')}/login"
 ACCOUNT_LOGOUT_ON_GET = True  # avoid allauth signout confirmation page
 
 
