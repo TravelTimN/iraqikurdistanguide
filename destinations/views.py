@@ -65,9 +65,25 @@ def view_destination(request, id):
     """ A view to return the destination-specific page """
     destination = get_object_or_404(Destination, id=id)
     if request.user.groups.filter(name="Site Admin"):
-        sights = Sight.objects.filter(destination=destination)
+        get_sights = Sight.objects.filter(destination=destination)
     else:
-        sights = Sight.objects.filter(destination=destination, is_visible=True)
+        get_sights = Sight.objects.filter(destination=destination, is_visible=True)
+    sights = []
+    for sight in get_sights:
+        # grab a random (visible) image from each sight, if available
+        imgs = list(Photo.objects.filter(sight=sight, is_visible=True))
+        img = None
+        if len(imgs) > 0:
+            # image found
+            random_img = random.sample(imgs, 1)
+            img = random.sample(imgs, 1)[0]
+        else:
+            # no image found
+            img = None
+        sights.append({
+            "sight": sight,
+            "img": img,
+        })
     template = "destinations/view_destination.html"
     context = {
         "map_url": MAP_URL,
@@ -125,24 +141,6 @@ def add_sight(request, id):
         "map_url": MAP_URL,
         "destination": destination,
         "sight_form": sight_form,
-    }
-    return render(request, template, context)
-
-
-def view_sight(request, d_id, s_id):
-    """ A view to return the sight-specific page """
-    destination = get_object_or_404(Destination, id=d_id)
-    sight = get_object_or_404(Sight, id=s_id)
-    if request.user.groups.filter(name="Site Admin"):
-        photo_group = Photo.objects.filter(sight=sight)
-    else:
-        photo_group = Photo.objects.filter(sight=sight, is_visible=True)
-    template = "destinations/view_sight.html"
-    context = {
-        "map_url": MAP_URL,
-        "destination": destination,
-        "sight": sight,
-        "photo_group": photo_group,
     }
     return render(request, template, context)
 
