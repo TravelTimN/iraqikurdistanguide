@@ -22,102 +22,203 @@
 {% endblock %}
 
 {% block content %}
-
-<section class="container my-5">
+<section class="container-fluid">
     <div class="row">
-        <div class="col-12 col-md-6">
+        <!-- map -->
+        <div class="col-12 col-md-7 m-0 p-0 sticky-map">
             <div id="map-single-destination"></div>
         </div>
-        <div class="col-12 col-md-6">
-            {% regroup sights|dictsort:"category" by category as sights_list %}
-            <ul>
-                {% for category, local_sights in sights_list %}
-                    <li>
-                        {{ category|title }}
-                        <ul>
-                            {% for sight in local_sights %}
-                                <li>
-                                    <a href="{% url 'view_sight' destination.id sight.id %}">
-                                        {{ sight }}
-                                    </a>
-                                    {% if sight.is_visible != True %}
-                                        <i class="fas fa-eye-slash text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Hidden"></i>
-                                    {% endif %}
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                {% endfor %}
-            </ul>
+        <!-- destination sights (list) -->
+        <div class="col-12 col-md-5 m-0 p-0" id="destination-sight-list">
+            <div class="container-fluid">
+                <div class="row py-5">
+                    <div class="col-12 text-center">
+                        <h1 id="page-header" class="text-dark fw-bold">{{ destination }}</h1>
+                    </div>
+                </div>
+            </div>
+            <!-- loop through all sights -->
+            {% for sight in sights %}
+                <div class="card sight-card border-0 {% cycle 'bg-dark text-white' 'bg-light text-dark' %}" id="sight-container-{{ forloop.counter }}">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">
+                            <!-- sight name -->
+                            {{ sight.sight }}
+                        </h5>
+
+                        <!-- category -->
+                        <span class="badge rounded-pill bg-warning text-dark my-2">
+                            {{ sight.sight.get_category_display }}
+                            {% if sight.sight.get_category_display == "Accommodation" %}<i class="fas fa-bed"></i>
+                            {% elif sight.sight.get_category_display == "Airport" %}<i class="fas fa-plane"></i>
+                            {% elif sight.sight.get_category_display == "Archaeology" %}<i class="fas fa-search"></i>
+                            {% elif sight.sight.get_category_display == "Historic" %}<i class="fas fa-archway"></i>
+                            {% elif sight.sight.get_category_display == "Memorial" %}<i class="fas fa-monument"></i>
+                            {% elif sight.sight.get_category_display == "Museum" %}<i class="fas fa-landmark"></i>
+                            {% elif sight.sight.get_category_display == "Nature" %}<i class="fas fa-tree"></i>
+                            {% elif sight.sight.get_category_display == "Recreation" %}<i class="fas fa-hiking"></i>
+                            {% elif sight.sight.get_category_display == "Religious" %}<i class="fas fa-place-of-worship"></i>
+                            {% elif sight.sight.get_category_display == "Restaurant" %}<i class="fas fa-utensils"></i>
+                            {% elif sight.sight.get_category_display == "Shopping" %}<i class="fas fa-tags"></i>
+                            {% elif sight.sight.get_category_display == "Tea Shop" %}<i class="fas fa-mug-hot"></i>
+                            {% else %}<i class="fas fa-route"></i>
+                            {% endif %}
+                        </span>
+
+                        <!-- is visible? -->
+                        {% if sight.sight.is_visible != True %}
+                            <i class="fas fa-eye-slash text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Hidden"></i>
+                        {% endif %}
+
+                        <!-- description -->
+                        <p class="card-text">{{ sight.sight.description }}</p>
+                        {% if request.user|has_group:"Site Admin" %}
+                            <p class="card-text">
+                                <a href="{% url 'update_sight' destination.id sight.sight.id %}" class="btn btn-success">
+                                    Edit
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </p>
+                        {% endif %}
+                    </div>
+
+                    <!-- image (if available) -->
+                    <img src="{{ sight.img.image.url }}" alt="{{ sight.img.caption }}"
+                        class="card-img card-img-bottom img-fluid sight-card-img"
+                        onError="this.onerror=null;this.src='{{ MEDIA_URL }}no-image.png';">
+                </div>
+            {% endfor %}
         </div>
     </div>
 </section>
-
 {% endblock %}
 
 {% block js %}
-
 <script>
-    // basic leaflet map of Iraq
-    const mapUrl = `{{ map_url }}`;
-    let map = L.map("map-single-destination", {
-        // stops users from loading infinite tiles outside of Iraq
-        maxBounds: [[28.5, 38], [38.5, 50]],
-        maxBoundsViscosity: 0.5,
-    }).setView([`{{ destination.latitude }}`, `{{ destination.longitude }}`], 11);
-    let mapTileLayers = L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
-        attribution: "Map data &copy; <a href='https://www.openstreetmap.org/copyright' target='_blank' rel='noopener'>OpenStreetMap</a> contributors, Imagery © <a href='https://www.mapbox.com' target='_blank' rel='noopener'>Mapbox</a>",
-        maxZoom: 18,
-        minZoom: 5,
-        id: "mapbox/streets-v11",
-        tileSize: 512,
-        zoomOffset: -1,
-        accessToken: mapUrl
-    }).addTo(map);
+    $(document).ready(function() {
+        // basic leaflet map of Iraq
+        const mapUrl = `{{ map_url }}`;
+        let map = L.map("map-single-destination", {
+            // stops users from loading infinite tiles outside of Iraq
+            maxBounds: [[28.5, 38], [38.5, 50]],
+            maxBoundsViscosity: 0.5,
+        }).setView([`{{ destination.latitude }}`, `{{ destination.longitude }}`], 11);
+        let mapTileLayers = L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
+            attribution: "Map data &copy; <a href='https://www.openstreetmap.org/copyright' target='_blank' rel='noopener'>OpenStreetMap</a> contributors, Imagery © <a href='https://www.mapbox.com' target='_blank' rel='noopener'>Mapbox</a>",
+            maxZoom: 18,
+            minZoom: 5,
+            id: "mapbox/streets-v11",
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: mapUrl
+        }).addTo(map);
 
-    // adding custom marker
-    let customIcon = L.Icon.extend({
-        options: {
-            iconSize: [25, 35],
-            iconAnchor: [12.5, 35],
-        }
-    });
-    // extend from base icon for 'kur' and 'irq' icons
-    let kurIcon = new customIcon({iconUrl: `{% static 'img/marker-kurdistan.png' %}`});
-    let irqIcon = new customIcon({iconUrl: `{% static 'img/marker-iraq.png' %}`});
+        // adding custom marker
+        let customIcon = L.Icon.extend({
+            options: {
+                iconSize: [25, 35],
+                iconAnchor: [12.5, 35],
+            }
+        });
 
-    let lat, lng, marker;
-    let markerArray = [];
-    // display destination on map
-    lat = {{ destination.latitude }};
-    lng = {{ destination.longitude }};
-    {% if destination.province.region == "kur" %}
-        region = kurIcon;
-    {% else %}
-        region = irqIcon;
-    {% endif %}
-    marker = L.marker([lat, lng]).bindPopup(`{{ destination }}`).addTo(map);
-    markerArray.push(marker);
-    
-    // loop 'visible' marker sights and add to map
-    {% for sight in sights %}
-        {% if sight.is_visible and sight.primary_attraction %}
-            lat = {{ sight.latitude }};
-            lng = {{ sight.longitude }};
-            {% if sight.destination.province.region == "kur" %}
-                region = kurIcon;
-            {% else %}
-                region = irqIcon;
-            {% endif %}
-            marker = L.marker([lat, lng], {icon: region}).bindPopup(`<a href="{% url 'view_sight' destination.id sight.id %}">{{ sight }}</a>`).addTo(map);
+        let lat, lng, marker;
+        let markerArray = [];
+        // display destination on map
+        lat = {{ destination.latitude }};
+        lng = {{ destination.longitude }};
+        marker = L.marker([lat, lng]).bindPopup(`{{ destination }}`).addTo(map);
+        markerArray.push(marker);
+        
+        // loop 'visible' marker sights and add to map
+        {% for sight in sights %}
+            lat = {{ sight.sight.latitude }};
+            lng = {{ sight.sight.longitude }};
+
+            // marker category
+            var markerCategory = L.ExtraMarkers.icon({
+                {% if sight.sight.get_category_display == "Accommodation" %}
+                    prefix: "fas", icon: "fa-bed", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
+                {% elif sight.sight.get_category_display == "Airport" %}
+                    prefix: "fas", icon: "fa-plane", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
+                {% elif sight.sight.get_category_display == "Archaeology" %}
+                    prefix: "fas", icon: "fa-search", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
+                {% elif sight.sight.get_category_display == "Historic" %}
+                    prefix: "fas", icon: "fa-archway", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
+                {% elif sight.sight.get_category_display == "Memorial" %}
+                    prefix: "fas", icon: "fa-monument", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
+                {% elif sight.sight.get_category_display == "Museum" %}
+                    prefix: "fas", icon: "fa-landmark", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
+                {% elif sight.sight.get_category_display == "Nature" %}
+                    prefix: "fas", icon: "fa-tree", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
+                {% elif sight.sight.get_category_display == "Recreation" %}
+                    prefix: "fas", icon: "fa-hiking", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
+                {% elif sight.sight.get_category_display == "Religious" %}
+                    prefix: "fas", icon: "fa-place-of-worship", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
+                {% elif sight.sight.get_category_display == "Restaurant" %}
+                    prefix: "fas", icon: "fa-utensils", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
+                {% elif sight.sight.get_category_display == "Shopping" %}
+                    prefix: "fas", icon: "fa-tags", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
+                {% elif sight.sight.get_category_display == "Tea Shop" %}
+                    prefix: "fas", icon: "fa-mug-hot", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
+                {% else %}
+                    prefix: "fas", icon: "fa-route", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
+                {% endif %}
+            });
+
+            marker = L.marker([lat, lng], {icon: markerCategory}).bindPopup(`{{ sight.sight }}`).addTo(map);
             markerArray.push(marker);
-        {% endif %}
-    {% endfor %}
 
-    // ensure map is zoomed to show only the markers
-    let markerGroup = L.featureGroup(markerArray).addTo(map);
-    map.fitBounds(markerGroup.getBounds().pad(0.5));
+            // get each sight's "top" and "bottom" px distance from top of window -- must use 'var'
+            var sightContainer = $(`#sight-container-{{ forloop.counter }}`);
+            var sightTop = Math.round($(sightContainer).offset().top) - ($(window).height() / 2);
+            var sightBottom = sightTop + $(sightContainer).outerHeight(true);
 
+            // set each data-attribute -- cannot use .data("foobar")
+            $(sightContainer).attr("data-top", sightTop);
+            $(sightContainer).attr("data-bottom", sightBottom);
+            $(sightContainer).attr("data-lat", lat);
+            $(sightContainer).attr("data-lng", lng);
+
+            var getSightTop, getSightBottom, getSightLat, getSightLng;
+
+            // on scroll, check distance from top
+            $(document).scroll(function() {
+                let distanceFromTop = Math.round($(this).scrollTop());
+                // must re-define top/bottom/lat/lng and retrieve data-values
+                getSightTop = $("#sight-container-{{ forloop.counter }}").attr("data-top");
+                getSightBottom = $("#sight-container-{{ forloop.counter }}").attr("data-bottom");
+                getSightLat = $("#sight-container-{{ forloop.counter }}").attr("data-lat");
+                getSightLng = $("#sight-container-{{ forloop.counter }}").attr("data-lng");
+
+                if (distanceFromTop >= getSightTop && distanceFromTop < getSightBottom) {
+                    $(`[id^="sight-container-"]`).removeClass("map-in-focus").addClass("map-out-focus");
+                    $("#sight-container-{{ forloop.counter }}").removeClass("map-out-focus").addClass("map-in-focus");
+                    // fly to sight, fully zoomed-in
+                    map.flyTo([getSightLat, getSightLng], 18);
+                }
+
+                // reset map back to fitBounds if scrolled to top of page
+                if (distanceFromTop == 0) {
+                    map.flyToBounds(markerGroup.getBounds().pad(0.25), {duration: 1});
+                }
+            });
+
+            // clicking a marker scrolls to that sight's container
+            $(marker).on("click", function() {
+                // use the marker's lat/lng to find appropriate container
+                let markerLat = this._latlng.lat;
+                let markerLng = this._latlng.lng;
+                let findSight = $(`[id^="sight-container-"][data-lat="${markerLat}"][data-lng="${markerLng}"]`).attr("data-top");
+                // scroll to the sight container
+                $(window).scrollTop(findSight);
+            });
+
+        {% endfor %}
+
+        // ensure map is zoomed to show only the markers
+        let markerGroup = L.featureGroup(markerArray).addTo(map);
+        map.fitBounds(markerGroup.getBounds().pad(0.5));
+    });
 </script>
 
 {% endblock %}
