@@ -1,26 +1,49 @@
 {% extends "base.html" %}
 {% load static %}
+{% load custom_filters %}
+
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+    {% if request.user|has_group:"Site Admin" %}
+        <li class="breadcrumb-item">
+            <a href="{% url 'add_photo' %}">
+                <i class="fas fa-plus-square" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Photo"></i>
+            </a>
+        </li>
+    {% endif %}
+{% endblock %}
 
 {% block content %}
 
-<section class="container my-5">
-    <!-- breadcrumbs -->
-    <div aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Gallery</li>
-            {% if request.user.is_superuser %}
-                <li class="breadcrumb-item"><a href="{% url 'add_photo' %}">Admin: New Photo</a></li>
-            {% endif %}
-        </ol>
-    </div>
-    
-    <br><br>
+<!-- regroup gallery by destination -->
+{% regroup photos by sight.destination as photo_list %}
+
+<div class="container-fluid py-5">
     <div class="row">
         <div class="col-12 text-center">
-            {% regroup photos by sight.destination as photo_list %}
+            <h1 id="page-header" class="text-dark fw-bold">Gallery</h1>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <!-- generate badges for each destination for easy-scrolling -->
             {% for sight, photo_group in photo_list %}
-                <h2>{{ sight }}</h2>
+                <a href="#{{ sight|lower|cut:' '|cut:'-'|cut:'&' }}">
+                    <span class="badge bg-success fs-6 my-1">{{ sight }}</span>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- loop through each photo (sorted by sight/destination) -->
+{% for sight, photo_group in photo_list %}
+    <section id="{{ sight|lower|cut:' '|cut:'-'|cut:'&' }}" class="container scroll-margin-top">
+        <div class="row py-5 px-md-5">
+            <div class="col-12">
+                <h2 class="text-center fw-bold text-dark">{{ sight }}</h2>
                 <div class="row card-deck d-flex justify-content-center">
                     {% for photo in photo_group %}
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-2">
@@ -29,10 +52,10 @@
                         </div>
                     {% endfor %}
                 </div>
-                <br><hr><br>
-            {% endfor %}
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+    <hr class="w-50 mx-auto">
+{% endfor %}
 
 {% endblock %}

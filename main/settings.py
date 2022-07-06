@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "tinymce",
     "accounts",
     "about",
+    "bookings",
     "contact",
     "destinations",
     "faqs",
@@ -118,12 +119,12 @@ ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_VERIFICATION = "none"  # TODO: enable?
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_SESSION_REMEMBER = False
+ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_UNIQUE_EMAIL = True
 # LOGIN_REDIRECT_URL = "/profile/"  # TODO: create admin page?
 LOGIN_REDIRECT_URL = "/"
-LOGIN_URL = "/auth/login/"
-ACCOUNT_LOGOUT_REDIRECT_URL = "/auth/login/"
+LOGIN_URL = f"/{os.environ.get('AUTH_URL')}/login"
+ACCOUNT_LOGOUT_REDIRECT_URL = f"/{os.environ.get('AUTH_URL')}/login"
 ACCOUNT_LOGOUT_ON_GET = True  # avoid allauth signout confirmation page
 
 
@@ -143,3 +144,9 @@ MEDIA_URL = "/media/"
 
 # Leaflet Maps
 MAP_URL = os.environ.get("MAP_URL")
+
+# TinyMCE WYSIWYG - https://www.tiny.cloud/docs/plugins/opensource
+TINYMCE_DEFAULT_CONFIG = {
+    "plugins": "quickbars lists advlist autolink link preview searchreplace table paste help wordcount",
+    "toolbar": "undo redo | styleselect forecolor backcolor | copy paste | bold italic underline removeformat | numlist bullist | link",
+}

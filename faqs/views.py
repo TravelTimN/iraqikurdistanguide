@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import FAQ
 from .forms import FAQForm
+from main.decorators import validate_user
 
 
 def faqs(request):
     """ A view to return the FAQs page """
-    if request.user.is_superuser:
+    if request.user.groups.filter(name="Site Admin"):
         faqs = FAQ.objects.all().order_by("category")
     else:
         faqs = FAQ.objects.filter(is_visible=True).order_by("category")
@@ -18,13 +18,9 @@ def faqs(request):
     return render(request, template, context)
 
 
-@login_required
+@validate_user()
 def add_faq(request):
     """ A view to add a new FAQ """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to FAQs
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("faqs"))
     faq_form = FAQForm(request.POST or None)
     if request.method == "POST":
         if faq_form.is_valid:
@@ -38,13 +34,9 @@ def add_faq(request):
     return render(request, template, context)
 
 
-@login_required
+@validate_user()
 def update_faq(request, id):
     """ A view to update a specific FAQ """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to FAQs
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("faqs"))
     faq = get_object_or_404(FAQ, id=id)
     faq_form = FAQForm(request.POST or None, instance=faq)
     if request.method == "POST":
@@ -60,13 +52,9 @@ def update_faq(request, id):
     return render(request, template, context)
 
 
-@login_required
+@validate_user()
 def delete_faq(request, id):
     """ A view to delete a specific FAQ """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to FAQs
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("faqs"))
     faq = get_object_or_404(FAQ, id=id)
     faq.delete()
     messages.success(request, "FAQ Deleted!")

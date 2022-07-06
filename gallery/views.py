@@ -1,14 +1,14 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Photo
 from .forms import PhotoForm
+from main.decorators import validate_user
 
 
 def gallery(request):
     """ A view to return the gallery page """
-    if request.user.is_superuser:
+    if request.user.groups.filter(name="Site Admin"):
         photos = Photo.objects.all().order_by("sight__destination")
     else:
         photos = Photo.objects.filter(is_visible=True).order_by("sight__destination")
@@ -19,13 +19,9 @@ def gallery(request):
     return render(request, template, context)
 
 
-@login_required
+@validate_user()
 def add_photo(request):
     """ A view to add a single photo """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to the gallery
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("gallery"))
     photo_form = PhotoForm(request.POST or None, request.FILES or None)
     if request.method == "POST":
         if photo_form.is_valid():
@@ -41,17 +37,21 @@ def add_photo(request):
     return render(request, template, context)
 
 
-@login_required
+@validate_user()
 def update_photo(request, id):
     """ A view to update a single photo """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to the gallery
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("gallery"))
     photo = get_object_or_404(Photo, id=id)
-    photo_form = PhotoForm(request.POST or None, request.FILES or None, instance=photo)
+    photo_form = PhotoForm(instance=photo)
+    original_sight = photo_form["sight"].value()
     if request.method == "POST":
+        photo_form = PhotoForm(request.POST, request.FILES, instance=photo)
         if photo_form.is_valid():
+            photo.replace_file(
+                True if "image" in request.FILES else False
+            )
+            photo.change_location(
+                True if request.POST["sight"] != str(original_sight) else False
+            )
             next = request.POST.get("next", "/")
             photo_form.save()
             messages.success(request, "Photo Updated!")
@@ -65,13 +65,9 @@ def update_photo(request, id):
     return render(request, template, context)
 
 
-@login_required
+@validate_user()
 def delete_photo(request, id):
     """ A view to delete a specific photo """
-    if not request.user.is_superuser:
-        # user is not superuser; take them to the gallery
-        messages.error(request, "Access denied. Invalid permissions.")
-        return redirect(reverse("gallery"))
     photo = get_object_or_404(Photo, id=id)
     photo.delete()
     messages.success(request, "Photo Deleted!")

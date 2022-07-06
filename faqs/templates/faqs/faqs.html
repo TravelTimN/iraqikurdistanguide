@@ -1,56 +1,106 @@
 {% extends "base.html" %}
 {% load static %}
+{% load custom_filters %}
+
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item active" aria-current="page">FAQs</li>
+    {% if request.user|has_group:"Site Admin" %}
+        <li class="breadcrumb-item">
+            <a href="{% url 'add_faq' %}">
+                <i class="fas fa-plus-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add FAQ"></i>
+            </a>
+        </li>
+    {% endif %}
+{% endblock %}
 
 {% block content %}
 
-<section class="container my-5">
-    <!-- breadcrumbs -->
-    <div aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">FAQs</li>
-            {% if request.user.is_superuser %}
-                <li class="breadcrumb-item">
-                    <a href="{% url 'add_faq' %}">Add FAQ <i class="fas fa-plus-circle"></i></a>
-                </li>
-            {% endif %}
-        </ol>
-    </div>
+<!-- regroup FAQs by category -->
+{% regroup faqs by get_category_display as category_list %}
 
-    <br><br>
-
+<div class="container-fluid py-5">
     <div class="row">
-        <div class="col-12">
-            {% regroup faqs by get_category_display as category_list %}
+        <div class="col-12 text-center">
+            <h1 id="page-header" class="text-dark fw-bold">FAQs</h1>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <!-- generate badges for each category for easy-scrolling -->
             {% for category, faq_group in category_list %}
-                <h2>{{ category }}</h2>
-                <div class="accordion" id="accordion{{ forloop.counter }}">
-                    {% for faq in faq_group %}
+                <a href="#{{ category|lower|cut:' '|cut:'-'|cut:'&' }}">
+                    <span class="badge bg-success fs-6 my-1">{{ category }}</span>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- loop through each FAQ (sorted by category, then ID) -->
+{% for category, faq_group in category_list %}
+    <section id="{{ category|lower|cut:' '|cut:'-'|cut:'&' }}" class="container-fluid scroll-margin-top {% cycle 'bg-secondary bg-opacity-25' 'bg-light' %}">
+        <div class="row py-5 px-md-5">
+            <div class="col-12">
+                <!-- the category header -->
+                <h2 class="text-center fw-bold text-dark">
+                    <img src="{% static 'img/icons/faqs/' %}{{ category|lower|cut:' '|cut:'-'|cut:'&' }}.png" alt="{{ category }}" class="img-fluid rounded p-1 faq-icon filter-green">
+                    {{ category }}
+                </h2>
+                <div class="accordion mb-3" id="accordion{{ forloop.counter }}">
+                    <!-- each question/answer within the category -->
+                    {% for faq in faq_group|dictsort:'id' %}
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="header{{ faq.id }}">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapse{{ faq.id }}" aria-expanded="false" aria-controls="collapse{{ faq.id }}">
+                                    <span class="badge rounded-pill bg-kur-gold text-dark me-2">{{ forloop.counter }}</span>
                                     {% if faq.is_visible != True %}
-                                        <i class="fas fa-eye-slash me-2 text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Hidden"></i>
+                                        <i class="fas fa-eye-slash me-2 text-danger"></i>
                                     {% endif %}
                                     {{ faq.question }}
                                 </button>
                             </h2>
+                            <!-- the 'answer' to FAQ -->
                             <div id="collapse{{ faq.id }}" class="accordion-collapse collapse" aria-labelledby="header{{ faq.id }}" data-bs-parent="#accordion{{ forloop.parentloop.counter }}">
                                 <div class="accordion-body">
+                                    {% if request.user|has_group:"Site Admin" and faq.is_visible != True %}
+                                    <!-- admin-only notice of hidden FAQ -->
+                                        <p class="w-100 text-center mx-auto text-danger fw-bold">
+                                            FAQ hidden from public view
+                                        </p>
+                                    {% endif %}
+                                    <!-- the FAQ in "safe" format -->
                                     {{ faq.answer|safe }}
-                                    {% if request.user.is_superuser %}
-                                        <a href="{% url 'update_faq' faq.id %}" class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
+                                    <!-- admin-only edit button -->
+                                    {% if request.user|has_group:"Site Admin" %}
+                                        <hr>
+                                        <p class="w-100 text-center my-0 mx-auto">
+                                            <a href="{% url 'update_faq' faq.id %}" class="btn btn-success">Edit <i class="fas fa-edit"></i></a>
+                                        </p>
                                     {% endif %}
                                 </div>
                             </div>
                         </div>
                     {% endfor %}
                 </div>
-                <br><br>
-            {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endfor %}
+
+<!-- additional FAQs? contact Haval -->
+<div class="container-fluid bg-warning bg-opacity-75 text-black py-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h5>
+                This list of FAQs is not exhaustive, but it should hopefully provide a helpful insight while planning your trip with me in Kurdistan!
+                <hr class="w-50 mx-auto">
+                Please <a href="{% url 'contact' %}" class="fw-bold text-black">contact me</a> if you have any additional questions prior to your trip!
+            </h5>
         </div>
     </div>
-</section>
+</div>
 
 {% endblock %}

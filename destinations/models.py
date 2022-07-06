@@ -1,4 +1,5 @@
 from django.db import models
+import gallery.models
 
 
 class Province(models.Model):
@@ -75,3 +76,25 @@ class Sight(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Tour(models.Model):
+    """
+        Various types of tours available.
+        Can be applied to 'Sights' as pill badges.
+    """
+    category = models.CharField(max_length=30, null=False, blank=False)
+    photo = models.ForeignKey(
+        "gallery.Photo", on_delete=models.CASCADE, null=False, blank=False)
+    description = models.CharField(max_length=100, null=False, blank=False)
+    is_visible = models.BooleanField(default=True)
+
+    def image_preview(self):
+        from django.utils.html import format_html
+        return format_html(f"<img src='{self.photo.image.url}' height='150'>")
+
+    class Meta:
+        ordering = ["category"]
+
+    def __str__(self):
+        return self.category

@@ -27,6 +27,25 @@ $("#nav-link-time").on("mouseleave", function() {
     $(this).html(timeIcon);
 });
 
+// localStorage: remember if user closed the "review banner"
+const btnCloseReview = document.getElementById("btn-close-review");
+const reviewBanner = document.getElementById("banner-review");
+
+// check for existing localStorage of "review banner" being closed previously
+if (!JSON.parse(localStorage.getItem("reviewClosed"))) {
+    // none found / allow clicking to close banner
+    btnCloseReview?.addEventListener("click", closeReviewBanner);
+} else {
+    // previously closed / auto-hide banner from now on
+    reviewBanner.classList.remove("show");
+    reviewBanner.classList.add("d-none");
+}
+
+// add localStorage for "review banner" being closed
+function closeReviewBanner() {
+    localStorage.setItem("reviewClosed", JSON.stringify({"reviewClosed": true}));
+}
+
 // auto-hide alerts
 const alerts = document.querySelectorAll("aside.alert");
 let overlay = document.getElementById("overlay");
@@ -60,3 +79,83 @@ let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggl
 let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl);
 });
+
+// handling localStorage for "destinations"
+let wishlist = localStorage.getItem("wishlist");
+
+let destinationIcons = $("[id^='wishlist-icon_']");
+$(destinationIcons).each(function() {
+    let iconId = $(this).attr("id").split("_")[1];
+    let wishlist = localStorage.getItem("wishlist").split(",");
+    for (let place in wishlist) {
+        if (wishlist.hasOwnProperty(place)) {
+            if (wishlist[place] == iconId) {
+                // set solid-heart and 'remove' text
+                setInWishlist($(this), $(this).siblings("span[id^='wishlist-text_']"));
+            }
+        }
+    }
+});
+
+$("body").on("click", ".destination-card-text", function(e) {
+    e.preventDefault();
+    let destination = $(this).data("destination");
+    let wishlistIcon = $(this).children("i[id^='wishlist-icon_']");
+    let wishlistText = $(this).children("span[id^='wishlist-text_']");
+    if ($(wishlistIcon).hasClass("far")) {
+        // adding new wishlist destination
+        addWishlistDestination(this, destination);
+        setInWishlist(wishlistIcon, wishlistText);
+    } else if ($(wishlistIcon).hasClass("fas")) {
+        // removing existing wishlist destination
+        removeWishlistDestination(this, destination);
+        setNotInWishlist(wishlistIcon, wishlistText);
+    }
+});
+
+function setInWishlist(wishlistIcon, wishlistText) {
+    // update destination to be in wishlist
+    $(wishlistIcon).removeClass("far").addClass("fas");
+    $(wishlistText).text("remove from");
+}
+
+function setNotInWishlist(wishlistIcon, wishlistText) {
+    // update destination to remove from wishlist
+    $(wishlistIcon).removeClass("fas").addClass("far");
+    $(wishlistText).text("add to");
+}
+
+function addWishlistDestination(e, destination) {
+    // check if localStorage wishlist exists
+    if (localStorage.getItem("wishlist")) {
+        // exists - split the values
+        wishlist = localStorage.getItem("wishlist").split(",");
+        if (!wishlist.includes(destination)) {
+            // only add destination if not already in the list
+            wishlist.push(destination);
+            wishlist.sort();
+            localStorage.setItem("wishlist", wishlist.join(","));
+        }
+    } else {
+        // doesn't exist, add the destination
+        localStorage.setItem("wishlist", destination);
+    }
+}
+
+function removeWishlistDestination(e, destination) {
+    // wishlist MUST exist if calling this function, so remove the clicked 'destination'
+    let wishlist = localStorage.getItem("wishlist").split(",");
+    for (let place in wishlist) {
+        if (wishlist.hasOwnProperty(place)) {
+            if (wishlist[place] == destination) {
+                // remove destination
+                delete wishlist[place];
+            }
+        }
+    }
+    // filter only those that are not the destination
+    wishlist = wishlist.filter(function(place) {return place["wishlist"] !== destination;});
+    // re-add back to localStorage
+    localStorage.setItem("wishlist", wishlist.join(","));
+    
+}

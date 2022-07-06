@@ -4,7 +4,10 @@ from slugify import slugify
 from django.db import models
 from django.conf import settings
 from PIL import Image, ImageOps
-from destinations.models import Sight
+import destinations.models
+
+REPLACEMENT_FILE = True
+LOCATION_CHANGED = False
 
 
 def upload_to(instance, filename):
@@ -26,7 +29,7 @@ class Photo(models.Model):
         for destinations, sites, tours, etc.
     """
     sight = models.ForeignKey(
-        Sight, on_delete=models.CASCADE, null=False, blank=False)
+        "destinations.Sight", on_delete=models.CASCADE, null=False, blank=False)
     image = models.ImageField(
         default="no-image.png",
         upload_to=upload_to,
@@ -36,11 +39,23 @@ class Photo(models.Model):
     caption = models.CharField(max_length=250, null=False, blank=False)
     is_visible = models.BooleanField(default=True)
 
+    def image_preview(self):
+        from django.utils.html import format_html
+        return format_html(f"<img src='{self.image.url}' height='150'>")
+
     class Meta:
         ordering = ["sight__destination", "sight__name", "image"]
 
     def __str__(self):
         return self.sight.name
+
+    def replace_file(self, boolean):
+        global REPLACEMENT_FILE
+        REPLACEMENT_FILE = boolean
+
+    def change_location(self, boolean):
+        global LOCATION_CHANGED
+        LOCATION_CHANGED = boolean
 
     def save(self, *args, **kwargs):
         """
@@ -49,7 +64,7 @@ class Photo(models.Model):
         - above does not apply to .gif files.
         """
         super(Photo, self).save(*args, **kwargs)
-        if self.image:
+        if REPLACEMENT_FILE or LOCATION_CHANGED:
             img = Image.open(self.image)
             # continue if image format is not .gif
             if img.format.lower() != "gif":

@@ -1,3 +1,4 @@
+import os
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -5,12 +6,13 @@ from django.conf.urls.static import static
 from .views import handler404, handler500
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path(f"{os.environ.get('ADMIN_URL')}/", admin.site.urls),
     path("profile/", include("accounts.urls")),
-    path("auth/", include("allauth.urls")),
+    path(f"{os.environ.get('AUTH_URL')}/", include("allauth.urls")),
     path("tinymce/", include("tinymce.urls")),
     path("", include("home.urls")),
     path("about/", include("about.urls")),
+    path("bookings/", include("bookings.urls")),
     path("contact/", include("contact.urls")),
     path("destinations/", include("destinations.urls")),
     path("faqs/", include("faqs.urls")),

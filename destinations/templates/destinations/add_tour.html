@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item active" aria-current="page">Tours: NEW</li>
+{% endblock %}
+
+{% block content %}
+
+<section class="container my-5">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <form method="POST" action="{% url 'add_tour' %}">
+                {% csrf_token %}
+                {{ tour_form.as_p }}
+                <button type="submit" class="btn btn-success">Submit</button>
+                <a href="{{ request.META.HTTP_REFERER }}#tours" class="btn btn-danger">Cancel</a>
+            </form>
+        </div>
+        <!-- display preview of tour photo being uploaded -->
+        <div class="col-12 col-md-6 d-none rounded" id="img-preview-col">
+            <img src="" alt="Preview of Tour Photo selected" id="img-preview"
+                class="card img-fluid img-thumbnail rounded shadow" onError="this.onerror=null;this.src='{{ MEDIA_URL }}no-image.png';">
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+
+{% block js %}
+    <script>
+        // disable first option of each <select> element
+            $("select").each(function() {
+            $(this).children("option:first").prop("disabled", true);
+        });
+
+        // update <optgroup> 'data' attr and 'text'
+        let photoOptions = $("#id_photo").children("optgroup").children("option");
+        $(photoOptions).each(function() {
+            // set the 'data-path' attribute
+            let optData = $(this).text();
+            $(this).data("path", optData);
+            // update the innerText of each option
+            let optText = $(this).text().split("/").pop();
+            $(this).text(optText);
+        });
+    
+        // show preview of the image
+        // add/edit photo_form on Gallery app use 'similar' logic
+        $("#id_photo").on("change", function() {
+            let imgURL = $(this).find(":selected").data("path");
+            if (imgURL) {
+                $("#img-preview-col").removeClass("d-none");
+                try {
+                    $("#img-preview").prop("src", imgURL).on("error", function() {
+                        $("#img-preview").prop("src", `{{ MEDIA_URL }}no-image.png`);
+                    });
+                }
+                catch (error) {console.log(error);}
+            }
+        });
+    </script>
+
+{% endblock %}
