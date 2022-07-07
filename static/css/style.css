@@ -425,7 +425,7 @@ nav .nav-item#nav-item-time {
 }
 
 .carousel-card:hover {
-    box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, .175) !important;
+    box-shadow: 0 1rem 1.5rem rgba(var(--black), .175) !important;
 }
 
 .carousel-item.active .ratio {
@@ -870,12 +870,32 @@ p.lightbox-caption {
 }
 
 /* REVIEWS */
-.flag-icon {
-    border-radius: 1px;
-    box-shadow:
-        0 0 0 1px #ccc,
-        0 0 0 3px #fff,
-        2px 2px 2px 2px #222;
+.review-icon {
+    max-width: 50px;
+}
+
+.list-group-review-card {
+    transition: all 0.2s ease-in-out;
+}
+
+.list-group-review-card:hover {
+    transform: translateY(-0.25em);
+}
+
+.list-group-review-card:hover .list-group-item-action {
+    box-shadow: 0 1rem 1.5rem rgba(var(--black), .175) !important;
+}
+
+.bg-facebook {
+    background: linear-gradient(45deg, rgba(24,119,242,0.15) 0%, rgba(var(--white),1) 100%);
+}
+
+.bg-googlemaps {
+    background: linear-gradient(45deg, rgba(234,67,53,0.15) 0%, rgba(var(--white),1) 100%);
+}
+
+.bg-tripadvisor {
+    background: linear-gradient(45deg, rgba(0,175,135,0.15) 0%, rgba(var(--white),1) 100%);
 }
 
 /* BOOKINGS / CALENDAR */
