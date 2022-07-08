@@ -60,6 +60,10 @@ a, a:hover {
 .bg-kur-gold {background-color: rgba(var(--kurdish-gold), 1);}
 .bg-kur-green {background-color: rgba(var(--kurdish-green), 1);}
 
+.bg-kur-red-linear {background: linear-gradient(30deg, rgba(var(--kurdish-red), 0.25) 0%, rgba(var(--white), 1) 85%);}
+.bg-kur-gold-linear {background: linear-gradient(30deg, rgba(var(--kurdish-gold), 0.25) 0%, rgba(var(--white), 1) 85%);}
+.bg-kur-green-linear {background: linear-gradient(30deg, rgba(var(--kurdish-green), 0.25) 0%, rgba(var(--white), 1) 85%);}
+
 
 .text-shadow-thick {
     text-shadow:
@@ -265,6 +269,9 @@ nav .nav-item#nav-item-time {
 }
 
 ol.breadcrumb ul.dropdown-menu.show {
+    position: absolute !important;
+    inset: 0px auto auto 0px !important;
+    margin: 0px !important;
     width: 103% !important;
     transform: translate3d(-5px, 40px, 0) !important;
     border-radius: 0 !important;
@@ -274,6 +281,13 @@ ol.breadcrumb ul.dropdown-menu.show {
     box-shadow: 0 3px 3px rgba(var(--black), 0.5);
     border-bottom-left-radius: 8px !important;
     border-bottom-right-radius: 8px !important;
+}
+
+ol.breadcrumb ul.dropdown-menu.show .dropdown-divider {
+    height: 4px !important;
+    border: 0 !important;
+    background-color: rgba(var(--white), 1) !important;
+    opacity: 1 !important;
 }
 
 /* hide all breadcrumbs except the last 2, on mobile only */
@@ -354,7 +368,7 @@ ol.breadcrumb ul.dropdown-menu.show {
     width: 100%;
     margin-top: -1px;
     border-top: 2px solid rgba(var(--black), 1);
-    border-bottom: 2px solid rgba(255, 255, 255, .3);
+    border-bottom: 2px solid rgba(var(--white), 0.3);
 }
 
 .home-qualifications-icon {
@@ -625,9 +639,9 @@ ol.breadcrumb ul.dropdown-menu.show {
 .ribbon span.kurdistan {
     background: rgba(var(--kurdish-green), 1);
     background:
-        linear-gradient(rgba(var(--kurdish-red),1), rgba(var(--kurdish-red),1)),
-        linear-gradient(rgba(var(--white),1), rgba(var(--white),1)),
-        linear-gradient(rgba(var(--kurdish-green),1), rgba(var(--kurdish-green),1));
+        linear-gradient(rgba(var(--kurdish-red), 1), rgba(var(--kurdish-red), 1)),
+        linear-gradient(rgba(var(--white), 1), rgba(var(--white), 1)),
+        linear-gradient(rgba(var(--kurdish-green), 1), rgba(var(--kurdish-green), 1));
     background-size: 100% 33%, 100% 66%, 100%;
     background-repeat: no-repeat;
 }
@@ -650,9 +664,9 @@ ol.breadcrumb ul.dropdown-menu.show {
 .ribbon span.iraq {
     background: rgba(var(--black), 1);
     background:
-        linear-gradient(rgba(var(--kurdish-red),1), rgba(var(--kurdish-red),1)),
-        linear-gradient(rgba(var(--white),1), rgba(var(--white),1)),
-        linear-gradient(rgba(var(--black),1), rgba(var(--black),1));
+        linear-gradient(rgba(var(--kurdish-red), 1), rgba(var(--kurdish-red), 1)),
+        linear-gradient(rgba(var(--white), 1), rgba(var(--white), 1)),
+        linear-gradient(rgba(var(--black), 1), rgba(var(--black), 1));
     background-size: 100% 33%, 100% 66%, 100%;
     background-repeat: no-repeat;
 }
@@ -897,15 +911,44 @@ p.lightbox-caption {
 }
 
 .bg-facebook {
-    background: linear-gradient(45deg, rgba(var(--facebook), 0.15) 0%, rgba(var(--white),1) 100%);
+    background: linear-gradient(45deg, rgba(var(--facebook), 0.15) 0%, rgba(var(--white), 1) 100%);
 }
 
 .bg-googlemaps {
-    background: linear-gradient(45deg, rgba(var(--googlemaps), 0.15) 0%, rgba(var(--white),1) 100%);
+    background: linear-gradient(45deg, rgba(var(--googlemaps), 0.15) 0%, rgba(var(--white), 1) 100%);
 }
 
 .bg-tripadvisor {
-    background: linear-gradient(45deg, rgba(var(--tripadvisor), 0.15) 0%, rgba(var(--white),1) 100%);
+    background: linear-gradient(45deg, rgba(var(--tripadvisor), 0.15) 0%, rgba(var(--white), 1) 100%);
+}
+
+/* RESOURCES */
+.resources-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+}
+
+.resources-card:hover {
+    transform: scale(1.025);
+    box-shadow: 0 0.5rem 1rem rgba(var(--black), 0.75) !important;
+}
+
+.resources-card-icon {
+    position: absolute;
+    z-index: -1;
+    left: 1rem;
+    color: rgba(var(--white), 1);
+    text-shadow: 0 0 5px rgba(var(--white), 1);
+    mix-blend-mode: exclusion;
+    opacity: 0.25;
+    font-size: 1150%;
+    transition: all 0.2s ease-in-out;
+}
+
+.resources-card:hover .resources-card-icon {
+    color: rgba(var(--black), 1);
+    transform: translateX(20vw);
 }
 
 /* BOOKINGS / CALENDAR */
