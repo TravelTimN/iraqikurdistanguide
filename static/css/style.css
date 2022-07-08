@@ -7,6 +7,9 @@
     --light-grey: 245, 245, 245; /* #F5F5F5 */
     --white: 255, 255, 255; /* #FFFFFF */
     --black: 0, 0, 0; /* #000000 */
+    --facebook: 24, 119, 242; /* #1877f2 */
+    --googlemaps: 234, 67, 53; /* #ea4335 */
+    --tripadvisor: 0, 175, 135; /* #00af87 */
 }
 
 /* GLOBAL STYLES */
@@ -222,11 +225,6 @@ nav .nav-item#nav-item-time {
     align-items: center;
 }
 
-.breadcrumb-item a {
-    color: rgba(var(--white), 1);
-    text-shadow: 2px 2px 2px rgba(var(--black), 0.5);
-}
-
 .breadcrumb-item::after,
 .breadcrumb-item::before {
     content: "";
@@ -264,6 +262,18 @@ nav .nav-item#nav-item-time {
 .breadcrumb-item.active::after {
     color: rgba(var(--black), 1) !important;
     background-color: #87BEA4;
+}
+
+ol.breadcrumb ul.dropdown-menu.show {
+    width: 103% !important;
+    transform: translate3d(-5px, 40px, 0) !important;
+    border-radius: 0 !important;
+    background-color: #87BEA4 !important;
+    border: 4px solid rgba(var(--white), 1) !important;
+    border-top: 0 !important;
+    box-shadow: 0 3px 3px rgba(var(--black), 0.5);
+    border-bottom-left-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
 }
 
 /* hide all breadcrumbs except the last 2, on mobile only */
@@ -887,15 +897,15 @@ p.lightbox-caption {
 }
 
 .bg-facebook {
-    background: linear-gradient(45deg, rgba(24,119,242,0.15) 0%, rgba(var(--white),1) 100%);
+    background: linear-gradient(45deg, rgba(var(--facebook), 0.15) 0%, rgba(var(--white),1) 100%);
 }
 
 .bg-googlemaps {
-    background: linear-gradient(45deg, rgba(234,67,53,0.15) 0%, rgba(var(--white),1) 100%);
+    background: linear-gradient(45deg, rgba(var(--googlemaps), 0.15) 0%, rgba(var(--white),1) 100%);
 }
 
 .bg-tripadvisor {
-    background: linear-gradient(45deg, rgba(0,175,135,0.15) 0%, rgba(var(--white),1) 100%);
+    background: linear-gradient(45deg, rgba(var(--tripadvisor), 0.15) 0%, rgba(var(--white),1) 100%);
 }
 
 /* BOOKINGS / CALENDAR */
