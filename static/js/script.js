@@ -1,4 +1,4 @@
-/* jshint esversion: 11 */
+/* jshint esversion: 11, jquery: true */
 
 // update copyright year
 document.getElementById("year").innerText = new Date().getFullYear();
@@ -70,6 +70,29 @@ if (alerts.length > 0) {
         }, 2500);
     }
 }
+
+// auto-expand/collapse breadcrumb dropdown-menu on hover
+let breadcrumbDropdown = document.querySelectorAll(".breadcrumb-item.dropdown");
+breadcrumbDropdown.forEach(dropdown => {
+    // mouseover; show sub-menu
+    dropdown.addEventListener("mouseover", function() {
+        let dropdownToggle = this.querySelector(".dropdown-toggle");
+        dropdownToggle.classList.add("show");
+        dropdownToggle.setAttribute("aria-expanded", true);
+        let menuUL = this.querySelector("ul.dropdown-menu");
+        menuUL.classList.add("show");
+        menuUL.setAttribute("data-popper-placement", "bottom-start");
+    });
+    // mouseleave; hide sub-menu
+    dropdown.addEventListener("mouseleave", function() {
+        let dropdownToggle = this.querySelector(".dropdown-toggle");
+        dropdownToggle.classList.remove("show");
+        dropdownToggle.setAttribute("aria-expanded", false);
+        let menuUL = this.querySelector("ul.dropdown-menu");
+        menuUL.classList.remove("show");
+        menuUL.removeAttribute("data-popper-placement");
+    });
+});
 
 /*
     Initialize Bootstrap Components

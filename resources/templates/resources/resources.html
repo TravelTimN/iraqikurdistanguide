@@ -13,16 +13,84 @@
         <ul class="dropdown-menu" aria-labelledby="dropdownResourceBreadcrumb">
             <li><a class="dropdown-item" href="{% url 'alphabet' %}">Alphabet</a></li>
             <li><a class="dropdown-item" href="{% url 'phrases' %}">Phrases</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="">Entertainment</a></li>
+            <li><a class="dropdown-item" href="">Holidays</a></li>
+            <li><a class="dropdown-item" href="">Weather</a></li>
         </ul>
     </li>
 {% endblock %}
 
 {% block content %}
 
-<section class="container my-5">
+<!-- page header -->
+<section class="container-fluid py-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 id="page-header" class="text-dark fw-bold">Resources</h1>
+        </div>
+    </div>
+</section>
 
-    Resources
+<section class="container-fluid container-lg mb-5">
+    <div class="row text-center">
 
+        <!-- alphabet -->
+        <div class="col-12 col-md-6 list-group px-3 px-md-5">
+            <a href="{% url 'alphabet' %}" class="list-group-item list-group-item-action my-3 resources-card bg-kur-red-linear shadow">
+                <i class="fas fa-font fa-fw resources-card-icon"></i>
+                <div class="d-flex flex-column w-100 justify-content-center align-items-center my-5">
+                    <h2 class="fs-2 fw-bold">Alphabet</h2>
+                    <p class="fs-5 fw-bold">Learn the Kurdish Alphabet</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- phrases -->
+        <div class="col-12 col-md-6 list-group px-3 px-md-5">
+            <a href="{% url 'phrases' %}" class="list-group-item list-group-item-action my-3 resources-card bg-kur-gold-linear shadow">
+                <i class="fas fa-language fa-fw resources-card-icon"></i>
+                <div class="d-flex flex-column w-100 justify-content-center align-items-center my-5">
+                    <h2 class="fs-2 fw-bold">Phrases</h2>
+                    <p class="fs-5 fw-bold">Learn Kurdish & Arabic Phrases</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- entertainment -->
+        <div class="col-12 col-md-6 list-group px-3 px-md-5">
+            <a href="" class="list-group-item list-group-item-action my-3 resources-card bg-kur-green-linear shadow">
+                <i class="fas fa-music fa-fw resources-card-icon"></i>
+                <div class="d-flex flex-column w-100 justify-content-center align-items-center my-5">
+                    <h2 class="fs-2 fw-bold">Entertainment</h2>
+                    <p class="fs-5 fw-bold">Recommended books, films, songs</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- holidays -->
+        <div class="col-12 col-md-6 list-group px-3 px-md-5">
+            <a href="" class="list-group-item list-group-item-action my-3 resources-card bg-kur-red-linear shadow">
+                <i class="fas fa-calendar-alt fa-fw resources-card-icon"></i>
+                <div class="d-flex flex-column w-100 justify-content-center align-items-center my-5">
+                    <h2 class="fs-2 fw-bold">Holidays</h2>
+                    <p class="fs-5 fw-bold">Learn about Kurdish holidays</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- weather -->
+        <div class="col-12 col-md-6 list-group px-3 px-md-5">
+            <a href="" class="list-group-item list-group-item-action my-3 resources-card bg-kur-gold-linear shadow">
+                <i class="fas fa-cloud-sun fa-fw resources-card-icon"></i>
+                <div class="d-flex flex-column w-100 justify-content-center align-items-center my-5">
+                    <h2 class="fs-2 fw-bold">Weather</h2>
+                    <p class="fs-5 fw-bold">Average weather conditions</p>
+                </div>
+            </a>
+        </div>
+
+    </div>
 </section>
 
 {% endblock %}
