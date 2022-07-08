@@ -14,7 +14,11 @@
             <li><a class="dropdown-item" href="{% url 'resources' %}">Resources</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="{% url 'alphabet' %}">Alphabet</a></li>
-            <li><a class="dropdown-item" href="{% url 'phrases' %}">Phrases</a></li>
+            <li><a class="dropdown-item active" aria-current="page">Phrases</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="">Entertainment</a></li>
+            <li><a class="dropdown-item" href="">Holidays</a></li>
+            <li><a class="dropdown-item" href="">Weather</a></li>
         </ul>
     </li>
     <li class="breadcrumb-item active" aria-current="page">Phrases</li>
@@ -29,19 +33,45 @@
 
 {% block content %}
 
-<section class="container my-5">
+<!-- regroup phrases by category -->
+{% regroup phrases by get_category_display as phrases_list %}
+<section class="container-fluid py-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 id="page-header" class="text-dark fw-bold">Phrases</h1>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <!-- generate badges for each category for easy-scrolling -->
+            {% for category, phrase_group in phrases_list %}
+            <a href="#{{ category|lower|cut:' '|cut:'-'|cut:'&' }}">
+                <span class="badge bg-success fs-6 my-1">{{ category }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- helper text -->
     <div class="row mt-5">
+        <div class="col-12 text-center fs-4">
+            <i class="far fa-hand-pointer text-kur-red"></i>
+            Tap or hover the Kurdish/Arabic words to view the Latin text!
+        </div>
+    </div>
+</section>
 
-        <!-- loop phrases (regroup by category) -->
-        {% regroup phrases by get_category_display as phrases_list %}
-        {% for category, phrase_group in phrases_list %}
+<!-- loop phrases (regrouped by category) -->
+{% for category, phrase_group in phrases_list %}
+    <section id="{{ category|lower|cut:' '|cut:'-'|cut:'&' }}" class="container scroll-margin-top">
+        <div class="row pt-5 px-md-5">
 
-            <h2 class="text-center my-4">
-                <span class="badge rounded-pill bg-secondary fs-2">{{ category }}</span>
+            <!-- the category header -->
+            <h2 class="text-center">
+                <span class="badge rounded-pill bg-secondary fs-3">{{ category }}</span>
             </h2>
 
+            <!-- each phrase within the category -->
             {% for phrase in phrase_group %}
-
                 <div class="col-12 col-lg-6">
                     <div class="card text-center my-3 shadow">
 
@@ -61,50 +91,55 @@
 
                                 <!-- kurdish -->
                                 <div class="col-12 d-flex align-items-center justify-content-end">
-                                    <span class="text-end" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ phrase.sorani_latin }}">
+                                    <span class="text-end" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="{{ phrase.sorani_latin }}">
                                         {{ phrase.sorani_script }}
                                     </span>
                                     <img src="{% static 'img/flags/kurdistan.png' %}" class="img-fluid rounded ms-2"
-                                        alt="Flag of Kurdistan" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Kurdish">
+                                        alt="Flag of Kurdistan" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Kurdish">
                                 </div>
 
                                 <hr class="w-75 mx-auto my-2">
 
                                 <!-- arabic -->
                                 <div class="col-12 d-flex align-items-center justify-content-end">
-                                    <span class="text-end" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ phrase.arabic_latin }}">
+                                    <span class="text-end" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="{{ phrase.arabic_latin }}">
                                         {{ phrase.arabic_script }}
                                     </span>
                                     <img src="{% static 'img/flags/iraq.png' %}" class="img-fluid rounded ms-2"
-                                        alt="Flag of Iraq" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Arabic">
+                                        alt="Flag of Iraq" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Arabic">
                                 </div>
-
                             </div>
 
                         </div>
                         <!-- superuser footer details -->
                         {% if request.user.is_superuser %}
-                            <div class="card-footer d-flex align-items-center justify-content-center">
+                            <div class="card-footer d-flex align-items-center justify-content-center bg-secondary bg-opacity-25">
                                 <span class="w-100">
-                                    <a href="{% url 'update_phrase' phrase.id %}" class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
+                                    <a href="{% url 'update_phrase' phrase.id %}" class="btn btn-primary">Edit <i
+                                            class="fas fa-edit"></i></a>
                                 </span>
                                 {% if phrase.is_visible != True %}
-                                    <i class="fas fa-eye-slash text-danger fs-3" data-bs-toggle="tooltip" data-bs-placement="left" title="Hidden"></i>
+                                <i class="fas fa-eye-slash text-danger fs-3" data-bs-toggle="tooltip" data-bs-placement="left"
+                                    title="Hidden"></i>
                                 {% endif %}
                             </div>
                         {% endif %}
                     </div>
                 </div>
-
             {% endfor %}
 
-            <br><br>
-            <hr class="my-5">
-            <br><br>
+            {% if not forloop.last %}
+                <hr class="my-5">
+            {% else %}
+                <span class="my-5"></span>
+            {% endif %}
 
-        {% endfor %}
-    </div>
-
-</section>
+        </div>
+    </section>
+{% endfor %}
 
 {% endblock %}
