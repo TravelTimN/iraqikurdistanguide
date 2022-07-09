@@ -1,0 +1,925 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item dropdown">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownResourceBreadcrumb" data-bs-toggle="dropdown" aria-expanded="false">
+            Resources
+        </a>
+
+        <!-- breadcrumb dropdown -->
+        <ul class="dropdown-menu" aria-labelledby="dropdownResourceBreadcrumb">
+            <li><a class="dropdown-item" href="{% url 'resources' %}">Resources</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'alphabet' %}">Alphabet</a></li>
+            <li><a class="dropdown-item" href="{% url 'phrases' %}">Phrases</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="">Entertainment</a></li>
+            <li><a class="dropdown-item" href="">Holidays</a></li>
+            <li><a class="dropdown-item active" aria-current="page">Weather</a></li>
+        </ul>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Weather</li>
+{% endblock %}
+
+{% block content %}
+
+<!-- build list of months for multiple-uses -->
+{% with months="January February March April May June July August September October November December" %}
+    <section class="container-fluid py-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 id="page-header" class="text-dark fw-bold">Weather</h1>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <!-- generate badges for each month for easy-scrolling -->
+                {% for month in months.split %}
+                    <a href="#{{ month|lower }}">
+                        <span class="badge bg-success fs-6 my-1">{{ month }}</span>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- helper text -->
+        <div class="row mt-5">
+            <div class="col-12 text-center fs-4">
+                <i class="fas fa-sun text-kur-red"></i>
+                <span class="fw-bold">Kurdish</span> averages are from the Erbil region.
+                <span class="fw-bold">Iraqi</span> averages are from the Baghdad region.
+                <i class="fas fa-moon text-kur-red"></i>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- January -->
+    <section id="january" class="container scroll-margin-top mb-5">
+        <div class="row pt-5 px-lg-5">
+
+            <!-- the month header -->
+            <h2 class="text-center fs-3 fw-bold">January</h2>
+
+            <!-- Kurdistan -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-kur-flag text-kur-gold border-bottom-0"><i class="fas fa-certificate"></i></h5>
+                <div class="card-body table-responsive bg-success bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-success">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>12 <small>°C</small></td>
+                                <td>5 <small>°C</small></td>
+                                <td rowspan="2">5</td>
+                                <td rowspan="2">56%</td>
+                            </tr>
+                            <tr>
+                                <td>54 <small>°F</small></td>
+                                <td>42 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-2"></div>
+
+            <!-- Federal Iraq -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-irq-flag text-success border-bottom-0 fw-bold">الله اكبر</h5>
+                <div class="card-body table-responsive bg-dark bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>18 <small>°C</small></td>
+                                <td>10 <small>°C</small></td>
+                                <td rowspan="2">1</td>
+                                <td rowspan="2">43%</td>
+                            </tr>
+                            <tr>
+                                <td>64 <small>°F</small></td>
+                                <td>49 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="mx-auto w-50">
+
+    <!-- February -->
+    <section id="february" class="container scroll-margin-top mb-5">
+        <div class="row pt-5 px-lg-5">
+
+            <!-- the month header -->
+            <h2 class="text-center fs-3 fw-bold">February</h2>
+
+            <!-- Kurdistan -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-kur-flag text-kur-gold border-bottom-0"><i class="fas fa-certificate"></i></h5>
+                <div class="card-body table-responsive bg-success bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-success">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>15 <small>°C</small></td>
+                                <td>7 <small>°C</small></td>
+                                <td rowspan="2">5</td>
+                                <td rowspan="2">55%</td>
+                            </tr>
+                            <tr>
+                                <td>59 <small>°F</small></td>
+                                <td>44 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-2"></div>
+
+            <!-- Federal Iraq -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-irq-flag text-success border-bottom-0 fw-bold">الله اكبر</h5>
+                <div class="card-body table-responsive bg-dark bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>20 <small>°C</small></td>
+                                <td>12 <small>°C</small></td>
+                                <td rowspan="2">1</td>
+                                <td rowspan="2">39%</td>
+                            </tr>
+                            <tr>
+                                <td>69 <small>°F</small></td>
+                                <td>53 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="mx-auto w-50">
+
+    <!-- March -->
+    <section id="march" class="container scroll-margin-top mb-5">
+        <div class="row pt-5 px-lg-5">
+
+            <!-- the month header -->
+            <h2 class="text-center fs-3 fw-bold">March</h2>
+
+            <!-- Kurdistan -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-kur-flag text-kur-gold border-bottom-0"><i class="fas fa-certificate"></i></h5>
+                <div class="card-body table-responsive bg-success bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-success">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>18 <small>°C</small></td>
+                                <td>9 <small>°C</small></td>
+                                <td rowspan="2">6</td>
+                                <td rowspan="2">54%</td>
+                            </tr>
+                            <tr>
+                                <td>65 <small>°F</small></td>
+                                <td>48 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-2"></div>
+
+            <!-- Federal Iraq -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-irq-flag text-success border-bottom-0 fw-bold">الله اكبر</h5>
+                <div class="card-body table-responsive bg-dark bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>25 <small>°C</small></td>
+                                <td>15 <small>°C</small></td>
+                                <td rowspan="2">2</td>
+                                <td rowspan="2">32%</td>
+                            </tr>
+                            <tr>
+                                <td>77 <small>°F</small></td>
+                                <td>59 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="mx-auto w-50">
+
+    <!-- April -->
+    <section id="april" class="container scroll-margin-top mb-5">
+        <div class="row pt-5 px-lg-5">
+
+            <!-- the month header -->
+            <h2 class="text-center fs-3 fw-bold">April</h2>
+
+            <!-- Kurdistan -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-kur-flag text-kur-gold border-bottom-0"><i class="fas fa-certificate"></i></h5>
+                <div class="card-body table-responsive bg-success bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-success">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>25 <small>°C</small></td>
+                                <td>14 <small>°C</small></td>
+                                <td rowspan="2">6</td>
+                                <td rowspan="2">45%</td>
+                            </tr>
+                            <tr>
+                                <td>77 <small>°F</small></td>
+                                <td>57 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-2"></div>
+
+            <!-- Federal Iraq -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-irq-flag text-success border-bottom-0 fw-bold">الله اكبر</h5>
+                <div class="card-body table-responsive bg-dark bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>32 <small>°C</small></td>
+                                <td>21 <small>°C</small></td>
+                                <td rowspan="2">2</td>
+                                <td rowspan="2">24%</td>
+                            </tr>
+                            <tr>
+                                <td>89 <small>°F</small></td>
+                                <td>69 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="mx-auto w-50">
+
+    <!-- May -->
+    <section id="may" class="container scroll-margin-top mb-5">
+        <div class="row pt-5 px-lg-5">
+
+            <!-- the month header -->
+            <h2 class="text-center fs-3 fw-bold">May</h2>
+
+            <!-- Kurdistan -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-kur-flag text-kur-gold border-bottom-0"><i class="fas fa-certificate"></i></h5>
+                <div class="card-body table-responsive bg-success bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-success">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>32 <small>°C</small></td>
+                                <td>21 <small>°C</small></td>
+                                <td rowspan="2">3</td>
+                                <td rowspan="2">30%</td>
+                            </tr>
+                            <tr>
+                                <td>90 <small>°F</small></td>
+                                <td>69 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-2"></div>
+
+            <!-- Federal Iraq -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-irq-flag text-success border-bottom-0 fw-bold">الله اكبر</h5>
+                <div class="card-body table-responsive bg-dark bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>38 <small>°C</small></td>
+                                <td>27 <small>°C</small></td>
+                                <td rowspan="2">1</td>
+                                <td rowspan="2">19%</td>
+                            </tr>
+                            <tr>
+                                <td>100 <small>°F</small></td>
+                                <td>81 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="mx-auto w-50">
+
+    <!-- June -->
+    <section id="june" class="container scroll-margin-top mb-5">
+        <div class="row pt-5 px-lg-5">
+
+            <!-- the month header -->
+            <h2 class="text-center fs-3 fw-bold">June</h2>
+
+            <!-- Kurdistan -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-kur-flag text-kur-gold border-bottom-0"><i class="fas fa-certificate"></i></h5>
+                <div class="card-body table-responsive bg-success bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-success">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>39 <small>°C</small></td>
+                                <td>26 <small>°C</small></td>
+                                <td rowspan="2">0</td>
+                                <td rowspan="2">17%</td>
+                            </tr>
+                            <tr>
+                                <td>102 <small>°F</small></td>
+                                <td>79 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-2"></div>
+
+            <!-- Federal Iraq -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-irq-flag text-success border-bottom-0 fw-bold">الله اكبر</h5>
+                <div class="card-body table-responsive bg-dark bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>43 <small>°C</small></td>
+                                <td>31 <small>°C</small></td>
+                                <td rowspan="2">0</td>
+                                <td rowspan="2">13%</td>
+                            </tr>
+                            <tr>
+                                <td>109 <small>°F</small></td>
+                                <td>88 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="mx-auto w-50">
+
+    <!-- July -->
+    <section id="july" class="container scroll-margin-top mb-5">
+        <div class="row pt-5 px-lg-5">
+
+            <!-- the month header -->
+            <h2 class="text-center fs-3 fw-bold">July</h2>
+
+            <!-- Kurdistan -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-kur-flag text-kur-gold border-bottom-0"><i class="fas fa-certificate"></i></h5>
+                <div class="card-body table-responsive bg-success bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-success">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>43 <small>°C</small></td>
+                                <td>29 <small>°C</small></td>
+                                <td rowspan="2">0</td>
+                                <td rowspan="2">15%</td>
+                            </tr>
+                            <tr>
+                                <td>109 <small>°F</small></td>
+                                <td>83 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-2"></div>
+
+            <!-- Federal Iraq -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-irq-flag text-success border-bottom-0 fw-bold">الله اكبر</h5>
+                <div class="card-body table-responsive bg-dark bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>46 <small>°C</small></td>
+                                <td>34 <small>°C</small></td>
+                                <td rowspan="2">0</td>
+                                <td rowspan="2">12%</td>
+                            </tr>
+                            <tr>
+                                <td>114 <small>°F</small></td>
+                                <td>92 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="mx-auto w-50">
+
+    <!-- August -->
+    <section id="august" class="container scroll-margin-top mb-5">
+        <div class="row pt-5 px-lg-5">
+
+            <!-- the month header -->
+            <h2 class="text-center fs-3 fw-bold">August</h2>
+
+            <!-- Kurdistan -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-kur-flag text-kur-gold border-bottom-0"><i class="fas fa-certificate"></i></h5>
+                <div class="card-body table-responsive bg-success bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-success">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>42 <small>°C</small></td>
+                                <td>28 <small>°C</small></td>
+                                <td rowspan="2">0</td>
+                                <td rowspan="2">15%</td>
+                            </tr>
+                            <tr>
+                                <td>108 <small>°F</small></td>
+                                <td>83 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-2"></div>
+
+            <!-- Federal Iraq -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-irq-flag text-success border-bottom-0 fw-bold">الله اكبر</h5>
+                <div class="card-body table-responsive bg-dark bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>46 <small>°C</small></td>
+                                <td>33 <small>°C</small></td>
+                                <td rowspan="2">0</td>
+                                <td rowspan="2">13%</td>
+                            </tr>
+                            <tr>
+                                <td>114 <small>°F</small></td>
+                                <td>92 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="mx-auto w-50">
+
+    <!-- September -->
+    <section id="september" class="container scroll-margin-top mb-5">
+        <div class="row pt-5 px-lg-5">
+
+            <!-- the month header -->
+            <h2 class="text-center fs-3 fw-bold">September</h2>
+
+            <!-- Kurdistan -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-kur-flag text-kur-gold border-bottom-0"><i class="fas fa-certificate"></i></h5>
+                <div class="card-body table-responsive bg-success bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-success">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>37 <small>°C</small></td>
+                                <td>24 <small>°C</small></td>
+                                <td rowspan="2">0</td>
+                                <td rowspan="2">18%</td>
+                            </tr>
+                            <tr>
+                                <td>99 <small>°F</small></td>
+                                <td>74 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-2"></div>
+
+            <!-- Federal Iraq -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-irq-flag text-success border-bottom-0 fw-bold">الله اكبر</h5>
+                <div class="card-body table-responsive bg-dark bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>42 <small>°C</small></td>
+                                <td>29 <small>°C</small></td>
+                                <td rowspan="2">0</td>
+                                <td rowspan="2">15%</td>
+                            </tr>
+                            <tr>
+                                <td>107 <small>°F</small></td>
+                                <td>85 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="mx-auto w-50">
+
+    <!-- October -->
+    <section id="october" class="container scroll-margin-top mb-5">
+        <div class="row pt-5 px-lg-5">
+
+            <!-- the month header -->
+            <h2 class="text-center fs-3 fw-bold">October</h2>
+
+            <!-- Kurdistan -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-kur-flag text-kur-gold border-bottom-0"><i class="fas fa-certificate"></i></h5>
+                <div class="card-body table-responsive bg-success bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-success">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>30 <small>°C</small></td>
+                                <td>19 <small>°C</small></td>
+                                <td rowspan="2">3</td>
+                                <td rowspan="2">29%</td>
+                            </tr>
+                            <tr>
+                                <td>85 <small>°F</small></td>
+                                <td>66 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-2"></div>
+
+            <!-- Federal Iraq -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-irq-flag text-success border-bottom-0 fw-bold">الله اكبر</h5>
+                <div class="card-body table-responsive bg-dark bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>35 <small>°C</small></td>
+                                <td>24 <small>°C</small></td>
+                                <td rowspan="2">1</td>
+                                <td rowspan="2">22%</td>
+                            </tr>
+                            <tr>
+                                <td>95 <small>°F</small></td>
+                                <td>75 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="mx-auto w-50">
+
+    <!-- November -->
+    <section id="november" class="container scroll-margin-top mb-5">
+        <div class="row pt-5 px-lg-5">
+
+            <!-- the month header -->
+            <h2 class="text-center fs-3 fw-bold">November</h2>
+
+            <!-- Kurdistan -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-kur-flag text-kur-gold border-bottom-0"><i class="fas fa-certificate"></i></h5>
+                <div class="card-body table-responsive bg-success bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-success">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>20 <small>°C</small></td>
+                                <td>12 <small>°C</small></td>
+                                <td rowspan="2">4</td>
+                                <td rowspan="2">43%</td>
+                            </tr>
+                            <tr>
+                                <td>68 <small>°F</small></td>
+                                <td>54 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-2"></div>
+
+            <!-- Federal Iraq -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-irq-flag text-success border-bottom-0 fw-bold">الله اكبر</h5>
+                <div class="card-body table-responsive bg-dark bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>25 <small>°C</small></td>
+                                <td>17 <small>°C</small></td>
+                                <td rowspan="2">1</td>
+                                <td rowspan="2">36%</td>
+                            </tr>
+                            <tr>
+                                <td>77 <small>°F</small></td>
+                                <td>62 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="mx-auto w-50">
+
+    <!-- December -->
+    <section id="december" class="container scroll-margin-top mb-5">
+        <div class="row pt-5 px-lg-5">
+
+            <!-- the month header -->
+            <h2 class="text-center fs-3 fw-bold">December</h2>
+
+            <!-- Kurdistan -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-kur-flag text-kur-gold border-bottom-0"><i class="fas fa-certificate"></i></h5>
+                <div class="card-body table-responsive bg-success bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-success">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>14 <small>°C</small></td>
+                                <td>8 <small>°C</small></td>
+                                <td rowspan="2">5</td>
+                                <td rowspan="2">53%</td>
+                            </tr>
+                            <tr>
+                                <td>58 <small>°F</small></td>
+                                <td>46 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-2"></div>
+
+            <!-- Federal Iraq -->
+            <div class="card weather-card col-12 col-lg-5 p-0 my-3 text-center border-0 shadow">
+                <h5 class="card-header bg-irq-flag text-success border-bottom-0 fw-bold">الله اكبر</h5>
+                <div class="card-body table-responsive bg-dark bg-opacity-50 rounded-bottom">
+                    <table class="table table-sm table-light table-borderless align-middle m-0 p-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">High <i class="fas fa-temperature-high"></i></th>
+                                <th scope="col">Low <i class="fas fa-temperature-low"></i></th>
+                                <th scope="col">Rainy Days <i class="fas fa-cloud-rain"></i></th>
+                                <th scope="col">Humidity <i class="fas fa-tint"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>19 <small>°C</small></td>
+                                <td>12 <small>°C</small></td>
+                                <td rowspan="2">1</td>
+                                <td rowspan="2">44%</td>
+                            </tr>
+                            <tr>
+                                <td>67 <small>°F</small></td>
+                                <td>53 <small>°F</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <span class="my-5"></span>
+
+{% endwith %}
+
+{% endblock %}

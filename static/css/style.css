@@ -64,6 +64,24 @@ a, a:hover {
 .bg-kur-gold-linear {background: linear-gradient(30deg, rgba(var(--kurdish-gold), 0.25) 0%, rgba(var(--white), 1) 85%);}
 .bg-kur-green-linear {background: linear-gradient(30deg, rgba(var(--kurdish-green), 0.25) 0%, rgba(var(--white), 1) 85%);}
 
+.bg-kur-flag {
+    background:
+        linear-gradient(rgba(var(--kurdish-red), 1), rgba(var(--kurdish-red), 1)),
+        linear-gradient(rgba(var(--white), 1), rgba(var(--white), 1)),
+        linear-gradient(rgba(var(--kurdish-green), 1), rgba(var(--kurdish-green), 1));
+    background-size: 100% 33%, 100% 66%, 100%;
+    background-repeat: no-repeat;
+}
+
+.bg-irq-flag {
+    background:
+        linear-gradient(rgba(var(--kurdish-red), 1), rgba(var(--kurdish-red), 1)),
+        linear-gradient(rgba(var(--white), 1), rgba(var(--white), 1)),
+        linear-gradient(rgba(var(--black), 1), rgba(var(--black), 1));
+    background-size: 100% 33%, 100% 66%, 100%;
+    background-repeat: no-repeat;
+}
+
 
 .text-shadow-thick {
     text-shadow:
@@ -949,6 +967,15 @@ p.lightbox-caption {
 .resources-card:hover .resources-card-icon {
     color: rgba(var(--black), 1);
     transform: translateX(20vw);
+}
+
+/* resources: weather */
+.weather-card {
+    transition: all 0.2s ease-in-out;
+}
+
+.weather-card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(var(--black), 0.75) !important;
 }
 
 /* BOOKINGS / CALENDAR */
