@@ -79,3 +79,10 @@ def delete_phrase(request, id):
     phrase.delete()
     messages.success(request, "Phrase Deleted!")
     return redirect(reverse("phrases"))
+
+
+def weather(request):
+    """ A view to return the weather page """
+    template = "resources/weather.html"
+    context = {}
+    return render(request, template, context)
