@@ -55,7 +55,7 @@
                 <div class="col-12 col-md-6">
                     <select class="form-select form-select-lg my-1 month-year" name="select_month" id="select_month">
                         <option value="" disabled>Month</option>
-                        {% with "January February March April May June July August September October November December" as months %}
+                        {% with months="January February March April May June July August September October November December" %}
                             {% for month in months.split %}
                                 <option data-month="{{ month }}" data-counter="{{ forloop.counter }}">{{ month }}</option>
                             {% endfor %}
