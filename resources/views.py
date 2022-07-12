@@ -86,3 +86,10 @@ def weather(request):
     template = "resources/weather.html"
     context = {}
     return render(request, template, context)
+
+
+def holidays(request):
+    """ A view to return the holidays page """
+    template = "resources/holidays.html"
+    context = {}
+    return render(request, template, context)
