@@ -1,0 +1,334 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item dropdown">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownResourceBreadcrumb" data-bs-toggle="dropdown" aria-expanded="false">
+            Resources
+        </a>
+
+        <!-- breadcrumb dropdown -->
+        <ul class="dropdown-menu" aria-labelledby="dropdownResourceBreadcrumb">
+            <li><a class="dropdown-item" href="{% url 'resources' %}">Resources</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'alphabet' %}">Alphabet</a></li>
+            <li><a class="dropdown-item" href="{% url 'phrases' %}">Phrases</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="">Entertainment</a></li>
+            <li><a class="dropdown-item active" aria-current="page">Holidays</a></li>
+            <li><a class="dropdown-item" href="{% url 'weather' %}">Weather</a></li>
+        </ul>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Holidays</li>
+{% endblock %}
+
+{% block content %}
+
+<section class="container-fluid py-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 id="page-header" class="text-dark fw-bold">Holidays</h1>
+        </div>
+    </div>
+    <!-- helper text -->
+    <div class="row mt-5">
+        <div class="col-12 col-md-8 offset-md-2 text-center fs-4">
+            The weekend is observed on <span class="fw-bold text-kur-green">Fridays</span> and <span class="fw-bold text-kur-green">Saturdays</span>.
+            <br>
+            If a national holiday falls on a weekend (Friday or Saturday),
+            then the next working day is usually taken as the national holiday, and government offices are closed.
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12 text-center fs-4">
+            <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid"> Kurdistan
+            <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid ms-5"> Iraq
+        </div>
+    </div>
+</section>
+
+
+<!-- calendar -->
+<section class="container-fluid mb-5">
+    <div class="row px-lg-5">
+
+        <div class="card weather-card col-12 col-lg-10 offset-lg-1 p-0 my-3 text-center border-0 shadow">
+            <h5 class="card-header border-bottom-0 bg-dark bg-opacity-75 text-light">List of holidays in Kurdistan / Iraq</h5>
+            <div class="card-body table-responsive bg-dark bg-opacity-50 rounded-bottom">
+
+                <table class="table table-light table-striped table-hover align-middle m-0 p-0">
+
+                    <!-- table headers -->
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col" class="border-end border-white">Date</th>
+                            <th scope="col" class="border-end border-white">Holiday</th>
+                            <th scope="col" class="border-end border-white">Region</th>
+                            <th scope="col">Notes</th>
+                        </tr>
+                    </thead>
+
+                    <!-- table body -->
+                    <tbody id="holiday-table">
+
+                        <!-- janurary -->
+                        <tr>
+                            <td>01<br>JAN</td>
+                            <td>New Year's Day</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>06<br>JAN</td>
+                            <td>Army Day</td>
+                            <td>
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <!-- march -->
+                        <tr>
+                            <td>05<br>MAR</td>
+                            <td>Uprising Day</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                            </td>
+                            <td>
+                                Against Saddam Hussein's regime.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>05<br>MAR</td>
+                            <td>Rebellion Anniversary</td>
+                            <td>
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>06<br>MAR</td>
+                            <td>National Day of<br>Tolerance and Coexistence</td>
+                            <td>
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>11<br>MAR</td>
+                            <td>Iraqi-Kurdish Autonomy<br>Agreement of 1970</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td>
+                                Anniversary of Signing of the<br>March 11, 1970 Peace Accord.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>14<br>MAR</td>
+                            <td>Birthday of<br>Mustafa Barzani</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>21<br>MAR</td>
+                            <td>Newroz (KUR)<br>Nowruz (IRQ)</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid"><br>
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td>
+                                Kurdish New Year.
+                            </td>
+                        </tr>
+
+                        <!-- april -->
+                        <tr>
+                            <td>Varies</td>
+                            <td>Çarşema Sor</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td>
+                                Yazidis New Year.<br>
+                                First Wednesday on or after 14th April.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>01<br>APR</td>
+                            <td>Kha b'Nisan</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                            </td>
+                            <td>
+                                Assyrian New Year.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>09<br>APR</td>
+                            <td>Baghdad<br>Liberation Day</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td>
+                                Fall of Saddam Hussein's regime.
+                            </td>
+                        </tr>
+
+                        <!-- may -->
+                        <tr>
+                            <td>01<br>MAY</td>
+                            <td>Labour Day</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <!-- july -->
+                        <tr>
+                            <td>14<br>JUL</td>
+                            <td>Republic Day</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <!-- october -->
+                        <tr>
+                            <td>03<br>OCT</td>
+                            <td>Iraqi<br>Independence Day</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <!-- december -->
+                        <tr>
+                            <td>10<br>DEC</td>
+                            <td>Victory Day</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td>
+                                Anniversary of Victory over Daesh/ISIS.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>17<br>DEC</td>
+                            <td>Kurdistan Flag Day</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>25<br>DEC</td>
+                            <td>Christmas Day</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <!-- varied dates -->
+                        <tr>
+                            <td>Varies</td>
+                            <td>Eid al-Fitr</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td>
+                                End of Ramadan.<br>
+                                Follows the Islamic Calender.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Varies</td>
+                            <td>Eid al-Qurban (KUR)<br>Eid al-Adha (IRQ)</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid"><br>
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td>
+                                Feast of the Sacrifice.<br>
+                                Follows the Islamic Calender.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Varies</td>
+                            <td>Muharram</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td>
+                                Islamic New Year.<br>
+                                Follows the Islamic Calender.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Varies</td>
+                            <td>Ashura</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td>
+                                Occurs on the 10th day of Muharram.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Varies</td>
+                            <td>Mawlid al-Nabi</td>
+                            <td>
+                                <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                                <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                            </td>
+                            <td>
+                                Birthday of Prophet Mohammed.<br>
+                                Follows the Islamic Calender.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
