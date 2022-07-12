@@ -978,6 +978,11 @@ p.lightbox-caption {
     box-shadow: 0 0.5rem 1rem rgba(var(--black), 0.75) !important;
 }
 
+/* resources: holidays */
+#holiday-table * img {
+    max-width: 25px;
+}
+
 /* BOOKINGS / CALENDAR */
 .day {
     background-color: rgba(var(--white), 1);

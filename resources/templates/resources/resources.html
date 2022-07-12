@@ -15,7 +15,7 @@
             <li><a class="dropdown-item" href="{% url 'phrases' %}">Phrases</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="">Entertainment</a></li>
-            <li><a class="dropdown-item" href="">Holidays</a></li>
+            <li><a class="dropdown-item" href="{% url 'holidays' %}">Holidays</a></li>
             <li><a class="dropdown-item" href="{% url 'weather' %}">Weather</a></li>
         </ul>
     </li>
@@ -70,7 +70,7 @@
 
         <!-- holidays -->
         <div class="col-12 col-md-6 list-group px-3 px-md-5">
-            <a href="" class="list-group-item list-group-item-action my-3 resources-card bg-kur-red-linear shadow">
+            <a href="{% url 'holidays' %}" class="list-group-item list-group-item-action my-3 resources-card bg-kur-red-linear shadow">
                 <i class="fas fa-calendar-alt fa-fw resources-card-icon"></i>
                 <div class="d-flex flex-column w-100 justify-content-center align-items-center my-5">
                     <h2 class="fs-2 fw-bold">Holidays</h2>
