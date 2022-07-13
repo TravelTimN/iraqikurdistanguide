@@ -17,8 +17,19 @@ def resources(request):
 def alphabet(request):
     """ A view to return the alphabet page """
     template = "resources/alphabet.html"
-    context = {}
-    return render(request, template, context)
+    return render(request, template)
+
+
+def entertainment(request):
+    """ A view to return the entertainment page """
+    template = "resources/entertainment.html"
+    return render(request, template)
+
+
+def holidays(request):
+    """ A view to return the holidays page """
+    template = "resources/holidays.html"
+    return render(request, template)
 
 
 def phrases(request):
@@ -84,12 +95,4 @@ def delete_phrase(request, id):
 def weather(request):
     """ A view to return the weather page """
     template = "resources/weather.html"
-    context = {}
-    return render(request, template, context)
-
-
-def holidays(request):
-    """ A view to return the holidays page """
-    template = "resources/holidays.html"
-    context = {}
-    return render(request, template, context)
+    return render(request, template)
