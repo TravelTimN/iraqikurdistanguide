@@ -13,8 +13,12 @@
         <ul class="dropdown-menu" aria-labelledby="dropdownResourceBreadcrumb">
             <li><a class="dropdown-item" href="{% url 'resources' %}">Resources</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{% url 'alphabet' %}">Alphabet</a></li>
+            <li><a class="dropdown-item active" aria-current="page">Alphabet</a></li>
             <li><a class="dropdown-item" href="{% url 'phrases' %}">Phrases</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'entertainment' %}">Entertainment</a></li>
+            <li><a class="dropdown-item" href="{% url 'holidays' %}">Holidays</a></li>
+            <li><a class="dropdown-item" href="{% url 'weather' %}">Weather</a></li>
         </ul>
     </li>
     <li class="breadcrumb-item active" aria-current="page">Alphabet</li>
@@ -22,17 +26,101 @@
 
 {% block content %}
 
-<section class="container my-5">
+<section class="container py-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 id="page-header" class="text-dark fw-bold">Alphabet</h1>
+        </div>
+    </div>
+    <!-- helper text -->
+    <div class="row mt-5">
+        <div class="col-12 text-center fs-4">
+            <i class="fas fa-language text-kur-red"></i>
+            Soranî, Kurmancî, Başûrî, Zazakî, Goranî, and many more!
+            <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12 col-lg-10 offset-lg-1 text-center fs-5">
+            <p>
+                The Kurdish language has many dialects, similar to the many English dialects around the world!
+                It is quite similar to Arabic and Persian, reading from right-to-left, but there are subtle differences with the letters.
+            </p>
+            <p>
+                The <strong>Sorani</strong> dialect (Kurdî Nawend/Central Kurdish) is the official dialect in the autonomous region of Iraqi Kurdistan.
+                This is the primary dialect used in the capital city of Erbil, and surrounding areas.
+            </p>
+            <p>
+                The <strong>Kurmanji/Kurmancî</strong> dialect (Kurdiya Bakur/Northern Kurdish) is the most spoken dialect, because it extends beyond Iraqi Kurdistan,
+                into the neighboring countries that have a Kurd population (Türkiye, Iran, Syria).
+                Kurmanji is also the dialect used in the Yezidi Kurds' holy writing.
+            </p>
+            <p>
+                The <strong>Başûri</strong> dialects (Kurdî Başûrî or Kurdî Xwarg/Souther Kurdish) have subdivisions that extend into Kelhurrî, Kirmaşanî, Îlamî, and Feylî.
+                It is also spoken by Kakeyî and Yarsanî Kurds. It is one of the pure Kurdish dialects.
+            </p>
+            <p>
+                The <strong>Zazakî</strong> dialect (Kirdkî, Kirmanckî, or Dimlî) is spoken in the regions of Dêrsim (Tunceli) and Çewlig (Bingöl).
+                It is closely related to the Gorani dialect.
+            </p>
+            <p>
+                The <strong>Gorani</strong> dialect has subdivisions; Hewramî (between Iraq-Iran), Şebekî (in the Mosul area), Bacelanî (Bajalani), and Sarlî.
+                This dialect has been used in old Kurdish poems.
+            </p>
+            <p>
+                Sorani, Kurmanji, and Başûri have many similarities. Zazaki and Gorani share many similarities.
+            </p>
+            <hr class="w-75 mx-auto my-5">
+            <p>
+                For the alphabet below, we are focusing on the <strong>Sorani</strong> script, used throughout Iraqi Kurdistan all over.
+                <br>
+                As with Arabic and Persian, the letters change depending on where the letter falls within a word.
+                <br><br>
+                <strong>Initial</strong>: the first letter of the word.<br>
+                <strong>Medial</strong>: in the middle of a word.<br>
+                <strong>Final</strong>: the last letter of the word.<br>
+                <strong>Isolated</strong>: alone, not touching any others.<br>
+            </p>
+        </div>
+    </div>
+</section>
 
-    Alphabet
-    <br>
-    <ul>
-        <li>english</li>
-        <li>kurdish</li>
-        <li>arabic</li>
-        <li>phonetic</li>
-    </ul>
-
+<!-- alphabet letters -->
+<section class="container-fluid py-5">
+    <div class="row">
+        <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+            <table class="table table-responsive text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Latin</th>
+                        <th scope="col">Isolated</th>
+                        <th scope="col">Final</th>
+                        <th scope="col">Medial</th>
+                        <th scope="col">Initial</th>
+                        <th scope="col">Sound</th>
+                    </tr>
+                </thead>
+                <tbody class="fs-1">
+                    <tr>
+                        <th scope="row" class="fs-5">A</th>
+                        <td>ا</td>
+                        <td>ـا</td>
+                        <td>ـا</td>
+                        <td></td>
+                        <td class="fs-5">f<strong class="text-kur-green">a</strong>ther</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">B</th>
+                        <td>ب</td>
+                        <td>ـب</td>
+                        <td>ـبـ</td>
+                        <td>بـ</td>
+                        <td class="fs-5"><strong class="text-kur-green">b</strong>ed</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </section>
 
 {% endblock %}
