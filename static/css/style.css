@@ -983,6 +983,36 @@ p.lightbox-caption {
     max-width: 25px;
 }
 
+/* resources: entertainment */
+.entertainment-nav .nav-link.active {
+    background-color: rgba(var(--kurdish-green), 1);
+}
+
+.entertainment-nav .nav-item {
+    overflow: hidden;
+}
+
+.entertainment-nav .nav-item .nav-link {
+    transition: all 0.2s ease-in-out;
+}
+
+.entertainment-nav .nav-item:hover .nav-link {
+    transform: scale(1.25);
+    background-color: rgba(var(--kurdish-green), 0.5);
+}
+
+.entertainment-tab-content .list-group-item.list-group-item-action:nth-child(even) {
+    background-color: rgba(var(--dark-grey), 0.05);
+}
+
+.entertainment-tab-content .list-group-item.list-group-item-action {
+    transition: all 0.2s ease-in-out;
+}
+
+.entertainment-tab-content .list-group-item.list-group-item-action:hover {
+    background-color: rgba(var(--black), 0.1);
+}
+
 /* BOOKINGS / CALENDAR */
 .day {
     background-color: rgba(var(--white), 1);

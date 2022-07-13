@@ -1,0 +1,2070 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-books"></i></a></li>
+    <li class="breadcrumb-item dropdown">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownResourceBreadcrumb" data-bs-toggle="dropdown" aria-expanded="false">
+            Resources
+        </a>
+
+        <!-- breadcrumb dropdown -->
+        <ul class="dropdown-menu" aria-labelledby="dropdownResourceBreadcrumb">
+            <li><a class="dropdown-item" href="{% url 'resources' %}">Resources</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'alphabet' %}">Alphabet</a></li>
+            <li><a class="dropdown-item" href="{% url 'phrases' %}">Phrases</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item active" aria-current="page">Entertainment</a></li>
+            <li><a class="dropdown-item" href="{% url 'holidays' %}">Holidays</a></li>
+            <li><a class="dropdown-item" href="{% url 'weather' %}">Weather</a></li>
+        </ul>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Entertainment</li>
+{% endblock %}
+
+{% block content %}
+
+<section class="container-fluid py-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 id="page-header" class="text-dark fw-bold">Entertainment</h1>
+        </div>
+    </div>
+    <!-- helper text -->
+    <div class="row mt-5">
+        <div class="col-12 col-md-8 offset-md-2 text-center fs-4">
+            <i class="fas fa-microphone text-kur-red"></i>
+            Kurdish culture through various media.
+        </div>
+    </div>
+</section>
+
+
+<!-- nav and pills of entertainment -->
+<section class="container-fluid mb-5">
+    <div class="row px-lg-5">
+        <div class="col-12 col-lg-10 offset-lg-1">
+
+            <!-- clickable tabs/pills -->
+            <ul class="nav nav-pills nav-fill entertainment-nav bg-dark text-light" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-light h-100 active" id="pills-books-tab" data-bs-toggle="pill" data-bs-target="#pills-books"
+                        type="button" role="tab" aria-controls="pills-books" aria-selected="true">
+                        <i class="fas fa-book"></i> Books
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-light h-100" id="pills-movies-tab" data-bs-toggle="pill" data-bs-target="#pills-movies"
+                        type="button" role="tab" aria-controls="pills-movies" aria-selected="false">
+                        <i class="fas fa-film"></i> Movies
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-light h-100" id="pills-musicians-tab" data-bs-toggle="pill" data-bs-target="#pills-musicians"
+                        type="button" role="tab" aria-controls="pills-musicians" aria-selected="false">
+                        <i class="fas fa-music"></i> Musicians
+                    </button>
+                </li>
+            </ul>
+
+            <!-- tab contents -->
+            <div class="tab-content entertainment-tab-content" id="pills-tabContent">
+
+                <!-- books -->
+                <div class="tab-pane fade show active" id="pills-books" role="tabpanel" aria-labelledby="pills-books-tab">
+                    <div class="list-group">
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">A Modern History of the Kurds</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1958</span>
+                                </small>
+                            </div>
+                            <small>by David McDowall</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">A Road Unforeseen: Women Fight the Islamic State</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2016</span>
+                                </small>
+                            </div>
+                            <small>by Meredith Tax</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">A Thousand Sighs, A Thousand Revolts: Journeys in Kurdistan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2004</span>
+                                </small>
+                            </div>
+                            <small>by Christiane Bird</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">After Such Knowledge, What Forgiveness?: My Encounters With Kurdistan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1997</span>
+                                </small>
+                            </div>
+                            <small>by Jonathan C. Randal</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Blood and Belief: The PKK and the Kurdish Fight for Independence</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2007</span>
+                                </small>
+                            </div>
+                            <small>by Aliza Marcus</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Daughters of Smoke and Fire</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2020</span>
+                                </small>
+                            </div>
+                            <small>by Ava Homa</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Dødevaskeren</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2017</span>
+                                </small>
+                            </div>
+                            <small>by Sara Omar</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Ghosts of Halabja: Saddam Hussein and the Kurdish Genocide</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2008</span>
+                                </small>
+                            </div>
+                            <small>by Michael J. Kelly</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Hell Is Over: Voices of the Kurds after Saddam</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2004</span>
+                                </small>
+                            </div>
+                            <small>by Mike Tucker</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">I Stared at the Night of the City</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2016</span>
+                                </small>
+                            </div>
+                            <small>by Bakhtiyar Ali</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Invisible Nation: How the Kurds' Quest for Statehood Is Shaping Iraq and the Middle East</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2008</span>
+                                </small>
+                            </div>
+                            <small>by Quil Lawrence</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Kobane Calling</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2015</span>
+                                </small>
+                            </div>
+                            <small>by Zerocalcare</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Kurdistan: In the Shadow of History</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1997</span>
+                                </small>
+                            </div>
+                            <small>by Susan Meiselas</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Kurds and the State in Iran: The Making of Kurdish Identity</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2010</span>
+                                </small>
+                            </div>
+                            <small>by Abbas Vali</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Letters from a Kurd</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2015</span>
+                                </small>
+                            </div>
+                            <small>by Kae Bahar</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Mustafa Barzani and the Kurdish Liberation Movement</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2003</span>
+                                </small>
+                            </div>
+                            <small>by Massoud Barzani</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">My Father's Paradise: A Son's Search for His Jewish Past in Kurdish Iraq</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2008</span>
+                                </small>
+                            </div>
+                            <small>by Ariel Sabar</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">My Father's Rifle: A Childhood in Kurdistan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2004</span>
+                                </small>
+                            </div>
+                            <small>by Hiner Saleem</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">No Friend but the Mountains: Writing from Manus Prison</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2018</span>
+                                </small>
+                            </div>
+                            <small>by Behrouz Boochani</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">No Friends But The Mountains: The Tragic History Of The Kurds</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1992</span>
+                                </small>
+                            </div>
+                            <small>by John Bulloch</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Påfuglens Tårer - En rejse i de irakiske ezidiers verden før Islamisk Stat</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2016</span>
+                                </small>
+                            </div>
+                            <small>by Peter Wiingaard</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Rebel Land: Unraveling the Riddle of History in a Turkish Town</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2008</span>
+                                </small>
+                            </div>
+                            <small>by Christopher de Bellaigue</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Revolution in Rojava: Democratic Autonomy and Women's Liberation in the Syrian Kurdistan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2015</span>
+                                </small>
+                            </div>
+                            <small>by Michael Knapp</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Road through Kurdistan: The Narrative of an Engineer in Iraq</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1937</span>
+                                </small>
+                            </div>
+                            <small>by Archibald Milne Hamilton</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Rojava: An Alternative to Imperialism, Nationalism, and Islamism in the Middle East</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2015</span>
+                                </small>
+                            </div>
+                            <small>by Oso Sabio</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Rojava: Revolution, War and the Future of Syria's Kurds</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2014</span>
+                                </small>
+                            </div>
+                            <small>by Thomas Schmidinger</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Sara: Prison Memoir of a Kurdish Revolutionary</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2018</span>
+                                </small>
+                            </div>
+                            <small>by Sakine Cansiz</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Take What You Can Carry</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2021</span>
+                                </small>
+                            </div>
+                            <small>by Gian Sardar</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Taste of Persia: A Cook's Travels Through Armenia, Azerbaijan, Georgia, Iran, and Kurdistan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2016</span>
+                                </small>
+                            </div>
+                            <small>by Naomi Duguid</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Battle for the Mountain of the Kurds: Self-Determination and Ethnic Cleansing in the Afrin Region of Rojava</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2019</span>
+                                </small>
+                            </div>
+                            <small>by Thomas Schmidinger</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Cambridge History of the Kurds</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2021</span>
+                                </small>
+                            </div>
+                            <small>by Hamit Bozarslan</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Cradle of Mankind; Life in Eastern Kurdistan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1914</span>
+                                </small>
+                            </div>
+                            <small>by W.A. Wigram</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Daughters of Kobani: A Story of Rebellion, Courage, and Justice</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2021</span>
+                                </small>
+                            </div>
+                            <small>by Gayle Tzemach Lemmon</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Kurdish National Movement: Its Origins and Development</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2006</span>
+                                </small>
+                            </div>
+                            <small>by Wadie Jwaideh</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Kurdish Spring: A New Map of the Middle East</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2015</span>
+                                </small>
+                            </div>
+                            <small>by David L. Phillips</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Kurds in Iran: The Past, Present and Future</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2017</span>
+                                </small>
+                            </div>
+                            <small>by Kerim Yildiz</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Kurds: A Concise History and Fact Book</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1992</span>
+                                </small>
+                            </div>
+                            <small>by Mehrdad R. Izady</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Kurds: A People in Search of Their Homeland</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2006</span>
+                                </small>
+                            </div>
+                            <small>by Kevin Mckiernan</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Margins of Empire: Kurdish Militias in the Ottoman Tribal Zone</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2011</span>
+                                </small>
+                            </div>
+                            <small>by Janet Klein</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Miracle of the Kurds: A Remarkable Story of Hope Reborn in Northern Iraq</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2014</span>
+                                </small>
+                            </div>
+                            <small>by Stephen Mansfield</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Passion and Death of Rahman the Kurd: Dreaming Kurdistan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2010</span>
+                                </small>
+                            </div>
+                            <small>by Carol Prunhuber</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Pitiful Plight of the Assyrian Christians in Persia and Kurdistan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2010</span>
+                                </small>
+                            </div>
+                            <small>by William Walker Rockwell</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Political Development of the Kurds in Iran: Pastoral Nationalism</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2003</span>
+                                </small>
+                            </div>
+                            <small>by Farideh Koohi-Kamali</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Political Thought of Abdullah Öcalan: Kurdistan, Women's Revolution and Democratic Confederalism</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2017</span>
+                                </small>
+                            </div>
+                            <small>by Abdullah Öcalan</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Road Map to Negotiations</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2011</span>
+                                </small>
+                            </div>
+                            <small>by Abdullah Öcalan</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Roots of Civilisation</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2001</span>
+                                </small>
+                            </div>
+                            <small>by Abdullah Öcalan</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Terrorist Factory: ISIS, the Yazidi Genocide, and Exporting Terror</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2018</span>
+                                </small>
+                            </div>
+                            <small>by Patrick Desbois</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">This Fire Never Dies: One Year With the PKK</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2018</span>
+                                </small>
+                            </div>
+                            <small>by Fréderike Geerdink</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">To Dare Imagining: Rojava Revolution</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2016</span>
+                                </small>
+                            </div>
+                            <small>by Dilar Dirik</small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">War and Peace in Kurdistan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2008</span>
+                                </small>
+                            </div>
+                            <small>by Abdullah Öcalan</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- movies -->
+                <div class="tab-pane fade" id="pills-movies" role="tabpanel" aria-labelledby="pills-movies-tab">
+                    <div class="list-group">
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">9</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2021</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">14 Tirmeh</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2017</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">A Song for Beko</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1992</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">A Tale of Three Sisters</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2019</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">A Time for Drunken Horses</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2000</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Before Snowfall</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2013</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Before Your Eyes</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2009</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Berdel</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1990</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Beyond Our Dreams</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2000</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Big Man, Little Love</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2001</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Birds of Exile</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1964</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Come to My Voice</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2013</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Creation between Two Surfaces</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2020</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Crossing the Dust</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2006</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Earthbound</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2008</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Future Lasts Forever</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2011</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Girls of the Sun</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2018</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Gitmek: My Marlon and Brando</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2008</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Good Kurds, Bad Kurds: No Friends But the Mountains</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2000</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Half Moon</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2006</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">If You Die, I'll Kill You</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2011</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Iraq in Fragments</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2006</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Iraq: War in Kurdistan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1974</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Jani Gal</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2007</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Jîn</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2013</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Jiyan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2002</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Journey to the Sun</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1999</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Kebab Connection</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1998</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Kilomètre Zéro</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2005</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Klamek ji bo Beko</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1992</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Kurdish Lover</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2010</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Kurds-Yezidis</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1933</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Letter to the King</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2014</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Leyla Zana, le cri au-delà de la voix étouffée</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2002</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Mardan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2014</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Marooned in Iraq</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2002</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Memories on Stone</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2014</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">My Country Is Kurdistan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2014</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">My Dear Brother</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1973</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">My Sweet Pepper Land</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2013</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Nofozi</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2010</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">North</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2015</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Notes from a Kurdish Rebel</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2006</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Peshmerga</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2016</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Press</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2010</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Requiem of Snow</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2005</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Rhino Season</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2012</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Sadegh, the Kurd</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1972</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Son of Babylon</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2009</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Song of My Mother</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2014</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Sozdar, She Who Lives Her Promise</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2007</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Anarchists vs ISIS</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2018</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Boy Who Stopped Talking</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1996</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Carpet of Wood</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2008</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Emigrated Birds</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2013</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Fall from Heaven</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2014</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Garden of Stones</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1976</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Heavy Burden</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2019</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Herd</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1978</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Last Winter</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2012</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Law of the Border</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1966</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Photograph</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2001</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Qandil Mountains</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2010</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Upside-down Triangle</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2016</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Three Kings</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1999</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Tokyo Kurds</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2017</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Turtles Can Fly</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2004</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Vive la mariée... et la libération du Kurdistan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1998</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Vodka Lemon</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2003</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Voice of My Father</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2012</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">We Need Happiness</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2010</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Where Is Kurdistan?</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2016</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Whisper with the Wind</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2009</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Why is Difficult to make Films in Kurdistan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2017</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Wild Kurdistan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1965</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Winterland</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2007</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Zare</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">1927</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Zero Nine</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill">2021</span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- musicians -->
+                <div class="tab-pane fade" id="pills-musicians" role="tabpanel" aria-labelledby="pills-musicians-tab">
+                    <div class="list-group">
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Abba Karib</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Abduhashim Ismailov</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Adirjam</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Adnan Karim</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Agire Jiyan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Ahmet Aslan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Ahmet Kaya</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Ali Akbar Moradi</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Ali Sarhan Shamran</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Ali Serhat Baran</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Alin</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Aram Tigran</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Ardavan Kamkar</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Ardeshir Kamkar</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Awder</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Ayfer Düzdaş</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Aynur Doğan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Bahramji</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Bandi Kurdi</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Bijan Kamkar</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Blend Saleh</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Bryar rzgar</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Cane</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Ciwan Haco</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Dilo Doxan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Dilshad Said</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Diyar Dersim</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Ehmede Çep</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Ferhat Tunc</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Gani Mirzo</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Ghader Abdollahzadeh</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Ghashang Kamkar</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Hafez Nazeri</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Hakan Ener</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Hamid Reza Ardalan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Hardi Salami</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Hasret Gültekin</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Hassan Zirak</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Heme Haci</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Hooshang Kamkar</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Hussein Zahawy</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Issa Hassan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Karapete Xaco</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Kawis Axa</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Kayhan Kalhor</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Koma Amed</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Mamle</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Manoochehr Sadeghi</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Marya Hawrami</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Metin & Kemal Kahraman</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Mihemed Arif Cizrawi</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Mihemed Şexo</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Mikail Aslan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Mohammad Mamle</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Mojtaba Mirzadeh</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Mshko Erbili</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Myriam Fares</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Naseer Shamma</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Navid Zardi</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Nizamettin Ariç</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Nûdem Durak</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Rapzan Belagat</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Renas Miran</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Reşo</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Rojda</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Rojhan Beken</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Rojin</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Romi Harki</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Saam Moosa</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Saeed Farajpouri</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Said Ali Asghari</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Sakina</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Samira Karzan</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Sayed Ali Asghar Kurdistani</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Şehrîbana Kurdî</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Serhado</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Serhat Baran</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Seyed Ali Jaberi</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Shahram Nazeri</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Shahram Sardar</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Shahriyar Jamshidi</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Shams Ensemble</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Şivan Perwer</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Tahir Tewfiq</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Tara Jaff</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">The Kamkars</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Xalîd Reşîd</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Xero Abbas</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Yalda Abbasi</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Zhiar Ali</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Ziryab</h5>
+                                <small class="fs-5">
+                                    <span class="badge bg-warning text-dark rounded-pill"></span>
+                                </small>
+                            </div>
+                            <small></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
