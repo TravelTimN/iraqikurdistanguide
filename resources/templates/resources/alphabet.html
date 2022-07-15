@@ -72,7 +72,7 @@
             </p>
             <hr class="w-75 mx-auto my-5">
             <p>
-                For the alphabet below, we are focusing on the <strong>Sorani</strong> script, used throughout Iraqi Kurdistan all over.
+                For the alphabet below, we are focusing on the <strong>Sorani</strong> script, used throughout Iraqi Kurdistan.
                 <br>
                 As with Arabic and Persian, the letters change depending on where the letter falls within a word.
                 <br><br>
@@ -86,123 +86,629 @@
 </section>
 
 <!-- alphabet letters -->
-<section class="container-fluid py-5">
+<section class="container-fluid pb-5">
     <div class="row">
-        <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-            <table class="table table-responsive table-bordered border-dark text-center align-middle">
-                <thead class="table-dark">
+        <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 table-responsive">
+
+            <table class="table table-bordered border-dark text-center align-middle">
+                <thead class="table-dark align-middle">
                     <tr>
-                        <th scope="col">Latin</th>
+                        <th scope="col">Romanized<br><small>[IPA]</small></th>
                         <th scope="col">Isolated</th>
-                        <th scope="col">Final</th>
-                        <th scope="col">Medial</th>
-                        <th scope="col">Initial</th>
-                        <th scope="col">Sound</th>
+                        <th scope="col">Final<br><small>(end)</small></th>
+                        <th scope="col">Medial<br><small>(middle)</small></th>
+                        <th scope="col">Initial<br><small>(start)</small></th>
+                        <th scope="col">Phonetic</th>
+                        <th scope="col">Listen</th>
                     </tr>
                 </thead>
                 <tbody class="fs-1">
                     <tr>
-                        <th scope="row" class="fs-5">A</th>
+                        <th scope="row" class="fs-5">
+                            A, a
+                            <br>
+                            <small class="text-muted">[aː]</small>
+                        </th>
                         <td>ا</td>
                         <td colspan="2">ـا</td>
-                        <td class="bg-secondary bg-opacity-25"></td>
+                        <td>ئا</td>
                         <td class="fs-5">f<strong class="text-underline-green text-kur-green">a</strong>ther</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/a.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
                     </tr>
                     <tr>
-                        <th scope="row" class="fs-5">B</th>
+                        <th scope="row" class="fs-5">
+                            B, b
+                            <br>
+                            <small class="text-muted">[b]</small>
+                        </th>
                         <td>ب</td>
                         <td>ـب</td>
                         <td>ـبـ</td>
                         <td>بـ</td>
-                        <td class="fs-5"><strong class="text-underline-green text-kur-green">b</strong>ed</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">b</strong>ear</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/b.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
                     </tr>
                     <tr>
-                        <th scope="row" class="fs-5">C</th>
+                        <th scope="row" class="fs-5">
+                            C, c
+                            <br>
+                            <small class="text-muted">[d͡ʒ]</small>
+                        </th>
                         <td>ج</td>
                         <td>ـج</td>
                         <td>ـجـ</td>
                         <td>جـ</td>
                         <td class="fs-5"><strong class="text-underline-green text-kur-green">j</strong>ungle</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/c.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
                     </tr>
                     <tr>
-                        <th scope="row" class="fs-5">Ç</th>
+                        <th scope="row" class="fs-5">
+                            Ç, ç
+                            <br>
+                            <small class="text-muted">[t͡ʃ]</small>
+                        </th>
                         <td>چ</td>
                         <td>ـچ</td>
                         <td>ـچـ</td>
                         <td>چـ</td>
                         <td class="fs-5"><strong class="text-underline-green text-kur-green">ch</strong>eese</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/ç.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
                     </tr>
                     <tr>
-                        <th scope="row" class="fs-5">D</th>
+                        <th scope="row" class="fs-5">
+                            D, d
+                            <br>
+                            <small class="text-muted">[d]</small>
+                        </th>
                         <td>د</td>
                         <td colspan="2">ـد</td>
                         <td>د</td>
                         <td class="fs-5"><strong class="text-underline-green text-kur-green">d</strong>og</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/d.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
                     </tr>
                     <tr>
-                        <th scope="row" class="fs-5">E</th>
+                        <th scope="row" class="fs-5">
+                            E, e
+                            <br>
+                            <small class="text-muted">[ɛ]</small>
+                        </th>
                         <td>ە</td>
                         <td colspan="2">ـە</td>
-                        <td>ە</td>
-                        <td class="fs-5">b<strong class="text-underline-green text-kur-green">e</strong>t</td>
+                        <td>ئە</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">e</strong>gg</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/e.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
                     </tr>
                     <tr>
-                        <th scope="row" class="fs-5">Ê</th>
+                        <th scope="row" class="fs-5">
+                            Ê, ê
+                            <br>
+                            <small class="text-muted">[eː]</small>
+                        </th>
                         <td>ێ</td>
                         <td>ـێ</td>
                         <td>ـێـ</td>
                         <td>ێـ</td>
-                        <td class="fs-5">h<strong class="text-underline-green text-kur-green">ey</strong></td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">ye</strong>s</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/ê.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
                     </tr>
                     <tr>
-                        <th scope="row" class="fs-5">F</th>
+                        <th scope="row" class="fs-5">
+                            F, f
+                            <br>
+                            <small class="text-muted">[f]</small>
+                        </th>
                         <td>ف</td>
                         <td>ـف</td>
                         <td>ـفـ</td>
                         <td>فـ</td>
                         <td class="fs-5"><strong class="text-underline-green text-kur-green">f</strong>un</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/f.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
                     </tr>
                     <tr>
-                        <th scope="row" class="fs-5">G</th>
+                        <th scope="row" class="fs-5">
+                            G, g
+                            <br>
+                            <small class="text-muted">[ɡ]</small>
+                        </th>
                         <td>گ</td>
                         <td>ـگ</td>
                         <td>ـگـ</td>
                         <td>گـ</td>
                         <td class="fs-5"><strong class="text-underline-green text-kur-green">g</strong>o</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/g.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
                     </tr>
                     <tr>
-                        <th scope="row" class="fs-5">H</th>
+                        <th scope="row" class="fs-5">
+                            H, h
+                            <br>
+                            <small class="text-muted">[h]</small>
+                        </th>
                         <td>ھ</td>
                         <td class="bg-secondary bg-opacity-25"></td>
                         <td>ـھـ</td>
                         <td>ھ</td>
                         <td class="fs-5"><strong class="text-underline-green text-kur-green">h</strong>at</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/h.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
                     </tr>
                     <tr>
-                        <th scope="row" class="fs-5">Ḧ</th>
+                        <th scope="row" class="fs-5">
+                            Ḧ, ḧ
+                            <br>
+                            <small class="text-muted">[ħ]</small>
+                        </th>
                         <td>ح</td>
                         <td>ـح</td>
                         <td>ـحـ</td>
                         <td>حـ</td>
-                        <td class="fs-5">thou<strong class="text-underline-green text-kur-green">gh</strong>t</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">H</strong>ussein</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/ḧ.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
                     </tr>
-                    <!-- template below -->
-                    <!-- template below -->
-                    <!-- template below -->
-                    <!-- template below -->
                     <tr>
-                        <th scope="row" class="fs-5"></th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="fs-5"><strong class="text-underline-green text-kur-green"></strong></td>
+                        <th scope="row" class="fs-5">
+                            Î, î
+                            <br>
+                            <small class="text-muted">[iː]</small>
+                        </th>
+                        <td>ی</td>
+                        <td>ـی</td>
+                        <td>ـیـ</td>
+                        <td>یـ</td>
+                        <td class="fs-5">w<strong class="text-underline-green text-kur-green">ee</strong>k</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/î.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            J, j
+                            <br>
+                            <small class="text-muted">[ʒ]</small>
+                        </th>
+                        <td>ژ</td>
+                        <td colspan="2">ـژ</td>
+                        <td>ژ</td>
+                        <td class="fs-5">plea<strong class="text-underline-green text-kur-green">s</strong>ure</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/j.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            K, k
+                            <br>
+                            <small class="text-muted">[k]</small>
+                        </th>
+                        <td>ک</td>
+                        <td>ـک</td>
+                        <td>ـکـ</td>
+                        <td>کـ</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">k</strong>ing</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/k.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            L, l
+                            <br>
+                            <small class="text-muted">[l]</small>
+                        </th>
+                        <td>ل</td>
+                        <td>ـل</td>
+                        <td>ـلـ</td>
+                        <td>لـ</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">l</strong>ove</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/l.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            Ll, ll
+                            <br>
+                            <small class="text-muted">[ɫ]</small>
+                        </th>
+                        <td>ڵ</td>
+                        <td>ـڵ</td>
+                        <td>ـڵـ</td>
+                        <td class="bg-secondary bg-opacity-25"></td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">ll</strong>ama</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/ll.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            M, m
+                            <br>
+                            <small class="text-muted">[m]</small>
+                        </th>
+                        <td>م</td>
+                        <td>ـم</td>
+                        <td>ـمـ</td>
+                        <td>مـ</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">m</strong>an</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/m.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            N, n
+                            <br>
+                            <small class="text-muted">[n]</small>
+                        </th>
+                        <td>ن</td>
+                        <td>ـن</td>
+                        <td>ـنـ</td>
+                        <td>نـ</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">n</strong>ot</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/n.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            O, o
+                            <br>
+                            <small class="text-muted">[o]</small>
+                        </th>
+                        <td>ۆ</td>
+                        <td colspan="2">ـۆ</td>
+                        <td>ۆ</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">o</strong>ld</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/o.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            P, p
+                            <br>
+                            <small class="text-muted">[p]</small>
+                        </th>
+                        <td>پ</td>
+                        <td>ـپ</td>
+                        <td>ـپـ</td>
+                        <td>پـ</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">p</strong>izza</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/p.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            Q, q
+                            <br>
+                            <small class="text-muted">[q]</small>
+                        </th>
+                        <td>ق</td>
+                        <td>ـق</td>
+                        <td>ـقـ</td>
+                        <td>قـ</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">Q</strong>atar</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/q.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            R, r
+                            <br>
+                            <small class="text-muted">[ɾ]</small>
+                        </th>
+                        <td>ر</td>
+                        <td colspan="2">ـر</td>
+                        <td class="bg-secondary bg-opacity-25"></td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">r</strong>ed</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/r.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            Rr, rr
+                            <br>
+                            <small class="text-muted">[r]</small>
+                        </th>
+                        <td>ڕ</td>
+                        <td colspan="2">ـڕ</td>
+                        <td>ڕ</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">rolled</strong> r</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/rr.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            S, s
+                            <br>
+                            <small class="text-muted">[s]</small>
+                        </th>
+                        <td>س</td>
+                        <td>ـس</td>
+                        <td>ـسـ</td>
+                        <td>سـ</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">s</strong>un</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/s.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            Ş, ş
+                            <br>
+                            <small class="text-muted">[ʃ]</small>
+                        </th>
+                        <td>ش</td>
+                        <td>ـش</td>
+                        <td>ـشـ</td>
+                        <td>شـ</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">sh</strong>ow</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/sh.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            T, t
+                            <br>
+                            <small class="text-muted">[t]</small>
+                        </th>
+                        <td>ت</td>
+                        <td>ـت</td>
+                        <td>ـتـ</td>
+                        <td>تـ</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">t</strong>op</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/t.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            Û, û
+                            <br>
+                            <small class="text-muted">[uː]</small>
+                        </th>
+                        <td>وو</td>
+                        <td colspan="2">ـوو</td>
+                        <td class="bg-secondary bg-opacity-25"></td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">oo</strong>ps</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/û.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            V, v
+                            <br>
+                            <small class="text-muted">[v]</small>
+                        </th>
+                        <td>ڤ</td>
+                        <td>ـڤ</td>
+                        <td>ـڤـ</td>
+                        <td>ڤـ</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">v</strong>an</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/v.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            W, w
+                            <br>
+                            <small class="text-muted">[w]</small>
+                        </th>
+                        <td>و</td>
+                        <td colspan="2">ـو</td>
+                        <td>و</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">woo</strong>d</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/w.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            X, x
+                            <br>
+                            <small class="text-muted">[x]</small>
+                        </th>
+                        <td>خ</td>
+                        <td>ـخ</td>
+                        <td>ـخـ</td>
+                        <td>خـ</td>
+                        <td class="fs-5">Ba<strong class="text-underline-green text-kur-green">ch</strong></td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/x.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            Ẍ, ẍ
+                            <br>
+                            <small class="text-muted">[ɣ]</small>
+                        </th>
+                        <td>غ</td>
+                        <td>ـغ</td>
+                        <td>ـغـ</td>
+                        <td>غـ</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">ri</strong>p</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/ẍ.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            Z, z
+                            <br>
+                            <small class="text-muted">[z]</small>
+                        </th>
+                        <td>ز</td>
+                        <td colspan="2">ـز</td>
+                        <td>ز</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">z</strong>ero</td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/z.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fs-5">
+                            (')
+                            <br>
+                            <small class="text-muted">[ʕ]</small>
+                        </th>
+                        <td>ع</td>
+                        <td>ـع</td>
+                        <td>ـعـ</td>
+                        <td>عـ</td>
+                        <td class="fs-5"><strong class="text-underline-green text-kur-green">uh</strong></td>
+                        <td>
+                            <audio hidden>
+                                <source src="{% static 'audio/uh.ogg' %}" type="audio/ogg">
+                            </audio>
+                            <i class="fas fa-volume-up btn-play-audio"></i>
+                        </td>
                     </tr>
                     <!-- end template -->
                 </tbody>
             </table>
+
         </div>
     </div>
 </section>
 
+{% endblock %}
+
+
+{% block js %}
+<script>
+    $(".btn-play-audio").on("click", function() {
+        $("audio").each(function() {
+            this.pause();
+            this.currentTime = 0;
+        });
+        let audioFile = $(this).siblings("audio");
+        if (audioFile[0].readyState != 0) {
+            audioFile[0].play();
+        }
+    });
+</script>
 {% endblock %}
