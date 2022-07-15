@@ -82,6 +82,12 @@ a, a:hover {
     background-repeat: no-repeat;
 }
 
+.text-underline-green {
+    margin: 0 auto;
+    width: fit-content;
+    padding: 2px;
+    border-bottom: 2px solid rgba(var(--kurdish-green), 1);
+}
 
 .text-shadow-thick {
     text-shadow:
