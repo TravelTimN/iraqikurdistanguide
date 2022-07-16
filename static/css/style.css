@@ -109,6 +109,10 @@ a, a:hover {
         -8px 7px rgba(var(--black), 0.1);
 }
 
+textarea {
+    min-height: 150px !important;
+}
+
 /* OVERLAY */
 aside#overlay {
     width: 100vw;
@@ -138,8 +142,11 @@ aside#overlay.hide {
     z-index: 1001;
 }
 
-.alert {
+#alerts .alert {
     height: 76px;
+}
+
+.alert {
     width: 100%;
     z-index: 1002;
     margin-bottom: 2px;
@@ -601,6 +608,21 @@ ol.breadcrumb ul.dropdown-menu.show .dropdown-divider {
 
 .destination-card-text:hover {
     background-color: rgba(var(--black), 1) !important;
+}
+
+.contact-card-body ul#id_destinations {
+    columns: 2;
+}
+
+.contact-card-body ul#id_destinations {
+    columns: 2;
+}
+
+input[type="checkbox"][name="destinations"][id^="id_destinations_"] {
+    margin: 0.25em auto;
+    height: 25px;
+    width: 25px;
+    vertical-align: middle;
 }
 
 /* SIGHT CARDS */
@@ -1102,6 +1124,11 @@ footer .fas:hover {
     .day p.row {
         background-color: unset;
     }
+
+    /* contact */
+    .contact-card-body ul#id_destinations {
+        columns: 3;
+    }
 }
 
 /* BOOTSTRAP: LARGE */
@@ -1128,6 +1155,11 @@ footer .fas:hover {
     /* flip-tile boards */
     .flip-tile {
         top: 20vh;
+    }
+
+    /* contact */
+    .contact-card-body ul#id_destinations {
+        columns: 4;
     }
 }
 
