@@ -16,10 +16,9 @@ class Contact(models.Model):
         blank=False,
         null=False
     )
-    destinations= models.ManyToManyField(
-        Destination,
-        blank=True,
-        related_name="contact_destinations"
+    phone_num = models.CharField(
+        max_length=30,
+        null=True
     )
     start_date = models.DateField(
         blank=False,
@@ -27,7 +26,15 @@ class Contact(models.Model):
     )
     num_days = models.IntegerField(
         validators=[
-            MaxValueValidator(30),
+            MaxValueValidator(60),
+            MinValueValidator(1)
+        ],
+        blank=False,
+        null=False
+    )
+    num_guests = models.IntegerField(
+        validators=[
+            MaxValueValidator(21),
             MinValueValidator(1)
         ],
         blank=False,
@@ -37,9 +44,10 @@ class Contact(models.Model):
         blank=False,
         null=False
     )
-    phone_num = models.CharField(
-        max_length=30,
-        null=True
+    destinations = models.ManyToManyField(
+        Destination,
+        blank=True,
+        related_name="contact_destinations"
     )
     msg_date = models.DateTimeField(
         auto_now_add=True,
