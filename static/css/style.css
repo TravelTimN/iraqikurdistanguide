@@ -583,7 +583,7 @@ ol.breadcrumb ul.dropdown-menu.show .dropdown-divider {
     object-fit: cover;
 }
 
-.destination-card-text {
+.destination-card .destination-card-text {
     padding: 1em;
     position: absolute;
     bottom: 0;
