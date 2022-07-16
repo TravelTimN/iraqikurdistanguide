@@ -109,7 +109,7 @@ let wishlist = localStorage.getItem("wishlist");
 let destinationIcons = $("[id^='wishlist-icon_']");
 $(destinationIcons).each(function() {
     let iconId = $(this).attr("id").split("_")[1];
-    let wishlist = localStorage.getItem("wishlist").split(",");
+    wishlist = localStorage.getItem("wishlist").split(",");
     for (let place in wishlist) {
         if (wishlist.hasOwnProperty(place)) {
             if (wishlist[place] == iconId) {

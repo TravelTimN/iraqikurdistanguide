@@ -31,9 +31,18 @@
         <!-- destination sights (list) -->
         <div class="col-12 col-md-5 m-0 p-0" id="destination-sight-list">
             <div class="container-fluid">
-                <div class="row py-5">
+                <div class="row pt-5">
                     <div class="col-12 text-center">
                         <h1 id="page-header" class="text-dark fw-bold">{{ destination }}</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 py-4 mx-auto text-center">
+                        <!-- wishlist / handled via main script.js -->
+                        <p class="btn btn-outline-danger destination-card-text" data-destination="{{ destination }}">
+                            <i id="wishlist-icon_{{ destination }}" class="far fa-heart text-kur-red"></i>
+                            <span id="wishlist-text_{{ destination }}">add to</span> wishlist
+                        </p>
                     </div>
                 </div>
             </div>
