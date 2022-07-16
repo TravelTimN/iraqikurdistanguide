@@ -23,7 +23,7 @@ def add_faq(request):
     """ A view to add a new FAQ """
     faq_form = FAQForm(request.POST or None)
     if request.method == "POST":
-        if faq_form.is_valid:
+        if faq_form.is_valid():
             faq_form.save()
             messages.success(request, "FAQ Added!")
             return redirect(reverse("faqs"))
@@ -40,7 +40,7 @@ def update_faq(request, id):
     faq = get_object_or_404(FAQ, id=id)
     faq_form = FAQForm(request.POST or None, instance=faq)
     if request.method == "POST":
-        if faq_form.is_valid:
+        if faq_form.is_valid():
             faq_form.save()
             messages.success(request, "FAQ Updated!")
             return redirect(reverse("faqs"))

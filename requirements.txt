@@ -2,6 +2,7 @@ asgiref==3.5.1
 certifi==2021.10.8
 cffi==1.15.0
 charset-normalizer==2.0.12
+crispy-bootstrap5==0.6
 cryptography==37.0.2
 defusedxml==0.7.1
 dj-database-url==0.5.0
@@ -9,6 +10,7 @@ Django==3.2.13
 django-allauth==0.50.0
 django-cleanup==6.0.0
 django-countries==7.3.2
+django-crispy-forms==1.14.0
 django-tinymce==3.4.0
 gunicorn==20.1.0
 idna==3.3
