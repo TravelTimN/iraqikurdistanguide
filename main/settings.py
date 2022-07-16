@@ -25,6 +25,8 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "allauth",
     "allauth.account",
+    "crispy_forms",
+    "crispy_bootstrap5",
     "django_countries",
     "tinymce",
     "accounts",
@@ -150,3 +152,7 @@ TINYMCE_DEFAULT_CONFIG = {
     "plugins": "quickbars lists advlist autolink link preview searchreplace table paste help wordcount",
     "toolbar": "undo redo | styleselect forecolor backcolor | copy paste | bold italic underline removeformat | numlist bullist | link",
 }
+
+# Crispy Forms (Bootstrap 5)
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
