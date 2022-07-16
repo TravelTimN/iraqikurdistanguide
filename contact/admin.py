@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.db import models
+from django.forms import CheckboxSelectMultiple
 from .models import Contact
 
 
@@ -7,3 +9,9 @@ class ContactAdmin(admin.ModelAdmin):
     list_display = ("msg_date", "name", "email", "start_date", "num_days")
     list_filter = ("email", )
     search_fields = ["email", "name"]
+
+    formfield_overrides = {
+        models.ManyToManyField: {
+            "widget": CheckboxSelectMultiple,
+        }
+    }
