@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
@@ -9,16 +10,190 @@
 
 {% block content %}
 
-<section class="container my-5">
+<div class="container-fluid py-5">
     <div class="row">
-        <div class="col-12">
-            <form method="POST" action="{% url 'contact' %}">
+        <div class="col-12 text-center">
+            <h1 id="page-header" class="text-dark fw-bold">Let's Chat!</h1>
+        </div>
+    </div>
+    <div class="row py-3">
+        <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
+            <h3>
+                <i class="fas fa-globe-europe text-kur-red"></i>
+                Your journey to Iraqi Kurdistan begins here.
+                <i class="fas fa-map-marked-alt text-kur-red"></i>
+            </h3>
+        </div>
+    </div>
+</div>
+
+<section class="container-fluid py-5 bg-secondary bg-opacity-25">
+    <div class="row">
+        <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+            <form method="POST" action="{% url 'contact' %}" class="shadow">
                 {% csrf_token %}
-                {{ contact_form.as_p }}
-                <button type="submit" class="btn btn-success">Submit</button>
+                <!-- {{ contact_form|crispy }} -->
+
+                <fieldset class="card">
+					<legend class="card-header bg-kur-green text-light text-center">Plan Your Trip</legend>
+
+					<div class="card-body contact-card-body">
+
+						<!-- name field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-kur-gold text-dark d-none d-md-flex"><i class="fas fa-user fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ contact_form.name }}
+                                <label for="id_name">* Full Name</label>
+                            </div>
+						</div>
+
+						<!-- email field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-kur-gold text-dark d-none d-md-flex"><i class="fas fa-at fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ contact_form.email }}
+                                <label for="id_name">* Email Address</label>
+                            </div>
+						</div>
+
+						<!-- phone_num field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-kur-gold text-dark d-none d-md-flex"><i class="fas fa-phone-alt fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ contact_form.phone_num }}
+                                <label for="id_name">* Phone Number</label>
+                            </div>
+						</div>
+
+						<!-- start_date field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-kur-gold text-dark d-none d-md-flex"><i class="fas fa-calendar-alt fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ contact_form.start_date }}
+                                <label for="id_name">* Ideal Start Date</label>
+                            </div>
+						</div>
+
+						<!-- num_days field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-kur-gold text-dark d-none d-md-flex"><i class="fas fa-clock fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ contact_form.num_days }}
+                                <label for="id_name">* Trip Duration</label>
+                            </div>
+						</div>
+
+						<!-- num_guests field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-kur-gold text-dark d-none d-md-flex"><i class="fas fa-users fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ contact_form.num_guests }}
+                                <label for="id_num_guests">* Number of Guests</label>
+                            </div>
+						</div>
+
+						<!-- message field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-kur-gold text-dark d-none d-md-flex"><i class="fas fa-comment-alt fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ contact_form.message }}
+                                <label for="id_name">* Additional Messages</label>
+                            </div>
+						</div>
+
+                        <hr class="my-4">
+
+						<!-- destinations field -->
+                        <div class="row">
+                            <div class="col-12 mx-auto text-center fw-bold fs-5">
+                                * Wishlist Destinations
+                                <br>
+                                <small class="fs-6 fw-normal">
+                                    pre-checked destinations come from your wishlist
+                                </small>
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col-12 mx-auto">
+                                {{ contact_form.destinations }}
+                            </div>
+                        </div>
+
+						<!-- hidden redirect field (if applicable) -->
+						{% if redirect_field_value %}
+							<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+						{% endif %}
+
+						<!-- form errors (if applicable) -->
+						{% if contact_form.errors %}
+						<div class="alert alert-danger">
+							{% for key, value in contact_form.errors.items %}
+								{{ value|escape }}
+							{% endfor %}
+						</div>
+						{% endif %}
+					</div>
+
+					<div class="card-footer bg-kur-green text-light">
+                        <div class="row my-3">
+                            <div class="col text-center text-light fs-5">
+                                Thank You for your interest in travelling with Iraqi Kurdistan Guide!
+                                <br>
+                                Your details are secure, and are never disclosed to third-parties.
+                            </div>
+                        </div>
+						<div class="row my-3">
+							<div class="col text-center">
+								<!-- submit contact form -->
+                                <button type="submit" class="btn btn-warning">Submit</button>
+							</div>
+						</div>
+					</div>
+
+				</fieldset>
+
             </form>
         </div>
     </div>
 </section>
 
+{% endblock %}
+
+{% block js %}
+<script>
+    // ensure trip start date is not before "today"
+    let now = new Date(),
+    minDate = now.toISOString().substring(0,10);
+    $("#id_start_date").prop("min", minDate);
+
+    // trip duration cannot be less than 1 or greater than 60
+    $("#id_num_days, #id_num_guests").on("keyup change", function() {
+        let inputVal = $(this).val();
+        if (inputVal < 1 || inputVal > 60 || inputVal.length > 2) {
+            $(this).val("");
+        } else {
+            $(this).val(inputVal);
+        }
+    });
+
+    // set class for each destination input item
+    $(document).ready(function() {
+        $(`label[for^="id_destinations_"]`).each(function() {
+            let labelText = $(this).text().trim();
+            $(this).children("input").addClass(`destination-${labelText}`);
+        });
+
+        // find localStorage() wishlist items
+        wishlist = localStorage.getItem("wishlist").split(",");
+        for (let place in wishlist) {
+            if (wishlist.hasOwnProperty(place)) {
+                let wishlistInput = $(`input[id^="id_destinations_"].destination-${wishlist[place]}`);
+                // set checkbox pre-checked if in wishlist
+                $(wishlistInput).prop("checked", true);
+            }
+        }
+    });
+
+</script>
 {% endblock %}
