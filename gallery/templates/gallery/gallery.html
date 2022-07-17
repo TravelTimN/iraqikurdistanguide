@@ -55,7 +55,11 @@
             </div>
         </div>
     </section>
-    <hr class="w-50 mx-auto">
-{% endfor %}
+
+    {% if not forloop.last %}
+        <hr class="w-50 mx-auto">
+    {% endif %}
+
+    {% endfor %}
 
 {% endblock %}

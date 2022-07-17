@@ -877,6 +877,7 @@ p.lightbox-caption {
     width: fit-content;
     padding: 0.25em;
     border-bottom: 4px solid rgba(var(--kurdish-red), 1);
+    font-family: "Alegreya Sans SC", sans-serif;
 }
 
 .scroll-margin-top {
