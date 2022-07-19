@@ -4,6 +4,7 @@
     --kurdish-gold: 250, 185, 20; /* #FEBD11 */
     --kurdish-green: 39, 138, 65; /* #278E43 */
     --dark-grey: 74, 74, 79; /* #4A4A4F */
+    --darker-grey: 34, 34, 34; /* #222222 */
     --light-grey: 245, 245, 245; /* #F5F5F5 */
     --white: 255, 255, 255; /* #FFFFFF */
     --black: 0, 0, 0; /* #000000 */
@@ -111,6 +112,107 @@ a, a:hover {
 
 textarea {
     min-height: 150px !important;
+}
+
+/* PRELOADER */
+aside#preloader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5000;
+}
+
+#preloader-icon {
+    position: absolute;
+    top: 125px;
+    left: 125px;
+    margin: -50px 0 0 -50px;
+    font-size: 5em;
+}
+
+#preloader {
+    z-index: 5001;
+    display: block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height: 250px;
+    margin: -125px 0 0 -125px;
+    border-radius: 50%;
+    border: 10px solid transparent;
+    border-top-color: rgba(var(--kurdish-red), 1);
+    animation: spin 1.5s linear infinite;
+}
+
+#preloader::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    border-radius: 50%;
+    border: 10px solid transparent;
+    border-top-color: rgba(var(--white), 1);
+    animation: spin 2s linear infinite;
+}
+
+#preloader::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    border-radius: 50%;
+    border: 10px solid transparent;
+    border-top-color: rgba(var(--kurdish-green), 1);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+#preloader-container .preloader-section {
+    position: fixed;
+    width: 100vw;
+    height: 50vh;
+    background-color: rgba(var(--darker-grey), 1);
+    z-index: 5000;
+}
+
+#preloader-container .preloader-section.section-top {
+    top: 0;
+}
+
+#preloader-container .preloader-section.section-bottom {
+    bottom: 0;
+}
+
+.page-load-complete #preloader-container .preloader-section.section-top {
+    transform: translateY(-100%);
+    transition: all 0.5s 0.2s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+}
+
+.page-load-complete #preloader-container .preloader-section.section-bottom {
+    transform: translateY(100%);
+    transition: all 0.5s 0.2s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+}
+
+.page-load-complete #preloader {
+    opacity: 0;
+    transition: all 0.2s ease-out;
+}
+
+.page-load-complete #preloader-container {
+    visibility: hidden;
+    transform: translateX(-100%);
+    transition: all 0.2s 0.7s ease-out;
 }
 
 /* OVERLAY */
