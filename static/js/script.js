@@ -1,5 +1,14 @@
 /* jshint esversion: 11, jquery: true */
 
+// remove preloader animation once page is fully loaded
+$(document).ready(function() {
+    $("body").addClass("page-load-complete");
+});
+
+// $(".navbar-brand, .nav-link:not(.dropdown-toggle), .nav-item ul.dropdown-menu li a.dropdown-item, .breadcrumb-item:not(.dropdown), .breadcrumb-item ul.dropdown-menu li a.dropdown-item").on("click", function() {
+//     $("body").removeClass("page-load-complete");
+// });
+
 // update copyright year
 document.getElementById("year").innerText = new Date().getFullYear();
 
