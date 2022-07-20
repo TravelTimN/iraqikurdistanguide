@@ -28,4 +28,6 @@ class ContactForm(forms.ModelForm):
         """ Add placeholders to use floating-labels in Bootstrap5 """
         super().__init__(*args, **kwargs)
         for field in self.fields:
+            if field != "destinations":
+                self.fields[field].widget.attrs["class"] = "form-control"
             self.fields[field].widget.attrs["placeholder"] = field

@@ -114,6 +114,11 @@ textarea {
     min-height: 150px !important;
 }
 
+.form-control:focus {
+    border-color: rgba(var(--kurdish-green), 1);
+    box-shadow: 0 0 0 .25rem rgba(var(--kurdish-green), 0.25);
+}
+
 /* PRELOADER */
 aside#preloader-container {
     position: fixed;
@@ -291,14 +296,12 @@ nav.navbar {
     transition: all 0.5s ease-in-out;
 }
 
-nav .nav-item {
-    margin: 0 20px;
+#offcanvas-list-group .list-group-item {
+    transition: all 0.3s ease-in-out;
 }
 
-/* local time in Kurdistan */
-nav .nav-item#nav-item-time {
-    margin: 0;
-    width: 5vw;
+#offcanvas-list-group a.list-group-item:hover {
+    border-left: 10px solid rgba(var(--kurdish-red), 1) !important;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -311,6 +314,16 @@ nav .nav-item#nav-item-time {
 
 .dropdown-item {
     width: unset;
+}
+
+.btn-check:active+.btn-light:focus,
+.btn-check:checked+.btn-light:focus,
+.btn-light.active:focus,
+.btn-light:active:focus,
+.show>.btn-light.dropdown-toggle:focus,
+.btn-check:focus+.btn-light,
+.btn-light:focus {
+    box-shadow: none;
 }
 
 /* accounts for tiny gap on hover between link/menu */

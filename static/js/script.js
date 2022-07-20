@@ -9,6 +9,31 @@ $(document).ready(function() {
 //     $("body").removeClass("page-load-complete");
 // });
 
+// update nav-links with 'active' state
+let activeLink;
+if (location.pathname.includes("/about/")) {
+    activeLink = "about";
+} else if (location.pathname.includes("/destinations/")) {
+    activeLink = "destinations";
+} else if (location.pathname.includes("/faqs/")) {
+    activeLink = "faqs";
+} else if (location.pathname.includes("/gallery/")) {
+    activeLink = "gallery";
+} else if (location.pathname.includes("/resources/")) {
+    activeLink = "resources";
+} else if (location.pathname.includes("/reviews/")) {
+    activeLink = "reviews";
+} else if (location.pathname.includes("/contact/")) {
+    activeLink = "contact";
+} else if (location.pathname.includes("/bookings/")) {
+    activeLink = "bookings";
+} else {
+    activeLink = "home";
+}
+// apply classes and aria-current to relevant page link
+$(`[id^="nav-link-${activeLink}"]`).removeClass("list-group-item-dark").addClass("active list-group-item-light").prop("aria-current", true);
+
+
 // update copyright year
 document.getElementById("year").innerText = new Date().getFullYear();
 
@@ -26,14 +51,9 @@ function updateTime() {
     return time;
 }
 
-// toggle 'clock' and 'time' in Kurdistan
-let timeIcon;
-$("#nav-link-time").on("mouseover", function() {
-    timeIcon = $(this).html();
-    $(this).html(updateTime());
-});
-$("#nav-link-time").on("mouseleave", function() {
-    $(this).html(timeIcon);
+// display local time in Kurdistan when offcanvas-menu open
+$("#offcanvas-toggle-btn").on("click", function() {
+    $("#nav-link-time").html(updateTime());
 });
 
 // localStorage: remember if user closed the "review banner"

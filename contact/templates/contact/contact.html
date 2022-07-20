@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load crispy_forms_tags %}
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
@@ -32,7 +31,6 @@
         <div class="col-12 col-lg-10 col-xl-8 mx-auto">
             <form method="POST" action="{% url 'contact' %}" class="shadow">
                 {% csrf_token %}
-                <!-- {{ contact_form|crispy }} -->
 
                 <fieldset class="card">
 					<legend class="card-header bg-kur-green text-light text-center">Plan Your Trip</legend>
@@ -41,7 +39,7 @@
 
 						<!-- name field -->
 						<div class="input-group mb-3">
-                            <span class="input-group-text bg-kur-gold text-dark d-none d-md-flex"><i class="fas fa-user fa-fw"></i></span>
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-user fa-fw"></i></span>
                             <div class="form-floating flex-grow-1">
                                 {{ contact_form.name }}
                                 <label for="id_name">* Full Name</label>
@@ -50,7 +48,7 @@
 
 						<!-- email field -->
 						<div class="input-group mb-3">
-                            <span class="input-group-text bg-kur-gold text-dark d-none d-md-flex"><i class="fas fa-at fa-fw"></i></span>
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-at fa-fw"></i></span>
                             <div class="form-floating flex-grow-1">
                                 {{ contact_form.email }}
                                 <label for="id_name">* Email Address</label>
@@ -59,7 +57,7 @@
 
 						<!-- phone_num field -->
 						<div class="input-group mb-3">
-                            <span class="input-group-text bg-kur-gold text-dark d-none d-md-flex"><i class="fas fa-phone-alt fa-fw"></i></span>
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-phone-alt fa-fw"></i></span>
                             <div class="form-floating flex-grow-1">
                                 {{ contact_form.phone_num }}
                                 <label for="id_name">* Phone Number</label>
@@ -68,7 +66,7 @@
 
 						<!-- start_date field -->
 						<div class="input-group mb-3">
-                            <span class="input-group-text bg-kur-gold text-dark d-none d-md-flex"><i class="fas fa-calendar-alt fa-fw"></i></span>
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-calendar-alt fa-fw"></i></span>
                             <div class="form-floating flex-grow-1">
                                 {{ contact_form.start_date }}
                                 <label for="id_name">* Ideal Start Date</label>
@@ -77,7 +75,7 @@
 
 						<!-- num_days field -->
 						<div class="input-group mb-3">
-                            <span class="input-group-text bg-kur-gold text-dark d-none d-md-flex"><i class="fas fa-clock fa-fw"></i></span>
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-clock fa-fw"></i></span>
                             <div class="form-floating flex-grow-1">
                                 {{ contact_form.num_days }}
                                 <label for="id_name">* Trip Duration</label>
@@ -86,7 +84,7 @@
 
 						<!-- num_guests field -->
 						<div class="input-group mb-3">
-                            <span class="input-group-text bg-kur-gold text-dark d-none d-md-flex"><i class="fas fa-users fa-fw"></i></span>
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-users fa-fw"></i></span>
                             <div class="form-floating flex-grow-1">
                                 {{ contact_form.num_guests }}
                                 <label for="id_num_guests">* Number of Guests</label>
@@ -95,7 +93,7 @@
 
 						<!-- message field -->
 						<div class="input-group mb-3">
-                            <span class="input-group-text bg-kur-gold text-dark d-none d-md-flex"><i class="fas fa-comment-alt fa-fw"></i></span>
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-comment-alt fa-fw"></i></span>
                             <div class="form-floating flex-grow-1">
                                 {{ contact_form.message }}
                                 <label for="id_name">* Additional Messages</label>
