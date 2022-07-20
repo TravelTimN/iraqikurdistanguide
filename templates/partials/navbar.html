@@ -10,53 +10,153 @@
                 <img src="{% static 'img/favicon.webp' %}" alt="Iraqi Kurdistan Guide" class="responsive-img me-3">
                 Iraqi Kurdistan Guide
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#moblile-nav">
+            <!-- offcanvas toggle button -->
+            <button id="offcanvas-toggle-btn" class="btn btn-light" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                 <i class="fas fa-bars"></i>
             </button>
-            <div class="navbar-collapse collapse w-100" id="moblile-nav">
-                <ul class="nav navbar-nav ms-auto w-100 justify-content-end">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Home</a>
-                    </li>
-                    <!-- profile links -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-profile" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Account</a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-profile">
-                            <li><a class="dropdown-item" href="{% url 'destinations' %}">Destinations</a></li>
-                            <li><a class="dropdown-item" href="{% url 'faqs' %}">FAQs</a></li>
-                            <li><a class="dropdown-item" href="{% url 'gallery' %}">Gallery</a></li>
-                            <li><a class="dropdown-item" href="{% url 'reviews' %}">Reviews</a></li>
-                            <li><a class="dropdown-item" href="{% url 'resources' %}">Resources</a></li>
-                            <li><a class="dropdown-item" href="{% url 'about' %}">About</a></li>
-                            <li><a class="dropdown-item" href="{% url 'contact' %}">Contact</a></li>
-                            {% if request.user.is_authenticated %}
-                                <!-- user is logged-in -->
-                                {% if request.user|has_group:"Site Admin" %}
-                                    <!-- user is a Site Admin -->
-                                    <li><a class="dropdown-item" href="{% url 'bookings' %}">Bookings</a></li>
-                                {% endif %}
-                                {% if request.user.is_superuser %}
-                                    <!-- user is superuser -->
-                                    <li><a class="dropdown-item" href="{% url 'admin:index' %}" target="_blank" rel="noopener">Django Admin</a></li>
-                                {% endif %}
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
-                            {% else %}
-                                <!-- user is not logged-in -->
-                                <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
-                                <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
-                            {% endif %}
-                        </ul>
-                    </li>
-                    <!-- time in Kurdistan/Iraq -->
-                    <li class="nav-item d-none d-lg-block position-absolute end-0 me-3" id="nav-item-time">
-                        <span class="nav-link text-center" id="nav-link-time">
-                            <i class="fas fa-clock"></i>
-                        </span>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
 </header>
+
+<!-- offcanvas menu -->
+<aside class="offcanvas offcanvas-end border-0 bg-dark text-light" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="bg-kur-flag text-center p-3 align-middle">
+        
+        {% if not request.user.is_authenticated %}
+            <!-- user is not logged-in -->
+            <a href="{% url 'account_login' %}">
+                <i class="fas fa-certificate text-kur-gold fs-4 align-middle"></i>
+            </a>
+        {% else %}
+            <i class="fas fa-certificate text-kur-gold fs-4 align-middle"></i>
+        {% endif %}
+
+    </div>
+    <div class="offcanvas-header my-3 text-center">
+        <h4 id="offcanvasRightLabel" class="m-0 mx-auto p-0">
+            <a href="{% url 'home' %}">
+                Iraqi Kurdistan Guide
+            </a>
+        </h4>
+    </div>
+    <div class="offcanvas-body m-0 p-0">
+
+        <!-- links -->
+        <div id="offcanvas-list-group" class="list-group list-group-flush">
+            <a href="{% url 'home' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0" id="nav-link-home">
+                <i class="fas fa-home fa-fw fs-5 me-3"></i>
+                Home
+            </a>
+            <a href="{% url 'about' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0" id="nav-link-about">
+                <i class="fas fa-info-circle fa-fw fs-5 me-3"></i>
+                About
+            </a>
+            <a href="{% url 'destinations' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0" id="nav-link-destinations">
+                <i class="fas fa-map-marked-alt fa-fw fs-5 me-3"></i>
+                Destinations
+            </a>
+            <a href="{% url 'faqs' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0" id="nav-link-faqs">
+                <i class="fas fa-question-circle fa-fw fs-5 me-3"></i>
+                FAQs
+            </a>
+            <a href="{% url 'gallery' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0" id="nav-link-gallery">
+                <i class="fas fa-images fa-fw fs-5 me-3"></i>
+                Gallery
+            </a>
+
+            <div class="dropdown list-group-item list-group-item-action list-group-item-secondary border-0" id="nav-link-resources">
+                <a href="#" class="dropdown-toggle d-block w-100 h-100" role="button" id="offcanvas-resources-dropdown"
+                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,8">
+                    <i class="fas fa-language fa-fw fs-5 me-3"></i>
+                    Resources
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark w-100 border-0" aria-labelledby="offcanvas-resources-dropdown">
+                    <li>
+                        <a class="dropdown-item bg-dark" href="{% url 'resources' %}">
+                            All Resources
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item bg-dark" href="{% url 'alphabet' %}">
+                            <i class="fas fa-font fa-fw fs-5 me-3"></i>
+                            Alphabet
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item bg-dark" href="{% url 'phrases' %}">
+                            <i class="fas fa-language fa-fw fs-5 me-3"></i>
+                            Phrases
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item bg-dark" href="{% url 'entertainment' %}">
+                            <i class="fas fa-music fa-fw fs-5 me-3"></i>
+                            Entertainment
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item bg-dark" href="{% url 'holidays' %}">
+                            <i class="fas fa-calendar-alt fa-fw fs-5 me-3"></i>
+                            Holidays
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item bg-dark" href="{% url 'weather' %}">
+                            <i class="fas fa-cloud-sun fa-fw fs-5 me-3"></i>
+                            Weather
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <a href="{% url 'reviews' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0" id="nav-link-reviewsX">
+                <i class="fas fa-comment-dots fa-fw fs-5 me-3"></i>
+                Reviews
+            </a>
+            <a href="{% url 'contact' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0" id="nav-link-contact">
+                <i class="fas fa-at fa-fw fs-5 me-3"></i>
+                Contact
+            </a>
+
+            {% if request.user.is_authenticated %}
+                <!-- user is logged-in -->
+                <span class="list-group-item bg-dark text-light text-center">ADMIN</span>
+                {% if request.user|has_group:"Site Admin" %}
+                    <!-- user is a Site Admin -->
+                    <a href="{% url 'bookings' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0" id="nav-link-bookings">
+                        <i class="fas fa-calendar-alt fa-fw fs-5 me-3"></i>
+                        Bookings
+                    </a>
+                {% endif %}
+                {% if request.user.is_superuser %}
+                    <!-- user is superuser/dev -->
+                    <a href="{% url 'admin:index' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0"
+                        target="_blank" rel="noopener">
+                        <i class="fas fa-user-cog fa-fw fs-5 me-3"></i>
+                        Django Admin
+                    </a>
+                {% endif %}
+                <a href="{% url 'account_logout' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0">
+                    <i class="fas fa-sign-out-alt fa-fw fs-5 me-3"></i>
+                    Logout
+                </a>
+            {% endif %}
+
+            <!-- time in Kurdistan -->
+            <span class="list-group-item bg-dark"></span>
+            <p class="list-group-item bg-secondary bg-opacity-50 border-0 text-center">
+                <small class="text-white fw-bold">Time in Kurdistan</small>
+                <br>
+                <span class="fs-2 text-white fw-bold">
+                    <i class="fas fa-clock"></i>
+                    <span id="nav-link-time">
+                        ... fetching time ...
+                    </span>
+                </span>
+            </p>
+
+        </div>
+
+    </div>
+</aside>
