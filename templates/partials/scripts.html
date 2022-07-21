@@ -18,7 +18,38 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-extra-markers/1.2.1/js/leaflet.extra-markers.min.js"
     integrity="sha512-ejMFZwlfxDqEaSHHcCJ9EhzzDyp3QB5NjmGfOp1iwUQ7pFam2pX3EKERWvWK8H5HLQG6ETrx3RvrEFMQ4kIQ/Q=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{% static 'js/leaflet-attribution.js' %}"></script>
+
+<!-- footer map -->
+<script>
+    // leaflet map of Erbil
+    const mapUrl = `{{ map_url }}`; // used across all map pages
+    let mapFooter = L.map("map-footer", {
+        // stops users from loading infinite tiles outside of Iraq
+        maxBounds: [[28.5, 38], [38.5, 50]],
+        maxBoundsViscosity: 0.5,
+    }).setView([36.19117, 44.00917], 11);
+    let mapTileLayersFooter = L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
+        maxZoom: 18,
+        minZoom: 5,
+        id: "mapbox/streets-v11",
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: mapUrl
+    }).addTo(mapFooter);
+
+    // adding custom marker
+    let customIconFooter = L.Icon.extend({
+        options: {iconSize: [25, 35], iconAnchor: [12.5, 35],}
+    });
+    // extend from base icon for kurdish flag marker
+    let kurIconFooter = new customIconFooter({
+        iconUrl: `{% static 'img/marker-kurdistan.png' %}`
+    });
+
+    // add marker to footer map
+    let markerFooter = L.marker([36.207132, 44.025733], {icon: kurIconFooter}).bindPopup(`Iraqi Kurdistan Guide`).addTo(mapFooter);
+</script>
 
 <!-- js / scripts -->
-<script src="{% static 'js/leaflet-attribution.js' %}"></script>
 <script src="{% static 'js/script.js' %}"></script>
