@@ -320,8 +320,10 @@
             let header = $("header").offset().top;
             let navbar = $(".navbar");
             if ($(window).scrollTop() >= header) {
+                $("#offcanvas-toggle-btn").removeClass("btn-light").addClass("btn-dark");
                 $(navbar).css({"padding": "0.75em"}).removeClass("bg-dark navbar-dark").addClass("bg-light navbar-light bg-opacity-75");
             } else {
+                $("#offcanvas-toggle-btn").removeClass("btn-dark").addClass("btn-light");
                 $(navbar).css({"padding": "0.5rem"}).removeClass("bg-light navbar-light bg-opacity-75").addClass("bg-dark navbar-dark");
             }
         });
