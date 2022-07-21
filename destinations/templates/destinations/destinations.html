@@ -83,7 +83,6 @@
 {% block js %}
 <script>
     // basic leaflet map of Iraq
-    const mapUrl = `{{ map_url }}`;
     let map = L.map("map-all-destinations", {
         // stops users from loading infinite tiles outside of Iraq
         maxBounds: [[28.5, 38], [38.5, 50]],
