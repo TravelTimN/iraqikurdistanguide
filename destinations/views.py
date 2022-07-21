@@ -9,9 +9,6 @@ from gallery.models import Photo
 from main.decorators import validate_user
 
 
-MAP_URL = settings.MAP_URL
-
-
 def destinations(request):
     """ A view to return the destinations page """
     if request.user.groups.filter(name="Site Admin"):
@@ -36,7 +33,6 @@ def destinations(request):
         })
     template = "destinations/destinations.html"
     context = {
-        "map_url": MAP_URL,
         "destinations": destinations,
     }
     return render(request, template, context)
@@ -55,7 +51,6 @@ def add_destination(request):
         messages.error(request, "Error: Please Try Again.")
     template = "destinations/add_destination.html"
     context = {
-        "map_url": MAP_URL,
         "destination_form": destination_form,
     }
     return render(request, template, context)
@@ -86,7 +81,6 @@ def view_destination(request, id):
         })
     template = "destinations/view_destination.html"
     context = {
-        "map_url": MAP_URL,
         "destination": destination,
         "sights": sights,
     }
@@ -108,7 +102,6 @@ def update_destination(request, id):
     destination_form = DestinationForm(instance=destination)
     template = "destinations/update_destination.html"
     context = {
-        "map_url": MAP_URL,
         "destination": destination,
         "destination_form": destination_form,
     }
@@ -138,7 +131,6 @@ def add_sight(request, id):
         messages.error(request, "Error: Please Try Again.")
     template = "destinations/add_sight.html"
     context = {
-        "map_url": MAP_URL,
         "destination": destination,
         "sight_form": sight_form,
     }
@@ -161,7 +153,6 @@ def update_sight(request, d_id, s_id):
     sight_form = SightForm(instance=sight)
     template = "destinations/update_sight.html"
     context = {
-        "map_url": MAP_URL,
         "destination": destination,
         "sight": sight,
         "sight_form": sight_form,
