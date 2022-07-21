@@ -317,12 +317,17 @@ nav.navbar {
 }
 
 .btn-check:active+.btn-light:focus,
+.btn-check:active+.btn-dark:focus,
 .btn-check:checked+.btn-light:focus,
+.btn-check:checked+.btn-dark:focus,
 .btn-light.active:focus,
-.btn-light:active:focus,
+.btn-dark:active:focus,
 .show>.btn-light.dropdown-toggle:focus,
+.show>.btn-dark.dropdown-toggle:focus,
 .btn-check:focus+.btn-light,
-.btn-light:focus {
+.btn-check:focus+.btn-dark,
+.btn-light:focus,
+.btn-dark:focus {
     box-shadow: none;
 }
 
@@ -1190,6 +1195,37 @@ footer .fas {
 footer .fab:hover,
 footer .fas:hover {
     transform: scale(1.3);
+}
+
+.footer-header-underline {
+    margin: 0 auto;
+    width: fit-content;
+    padding: 0.25em;
+    font-family: "Alegreya Sans SC", sans-serif;
+}
+
+#footer-header-red {
+    border-bottom: 4px solid rgba(var(--kurdish-red), 1);
+}
+
+#footer-header-gold {
+    border-bottom: 4px solid rgba(var(--kurdish-gold), 1);
+}
+
+#footer-header-green {
+    border-bottom: 4px solid rgba(var(--kurdish-green), 1);
+}
+
+#footer-header-white {
+    border-bottom: 4px solid rgba(var(--white), 1);
+}
+
+#map-footer {
+    height: 25vh;
+}
+
+.footer-social-img {
+    width: 3em;
 }
 
 /* BOOTSTRAP: MEDIUM */
