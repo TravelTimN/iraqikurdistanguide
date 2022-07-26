@@ -14,6 +14,16 @@ class DestinationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         # https://stackoverflow.com/a/72025478
         super().__init__(*args, **kwargs)
+
+        # hide lat/lng by default (auto-generated from map selection)
+        self.fields["latitude"].widget = forms.HiddenInput()
+        self.fields["longitude"].widget = forms.HiddenInput()
+
+        for field in self.fields:
+            if field != "is_visible":
+                self.fields[field].widget.attrs["class"] = "form-control"
+            self.fields[field].widget.attrs["placeholder"] = field
+
         self.fields["province"].choices = [["", "Select Province"]]
         regions = Province.REGION
         for k, v in regions:
