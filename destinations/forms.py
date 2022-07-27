@@ -19,11 +19,13 @@ class DestinationForm(forms.ModelForm):
         self.fields["latitude"].widget = forms.HiddenInput()
         self.fields["longitude"].widget = forms.HiddenInput()
 
+        # add placeholder for floating-label functionality
         for field in self.fields:
             if field != "is_visible":
                 self.fields[field].widget.attrs["class"] = "form-control"
             self.fields[field].widget.attrs["placeholder"] = field
 
+        # generate list of provinces using optgroups
         self.fields["province"].choices = [["", "Select Province"]]
         regions = Province.REGION
         for k, v in regions:
@@ -42,8 +44,27 @@ class SightForm(forms.ModelForm):
     """
     class Meta:
         model = Sight
-        widgets = {"destination": forms.HiddenInput(),}
         fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        # https://stackoverflow.com/a/72025478
+        super().__init__(*args, **kwargs)
+
+        # hide lat/lng by default (auto-generated from map selection)
+        self.fields["latitude"].widget = forms.HiddenInput()
+        self.fields["longitude"].widget = forms.HiddenInput()
+
+        # add placeholder for floating-label functionality
+        for field in self.fields:
+            if field != "is_visible" and field != "primary_attraction":
+                self.fields[field].widget.attrs["class"] = "form-control"
+            self.fields[field].widget.attrs["placeholder"] = field
+
+        # generate list of categories
+        self.fields["category"].choices = [["", "Select Category"]]
+        categories = Sight.MARKER_TYPE
+        for category in categories:
+            self.fields["category"].choices.append(category)
 
 
 class TourForm(forms.ModelForm):
@@ -57,6 +78,14 @@ class TourForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         # https://stackoverflow.com/a/72025478
         super().__init__(*args, **kwargs)
+
+        # add placeholder for floating-label functionality
+        for field in self.fields:
+            if field != "is_visible":
+                self.fields[field].widget.attrs["class"] = "form-control"
+            self.fields[field].widget.attrs["placeholder"] = field
+
+        # generate list of available photos, by destination
         self.fields["photo"].choices = [["", "Select Photo"]]
         destinations = Destination.objects.all()
         for destination in destinations:

@@ -20,7 +20,7 @@
                 {% csrf_token %}
 
                 <fieldset class="card shadow">
-					<legend class="card-header bg-kur-green text-light text-center">Edit {{ destination.name }}</legend>
+					<legend class="card-header bg-kur-green text-light text-center">Editing {{ destination.name }}</legend>
 
 					<div class="card-body">
 
@@ -76,14 +76,9 @@
 					</div>
 
 					<div class="card-footer bg-kur-green text-light">
-                        <div class="row my-3">
-                            <div class="col text-center fw-bold fs-6">
-                                Drag the map marker to the location of the new destination.
-                            </div>
-                        </div>
 						<div class="row my-3">
 							<div class="col text-center">
-								<!-- submit contact form -->
+								<!-- submit form -->
                                 <button type="submit" class="btn btn-warning" id="submit-btn">Submit</button>
                                 <!-- cancel button -->
                                 <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
@@ -132,6 +127,11 @@
 {% block js %}
 
 <script>
+    // disable first option of each <select> element
+        $("select").each(function() {
+        $(this).children("option:first").prop("disabled", true);
+    });
+
     // basic leaflet map of Iraq
     let origLat = document.getElementById("id_latitude").value;
     let origLng = document.getElementById("id_longitude").value;

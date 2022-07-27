@@ -9,21 +9,90 @@
 
 {% block content %}
 
-<section class="container my-5">
+<section class="container-fluid">
     <div class="row">
-        <div class="col-12 col-md-6">
+
+        <!-- form data -->
+        <div class="col-12 col-md-6 py-5 px-2 px-md-5">
             <form method="POST" action="{% url 'add_tour' %}">
                 {% csrf_token %}
-                {{ tour_form.as_p }}
-                <button type="submit" class="btn btn-success">Submit</button>
-                <a href="{{ request.META.HTTP_REFERER }}#tours" class="btn btn-danger">Cancel</a>
+
+                <fieldset class="card shadow">
+					<legend class="card-header bg-kur-green text-light text-center">New Tour</legend>
+
+					<div class="card-body">
+
+						<!-- category field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-compass fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ tour_form.category }}
+                                <label for="id_name">* Tour Category</label>
+                            </div>
+						</div>
+
+						<!-- photo field -->
+						<div class="input-group mb-3">
+                            <div class="form-floating flex-grow-1">
+                                {{ tour_form.photo }}
+                                <label for="id_name">* Photo</label>
+                            </div>
+						</div>
+
+						<!-- description field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-atlas fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ tour_form.description }}
+                                <label for="id_name">* Description</label>
+                            </div>
+						</div>
+
+                        <!-- is_visible field -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark px-3">
+                                {{ tour_form.is_visible }}
+                            </span>
+                            <span class="form-control" aria-label="Publicly Visible Checkbox">* Publicly Visible?</span>
+                        </div>
+
+                        <!-- hidden fields -->
+                        <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+
+                        <!-- form errors (if applicable) -->
+						{% if tour_form.errors %}
+						<div class="alert alert-danger">
+							{% for key, value in tour_form.errors.items %}
+								{{ key|escape }}
+								{{ value|escape }}
+							{% endfor %}
+						</div>
+						{% endif %}
+
+					</div>
+
+					<div class="card-footer bg-kur-green text-light">
+						<div class="row my-3">
+							<div class="col text-center">
+								<!-- submit form -->
+                                <button type="submit" class="btn btn-warning" id="submit-btn">Submit</button>
+                                <!-- cancel button -->
+                                <a href="{{ request.META.HTTP_REFERER }}#tours" class="btn btn-danger">Cancel</a>
+							</div>
+						</div>
+					</div>
+
+				</fieldset>
+
             </form>
         </div>
+
         <!-- display preview of tour photo being uploaded -->
-        <div class="col-12 col-md-6 d-none rounded" id="img-preview-col">
+        <div class="col-12 col-md-6 px-2 d-none rounded" id="img-preview-col">
             <img src="" alt="Preview of Tour Photo selected" id="img-preview"
                 class="card img-fluid img-thumbnail rounded shadow" onError="this.onerror=null;this.src='{{ MEDIA_URL }}no-image.png';">
         </div>
+
     </div>
 </section>
 

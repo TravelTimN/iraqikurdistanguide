@@ -166,7 +166,7 @@ def delete_sight(request, d_id, s_id):
     sight = get_object_or_404(Sight, id=s_id)
     messages.success(request, f"{sight.name} Deleted!")
     sight.delete()
-    return redirect(reverse("destinations"))
+    return redirect(reverse("view_destination", kwargs={"id": d_id}))
 
 
 @validate_user()
