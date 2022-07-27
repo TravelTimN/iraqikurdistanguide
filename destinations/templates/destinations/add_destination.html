@@ -67,6 +67,7 @@
 						{% if destination_form.errors %}
 						<div class="alert alert-danger">
 							{% for key, value in destination_form.errors.items %}
+								{{ key|escape }}
 								{{ value|escape }}
 							{% endfor %}
 						</div>
@@ -82,7 +83,7 @@
                         </div>
 						<div class="row my-3">
 							<div class="col text-center">
-								<!-- submit contact form -->
+								<!-- submit form -->
                                 <button type="submit" class="btn btn-warning" id="submit-btn" disabled>Submit</button>
                                 <!-- cancel button -->
                                 <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
