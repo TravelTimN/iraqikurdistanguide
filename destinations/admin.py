@@ -21,6 +21,10 @@ class SightAdmin(admin.ModelAdmin):
     list_display = (
         "name", "category", "destination", "province",
         "region", "is_visible", "primary_attraction")
+    list_filter = (
+        "category", "destination", "destination__province__region",
+        "is_visible", "primary_attraction",
+    )
 
     @admin.display()
     def province(self, response):
