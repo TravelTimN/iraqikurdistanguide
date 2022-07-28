@@ -83,8 +83,19 @@ a, a:hover {
     background-repeat: no-repeat;
 }
 
+.text-underline-red {
+    width: fit-content;
+    padding: 2px;
+    border-bottom: 2px solid rgba(var(--kurdish-red), 1);
+}
+
+.text-underline-gold {
+    width: fit-content;
+    padding: 2px;
+    border-bottom: 2px solid rgba(var(--kurdish-gold), 1);
+}
+
 .text-underline-green {
-    margin: 0 auto;
     width: fit-content;
     padding: 2px;
     border-bottom: 2px solid rgba(var(--kurdish-green), 1);
