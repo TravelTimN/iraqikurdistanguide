@@ -15,17 +15,95 @@
 
 {% block content %}
 
-<section class="container my-5">
+<section class="container-fluid">
     <div class="row">
-        <div class="col-12">
+
+        <!-- form data -->
+        <div class="col-12 col-md-10 col-lg-8 mx-auto my-5">
             <form method="POST" action="{% url 'add_faq' %}">
                 {% csrf_token %}
-                {{ faq_form.as_p }}
-                <button type="submit" class="btn btn-success">Submit</button>
-                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
+
+                <fieldset class="card shadow">
+					<legend class="card-header bg-kur-green text-light text-center">New FAQ</legend>
+
+					<div class="card-body">
+
+						<!-- question field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-question-circle fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ faq_form.question }}
+                                <label for="id_question">* Question</label>
+                            </div>
+						</div>
+
+						<!-- category field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-list-alt fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ faq_form.category }}
+                                <label for="id_category">* Category</label>
+                            </div>
+						</div>
+
+						<!-- answer field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-info-circle fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ faq_form.answer }}
+                                <label for="id_answer">* FAQ Answer</label>
+                            </div>
+						</div>
+
+                        <!-- is_visible field -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark px-3">
+                                {{ faq_form.is_visible }}
+                            </span>
+                            <span class="form-control" aria-label="Publicly Visible Checkbox">* Publicly Visible?</span>
+                        </div>
+
+                        <!-- hidden fields -->
+                        <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+
+                        <!-- form errors (if applicable) -->
+						{% if faq_form.errors %}
+						<div class="alert alert-danger">
+							{% for key, value in faq_form.errors.items %}
+								{{ key|escape }}
+								{{ value|escape }}
+							{% endfor %}
+						</div>
+						{% endif %}
+
+					</div>
+
+					<div class="card-footer bg-kur-green text-light">
+						<div class="row my-3">
+							<div class="col text-center">
+								<!-- submit form -->
+                                <button type="submit" class="btn btn-warning" id="submit-btn">Submit</button>
+                                <!-- cancel button -->
+                                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
+							</div>
+						</div>
+					</div>
+
+				</fieldset>
+
             </form>
         </div>
+
     </div>
 </section>
 
+{% endblock %}
+
+{% block js %}
+<script>
+    // disable first option of each <select> element
+        $("select").each(function() {
+        $(this).children("option:first").prop("disabled", true);
+    });
+</script>
 {% endblock %}
