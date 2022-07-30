@@ -4,7 +4,7 @@ from destinations.models import Tour
 
 def home(request):
     """ A view to return the home page """
-    if request.user.is_superuser:
+    if request.user.groups.filter(name="Site Admin"):
         tours = Tour.objects.all()
     else:
         tours = Tour.objects.filter(is_visible=True)

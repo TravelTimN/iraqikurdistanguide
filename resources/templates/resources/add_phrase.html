@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load custom_filters %}
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
@@ -18,7 +19,7 @@
         </ul>
     </li>
     <li class="breadcrumb-item"><a href="{% url 'phrases' %}">Phrases</a></li>
-    {% if request.user.is_superuser %}
+    {% if request.user|has_group:"Site Admin" %}
         <li class="breadcrumb-item active" aria-current="page">NEW</li>
     {% endif %}
 {% endblock %}
