@@ -730,15 +730,17 @@ ol.breadcrumb ul.dropdown-menu.show .dropdown-divider {
     background-color: rgba(var(--black), 1) !important;
 }
 
-.contact-card-body ul#id_destinations {
+.contact-card-body ul#id_destinations,
+#booking-form-itinerary ul#id_itinerary {
     columns: 2;
 }
 
-.contact-card-body ul#id_destinations {
-    columns: 2;
+ul#id_itinerary {
+    list-style: none;
 }
 
-input[type="checkbox"][name="destinations"][id^="id_destinations_"] {
+input[type="checkbox"][name="destinations"][id^="id_destinations_"],
+input[type="checkbox"][name="itinerary"][id^="id_itinerary_"] {
     margin: 0.25em auto;
     height: 25px;
     width: 25px;
@@ -1284,7 +1286,8 @@ footer .fas:hover {
     }
 
     /* contact */
-    .contact-card-body ul#id_destinations {
+    .contact-card-body ul#id_destinations,
+    #booking-form-itinerary ul#id_itinerary {
         columns: 3;
     }
 }
@@ -1316,7 +1319,8 @@ footer .fas:hover {
     }
 
     /* contact */
-    .contact-card-body ul#id_destinations {
+    .contact-card-body ul#id_destinations,
+    #booking-form-itinerary ul#id_itinerary {
         columns: 4;
     }
 }
