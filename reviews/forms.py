@@ -33,6 +33,8 @@ class ReviewForm(forms.ModelForm):
             # DateInput subclasses TextInput, so exclude them
             if isinstance(this_widget, valid_types) and not isinstance(this_widget, DateInput):  # noqa
                 this_widget.attrs["placeholder"] = field
+            if field == "review":
+                this_widget.attrs["placeholder"] = "User Review"
             if field != "is_visible":
                 this_widget.attrs["class"] = "form-control"
 

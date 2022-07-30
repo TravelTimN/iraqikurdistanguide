@@ -168,11 +168,6 @@
 
 {% block js %}
 <script>
-    // disable first option of each <select> element
-        $("select").each(function() {
-        $(this).children("option:first").prop("disabled", true);
-    });
-
     // reviews cannot be in the future
     let now = new Date(),
     maxDate = now.toISOString().substring(0,10);

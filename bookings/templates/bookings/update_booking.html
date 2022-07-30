@@ -211,15 +211,15 @@
 {% endblock %}
 
 {% block js %}
-    <script>
-    // set class for each itinerary destination input item
-    $(document).ready(function() {
-        $(`label[for^="id_itinerary_"]`).each(function() {
-            let labelText = $(this).text().trim();
-            $(this).children("input").addClass(`destination-${labelText}`);
-        });
+<script>
+// set class for each itinerary destination input item
+$(document).ready(function() {
+    $(`label[for^="id_itinerary_"]`).each(function() {
+        let labelText = $(this).text().trim();
+        $(this).children("input").addClass(`destination-${labelText}`);
     });
-    </script>
+});
+</script>
 
-    <script src="{% static 'bookings/js/booking_scripts.js' %}"></script>
+<script src="{% static 'bookings/js/booking_scripts.js' %}"></script>
 {% endblock %}

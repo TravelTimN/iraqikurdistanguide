@@ -121,12 +121,3 @@
 </section>
 
 {% endblock %}
-
-{% block js %}
-<script>
-    // disable first option of each <select> element
-    $("select").each(function() {
-        $(this).children("option:first").prop("disabled", true);
-    });
-</script>
-{% endblock %}

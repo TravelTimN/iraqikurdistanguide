@@ -107,13 +107,7 @@
 {% endblock %}
 
 {% block js %}
-
 <script>
-    // disable first option of each <select> element
-        $("select").each(function() {
-        $(this).children("option:first").prop("disabled", true);
-    });
-
     // require lat/lng fields prior to submission
     function enableDisableSubmitBtn() {
         if ($("#id_latitude").val() == "" || $("#id_longitude").val() == "") {
@@ -173,7 +167,6 @@
         map.flyTo([lat, lng], zoom);
         enableDisableSubmitBtn();
     }
-
 </script>
 
 {% endblock %}
