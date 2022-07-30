@@ -165,16 +165,6 @@
     minDate = now.toISOString().substring(0,10);
     $("#id_start_date").prop("min", minDate);
 
-    // trip duration cannot be less than 1 or greater than 60
-    $("#id_num_days, #id_num_guests").on("keyup change", function() {
-        let inputVal = $(this).val();
-        if (inputVal < 1 || inputVal > 60 || inputVal.length > 2) {
-            $(this).val("");
-        } else {
-            $(this).val(inputVal);
-        }
-    });
-
     // set class for each destination input item
     $(document).ready(function() {
         $(`label[for^="id_destinations_"]`).each(function() {
