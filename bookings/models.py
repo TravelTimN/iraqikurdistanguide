@@ -20,7 +20,7 @@ class Booking(models.Model):
     guest_country = CountryField(blank_label="Country", null=True, blank=True)
     total_guests = models.PositiveIntegerField(
         default=1,
-        validators=[MinValueValidator(1), MaxValueValidator(30)],
+        validators=[MinValueValidator(1), MaxValueValidator(21)],
         null=False, blank=False)
     start_date = models.DateField(null=False, blank=False)
     end_date = models.DateField(null=False, blank=False)
