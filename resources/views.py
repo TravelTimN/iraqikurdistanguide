@@ -34,7 +34,7 @@ def holidays(request):
 
 def phrases(request):
     """ A view to return the phrases page """
-    if request.user.is_superuser:
+    if request.user.groups.filter(name="Site Admin"):
         phrases = Phrase.objects.all().order_by("category")
     else:
         phrases = Phrase.objects.filter(is_visible=True).order_by("category")
