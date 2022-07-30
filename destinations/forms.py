@@ -1,4 +1,7 @@
 from django import forms
+from django.forms.widgets import (
+    EmailInput, NumberInput, PasswordInput, TextInput, URLInput
+)
 from .models import Province, Destination, Sight, Tour
 from gallery.models import Photo
 
@@ -20,10 +23,15 @@ class DestinationForm(forms.ModelForm):
         self.fields["longitude"].widget = forms.HiddenInput()
 
         # add placeholder for floating-label functionality
+        # (email, number, password, search, tel, text, url)
+        valid_types = (EmailInput, NumberInput, PasswordInput, TextInput, URLInput)
         for field in self.fields:
+            this_widget = self.fields[field].widget
+            # DateInput subclasses TextInput, so exclude them
+            if isinstance(this_widget, valid_types) and not isinstance(this_widget, DateInput):  # noqa
+                this_widget.attrs["placeholder"] = field
             if field != "is_visible":
-                self.fields[field].widget.attrs["class"] = "form-control"
-            self.fields[field].widget.attrs["placeholder"] = field
+                this_widget.attrs["class"] = "form-control"
 
         # generate list of provinces using optgroups
         self.fields["province"].choices = [["", "Select Province"]]
