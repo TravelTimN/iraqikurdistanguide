@@ -1,10 +1,5 @@
 /* jshint esversion: 11, jquery: true */
 
-// disable first option of each <select> element
-$("select:not(#id_guide)").each(function() {
-    $(this).children("option:first").prop("disabled", true);
-});
-
 // ensure start/end dates are not before "today", and end-date comes on/after start-date
 setEndDateMin(); // set the min-value for end_date on page-load, if existing, otherwise disabled
 let now = new Date(),

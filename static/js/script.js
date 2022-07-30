@@ -211,3 +211,8 @@ function removeWishlistDestination(e, destination) {
     localStorage.setItem("wishlist", wishlist.join(","));
     
 }
+
+// CRUD functionality: disable first <option> in each <select> input (exception: booking guide defaults to Haval)
+$("select:not(#id_guide)").each(function() {
+    $(this).children("option:first").prop("disabled", true);
+});

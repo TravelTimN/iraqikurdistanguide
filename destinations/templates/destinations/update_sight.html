@@ -144,13 +144,7 @@
 {% endblock %}
 
 {% block js %}
-
 <script>
-    // disable first option of each <select> element
-        $("select").each(function() {
-        $(this).children("option:first").prop("disabled", true);
-    });
-
     // basic leaflet map of Iraq
     let origLat = document.getElementById("id_latitude").value;
     let origLng = document.getElementById("id_longitude").value;
@@ -206,7 +200,5 @@
         zoom = zoom < 10 ? 10 : zoom;
         map.flyTo([lat, lng], zoom);
     }
-
 </script>
-
 {% endblock %}

@@ -121,36 +121,30 @@
 {% endblock %}
 
 {% block js %}
-    <script>
-        // disable first option of each <select> element
-            $("select").each(function() {
-            $(this).children("option:first").prop("disabled", true);
-        });
+<script>
+    // update <optgroup> 'data' attr and 'text'
+    let photoOptions = $("#id_photo").children("optgroup").children("option");
+    $(photoOptions).each(function() {
+        // set the 'data-path' attribute
+        let optData = $(this).text();
+        $(this).data("path", optData);
+        // update the innerText of each option
+        let optText = $(this).text().split("/").pop();
+        $(this).text(optText);
+    });
 
-        // update <optgroup> 'data' attr and 'text'
-        let photoOptions = $("#id_photo").children("optgroup").children("option");
-        $(photoOptions).each(function() {
-            // set the 'data-path' attribute
-            let optData = $(this).text();
-            $(this).data("path", optData);
-            // update the innerText of each option
-            let optText = $(this).text().split("/").pop();
-            $(this).text(optText);
-        });
-    
-        // show preview of the image
-        // add/edit photo_form on Gallery app use 'similar' logic
-        $("#id_photo").on("change", function() {
-            let imgURL = $(this).find(":selected").data("path");
-            if (imgURL) {
-                try {
-                    $("#img-preview").prop("src", imgURL).on("error", function() {
-                        $("#img-preview").prop("src", `{{ MEDIA_URL }}no-image.png`);
-                    });
-                }
-                catch (error) {console.log(error);}
+    // show preview of the image
+    // add/edit photo_form on Gallery app use 'similar' logic
+    $("#id_photo").on("change", function() {
+        let imgURL = $(this).find(":selected").data("path");
+        if (imgURL) {
+            try {
+                $("#img-preview").prop("src", imgURL).on("error", function() {
+                    $("#img-preview").prop("src", `{{ MEDIA_URL }}no-image.png`);
+                });
             }
-        });
-    </script>
-
+            catch (error) {console.log(error);}
+        }
+    });
+</script>
 {% endblock %}
