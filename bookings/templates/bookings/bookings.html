@@ -82,12 +82,12 @@
                 <!-- Modal -->
                 <div class="modal fade" id="modal{{ booking.id }}" tabindex="-1" aria-labelledby="modal{{ booking.id }}Label" aria-hidden="true">
                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                        <div class="modal-content">
-                            <div class="modal-header">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-header bg-danger bg-opacity-50 text-light">
                                 <h5 class="modal-title" id="modal{{ booking.id }}Label">{{ booking.guest_name }}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body bg-light text-dark">
                                 <strong>Guide:</strong> {{ booking.get_guide_display }}<br>
                                 <strong>Guest Name:</strong> {{ booking.guest_name }}<br>
                                 <strong>Guest Email:</strong> {{ booking.guest_email }}<br>
@@ -108,9 +108,9 @@
                                 <br>
                                 <strong>Notes:</strong> {{ booking.notes }}<br>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <a href="{% url 'update_booking' booking.id %}" class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
+                            <div class="modal-footer bg-success bg-opacity-50">
+                                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+                                <a href="{% url 'update_booking' booking.id %}" class="btn btn-danger">Edit <i class="fas fa-edit"></i></a>
                             </div>
                         </div>
                     </div>
