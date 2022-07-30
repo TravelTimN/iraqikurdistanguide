@@ -31,3 +31,9 @@ class ContactForm(forms.ModelForm):
             if field != "destinations":
                 self.fields[field].widget.attrs["class"] = "form-control"
             self.fields[field].widget.attrs["placeholder"] = field
+            if field == "num_days":
+                self.fields[field].widget.attrs["min"] = 1
+                self.fields[field].widget.attrs["max"] = 60
+            if field == "num_guests":
+                self.fields[field].widget.attrs["min"] = 1
+                self.fields[field].widget.attrs["max"] = 21
