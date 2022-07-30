@@ -27,8 +27,7 @@ class DestinationForm(forms.ModelForm):
         valid_types = (EmailInput, NumberInput, PasswordInput, TextInput, URLInput)
         for field in self.fields:
             this_widget = self.fields[field].widget
-            # DateInput subclasses TextInput, so exclude them
-            if isinstance(this_widget, valid_types) and not isinstance(this_widget, DateInput):  # noqa
+            if isinstance(this_widget, valid_types):
                 this_widget.attrs["placeholder"] = field
             if field != "is_visible":
                 this_widget.attrs["class"] = "form-control"
