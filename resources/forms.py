@@ -1,4 +1,7 @@
 from django import forms
+from django.forms.widgets import (
+    EmailInput, NumberInput, PasswordInput, TextInput, URLInput
+)
 from .models import Phrase
 
 
@@ -12,14 +15,15 @@ class PhraseForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["category"].choices = [("", "Select Category"),] + list(self.fields["category"].choices)[1:]
-        self.fields["english_phrase"].label = "English"
-        self.fields["english_phrase"].widget.attrs["placeholder"] = "English Phrase"
-        self.fields["sorani_script"].label = "کوردی (سۆرانی)"
-        self.fields["sorani_script"].widget.attrs["placeholder"] = "Kurdish Sorani Script"
-        self.fields["sorani_latin"].label = "Kurdi (Sorani)"
-        self.fields["sorani_latin"].widget.attrs["placeholder"] = "Kurdish Sorani Letters"
-        self.fields["arabic_script"].label = "عربي"
-        self.fields["arabic_script"].widget.attrs["placeholder"] = "Arabic Script"
-        self.fields["arabic_latin"].label = "earabiun"
-        self.fields["arabic_latin"].widget.attrs["placeholder"] = "Arabic Letters"
+        self.fields["category"].choices = [("", "Select Category"),] + list(self.fields["category"].choices)[1:]  # noqa
+
+        # add placeholder for floating-label functionality
+        # (email, number, password, search, tel, text, url)
+        for field in self.fields:
+            if isinstance(self.fields[field].widget, (EmailInput, NumberInput, PasswordInput, TextInput, URLInput)):  # noqa
+                self.fields[field].widget.attrs["placeholder"] = field
+            if field != "is_visible":
+                if field == "sorani_script" or field == "arabic_script":
+                    self.fields[field].widget.attrs["class"] = "form-control text-end"
+                else:
+                    self.fields[field].widget.attrs["class"] = "form-control"

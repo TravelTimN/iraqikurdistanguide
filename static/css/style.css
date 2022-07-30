@@ -1118,6 +1118,12 @@ p.lightbox-caption {
     transform: translateX(20vw);
 }
 
+/* resources: phrases */
+.form-floating>.form-control#id_sorani_script:focus~label,
+.form-floating>.form-control#id_arabic_script:focus~label {
+    transform: scale(.85) translateY(-0.5rem) translateX(3rem);
+}
+
 /* resources: weather */
 .weather-card {
     transition: all 0.2s ease-in-out;
