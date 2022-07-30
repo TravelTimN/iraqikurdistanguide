@@ -10,22 +10,90 @@
 
 {% block content %}
 
-<section class="container my-5">
+<section class="container-fluid">
     <div class="row">
-        <div class="col-12 col-md-6">
+
+        <!-- form data -->
+        <div class="col-12 col-md-6 py-5 px-2 px-md-5">
             <form method="POST" action="{% url 'add_photo' %}" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ photo_form.as_p }}
-                <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
-                <button type="submit" class="btn btn-success">Submit</button>
-                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
+
+                <fieldset class="card shadow">
+					<legend class="card-header bg-kur-green text-light text-center">New Photo</legend>
+
+					<div class="card-body">
+
+						<!-- sight field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-landmark fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ photo_form.sight }}
+                                <label for="id_sight">* Sight Name</label>
+                            </div>
+						</div>
+
+						<!-- image field -->
+						<div class="input-group mb-3">
+                            <label for="id_image" class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex">
+                                <i class="fas fa-image fa-fw"></i>
+                            </label>
+                            {{ photo_form.image }}
+						</div>
+
+						<!-- caption field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-closed-captioning fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ photo_form.caption }}
+                                <label for="id_caption">* Caption</label>
+                            </div>
+						</div>
+
+                        <!-- is_visible field -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark px-3">
+                                {{ photo_form.is_visible }}
+                            </span>
+                            <span class="form-control">* Publicly Visible?</span>
+                        </div>
+
+                        <!-- hidden fields -->
+                        <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+
+                        <!-- form errors (if applicable) -->
+						{% if photo_form.errors %}
+						<div class="alert alert-danger">
+							{% for key, value in photo_form.errors.items %}
+								{{ key|escape }}
+								{{ value|escape }}
+							{% endfor %}
+						</div>
+						{% endif %}
+
+					</div>
+
+					<div class="card-footer bg-kur-green text-light">
+						<div class="row my-3">
+							<div class="col text-center">
+								<!-- submit form -->
+                                <button type="submit" class="btn btn-warning" id="submit-btn">Submit</button>
+                                <!-- cancel button -->
+                                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
+							</div>
+						</div>
+					</div>
+
+				</fieldset>
+
             </form>
         </div>
+
         <!-- display preview of blog being uploaded -->
-        <div class="col-12 col-md-6 d-none rounded" id="img-preview-col">
-            <img src="" alt="Preview of Image Being Uploaded" id="img-preview"
+        <div class="col-12 col-md-6 p-0 d-none rounded" id="img-preview-col">
+            <img src="#" alt="Preview of Image Being Uploaded" id="img-preview"
                 class="card img-fluid img-thumbnail rounded shadow" onError="this.onerror=null;this.src='{{ MEDIA_URL }}no-image.png';">
         </div>
+
     </div>
 </section>
 

@@ -10,49 +10,122 @@
 
 {% block content %}
 
-<section class="container my-5">
+<section class="container-fluid">
     <div class="row">
-        <div class="col-12 col-md-6">
+
+        <!-- form data -->
+        <div class="col-12 col-md-6 py-5 px-2 px-md-5">
             <form method="POST" action="{% url 'update_photo' photo.id %}" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ photo_form.as_p }}
-                <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
-                <button type="submit" class="btn btn-success">Submit</button>
-                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
-                <a class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
-                <!-- Modal -->
-                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="deleteModalLabel">Delete "{{ photo }}"?</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+
+                <fieldset class="card shadow">
+					<legend class="card-header bg-kur-green text-light text-center">Editing Photo</legend>
+
+					<div class="card-body">
+
+						<!-- sight field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-landmark fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ photo_form.sight }}
+                                <label for="id_sight">* Sight Name</label>
                             </div>
-                            <div class="modal-body">
-                                Are you sure you want to delete this photo?
-                                <br><br>
-                                <div class="row">
-                                    <div class="col-6 offset-3">
-                                        <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" class="card-img"
-                                            onError="this.onerror=null;this.src='{{ MEDIA_URL }}no-image.png';">
+						</div>
+
+                        <!-- image field (manual-build to avoid custom widget method) -->
+                        <div class="input-group mb-3">
+                            <label for="id_image" class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex">
+                                <i class="fas fa-image fa-fw"></i>
+                            </label>
+                            <input type="file" name="image" accept="image/*" class="d-none" id="id_image">
+                            <label for="id_image" class="input-group-text bg-secondary bg-opacity-25 text-dark">Choose</label>
+                            <label for="id_image" class="form-control input-group-text bg-white text-muted">New Photo</label>
+                        </div>
+
+						<!-- caption field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-closed-captioning fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ photo_form.caption }}
+                                <label for="id_caption">* Caption</label>
+                            </div>
+						</div>
+
+                        <!-- is_visible field -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark px-3">
+                                {{ photo_form.is_visible }}
+                            </span>
+                            <span class="form-control">* Publicly Visible?</span>
+                        </div>
+
+                        <!-- hidden fields -->
+                        <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+
+                        <!-- form errors (if applicable) -->
+						{% if photo_form.errors %}
+						<div class="alert alert-danger">
+							{% for key, value in photo_form.errors.items %}
+								{{ key|escape }}
+								{{ value|escape }}
+							{% endfor %}
+						</div>
+						{% endif %}
+
+					</div>
+
+					<div class="card-footer bg-kur-green text-light">
+						<div class="row my-3">
+							<div class="col text-center">
+								<!-- submit form -->
+                                <button type="submit" class="btn btn-warning" id="submit-btn">Submit</button>
+                                <!-- cancel button -->
+                                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
+                                <!-- delete button -->
+                                <a class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
+                                <!-- Modal -->
+                                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content bg-dark">
+                                            <div class="modal-header bg-danger bg-opacity-50 text-light">
+                                                <h5 class="modal-title" id="deleteModalLabel">Delete "{{ photo }}"?</h5>
+                                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body bg-light text-dark">
+                                                Are you sure you want to delete this photo?
+                                                <br>
+                                                This cannot be undone.
+                                                <br><br>
+                                                <div class="row">
+                                                    <div class="col-6 offset-3">
+                                                        <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" class="card-img"
+                                                            onError="this.onerror=null;this.src='{{ MEDIA_URL }}no-image.png';">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer bg-success bg-opacity-50">
+                                                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">No</button>
+                                                <a href="{% url 'delete_photo' photo.id %}" class="btn btn-danger">Yes</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-                                <a href="{% url 'delete_photo' photo.id %}" class="btn btn-success">Yes</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+							</div>
+						</div>
+					</div>
+
+				</fieldset>
+
             </form>
         </div>
+
         <!-- display preview of blog being uploaded -->
-        <div class="col-12 col-md-6" id="img-preview-col">
+        <div class="col-12 col-md-6 p-0 rounded" id="img-preview-col">
             <img src="{{ photo.image.url }}" alt="Preview of Image Being Uploaded" id="img-preview"
-                class="card img-fluid img-thumbnail shadow" onError="this.onerror=null;this.src='{{ MEDIA_URL }}no-image.png';">
+                class="card img-fluid img-thumbnail rounded shadow" onError="this.onerror=null;this.src='{{ MEDIA_URL }}no-image.png';">
         </div>
+
     </div>
 </section>
 
