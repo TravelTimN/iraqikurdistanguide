@@ -21,11 +21,13 @@ class PhotoForm(forms.ModelForm):
 
         # add placeholder for floating-label functionality
         # (email, number, password, search, tel, text, url)
+        valid_types = (EmailInput, NumberInput, PasswordInput, TextInput, URLInput)
         for field in self.fields:
-            if isinstance(self.fields[field].widget, (EmailInput, NumberInput, PasswordInput, TextInput, URLInput)):  # noqa
-                self.fields[field].widget.attrs["placeholder"] = field
+            this_widget = self.fields[field].widget
+            if isinstance(this_widget, valid_types):
+                this_widget.attrs["placeholder"] = field
             if field != "is_visible":
-                self.fields[field].widget.attrs["class"] = "form-control"
+                this_widget.attrs["class"] = "form-control"
 
         # generate list of destinations using optgroups
         self.fields["sight"].choices = [["", "Select Sight"]]
