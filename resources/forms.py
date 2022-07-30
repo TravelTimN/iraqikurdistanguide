@@ -19,9 +19,11 @@ class PhraseForm(forms.ModelForm):
 
         # add placeholder for floating-label functionality
         # (email, number, password, search, tel, text, url)
+        valid_types = (EmailInput, NumberInput, PasswordInput, TextInput, URLInput)
         for field in self.fields:
-            if isinstance(self.fields[field].widget, (EmailInput, NumberInput, PasswordInput, TextInput, URLInput)):  # noqa
-                self.fields[field].widget.attrs["placeholder"] = field
+            this_widget = self.fields[field].widget
+            if isinstance(this_widget, valid_types):
+                this_widget.attrs["placeholder"] = field
             if field != "is_visible":
                 if field == "sorani_script" or field == "arabic_script":
                     self.fields[field].widget.attrs["class"] = "form-control text-end"
