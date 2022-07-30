@@ -37,7 +37,7 @@ class BookingForm(forms.ModelForm):
                 this_widget.attrs["class"] = "form-control"
             if field == "total_guests":
                 this_widget.attrs["min"] = 1
-                this_widget.attrs["max"] = 30
+                this_widget.attrs["max"] = 21
 
         # generate list of available currencies
         self.fields["currency"].choices = [("", "Currency"),] + list(self.fields["currency"].choices)[1:]
