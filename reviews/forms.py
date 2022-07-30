@@ -1,6 +1,9 @@
 from django import forms
+from django.forms.widgets import (
+    EmailInput, NumberInput, PasswordInput, TextInput, URLInput
+)
 from tinymce.widgets import TinyMCE
-from .models import Review
+from .models import Review, Source
 
 
 class DateInput(forms.DateInput):
@@ -16,14 +19,30 @@ class ReviewForm(forms.ModelForm):
         fields = "__all__"
         widgets = {
             "date": DateInput(),
-            # setting 'format' causes UPDATE form to break date
-            # "date": DateInput(attrs={"class": "datepicker"}, format="%d/%m/%Y"),
             "review": TinyMCE(),
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # only for ModelChoiceField
+
+        # add placeholder for floating-label functionality
+        # (email, number, password, search, tel, text, url)
+        valid_types = (EmailInput, NumberInput, PasswordInput, TextInput, URLInput)
+        for field in self.fields:
+            this_widget = self.fields[field].widget
+            # DateInput subclasses TextInput, so exclude them
+            if isinstance(this_widget, valid_types) and not isinstance(this_widget, DateInput):  # noqa
+                this_widget.attrs["placeholder"] = field
+            if field == "review":
+                this_widget.attrs["placeholder"] = "User Review"
+            if field != "is_visible":
+                this_widget.attrs["class"] = "form-control"
+
+        # ratings selection
         self.fields["rating"].choices = [("", "Rating"),] + list(self.fields["rating"].choices)[1:]
-        # for ChoiceFields
-        self.fields["source"].empty_label = "Source"
+
+        # generate list of available sources
+        self.fields["source"].choices = [["", "Source"]]
+        sources = Source.objects.all()
+        for source in sources:
+            self.fields["source"].choices.append((source.id, source.name))

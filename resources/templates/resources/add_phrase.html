@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load custom_filters %}
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
@@ -18,34 +19,116 @@
         </ul>
     </li>
     <li class="breadcrumb-item"><a href="{% url 'phrases' %}">Phrases</a></li>
-    {% if request.user.is_superuser %}
+    {% if request.user|has_group:"Site Admin" %}
         <li class="breadcrumb-item active" aria-current="page">NEW</li>
     {% endif %}
 {% endblock %}
 
 {% block content %}
 
-<section class="container my-5">
+<section class="container-fluid">
     <div class="row">
-        <div class="col-12">
+
+        <!-- form data -->
+        <div class="col-12 col-md-10 col-lg-8 py-5 px-2 px-md-5 mx-auto">
             <form method="POST" action="{% url 'add_phrase' %}">
                 {% csrf_token %}
-                {{ phrase_form.as_p }}
-                <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
-                <button type="submit" class="btn btn-success">Submit</button>
-                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
+
+                <fieldset class="card shadow">
+					<legend class="card-header bg-kur-green text-light text-center">New Phrase</legend>
+
+					<div class="card-body">
+
+						<!-- category field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-language fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ phrase_form.category }}
+                                <label for="id_category">* Category</label>
+                            </div>
+						</div>
+
+						<!-- english_phrase field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex text-center justify-content-center px-1">
+                                <img src="{% static 'img/flags/usa.png' %}" class="img-fluid w-75" alt="Flag of USA">
+                            </span>
+                            <div class="form-floating flex-grow-1">
+                                {{ phrase_form.english_phrase }}
+                                <label for="id_english_phrase">* English Phrase</label>
+                            </div>
+						</div>
+
+						<!-- sorani_script field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex text-center justify-content-center px-1">
+                                <img src="{% static 'img/flags/kurdistan.png' %}" class="img-fluid w-75" alt="Flag of Kurdistan">
+                            </span>
+                            <div class="form-floating flex-grow-1">
+                                {{ phrase_form.sorani_script }}
+                                <label for="id_sorani_script" class="text-end w-100">کوردی (سۆرانی) *</label>
+                            </div>
+                            <div class="form-floating flex-grow-1">
+                                {{ phrase_form.sorani_latin }}
+                                <label for="id_sorani_latin">* Sorani Letters</label>
+                            </div>
+						</div>
+
+						<!-- arabic_script field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex text-center justify-content-center px-1">
+                                <img src="{% static 'img/flags/iraq.png' %}" class="img-fluid w-75" alt="Flag of Iraq">
+                            </span>
+                            <div class="form-floating flex-grow-1">
+                                {{ phrase_form.arabic_script }}
+                                <label for="id_arabic_script" class="text-end w-100">عربي*</label>
+                            </div>
+                            <div class="form-floating flex-grow-1">
+                                {{ phrase_form.arabic_latin }}
+                                <label for="id_arabic_latin">* Arabic Letters</label>
+                            </div>
+						</div>
+
+                        <!-- is_visible field -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark px-3">
+                                {{ phrase_form.is_visible }}
+                            </span>
+                            <span class="form-control">* Publicly Visible?</span>
+                        </div>
+
+                        <!-- hidden fields -->
+                        <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+
+                        <!-- form errors (if applicable) -->
+						{% if phrase_form.errors %}
+						<div class="alert alert-danger">
+							{% for key, value in phrase_form.errors.items %}
+								{{ key|escape }}
+								{{ value|escape }}
+							{% endfor %}
+						</div>
+						{% endif %}
+
+					</div>
+
+					<div class="card-footer bg-kur-green text-light">
+						<div class="row my-3">
+							<div class="col text-center">
+								<!-- submit form -->
+                                <button type="submit" class="btn btn-warning" id="submit-btn">Submit</button>
+                                <!-- cancel button -->
+                                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
+							</div>
+						</div>
+					</div>
+
+				</fieldset>
+
             </form>
         </div>
+
     </div>
 </section>
 
-{% endblock %}
-
-{% block js %}
-<script>
-    // disable first option of each <select> element
-        $("select").each(function() {
-        $(this).children("option:first").prop("disabled", true);
-    });
-</script>
 {% endblock %}

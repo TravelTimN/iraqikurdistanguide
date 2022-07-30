@@ -1,9 +1,4 @@
 <script>
-    // disable first option of each <select> element
-        $("select").each(function() {
-        $(this).children("option:first").prop("disabled", true);
-    });
-
     // show preview of the image, prior to upload
     $("#id_image").on("change", function() {
         let imgPreview = document.getElementById("id_image").files;

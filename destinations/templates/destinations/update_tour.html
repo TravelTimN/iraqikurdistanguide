@@ -9,76 +9,142 @@
 
 {% block content %}
 
-<section class="container my-5">
+<section class="container-fluid">
     <div class="row">
-        <div class="col-12 col-md-6">
+
+        <!-- form data -->
+        <div class="col-12 col-md-6 py-5 px-2 px-md-5">
             <form method="POST" action="{% url 'update_tour' tour.id %}">
                 {% csrf_token %}
-                {{ tour_form.as_p }}
-                <button type="submit" class="btn btn-success">Submit</button>
-                <a href="{{ request.META.HTTP_REFERER }}#tours" class="btn btn-danger">Cancel</a>
-                <a class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
-                <!-- Modal -->
-                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="deleteModalLabel">Delete {{ tour.category }}?</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                <fieldset class="card shadow">
+					<legend class="card-header bg-kur-green text-light text-center">Editing {{ tour }} Tours</legend>
+
+					<div class="card-body">
+
+						<!-- category field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-compass fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ tour_form.category }}
+                                <label for="id_category">* Tour Category</label>
                             </div>
-                            <div class="modal-body">
-                                Are you sure you want to delete the {{ tour.category }} Tour?
+						</div>
+
+						<!-- photo field -->
+						<div class="input-group mb-3">
+                            <div class="form-floating flex-grow-1">
+                                {{ tour_form.photo }}
+                                <label for="id_photo">* Photo</label>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-                                <a href="{% url 'delete_tour' tour.id %}" class="btn btn-success">Yes</a>
+						</div>
+
+						<!-- description field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-atlas fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ tour_form.description }}
+                                <label for="id_description">* Description</label>
                             </div>
+						</div>
+
+                        <!-- is_visible field -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark px-3">
+                                {{ tour_form.is_visible }}
+                            </span>
+                            <span class="form-control" aria-label="Publicly Visible Checkbox">* Publicly Visible?</span>
                         </div>
-                    </div>
-                </div>
+
+                        <!-- hidden fields -->
+                        <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+
+                        <!-- form errors (if applicable) -->
+						{% if tour_form.errors %}
+						<div class="alert alert-danger">
+							{% for key, value in tour_form.errors.items %}
+								{{ key|escape }}
+								{{ value|escape }}
+							{% endfor %}
+						</div>
+						{% endif %}
+
+					</div>
+
+					<div class="card-footer bg-kur-green text-light">
+						<div class="row my-3">
+							<div class="col text-center">
+								<!-- submit form -->
+                                <button type="submit" class="btn btn-warning" id="submit-btn">Submit</button>
+                                <!-- cancel button -->
+                                <a href="{{ request.META.HTTP_REFERER }}#tours" class="btn btn-danger">Cancel</a>
+                                <!-- delete button -->
+                                <a class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
+                                <!-- Modal -->
+                                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content bg-dark">
+                                            <div class="modal-header bg-danger bg-opacity-50 text-light">
+                                                <h5 class="modal-title" id="deleteModalLabel">Delete {{ tour.category }}?</h5>
+                                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body bg-light text-dark">
+                                                Are you sure you want to delete the {{ tour.category }} Tour?
+                                                <br>
+                                                This cannot be undone.
+                                            </div>
+                                            <div class="modal-footer bg-success bg-opacity-50">
+                                                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">No</button>
+                                                <a href="{% url 'delete_tour' tour.id %}" class="btn btn-danger">Yes</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+							</div>
+						</div>
+					</div>
+
+				</fieldset>
+
             </form>
         </div>
+
         <!-- display preview of tour photo being uploaded -->
-        <div class="col-12 col-md-6 rounded" id="img-preview-col">
+        <div class="col-12 col-md-6 px-2 rounded" id="img-preview-col">
             <img src="{{ tour.photo.image.url }}" alt="Preview of Tour Photo selected" id="img-preview"
                 class="card img-fluid img-thumbnail rounded shadow" onError="this.onerror=null;this.src='{{ MEDIA_URL }}no-image.png';">
         </div>
+
     </div>
 </section>
 
 {% endblock %}
 
 {% block js %}
-    <script>
-        // disable first option of each <select> element
-            $("select").each(function() {
-            $(this).children("option:first").prop("disabled", true);
-        });
+<script>
+    // update <optgroup> 'data' attr and 'text'
+    let photoOptions = $("#id_photo").children("optgroup").children("option");
+    $(photoOptions).each(function() {
+        // set the 'data-path' attribute
+        let optData = $(this).text();
+        $(this).data("path", optData);
+        // update the innerText of each option
+        let optText = $(this).text().split("/").pop();
+        $(this).text(optText);
+    });
 
-        // update <optgroup> 'data' attr and 'text'
-        let photoOptions = $("#id_photo").children("optgroup").children("option");
-        $(photoOptions).each(function() {
-            // set the 'data-path' attribute
-            let optData = $(this).text();
-            $(this).data("path", optData);
-            // update the innerText of each option
-            let optText = $(this).text().split("/").pop();
-            $(this).text(optText);
-        });
-    
-        // show preview of the image
-        // add/edit photo_form on Gallery app use 'similar' logic
-        $("#id_photo").on("change", function() {
-            let imgURL = $(this).find(":selected").data("path");
-            if (imgURL) {
-                try {
-                    $("#img-preview").prop("src", imgURL).on("error", function() {
-                        $("#img-preview").prop("src", `{{ MEDIA_URL }}no-image.png`);
-                    });
-                }
-                catch (error) {console.log(error);}
+    // show preview of the image
+    // add/edit photo_form on Gallery app use 'similar' logic
+    $("#id_photo").on("change", function() {
+        let imgURL = $(this).find(":selected").data("path");
+        if (imgURL) {
+            try {
+                $("#img-preview").prop("src", imgURL).on("error", function() {
+                    $("#img-preview").prop("src", `{{ MEDIA_URL }}no-image.png`);
+                });
             }
-        });
-    </script>
-
+            catch (error) {console.log(error);}
+        }
+    });
+</script>
 {% endblock %}

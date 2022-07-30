@@ -12,47 +12,138 @@
 
 {% block content %}
 
-<section class="container my-5">
+<section class="container-fluid">
     <div class="row">
-        <div class="col-12 col-md-6">
+
+        <!-- form data -->
+        <div class="col-12 col-md-6 py-5 px-2 px-md-5">
             <form method="POST" action="{% url 'update_sight' destination.id sight.id %}">
                 {% csrf_token %}
-                {{ sight_form.as_p }}
-                <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
-                <button type="submit" class="btn btn-success">Submit</button>
-                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
-                <a class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
-                <!-- Modal -->
-                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="deleteModalLabel">Delete {{ sight }}?</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+
+                <fieldset class="card shadow">
+					<legend class="card-header bg-kur-green text-light text-center">Editing {{ sight.name }}</legend>
+
+					<div class="card-body">
+
+						<!-- name field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-landmark fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ sight_form.name }}
+                                <label for="id_name">* Sight Name</label>
                             </div>
-                            <div class="modal-body">
-                                Are you sure you want to delete {{ sight }}?
+						</div>
+
+						<!-- category field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-map-marked-alt fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ sight_form.category }}
+                                <label for="id_category">* Category</label>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-                                <a href="{% url 'delete_sight' destination.id sight.id %}" class="btn btn-success">Yes</a>
+						</div>
+
+						<!-- description field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-atlas fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ sight_form.description }}
+                                <label for="id_description">* Description</label>
                             </div>
+						</div>
+
+                        <!-- is_visible field -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark px-3">
+                                {{ sight_form.is_visible }}
+                            </span>
+                            <span class="form-control" aria-label="Publicly Visible Checkbox">* Publicly Visible?</span>
                         </div>
-                    </div>
-                </div>
+
+                        <!-- primary_attraction field -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark px-3">
+                                {{ sight_form.primary_attraction }}
+                            </span>
+                            <span class="form-control" aria-label="Publicly Visible Checkbox">* Primary Attraction?</span>
+                        </div>
+
+                        <!-- hidden fields -->
+                        <input type="hidden" name="latitude" step="0.000001" value="{{ sight.latitude }}" id="id_latitude" required>
+                        <input type="hidden" name="longitude" step="0.000001" value="{{ sight.longitude }}" id="id_longitude" required>
+                        <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+
+						<!-- destination field (hidden) -->
+						<div class="input-group mb-3 d-none">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-map-marked-alt fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ sight_form.destination }}
+                                <label for="id_destination">* Destination</label>
+                            </div>
+						</div>
+
+                        <!-- form errors (if applicable) -->
+						{% if sight_form.errors %}
+						<div class="alert alert-danger">
+							{% for key, value in sight_form.errors.items %}
+								{{ key|escape }}
+								{{ value|escape }}
+							{% endfor %}
+						</div>
+						{% endif %}
+
+					</div>
+
+					<div class="card-footer bg-kur-green text-light">
+						<div class="row my-3">
+							<div class="col text-center">
+								<!-- submit form -->
+                                <button type="submit" class="btn btn-warning" id="submit-btn">Submit</button>
+                                <!-- cancel button -->
+                                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
+                                <!-- delete button -->
+                                <a class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
+                                <!-- Modal -->
+                                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content bg-dark">
+                                            <div class="modal-header bg-danger bg-opacity-50 text-light">
+                                                <h5 class="modal-title" id="deleteModalLabel">Delete {{ sight }}?</h5>
+                                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body bg-light text-dark">
+                                                Are you sure you want to delete {{ sight }}?
+                                                <br>
+                                                This cannot be undone.
+                                            </div>
+                                            <div class="modal-footer bg-success bg-opacity-50">
+                                                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">No</button>
+                                                <a href="{% url 'delete_sight' destination.id sight.id %}" class="btn btn-danger">Yes</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+							</div>
+						</div>
+					</div>
+
+				</fieldset>
+
             </form>
         </div>
-        <div class="col-12 col-md-6">
+
+        <!-- map for marker selection -->
+        <div class="col-12 col-md-6 p-0">
             <div id="map-single-destination"></div>
         </div>
+
     </div>
 </section>
 
 {% endblock %}
 
 {% block js %}
-
 <script>
     // basic leaflet map of Iraq
     let origLat = document.getElementById("id_latitude").value;
@@ -109,7 +200,5 @@
         zoom = zoom < 10 ? 10 : zoom;
         map.flyTo([lat, lng], zoom);
     }
-
 </script>
-
 {% endblock %}

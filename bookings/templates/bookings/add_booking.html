@@ -10,22 +10,185 @@
 
 {% block content %}
 
-<section class="container my-5">
+<section class="container-fluid">
     <div class="row">
-        <div class="col-12">
+
+        <!-- form data -->
+        <div class="col-12 col-md-10 col-lg-8 mx-auto my-5">
             <form method="POST" action="{% url 'add_booking' %}">
                 {% csrf_token %}
-                {{ booking_form.as_p }}
-                <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
-                <button type="submit" class="btn btn-success">Submit</button>
-                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
+
+                <fieldset class="card shadow">
+					<legend class="card-header bg-kur-green text-light text-center">New Booking</legend>
+
+					<div class="card-body">
+
+						<!-- guide field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-user-friends fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ booking_form.guide }}
+                                <label for="id_guide">* Guide</label>
+                            </div>
+						</div>
+
+						<!-- guest_name field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-address-card fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ booking_form.guest_name }}
+                                <label for="id_guest_name">* Guest Name</label>
+                            </div>
+						</div>
+
+						<!-- guest_email field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-at fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ booking_form.guest_email }}
+                                <label for="id_guest_email">* Guest Email</label>
+                            </div>
+						</div>
+
+						<!-- guest_phone field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-phone-alt fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ booking_form.guest_phone }}
+                                <label for="id_guest_phone">* Guest Phone</label>
+                            </div>
+						</div>
+
+						<!-- guest_country field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-flag fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ booking_form.guest_country }}
+                                <label for="id_guest_country">* Guest Country</label>
+                            </div>
+						</div>
+
+						<!-- total_guests field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-users fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ booking_form.total_guests }}
+                                <label for="id_total_guests">* Total Guests</label>
+                            </div>
+						</div>
+
+						<!-- start_date field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-calendar-check fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ booking_form.start_date }}
+                                <label for="id_start_date">* Start Date</label>
+                            </div>
+						</div>
+
+						<!-- end_date field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-calendar-times fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ booking_form.end_date }}
+                                <label for="id_end_date">* End Date</label>
+                            </div>
+						</div>
+
+						<!-- currency field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-money-bill-alt fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ booking_form.currency }}
+                                <label for="id_currency">* Currency</label>
+                            </div>
+						</div>
+
+						<!-- total_price field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-file-invoice-dollar fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ booking_form.total_price }}
+                                <label for="id_total_price">* Total Price</label>
+                            </div>
+						</div>
+
+						<!-- amount_paid field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-hand-holding-usd fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ booking_form.amount_paid }}
+                                <label for="id_amount_paid">* Amount Paid</label>
+                            </div>
+						</div>
+
+						<!-- itinerary field -->
+                        <div class="row">
+                            <div class="col-12 mx-auto text-center fw-bold fs-5">
+                                Itinerary Destinations
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col-12 mx-auto" id="booking-form-itinerary">
+                                {{ booking_form.itinerary }}
+                            </div>
+                        </div>
+
+						<!-- notes field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-sticky-note fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ booking_form.notes }}
+                                <label for="id_notes">Notes</label>
+                            </div>
+						</div>
+
+                        <!-- hidden fields -->
+                        <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+
+                        <!-- form errors (if applicable) -->
+						{% if booking_form.errors %}
+						<div class="alert alert-danger">
+							{% for key, value in booking_form.errors.items %}
+								{{ key|escape }}
+								{{ value|escape }}
+							{% endfor %}
+						</div>
+						{% endif %}
+
+					</div>
+
+					<div class="card-footer bg-kur-green text-light">
+						<div class="row my-3">
+							<div class="col text-center">
+								<!-- submit form -->
+                                <button type="submit" class="btn btn-warning" id="submit-btn">Submit</button>
+                                <!-- cancel button -->
+                                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
+							</div>
+						</div>
+					</div>
+
+				</fieldset>
+
             </form>
         </div>
+
     </div>
 </section>
 
 {% endblock %}
 
 {% block js %}
-    <script src="{% static 'bookings/js/booking_scripts.js' %}"></script>
+<script>
+// set class for each itinerary destination input item
+$(document).ready(function() {
+    $(`label[for^="id_itinerary_"]`).each(function() {
+        let labelText = $(this).text().trim();
+        $(this).children("input").addClass(`destination-${labelText}`);
+    });
+});
+</script>
+
+<script src="{% static 'bookings/js/booking_scripts.js' %}"></script>
 {% endblock %}

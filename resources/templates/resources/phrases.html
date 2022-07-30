@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load custom_filters %}
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
@@ -22,7 +23,7 @@
         </ul>
     </li>
     <li class="breadcrumb-item active" aria-current="page">Phrases</li>
-    {% if request.user.is_superuser %}
+    {% if request.user|has_group:"Site Admin" %}
         <li class="breadcrumb-item">
             <a href="{% url 'add_phrase' %}">
                 <i class="fas fa-plus-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Phrase"></i>
@@ -115,8 +116,8 @@
                             </div>
 
                         </div>
-                        <!-- superuser footer details -->
-                        {% if request.user.is_superuser %}
+                        <!-- site-admin footer details -->
+                        {% if request.user|has_group:"Site Admin" %}
                             <div class="card-footer d-flex align-items-center justify-content-center bg-secondary bg-opacity-25">
                                 <span class="w-100">
                                     <a href="{% url 'update_phrase' phrase.id %}" class="btn btn-primary">Edit <i
