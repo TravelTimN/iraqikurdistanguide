@@ -1,10 +1,307 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item active" aria-current="page">About</li>
+{% endblock %}
+
 {% block content %}
 
-<section class="container my-5">
-    About
+<section class="container py-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 id="page-header" class="text-dark fw-bold">About</h1>
+        </div>
+    </div>
+    <!-- helper text -->
+    <div class="row mt-5">
+        <div class="col-12 text-center fs-4">
+            <i class="fas fa-hands-helping text-kur-red"></i>
+            Hi, I'm Haval!
+            <br class="d-block d-md-none">
+            <span class="fs-3 ms-md-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Sllaw, mn Hevalm!">!سڵاو, من هەڤاڵم</span>
+            <i class="fas fa-grin text-kur-red"></i>
+        </div>
+    </div>
+</section>
+
+
+<section class="container mt-3 mb-5">
+    <div class="row">
+
+        <!-- left-side -->
+        <div class="col-12 col-md-4 mx-auto mb-5">
+
+            <!-- image of Haval -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <figure class="figure">
+                        <img src="{% static 'img/haval-newroz.jpg' %}" class="figure-img img-fluid rounded" alt="Photo of Haval celebrating Newroz">
+                        <figcaption class="figure-caption text-center">Celebrating Kurdish New Year (Newroz) on March 21st</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <!-- accordion -->
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="accordion" id="about-page-accordion">
+
+                        <!-- services -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="about-services-header">
+                                <button class="accordion-button collapsed bg-success text-light" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#about-services-collapse" aria-expanded="false" aria-controls="about-services-collapse">
+                                    <i class="fas fa-taxi me-3"></i> Services
+                                </button>
+                            </h2>
+                            <div id="about-services-collapse" class="accordion-collapse collapse" aria-labelledby="about-services-header"
+                                data-bs-parent="#about-page-accordion">
+                                <div class="accordion-body">
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">Tour Guide</h5>
+                                            </div>
+                                            <small>
+                                                <ul class="p-0 mb-3">
+                                                    <li>Registered with Ministry of Transportation and Communication as professional tour guide</li>
+                                                    <li>Personalized experience</li>
+                                                    <li>Organization of all aspects of itinerary for individuals or large groups</li>
+                                                    <li>Open, flexible scheduling for one day or one month</li>
+                                                </ul>
+                                            </small>
+                                        </div>
+                                        <div class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">Airport Transport</h5>
+                                            </div>
+                                            <small>
+                                                Airport pick-up / drop-off at any time of day or night, with 24-hour service
+                                            </small>
+                                        </div>
+                                        <div class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">City Driving</h5>
+                                            </div>
+                                            <small>
+                                                
+                                                <ul class="p-0 mb-3">
+                                                    <li>Transport to and from any site, citywide</li>
+                                                    <li>Walking tours and translation service, or awaiting departure, as you need</li>
+                                                </ul>
+                                            </small>
+                                        </div>
+                                        <div class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">On-Call Taxi</h5>
+                                            </div>
+                                            <small>
+                                                Call at any time you need a taxi in Erbil
+                                            </small>
+                                        </div>
+                                        <div class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">Translation</h5>
+                                            </div>
+                                            <small>
+                                                Translation services in Kurdish, Arabic, and English
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- languages -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="about-languages-header">
+                                <button class="accordion-button collapsed bg-success text-light" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#about-languages-collapse" aria-expanded="false" aria-controls="about-languages-collapse">
+                                    <i class="fas fa-language me-3"></i> Languages
+                                </button>
+                            </h2>
+                            <div id="about-languages-collapse" class="accordion-collapse collapse" aria-labelledby="about-languages-header"
+                                data-bs-parent="#about-page-accordion">
+                                <div class="accordion-body">
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">English</h5>
+                                                <img src="{% static 'img/flags/usa.png' %}" class="img-fluid rounded ms-2" alt="Flag of USA">
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">Kurdish</h5>
+                                                <img src="{% static 'img/flags/kurdistan.png' %}" class="img-fluid rounded ms-2" alt="Flag of Kurdistan">
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">Arabic</h5>
+                                                <img src="{% static 'img/flags/iraq.png' %}" class="img-fluid rounded ms-2" alt="Flag of Iraq">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- tours -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="about-tours-header">
+                                <button class="accordion-button collapsed bg-success text-light" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#about-tours-collapse" aria-expanded="false" aria-controls="about-tours-collapse">
+                                    <i class="fas fa-route me-3"></i> Tours
+                                </button>
+                            </h2>
+                            <div id="about-tours-collapse" class="accordion-collapse collapse" aria-labelledby="about-tours-header"
+                                data-bs-parent="#about-page-accordion">
+                                <div class="accordion-body">
+                                    <div class="list-group list-group-flush">
+                                        {% for tour in tours|dictsort:"category" %}
+                                            <div class="list-group-item list-group-item-action">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">
+                                                        {{ tour.category }} Tours
+                                                        {% if tour.is_visible != True %}
+                                                            <span class="text-danger">
+                                                                <i class="fas fa-eye-slash"></i>
+                                                                Hidden
+                                                            </span>
+                                                        {% endif %}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- destinations -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="about-destinations-header">
+                                <button class="accordion-button collapsed bg-success text-light" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#about-destinations-collapse" aria-expanded="false" aria-controls="about-destinations-collapse">
+                                    <i class="fas fa-map-marker-alt me-3"></i> Destinations
+                                </button>
+                            </h2>
+                            <div id="about-destinations-collapse" class="accordion-collapse collapse" aria-labelledby="about-destinations-header"
+                                data-bs-parent="#about-page-accordion">
+                                <div class="accordion-body">
+                                    <div class="list-group list-group-flush">
+                                        {% for destination in destinations|dictsort:"name" %}
+                                            <div class="list-group-item list-group-item-action">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">
+                                                        <a href="{% url 'view_destination' destination.id %}">
+                                                            {{ destination.name }}
+                                                        </a>
+                                                        {% if destination.is_visible != True %}
+                                                            <span class="text-danger">
+                                                                <i class="fas fa-eye-slash"></i>
+                                                                Hidden
+                                                            </span>
+                                                        {% endif %}
+                                                    </h5>
+                                                    {% if destination.province.get_region_display == "Iraq" %}
+                                                        <img src="{% static 'img/flags/iraq.png' %}" class="img-fluid rounded ms-2"
+                                                            alt="Flag of Iraq" data-bs-toggle="tooltip" data-bs-placement="left" title="Federal Iraq">
+                                                        {% else %}
+                                                        <img src="{% static 'img/flags/kurdistan.png' %}" class="img-fluid rounded ms-2"
+                                                            alt="Flag of Kurdistan" data-bs-toggle="tooltip" data-bs-placement="left" title="Iraqi Kurdistan">
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- right side -->
+        <div class="col-12 col-md-8 mx-auto">
+            <div class="row">
+                <div class="col-12 col-lg-10 mx-auto fs-5">
+                    <p>
+                        Welcome to Iraqi Kurdistan! My name is Haval, and you've come to the right place for your trip!
+                    </p>
+            
+                    <p>
+                        I was born in Erbil City. My family originally came from the town of Rawanduz, which is located on Hamilton
+                        Road. We were refugees for 3 months in Iran during the Second Gulf War in 1991. I was 8 years old at the time.
+                    </p>
+            
+                    <p>
+                        During the Civil War in Iraqi Kurdistan in 1994, my family moved from Erbil to Baghdad, where I learned to
+                        speak, read, and write in Arabic, and continued my studies. I lived in Baghdad for 3 years, and learned a
+                        lot about Saddam Hussein and the Arabic language.
+                    </p>
+            
+                    <p>
+                        In 1997, my family had to leave Baghdad for Erbil after Saddam's regime arrested my father. This is a long
+                        story that I will tell you when you visit.
+                    </p>
+            
+                    <p>
+                        In 2003, we fled to Rawanduz, in case Saddam's regime attacked Kurdistan. I was in my last year of high
+                        school, which is the most important year during a student's studies in Iraq. I remember I took all of my books
+                        with me, even with the 10 people in our Toyota Crowne. Somehow, I found space for my books.
+                    </p>
+            
+                    <p>
+                        I finished high school in August 2003. In 2004, I started studies at university. During my studies, I
+                        worked every night as a taxi driver. I wanted to learn English, but I didn't have the money, yet.
+                    </p>
+            
+                    <p>
+                        I decided to be a taxi driver in Erbil, and during that time, I met a very kind lady in 2010. She was teaching at an
+                        international school in Erbil, and she introduced me to many international teachers, NGO workers, and other
+                        foreigners who worked in Erbil. I improved my English with their help.
+                    </p>
+            
+                    <p>
+                        I must say, working as a taxi driver for teachers at the international school has changed my life. I met so many
+                        kind people, they treated me as one of their family, and I learned a lot from them.
+                    </p>
+            
+                    <p>
+                        In 2012, I met a Lonely Planet writer (this is very funny story). After my name was published in the Lonely
+                        Planet guide book, I started working as a tour guide. This is how I have had so much experience, driving
+                        customers for over a decade, which is why I am the original and #1 tour guide in Iraqi Kurdistan.
+                    </p>
+            
+                    <p>
+                        Currently, I live in Erbil with my wife, and our two young boys named Abdullah and Muhammad.
+                    </p>
+
+                    <p>
+                        I'm available for day-trips, or longer itineraries around the region.
+                        I like honest and humble people; there's so much to learn from them in return.
+                        Some day I wish to travel the world.
+                        I have learned a lot from the people I meet and work with, and hope to learn more from you!
+                        It's great to learn about culture, language, and life experiences.
+                        I hope to have the opportunity to make your journey in Kurdistan a memorable one.
+                    </p>
+            
+                    <p>
+                        I can't wait to show you around our beautiful country!
+                        I guarantee that you will see the real Kurdistan!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 {% endblock %}
