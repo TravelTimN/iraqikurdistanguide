@@ -1,9 +1,21 @@
 from django.shortcuts import render
+from destinations.models import Destination, Tour
 
 
 def about(request):
     """ A view to return the about page """
-    return render(request, "about/about.html")
+    if request.user.groups.filter(name="Site Admin"):
+        destinations = Destination.objects.all()
+        tours = Tour.objects.all()
+    else:
+        destinations = Destination.objects.filter(is_visible=True)
+        tours = Tour.objects.filter(is_visible=True)
+    template = "about/about.html"
+    context = {
+        "destinations": destinations,
+        "tours": tours,
+    }
+    return render(request, template, context)
 
 
 def privacy_policy(request):
