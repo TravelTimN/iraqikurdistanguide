@@ -26,3 +26,8 @@ def privacy_policy(request):
 def terms_conditions(request):
     """ A view to return the Terms & Conditions page """
     return render(request, "about/terms_conditions.html")
+
+
+def booking_terms(request):
+    """ A view to return the Booking Terms page """
+    return render(request, "about/booking_terms.html")
