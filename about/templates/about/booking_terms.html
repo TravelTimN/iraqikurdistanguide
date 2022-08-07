@@ -1,166 +1,461 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item active dropdown" aria-current="page">
+        <span class="dropdown-toggle" href="#" role="button" id="dropdownLegalBreadcrumb" data-bs-toggle="dropdown" aria-expanded="false">
+            Legal
+        </span>
+
+        <!-- breadcrumb dropdown -->
+        <ul class="dropdown-menu" aria-labelledby="dropdownLegalBreadcrumb">
+            <li><a class="dropdown-item active" aria-current="page">Bookings</a></li>
+            <li><a class="dropdown-item" href="{% url 'privacy_policy' %}#cookies">Cookies</a></li>
+            <li><a class="dropdown-item" href="{% url 'privacy_policy' %}">Privacy</a></li>
+            <li><a class="dropdown-item" href="{% url 'terms_conditions' %}">T&Cs</a></li>
+        </ul>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Booking Conditions</li>
+{% endblock %}
+
 {% block content %}
-Booking Conditions
-PLEASE ENSURE YOU READ AND UNDERSTAND PRIOR TO BOOKING A TRIP.
-Interpretation and Definitions
-Interpretation
-The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular, or in plural.
-Definitions
-For the purposes of these Booking Conditions:
-Country refers to: Republic of Iraq
-Company (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Iraqi Kurdistan Guide, 109/1270 Qatal St, Erbil, Kurdistan, Republic of Iraq.
-Booking Conditions (also referred as "Terms") mean these Booking Conditions that form the entire agreement betWeen You and the Company.
-Third-party Social Media Service means any services or content (including data, information, products, or services) provided by a third-party that may be displayed, included, or made available by the Service.
-You means the individual booking a trip or tour, or the company, or other legal entity, on behalf of which such individual is booking a trip or tour, as applicable.
-The Contract
-The Company accepts tour (‘tour’, ‘trip’) bookings subject to the following conditions, therefore please take the time to read and understand all conditions prior to booking a trip.
 
-By booking a tour with Us You acknowledge that You have read, understand and agree to be bound by these Terms.
+<section class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-underline-red">Booking Conditions</h1>
+            <p class="text-muted">Last updated: August 07, 2022</p>
+            <p>Please ensure you read and understand prior to booking a trip.</p>
+            <hr class="my-5">
 
-If You make a booking on behalf of other participants, You guarantee that You have the authority to accept and do accept these terms on behalf of the other participants in your party.
+            <h2 class="text-underline-green mt-5 mb-4">Interpretation and Definitions</h2>
+            <h3>Interpretation</h3>
+            <p>
+                The words of which the initial letter is capitalized have meanings defined under the following conditions.
+                The following definitions shall have the same meaning regardless of whether they appear in singular, or in plural.
+            </p>
+            <h3>Definitions</h3>
+            <p>For the purposes of these Booking Conditions:</p>
+            <ul>
+                <li>
+                    <p><strong>Country</strong> refers to: Republic of Iraq</p>
+                </li>
+                <li>
+                    <p>
+                        <strong>Company</strong> (referred to as either "the Company", "We", "Us"
+                        or "Our" in this Agreement) refers to
+                        <cite title="Iraqi Kurdistan Guide">Iraqi Kurdistan Guide, 109/1270 Qatal St., Erbil, Kurdistan, Republic of Iraq</cite>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <strong>Booking Conditions</strong> (also referred as "Terms") means these Booking Conditions that
+                        form the entire agreement between You and the Company.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <strong>Third-party Social Media Service</strong> means any services or content (including data, information,
+                        products, or services) provided by a third-party that may be displayed, included, or made available by the Service.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <strong>You</strong> means the individual booking a trip or tour, or the company, or other legal entity, on behalf
+                        of which such individual is booking a trip or tour, as applicable.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <strong>Website</strong> refers to Iraqi Kurdistan Guide, accessible from
+                        <a href="https://www.iraqikurdistanguide.com" rel="external nofollow noopener" target="_blank" class="text-kur-green">
+                            https://www.iraqikurdistanguide.com
+                        </a>
+                    </p>
+                </li>
+            </ul>
 
-Your booking is confirmed and a contract exists at the point when We issue a written confirmation that your place on a trip has been reserved following receipt of the applicable deposit amount.
+            <h2 class="text-underline-green mt-5 mb-4">The Contract</h2>
+            <p>
+                The Company accepts tour ('tour', 'trip') bookings subject to the following conditions,
+                therefore please take the time to read and understand all conditions prior to booking a trip.
+            </p>
+            <p>
+                By booking a tour with Us, You acknowledge that You have read, understand, and agree to be bound by these Terms.
+            </p>
+            <p>
+                By accessing or using the Service, You agree to be bound by these Terms and Conditions. If You disagree with any
+                part of these Terms and Conditions then You may not access the Service.
+            </p>
+            <p>
+                If You make a booking on behalf of other participants, You guarantee that You have the authority to accept,
+                and do accept, these terms on behalf of the other participants in your party.
+            </p>
+            <p>
+                Your booking is confirmed, and a contract exists at the point when We issue a written confirmation that your
+                place on a trip has been reserved, following receipt of the applicable deposit amount.
+            </p>
+            <p>
+                You must be at least 18 years of age to make a booking.
+            </p>
 
-You must be at least 18 years of age to make a booking.
-1. Bookings, Deposits and Reservations
+            <h3>1. Bookings, Deposits, and Reservations</h3>
+            <p>
+                To secure your place on a trip, You are required to pay a deposit of 20% of the overall trip price,
+                and the remaining amount must be paid no later than 15 days prior to the trip date.
+            </p>
+            <p>
+                If your booking is made within 15 days of departure, then the full amount is payable at the time of booking.
+            </p>
+            <p>
+                Payment is possible by bank transfer or Paypal.
+            </p>
+            <p>
+                When your deposit funds have been received by Us, We will issue a written confirmation that your place on the tour is reserved.
+                It is at this point that a contract between You and the Company comes into existence.
+            </p>
 
-To secure your place on a trip, You are required to pay a deposit of 20% of the overall trip price and the remaining amount must be paid no later than 15 days prior to the trip date.
+            <h3>2. Cancellation by the Traveller</h3>
+            <p>
+                Should You wish to cancel your booking, cancellation fees will apply, and are expressed as a percentage of the overall price of the trip.
+            </p>
+            <p>
+                If You cancel the trip:
+                <ol>
+                    <li type="A">
+                        within 7 days of paying your deposit - We will return the full deposit amount
+                        (as long the cancellation notice was not received within 15 days of trip departure).
+                    </li>
+                    <li type="A">
+                        after that period, but before 15 days prior to departure - We will retain the full deposit amount (20%).
+                    </li>
+                    <li type="A">
+                        less than 15 days prior to departure - We will retain 100% of the overall trip price.
+                    </li>
+                </ol>
+            </p>
+            <p>
+                Cancellation will only be effective when We receive written confirmation of the cancellation.
+            </p>
+            <p>
+                <strong>Cancellation Process</strong>: To cancel your booking, You must send a written notice to Us by email to
+                <a href="mailto:iraqikurdistanguide@gmail.com?subject=Request to Cancel Trip" class="text-kur-green">iraqikurdistanguide@gmail.com</a>.
+                Cancellation fees will be applied per person according to the schedule set forth in this section.
+            </p>
+            <p>
+                <strong>Unused trip portion</strong>: If You leave a trip for any reason after it has commenced,
+                We are not obliged to make any refunds for unused services. If You fail to join a tour, join it after departure,
+                or leave it prior to its completion, no refund will be made.
+            </p>
+            <p>
+                It is strongly recommended that comprehensive travel insurance is taken out which includes cover against cancellation charges.
+                Depending on the reason for the cancellation, You may be able to reclaim the cancellation charges (less any applicable excess)
+                under the terms of the insurance policy. All claims must be made direct to the insurance company.
+            </p>
 
-If your booking is made within 15 days of departure then the full amount is payable at the time of booking.
+            <h3>3. Cancellation by Us</h3>
+            <p>
+                If the Company is forced to cancel your trip, We will let You know with as much notice as possible.
+                In these circumstances, You can choose from two options:
+                <ol>
+                    <li type="A">
+                        You can transfer amounts already paid towards another trip on a future date.
+                    </li>
+                    <li type="A">
+                        Receive a full refund.
+                    </li>
+                </ol>
+            </p>
+            <p>
+                This guarantee is not applicable in the case of Force Majeure (see clause 11, below).
+                We may cancel a trip at any time prior to departure if, due to terrorism, natural disasters, political instability,
+                or other external events, it is not viable for Us to operate the planned itinerary.
+                In such circumstances where the cancellation is due to external events outside Our reasonable control,
+                refunds will not include any unrecoverable costs.
+            </p>
+            <p>
+                We are not responsible for any incidental expenses that You may have incurred as a result of your booking, including,
+                but not limited to, visas, vaccinations, travel insurance excess, or non-refundable flights.
+                You are advised only to book fully flexible transport, and other arrangements which can be cancelled or changed without charge,
+                and We strongly recommend You have comprehensive travel insurance that includes cancellation coverage.
+            </p>
 
-Payment is possible by bank transfer or Paypal.
+            <h3>4. Changes to Booking (by You)</h3>
+            <p>
+                If You want to transfer to a future departure date, You must notify Us at least 15 days prior to departure of the original confirmed booking.
+                An administration fee of $25 USD per person per change will apply, in addition to any charges levied by Our suppliers,
+                such as hotels or ground operators. Thereafter all changes will be treated as cancellations, and subject to the charges in clause 3, above.
+            </p>
+            <p>
+                Amendments to any other arrangements made in conjunction with your trip will incur a $25 USD administration fee per booking, per change.
+                This fee is in addition to any charges levied by Our suppliers, such as hotels or ground operators. Changes are subject to availability.
+            </p>
 
-When your deposit funds have been received by Us. We will issue a written confirmation that your place on the tour is reserved. It is at this point that a contract betWeen You and the Company comes into existence.
-2. Cancellation by the Traveller
+            <h3>5. Changes to Itinerary (by Us)</h3>
+            <p>
+                While We endeavour to operate all trips as described in the published or communicated itineraries,
+                We always reserve the right to change the trip itinerary.
+            </p>
+            <p>
+                Changes may be necessary as a result of unforeseen circumstances, operational concerns, concerns for your health,
+                safety, enjoyment, or comfort. Any changes are at the discretion of the Company.
+            </p>
+            <p>
+                This includes the right to replace guides, alter accommodations, change transport, modify the order in which places are to be visited,
+                and make any other changes to the itinerary.
+            </p>
+            <p>
+                We will inform You of any such changes as soon as reasonably possible.
+            </p>
 
-Should You wish to cancel your booking, cancellation fees will apply and are expressed as a percentage of the overall price of the trip.
+            <h3>6. Inclusions</h3>
+            <p>
+                The price of your trip includes:
+                <ul>
+                    <li>Airport transfers.</li>
+                    <li>All ground transportation as described in the tour itinerary, including fuel costs.</li>
+                    <li>Personal guidance around any attractions or locations in the tour itinerary.</li>
+                </ul>
+            </p>
 
-If You cancel the trip:-
-within 7 days of paying your deposit – We will return the full deposit amount (as long the cancellation notice was not received within 15 days of trip departure).
-after that period, but before 15 days prior to departure – We will retain the full deposit amount (20%)
-less than 15 days prior to departure – We will retain 100% of the overall trip price.
+            <h3>7. Exclusions</h3>
+            <p>
+                The price of your trip excludes:
+                <ul>
+                    <li>International airfares.</li>
+                    <li>Any meals, drinks, or snacks outside of those described in the itinerary (if any).</li>
+                    <li>Any alcohol.</li>
+                    <li>Any activities You choose to do during "free-time", outside of the activities described in the itinerary.</li>
+                    <li>Travel Insurance.</li>
+                    <li>Gratuities.</li>
+                </ul>
+            </p>
+            <p>
+                You are required to cover the full costs of any meals, drinks, and accommodation for Our guides,
+                unless explicitly stated otherwise by Our guides.
+            </p>
 
-Cancellation will only be effective when We receive written confirmation of the cancellation.
+            <h3>8. Authority on Tour</h3>
+            <p>
+                Our trips are led by a guide. The decision of the guide is final on all matters likely to affect the safety or well-being
+                of any traveller participating in the trip. If You fail to comply with a decision made by the guide,
+                or interfere with the well-being or mobility of the group, the guide may direct You to leave the trip immediately,
+                with no right of refund.
+            </p>
+            <p>
+                You must, at all times, comply with the laws, customs, and regulations of the Country.
+            </p>
 
-Cancellation Process: To cancel your booking, You must send a written notice to Us by email to iraqikurdistanguide@gmail.com. Cancellation fees will be applied per person according to the schedule set forth in this section.
+            <h3>9. Photos, Video and Marketing</h3>
+            <p>
+                You consent to Us Using any photos or videos of You taken during the trip for advertising and promotional purposes in any medium We choose.
+                You grant the Company, its contractors, sub-contractors and assigns, a perpetual, royalty-free, worldwide, irrevocable license to use
+                such images for publicity and promotional purposes without any further obligation or compensation payable to You.
+            </p>
 
-Unused trip portion: If You leave a trip for any reason after it has commenced, We are not obliged to make any refunds for unused services. If You fail to join a tour, join it after departure, or leave it prior to its completion, no refund will be made.
+            <h3>10. Optional Activities</h3>
+            <p>
+                Optional items not included in the trip price - such as any activity, transportation, meal, product, service,
+                or event not explicitly stated in the itinerary - do not form part of the trip or this contract. 
+            </p>
+            <p>
+                You accept that any assistance given by your guide in selecting, arranging, or booking optional activities does not
+                render Us liable for them in any way. The contract for the provision of that item will be between You and the activity provider.
+                If You decide to participate, You do so voluntarily and should take precautions to ensure your own safety.
+                We do not guarantee that any optional activity or excursion mentioned on Our Website or marketing materials will
+                be available to book during your trip, as these services do not form part of Our contract, and are not under Our control.
+                We will not be liable if You cannot, for whatever reason, book any such activity or excursion, or if the activity
+                or excursion does not operate as advertised.
+            </p>
 
-It is strongly recommended that comprehensive travel insurance is taken out which includes cover against cancellation charges. Depending on the reason for the cancellation, You may be able to reclaim the cancellation charges (less any applicable excess) under the terms of the insurance policy. All claims must be made direct to the insurance company.
+            <h3>11. Force Majeure</h3>
+            <p>
+                We regret We cannot accept liability or pay any compensation where the performance of Our obligations under Our contract
+                with You is prevented, affected by, or You otherwise suffer any injury, damage, loss, or expense of any nature as
+                a result of "force majeure".
+            </p>
+            <p>
+                In these conditions, "force majeure" means any event which We, or the supplier of the service(s) in question, could not,
+                even with all due care, foresee or avoid. Such events may include, but are not limited to, war or threatened war,
+                mechanical breakdowns, riot, civil strife, terrorist activity, industrial dispute, natural or nuclear disaster,
+                adverse weather conditions, disease, fire, and all similar events outside Our reasonable control.
+            </p>
 
-3. Cancellation by Us
+            <h3>12. Travel Insurance</h3>
+            <p>
+                Travel insurance is strongly recommended for all Our travellers, and should be taken out at the earliest opportunity after booking.
+                Your travel insurance should provide cover against personal accident, death, medical expenses, and emergency repatriation,
+                with sufficient coverage amounts for your needs. We also strongly recommend it covers cancellation, curtailment, personal liability,
+                and loss of luggage and personal effects.
+            </p>
+            <p>
+                It is your responsibility to ensure that You have sufficient coverage and comply with the terms of the applicable insurance plans.
+                You are responsible for understanding the specifics of your travel insurance policy, ensuring that your policy covers all
+                optional and included activities listed in the trip itinerary, and ensuring that there are no exclusion clauses that would
+                limit the coverage that You might reasonably need.
+            </p>
+            <p>
+                Trip cancellation insurance may be the only means of receiving reimbursement for flights and other non-refundable expenses,
+                should the trip be cancelled for any reason, whether voluntarily by You or by the Company.
+            </p>
+            <p>
+                The Company is not responsible for securing or protecting your baggage or belongings at any time during any trip.
+            </p>
 
-If the Company is forced to cancel your trip, We will let You know with as much notice as possible. In these circumstances You can choose from two options:
+            <h3>13. Passports, Visas, and Vaccinations</h3>
+            <p>
+                You are responsible for arranging, and must be in possession of, a valid, acceptable passport, and any visas and
+                vaccination certificates required for the whole of your tour. Please check with the appropriate consulate or embassy
+                for the latest entry requirements.
+            </p>
+            <p>
+                Your passport must be valid for 6 months beyond the duration of the trip.
+            </p>
+            <p>
+                Information about these matters or related items (climate, clothing, baggage, personal gear, etc.) is given in good faith,
+                but without responsibility on the part of the Company. We are not responsible if You are refused entry to the Country
+                because You lack the correct passport, visa, or other travel documentation.
+            </p>
+            <p>
+                You agree that You are responsible for the full amount of any loss or expense incurred that is a direct result of your failure
+                to secure, or be in possession of, proper travel documentation. If You are unable to join your trip,
+                You will not be reimbursed or refunded any amounts, as per the Company cancellation terms.
+            </p>
 
-You can transfer amounts already paid towards another trip on a future date.
-Receive a full refund.
+            <h3>14. Health and Medical</h3>
+            <p>
+                You agree that You do not have any condition, physical or mental, that would create a hazard for You or other travellers,
+                or affect other peoples' enjoyment of the trip. If You have a physical condition, dietary restrictions, or other conditions
+                (pre-existing medical) that will require special attention during the trip, or stop You from participating in any activities
+                described in the itinerary, You must inform Us in writing when the booking is made.
+            </p>
+            <p>
+                Note that We are not a medical authority. We assume no responsibility for any medical care provided to You.
+                You agree to assume all costs of medical care and related transportation that are provided to You during the trip.
+            </p>
 
-This guarantee is not applicable in the case of Force Majeure (see clause 11, below). We may cancel a trip at any time prior to departure if, due to terrorism, natural disasters, political instability. or other external events. it is not viable for Us to operate the planned itinerary. In such circumstances where the cancellation is due to external events outside Our reasonable control, refunds will not include any unrecoverable costs.
+            <h3>15. Travel Advisory</h3>
+            <p>
+                While We always closely monitor the security situation in the places We visit, and may provide information,
+                it is your responsibility to become informed about the areas where You are going to travel, including any travel advisories
+                and warnings issued by government authorities in your country.
+            </p>
 
-We are not responsible for any incidental expenses that You may have incurred as a result of your booking including, but not limited to, visas, vaccinations, travel insurance excess, or non-refundable flights. You are advised only to book fully flexible transport and other arrangements which can be cancelled or changed without charge and We strongly recommend You have comprehensive travel insurance that includes cancellation coverage.
-4. Changes to Booking (by You)
+            <h3>16. Acceptance of Risk</h3>
+            <p>
+                You acknowledge that the Company trips are adventurous in nature, and participation involves a degree of personal risk to your
+                health and safety. You will be participating in adventurous activities and visiting places where the political, cultural,
+                and geographical attributes present dangers and physical challenges greater than in your daily life.
+            </p>
+            <p>
+                It is your own responsibility to acquaint yourself with all relevant travel information, consider the potential risk to your
+                health and safety, and take responsibility for the decision to participate in the trip in light of these risks.
+            </p>
+            <p>
+                You hereby assume responsibility for all such risk, and release the Company from all claims and causes of action arising from any losses,
+                damages, injuries, or death resulting from risks inherent in travel, including adventure travel specifically,
+                visiting foreign destinations, and participating in adventurous activities such as those included Our itineraries.
+            </p>
+            <p>
+                During the tour, You agree to take all prudent measures in relation to your own safety including, but not limited to,
+                the proper Use of safety devices (including seatbelts, harnesses, flotation devices, and helmets)
+                and obeying all posted signs and oral or written warnings regarding health and safety.
+                Neither the Company nor its third-party suppliers are liable for loss or damages caused by your failure to comply with
+                safety instructions or warnings.
+            </p>
 
-If You want to transfer to a future departure date, You must notify Us at least 15 days prior to departure of the original confirmed booking. An administration fee of $25 USD per person per change will apply in addition to any charges levied by Our suppliers such as hotels or ground operators. Thereafter all changes will be treated as cancellations and subject to the charges in clause 3, above.
+            <h3>17. Limitation of Liability</h3>
+            <ol>
+                <li type="A">
+                    We will accept liability for the negligence of Our guides or agents causing death or physical injury to persons,
+                    or loss or damage to personal property, only to the extent it is obliged under the applicable law.
+                    Our obligations, and those of Our suppliers, are to take reasonable skill and care to arrange for the provision
+                    of such services and facilities. This acceptance of liability is subject to clause C, below.
+                </li>
+                <li type="A">
+                    In other circumstances, We are responsible to You for the proper performance of this contract.
+                    This acceptance of liability is subject to clause C, below.
+                </li>
+                <li type="A">
+                    We shall not be liable for any damage or loss, if the failure to carry out the contract is:
+                    <ol>
+                        <li type="a">
+                            attributable to You.
+                        </li>
+                        <li type="a">
+                            attributable to a third-party unconnected with the provision of the services contracted for,
+                            and the event is unforeseeable or unavoidable.
+                        </li>
+                        <li type="a">
+                            due to unforeseen and unusual circumstances beyond Our control, the consequences of which
+                            could not have been avoided, even if all due care had to be exercised.
+                        </li>
+                        <li type="a">
+                            due to political disputes, border closures, refusal of visas, industrial action, climate,
+                            or other matters of a similar nature, and any other force majeure.
+                        </li>
+                        <li type="a">
+                            due to an event which the Company, even with all due care, could not have foreseen.
+                        </li>
+                    </ol>
+                </li>
+                <li type="A">
+                    Except in cases involving death, injury, or illness, any liability covered under clause B above is limited to the price paid.
+                    In the case of damaged property, the liability is limited to a maximum amount equal to the amount paid by, or on behalf of,
+                    the owner of the property. In all cases, the Company specifically excludes all liability for indirect or consequential loss,
+                    or expense (including loss of profits).
+                </li>
+                <li type="A">
+                    Where your trip arrangements involve hotel accommodation, the compensation is limited by the following international convention:
+                    Paris Convention 1962. We are to be regarded as having all benefits of any limitation of right to claim or compensation
+                    contained in this, or any conventions.
+                </li>
+                <li type="A">
+                    Our acceptance of liability in clauses A and B above is subject to assignment by You, of your rights against any agent,
+                    supplier, or subcontractor which is in any way responsible for the unsatisfactory arrangements, or your death or personal injury.
+                </li>
+            </ol>
 
-Amendments to any other arrangements made in conjunction with your trip will incur a $25 USD administration fee per booking per change. This fee is in addition to any charges levied by Our suppliers, such as hotels or ground operators. Changes are subject to availability.
-5. Changes to Itinerary (by Us)
+            <h3>18. Severability</h3>
+            <p>
+                In the event that any term or condition contained in these Booking Conditions is unenforceable, or void by operation of law,
+                or as being against public policy, or for any other reason, then such term or condition shall be deemed to be severed
+                from this contract, or amended accordingly, only to such extent necessary to allow all remaining terms and conditions
+                to survive and continue as binding.
+            </p>
 
-While We endeavour to operate all trips as described in the published or communicated itineraries, We always reserve the right to change the trip itinerary.
+            <h3>19. Applicable Law</h3>
+            <p>
+                The laws of the Country govern these Booking Conditions to the fullest extent allowable.
+                Any disputes in connection with a trip or these Booking Conditions must be initiated in the courts of the Country.
+            </p>
 
-Changes may be necessary as a result of unforeseen circumstances, operational concerns, concerns for your health, safety, enjoyment, or comfort. Any changes are at the discretion of the Company.
-
-This includes the right to replace guides, alter accommodations, change transport, modify the order in which places are to be visited, and make any other changes to the itinerary.
-
-We will inform You of any such changes as soon as reasonably possible.
-6. Inclusions
-
-The price of your trip includes –
-Airport transfers.
-All ground transportation as described in the tour itinerary, including fuel costs.
-Personal guidance around any attractions or locations in the tour itinerary.
-7. Exclusions
-
-The price of your trip excludes –
-International airfares.
-Any meals, drinks or snacks outside of those described in the itinerary (if any).
-Any alcohol.
-Any activities You choose to do during ‘free-time’ outside activities described in the itinerary.
-Travel Insurance.
-
-You are required to cover the full costs of any meals, drinks, and accommodation for Our guides, unless explicitly stated otherwise by Our guides.
-8. Authority on Tour
-
-Our trips are led by a guide. The decision of the guide is final on all matters likely to affect the safety or well-being of any traveller participating in the trip. If You fail to comply with a decision made by the guide, or interfere with the well-being or mobility of the group, the guide may direct You to leave the trip immediately, with no right of refund.
-
-You must at all times comply with the laws, customs and regulations of the Country.
-9. Photos, Video and Marketing
-
-You consent to Us Using any photos or videos of You taken during the trip for advertising and promotional purposes in any medium We choose. You grant the Company, its contractors, sub-contractors and assigns, a perpetual, royalty-free, worldwide, irrevocable licence to use such images for publicity and promotional purposes without any further obligation or compensation payable to You.
-10. Optional Activities
-
-Optional items not included in the trip price – such as any activity, transportation, meal, product, service, or event not explicitly stated in the itinerary – do not form part of the trip or this contract. 
-
-You accept that any assistance given by your guide in selecting, arranging, or booking optional activities does not render Us liable for them in any way. The contract for the provision of that item will be betWeen You and the activity provider. If You decide to participate You do so voluntarily and should take precautions to ensure your own safety.
-We do not guarantee that any optional activity or excursion mentioned on Our Website or marketing materials will be available to book during your trip as these services do not form part of Our contract and are not under Our control. We will not be liable if You cannot, for whatever reason, book any such activity or excursion, or if the activity or excursion does not operate as advertised.
-11. Force Majeure
-We regret We cannot accept liability or pay any compensation where the performance of Our obligations under Our contract with You is prevented, affected by, or You otherwise suffer any injury, damage, loss, or expense of any nature as a result of “force majeure”.
-
-In these conditions, “force majeure” means any event which We or the supplier of the service(s) in question could not, even with all due care, foresee or avoid. Such events may include, but are not limited to, war or threatened war, mechanical breakdowns, riot, civil strife, terrorist activity, industrial dispute, natural or nuclear disaster, adverse weather conditions, disease, fire, and all similar events outside Our reasonable control.
-12. Travel Insurance
-Travel insurance is strongly recommended for all Our travellers and should be taken out at the earliest opportunity after booking. Your travel insurance should provide cover against personal accident, death, medical expenses, and emergency repatriation, with sufficient coverage amounts for your needs. We also strongly recommend it covers cancellation, curtailment, personal liability, and loss of luggage and personal effects.
-
-It is your responsibility to ensure that You have sufficient coverage and comply with the terms of the applicable insurance plans. You are responsible for understanding the specifics of your travel insurance policy, ensuring that your policy covers all optional and included activities listed in the trip itinerary, and ensuring that there are no exclusion clauses that would limit the coverage that You might reasonably need.
-
-Trip cancellation insurance may be the only means of receiving reimbursement for flights and other non-refundable expenses should the trip be cancelled for any reason, whether voluntarily by You or by the Company.
-
-The Company is not responsible for securing or protecting your baggage or belongings at any time during any trip.
-13. Passports, Visas and Vaccinations
-
-You are responsible for arranging, and must be in possession of, a valid, acceptable passport, and any visas and vaccination certificates required for the whole of your tour. Please check with the appropriate consulate or embassy for the latest entry requirements.
-
-Your passport must be valid for 6 months beyond the duration of the trip.
-
-Information about these matters or related items (climate, clothing, baggage, personal gear etc.) is given in good faith but without responsibility on the part of the Company. We are not responsible if You are refused entry to the Country because You lack the correct passport, visa, or other travel documentation.
-
-You agree that You are responsible for the full amount of any loss or expense incurred that is a direct result of your failure to secure or be in possession of proper travel documentation. If You are unable to join your trip, You will not be reimbursed or refunded any amounts, as per the Company cancellation terms.
-14. Health and Medical
-
-You agree that You do not have any condition, physical or mental, that would create a hazard for You or other travellers, or affect other people’s enjoyment of the trip. If You have a physical condition, dietary restrictions, or other conditions (pre-existing medical) that will require special attention during the trip, or stop You from participating in any activities described in the itinerary, You must inform Us in writing when the booking is made.
-
-Note that We are not a medical authority. We assume no responsibility for any medical care provided to You. You agree to assume all costs of medical care and related transportation that are provided to You during the trip.
-15. Travel Advisory
-
-While We always closely monitor the security situation in the places We visit, and may provide information, it is your responsibility to become informed about the areas where You are going to travel including any travel advisories and warnings issued by government authorities in your country.
-
-16. Acceptance of Risk
-
-You acknowledge that the Company trips are adventurous in nature and participation involves a degree of personal risk to your health and safety. You will be participating in adventurous activities and visiting places where the political, cultural and geographical attributes present dangers and physical challenges greater than in your daily life.
-
-It is your own responsibility to acquaint yourself with all relevant travel information, consider the potential risk to your health and safety, and take responsibility for the decision to participate in the trip in light of these risks.
-
-You hereby assume responsibility for all such risk and release the Company from all claims and causes of action arising from any losses, damages, injuries, or death resulting from risks inherent in travel, including adventure travel specifically, visiting foreign destinations, and participating in adventurous activities such as those included Our itineraries.
-
-During the tour You agree to take all prudent measures in relation to your own safety including, but not limited to, the proper Use of safety devices (including seatbelts, harnesses, flotation devices and helmets) and obeying all posted signs and oral or written warnings regarding health and safety. Neither the Company nor its third party suppliers are liable for loss or damages caused by your failure to comply with safety instructions or warnings.
-17. Limitation of Liability
-We will accept liability for the negligence of Our guides or agents causing death or physical injury to persons, or loss or damage to personal property, only to the extent it is obliged under the applicable law. Our obligations, and those of Our suppliers, are to take reasonable skill and care to arrange for the provision of such services and facilities. This acceptance of liability is subject to clause C, below.
-In other circumstances We are responsible to You for the proper performance of this contract. This acceptance of liability is subject to clause B, below.
-We shall not be liable for any damage or loss if the failure to carry out the contract is:
-attributable to You.
-attributable to a third party unconnected with the provision of the services contracted for, and the event is unforeseeable or unavoidable.
-due to unforeseen and unusual circumstances beyond Our control, the consequences of which could not have been avoided even if all due care had to be exercised.
-due to political disputes, border closures, refusal of visas, industrial action, climate, or other matters of a similar nature, and any other force majeure.
-due to an event which the Company, even with all due care, could not have foreseen.
-Except in cases involving death, injury, or illness, any liability covered under clause B above is limited to the price paid. In the case of damaged property, the liability is limited to a maximum amount equal to the amount paid by, or on behalf of, the owner of the property. In all cases the Company specifically excludes all liability for indirect or consequential loss, or expense (including loss of profits).
-Where your trip arrangements involve hotel accommodation, the compensation is limited by the following international convention: Paris Convention 1962. We are to be regarded as having all benefits of any limitation of right to claim or compensation contained in this, or any conventions.
-Our acceptance of liability in clauses A and B above is subject to assignment by You of your rights against any agent, supplier, or subcontractor which is in any way responsible for the unsatisfactory arrangements, or your death or personal injury.
-18. Severability
-
-In the event that any term or condition contained in these Booking Conditions is unenforceable or void by operation of law or as being against public policy or for any other reason then such term or condition shall be deemed to be severed from this contract or amended accordingly only to such extent necessary to allow all remaining terms and conditions to survive and continue as binding.
-
-19. Applicable Law
-
-The laws of the Country govern these Booking Conditions to the fullest extent allowable.  Any disputes in connection with a trip or these Booking Conditions must be initiated in the courts of the Country.
+            <h2 class="text-underline-green mt-5 mb-4">Contact Us</h2>
+            <p>If you have any questions about these Booking Conditions, You can contact us:</p>
+            <ul>
+                <li>
+                    <p>
+                        By email:
+                        <a href="mailto:iraqikurdistanguide@gmail.com?subject=Booking Conditions query" class="text-kur-green">
+                            iraqikurdistanguide@gmail.com
+                        </a>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        By visiting this page on our website:
+                        <a href="https://www.iraqikurdistanguide.com/contact"
+                            rel="external nofollow noopener" target="_blank" class="text-kur-green">https://www.iraqikurdistanguide.com/contact</a>
+                    </p>
+                </li>
+                <li>
+                    <p>By phone number: <a href="tel:+964-750-485-8186" class="text-kur-green">+964 750 485 8186</a></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
 
 {% endblock %}
