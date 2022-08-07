@@ -13,7 +13,7 @@
         <ul class="dropdown-menu" aria-labelledby="dropdownLegalBreadcrumb">
             <li><a class="dropdown-item" href="{% url 'booking_terms' %}">Bookings</a></li>
             <li><a class="dropdown-item" href="{% url 'privacy_policy' %}#cookies">Cookies</a></li>
-            <li><a class="dropdown-item active" aria-current="page">Privacy</a></li>
+            <li><a class="dropdown-item active" aria-current="page" href="#privacy">Privacy</a></li>
             <li><a class="dropdown-item" href="{% url 'terms_conditions' %}">T&Cs</a></li>
         </ul>
     </li>
@@ -22,7 +22,7 @@
 
 {% block content %}
 
-<section class="container my-5">
+<section id="privacy" class="container my-5 scroll-margin-top">
     <div class="row">
         <div class="col-12">
             <h1 class="text-underline-red">Privacy Policy</h1>
