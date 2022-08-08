@@ -8,27 +8,33 @@
         <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
 
             <!-- login form -->
-            <form method="POST" action="{% url 'account_login' %}">
+            <form method="POST" action="{% url 'account_login' %}" class="my-5 mx-3 py-md-5">
 
                 <!-- CSRF Token -->
                 {% csrf_token %}
 
-                <fieldset class="card">
-                    <legend class="card-header text-center">{% trans "Login" %}</legend>
+                <fieldset class="card shadow bg-dark text-light">
+                    <legend class="card-header text-center bg-kur-red">{% trans "Login" %}</legend>
 
-                    <div class="card-body">
+                    <div class="card-body bg-light text-dark">
 
                         <div class="row">
                             <!-- email field -->
                             <div class="input-group mb-3">
-                                <span class="input-group-text"><i class="fas fa-at fa-fw"></i></span>
-                                {{ form.login }}
+                                <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-at fa-fw"></i></span>
+                                <div class="form-floating flex-grow-1">
+                                    {{ form.login }}
+                                    <label for="id_login">* Email Address</label>
+                                </div>
                             </div>
 
                             <!-- password field -->
                             <div class="input-group mb-3">
-                                <span class="input-group-text"><i class="fas fa-lock fa-fw"></i></span>
-                                {{ form.password }}
+                                <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-lock fa-fw"></i></span>
+                                <div class="form-floating flex-grow-1">
+                                    {{ form.password }}
+                                    <label for="id_login">* Password</label>
+                                </div>
                             </div>
 
                             <!-- hidden redirect field (if applicable) -->
@@ -45,22 +51,16 @@
                                 </div>
                             {% endif %}
                         </div>
+                    </div>
 
-                        <div class="card-footer">
-                            <div class="row">
-                                <div class="col d-flex align-items-center">
-                                    <!-- submit -->
-                                    <button class="" type="submit">{% trans "Login" %}</button>
-                                </div>
-                                <div class="col text-end my-auto">
-                                    <!-- user has no profile yet -->
-                                    {% blocktrans %}
-                                        New Here?<br>
-                                        <a href="{{ signup_url }}" class="fw-bold">Register</a>
-                                    {% endblocktrans %}
-                                </div>
+                    <div class="card-footer bg-kur-green">
+                        <div class="row">
+                            <div class="col text-center mx-auto">
+                                <!-- login btn -->
+                                <button class="btn btn-warning" type="submit">{% trans "Login" %}</button>
                             </div>
                         </div>
+                    </div>
 
                 </fieldset>
 
@@ -72,4 +72,11 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block js %}
+<script>
+    // add "form-control" class to fields in lieu of creating forms.py for custom signup
+    $("#id_login, #id_password").addClass("form-control");
+</script>
 {% endblock %}
