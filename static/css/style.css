@@ -284,6 +284,24 @@ aside#overlay.hide {
     overflow: hidden;
 }
 
+/* TO-TOP BUTTON */
+#btn-top {
+    cursor: pointer;
+    position: fixed;
+    border-radius: 8px;
+    padding: 0.5em;
+    bottom: -3em;
+    left: 0.5em;
+    font-weight: bold;
+    opacity: 0.75;
+    z-index: 1000;
+    transition: all 0.5s ease-in-out;
+}
+
+#btn-top:hover {
+    opacity: 1;
+}
+
 /* NAVBAR */
 header#navbar-header {
     position: sticky;

@@ -9,6 +9,19 @@ $(document).ready(function() {
 //     $("body").removeClass("page-load-complete");
 // });
 
+// scroll to top button
+let btnTop = document.getElementById("btn-top");
+window.addEventListener("load", viewportMagic, true);
+window.addEventListener("resize", viewportMagic, true);
+window.addEventListener("scroll", viewportMagic, true);
+function viewportMagic() {
+    if (window.scrollY > 750) {
+        btnTop.style.cssText = "bottom: 0.5em;";
+    } else {
+        btnTop.style.cssText = "bottom: -3em;";
+    }
+}
+
 // update nav-links with 'active' state
 let activeLink;
 if (location.pathname.includes("/about/")) {
