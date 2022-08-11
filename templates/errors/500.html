@@ -1,6 +1,41 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block head %}
+<meta http-equiv="refresh" content="10;url={% url 'home' %}">
+{% endblock %}
+
 {% block content %}
-    <h1>Internal Server Error</h1>
+<div class="container">
+    <div class="row my-5 mx-3 mx-md-5 py-md-5">
+        <div class="col text-center mx-auto">
+            <h1 class="text-danger">Internal Server Error (500)</h1>
+            <p class="fs-4">Oops! Something happened on our side!</p>
+            <p class="fs-5">
+                <span id="redirecting"></span>
+                <span id="time-remaining">
+                    You will be redirected back to the
+                    <a href="{% url 'home' %}" class="text-kur-green fw-bold">home page</a>
+                    in <span id="countdown">10 seconds</span>.
+                </span>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    let timeleft = 10;
+    let countdownTimer = setInterval(function() {
+        if (timeleft <= 0) {
+            clearInterval(countdownTimer);
+            document.getElementById("redirecting").innerHTML = "... redirecting ...";
+            document.getElementById("time-remaining").innerHTML = "";
+        } else {
+            document.getElementById("countdown").innerHTML = timeleft + " seconds";
+        }
+        timeleft -= 1;
+    }, 1000);
+</script>
 {% endblock %}
