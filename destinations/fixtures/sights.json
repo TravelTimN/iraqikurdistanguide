@@ -1,0 +1,366 @@
+[
+    {
+        "model": "destinations.sight",
+        "pk": 1,
+        "fields": {
+            "name": "Dore Canyon",
+            "destination": 6,
+            "category": "nature",
+            "description": "Barzan Gorge is one of the most beautiful highlights of any trip to Kurdistan. Described by many tourists as the Horseshoe Bend of Iraq, it's a hidden landmark that's been visited by few tourists and locals alike.",
+            "latitude": "36.894270",
+            "longitude": "44.134800",
+            "is_visible": true,
+            "primary_attraction": true
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 2,
+        "fields": {
+            "name": "Bekhal Waterfall",
+            "destination": 17,
+            "category": "nature",
+            "description": "Bekhal Waterfall is located 10 km to the west from Rawanduz City, and 135 km from Erbil. This waterfall is host for many visitors and tourists across the country.",
+            "latitude": "36.619350",
+            "longitude": "44.499270",
+            "is_visible": true,
+            "primary_attraction": true
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 3,
+        "fields": {
+            "name": "Geli Ali Beg Waterfall",
+            "destination": 17,
+            "category": "nature",
+            "description": "The famous Geli Ali Beg Waterfall is 130 km from Erbil, and featured on the 5,000 dinar bill.",
+            "latitude": "36.631490",
+            "longitude": "44.446000",
+            "is_visible": true,
+            "primary_attraction": true
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 4,
+        "fields": {
+            "name": "Korek Mountain",
+            "destination": 17,
+            "category": "nature",
+            "description": "Mount Korek is a tourist attraction with Darin Group. Darin, an Iraqi company, has built a ~4km Doppelmayr Teleferic (cable car) from its Bekhal Bottom station to Mount Korek. The mountain is developed as an international destination. The company has developed 132 villas and several rides, as well as restaurants and cafes. The resort is a summer retreat providing cool environs when the whole region reels under high temperatures. During winters, it turns into a ski resort.",
+            "latitude": "36.599030",
+            "longitude": "44.455920",
+            "is_visible": true,
+            "primary_attraction": true
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 5,
+        "fields": {
+            "name": "Shanidar Cave",
+            "destination": 6,
+            "category": "archaeology",
+            "description": "Shanidar Cave is an archaeological site located on Bradost Mountain in the Kurdistan region of Iraq. The remains of ten Neanderthals, dating from 35,000 to 65,000 years ago, have been found within the cave. The cave also contains two later \"proto-Neolithic\" cemeteries, one of which dates back about 10,600 years, and contains 35 individuals.",
+            "latitude": "36.834820",
+            "longitude": "44.219150",
+            "is_visible": true,
+            "primary_attraction": true
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 6,
+        "fields": {
+            "name": "Hiwa Resturant",
+            "destination": 17,
+            "category": "restaurant",
+            "description": "Traditional Kurdish food.",
+            "latitude": "36.614000",
+            "longitude": "44.527550",
+            "is_visible": true,
+            "primary_attraction": false
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 7,
+        "fields": {
+            "name": "Baghdad fake site",
+            "destination": 5,
+            "category": "archaeology",
+            "description": "asdfdasf",
+            "latitude": "33.305140",
+            "longitude": "44.332410",
+            "is_visible": false,
+            "primary_attraction": false
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 8,
+        "fields": {
+            "name": "Erbil Citadel",
+            "destination": 10,
+            "category": "historic",
+            "description": "Erbil Citadel is a fortified settlement on top of an imposing ovoid-shaped tell (a hill created by many generations of people living and rebuilding on the same spot) in the Kurdistan region, Erbil Governorate. A continuous wall of tall 19th-century façades still conveys the visual impression of an impregnable fortress, dominating the city of Erbil. The citadel features a peculiar fan-like pattern dating back to Erbil's late Ottoman phase. Written and iconographic historical records document the antiquity of settlement on the site - Erbil corresponds to ancient Arbela, an important Assyrian political and religious center - while archaeological finds and investigations suggest that the mound conceals the levels and remains of previous settlements.",
+            "latitude": "36.191180",
+            "longitude": "44.009410",
+            "is_visible": true,
+            "primary_attraction": true
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 9,
+        "fields": {
+            "name": "Jalil Khayat Mosque",
+            "destination": 10,
+            "category": "religious",
+            "description": "The Jalil Khayat Mosque is a Sunni Islamic mosque in Erbil; the largest in the city. The mosque was begun by Jalil Khayat who died in 2005; and the mosque was completed in 2007 by his sons in memory of their father.",
+            "latitude": "36.200960",
+            "longitude": "44.018970",
+            "is_visible": true,
+            "primary_attraction": true
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 10,
+        "fields": {
+            "name": "Shingelbana Resort",
+            "destination": 17,
+            "category": "recreation",
+            "description": "To spend a nice and relaxing time away from the hustle of the city and see beautiful scenery and colorful nature to entertain your family and children, be sure to visit the Shingelbana Tourism Resort.",
+            "latitude": "36.614800",
+            "longitude": "44.507910",
+            "is_visible": true,
+            "primary_attraction": true
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 11,
+        "fields": {
+            "name": "Hamilton Road",
+            "destination": 17,
+            "category": "historic",
+            "description": "This road dates back to 1928, when the British, who took control of Iraq following the fall of the Ottoman Empire, brought in Archibald Hamilton to design a road through the mountainous terrain to the Iranian border. Not only was it a strategic route, but the mere fact that this road exists through such dramatic scenery is really an engineering marvel! Hamilton went on to describe his experience building this road in his book, \"Road Through Kurdistan: The Narrative of an Engineer in Iraq\".",
+            "latitude": "36.629440",
+            "longitude": "44.486830",
+            "is_visible": true,
+            "primary_attraction": true
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 12,
+        "fields": {
+            "name": "Castle Fountains and Gardens",
+            "destination": 10,
+            "category": "recreation",
+            "description": "A beautiful small park in downtown Erbil. You can buy some snacks, drinks, and watch some shows and activities during day time. The city bazaar is just around the corner as well. Such a nice and amazing place for everyone, no matter your age. You can sit by the fountains at the evening and have a look at the citadel. People are very helpful and charming, and they can help you with whatever you need.",
+            "latitude": "36.188720",
+            "longitude": "44.010690",
+            "is_visible": true,
+            "primary_attraction": false
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 13,
+        "fields": {
+            "name": "Halgurd Mountain",
+            "destination": 7,
+            "category": "nature",
+            "description": "Halgurd (Hallgord, Halkurd, Helgurd) is the second highest mountain in Iraq, after Cheekha Dar, and the tallest fully within Iraq. Halgurd has an elevation of 3,607 meters / 11,834 feet.",
+            "latitude": "36.733050",
+            "longitude": "44.862160",
+            "is_visible": true,
+            "primary_attraction": true
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 14,
+        "fields": {
+            "name": "Halamata Cave",
+            "destination": 8,
+            "category": "archaeology",
+            "description": "Halamata Cave is an archaeological site near Duhok. The caves contain the Assyrian relief carvings known as the Maltai reliefs. The site is composed of four \"Neo-Assyrian bas-reliefs\" carved into the cliff-side above the village of Malthai. The reliefs are approximately six meters long, and two meters high. They all show a procession of nine figures, and were first photographed by British explorer Gertrude Bell in 1909.",
+            "latitude": "36.837520",
+            "longitude": "42.949730",
+            "is_visible": true,
+            "primary_attraction": true
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 15,
+        "fields": {
+            "name": "Khinnis Bavian Rock Reliefs",
+            "destination": 15,
+            "category": "archaeology",
+            "description": "Khinnis is an Assyrian archaeological site (also known as Bavian, its neighboring village). It is notable for its rock reliefs, built by king Sennacherib around 690 BC. During the reign of Sennacherib (705-681 BC), Khinnis was built in order to \"celebrate the construction of a complex system of canals whose aim was to supply the capital of the empire, Nineveh, and its hinterland with water\".",
+            "latitude": "36.759650",
+            "longitude": "43.419510",
+            "is_visible": true,
+            "primary_attraction": true
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 16,
+        "fields": {
+            "name": "Safeen Restaurant",
+            "destination": 8,
+            "category": "restaurant",
+            "description": "Great spot with friendly staff and good food. As tasty as homemade food, with a respectful team in the center of Dohuk. A place for families or friends to enjoy Kurdish food.",
+            "latitude": "36.865000",
+            "longitude": "42.993970",
+            "is_visible": true,
+            "primary_attraction": false
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 17,
+        "fields": {
+            "name": "Mosul Road Sign",
+            "destination": 16,
+            "category": "recreation",
+            "description": "Popular road sign, the closest you can get to Mosul on just the Kurdish Visa. Access to Mosul requires a Republic of Iraq Visa.",
+            "latitude": "36.457530",
+            "longitude": "43.463180",
+            "is_visible": true,
+            "primary_attraction": false
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 18,
+        "fields": {
+            "name": "Kala Kavin Mountain",
+            "destination": 1,
+            "category": "nature",
+            "description": "The head of Kala Kavin (the old mountain) is where thousands flock to the town of Akre on March 21st every year. Akre is known as the Newroz capital of Kurdistan, the \"Kurdish New Year\". It's tradition to carry lit torches at sunset and hike the mountain to watch spectacular fireworks,",
+            "latitude": "36.760460",
+            "longitude": "43.900220",
+            "is_visible": true,
+            "primary_attraction": true
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 19,
+        "fields": {
+            "name": "Nabaz Cafe",
+            "destination": 10,
+            "category": "tea_shop",
+            "description": "A popular local tea shop with lots of games, hookah, and baklava!",
+            "latitude": "36.186350",
+            "longitude": "44.008330",
+            "is_visible": true,
+            "primary_attraction": false
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 20,
+        "fields": {
+            "name": "Amedi",
+            "destination": 4,
+            "category": "historic",
+            "description": "Amedi (also Amadiya, Amedya) is built on a mesa in the broader Great Zab river valley. The name Amadiya is eponymous to Imad al-Din Zengi who built a fortress there in 1142.",
+            "latitude": "37.092230",
+            "longitude": "43.487590",
+            "is_visible": true,
+            "primary_attraction": true
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 21,
+        "fields": {
+            "name": "I❤️AKRE",
+            "destination": 1,
+            "category": "recreation",
+            "description": "\"I Love Akre\" sign at the top of the hill, centrally located between old and new Akre towns. Majestical view overlooking Kala Kavin Mountain.",
+            "latitude": "36.757500",
+            "longitude": "43.895550",
+            "is_visible": true,
+            "primary_attraction": false
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 22,
+        "fields": {
+            "name": "Dervishes of Akre",
+            "destination": 1,
+            "category": "religious",
+            "description": "Dance of the Qadri Dervishes in Akre. Sufism, or Islamic mysticism, once played an immense role in Islamization of Kurds, and popular Sufi dervish orders fulfilled an important function in the organization of Kurdish society.",
+            "latitude": "36.768590",
+            "longitude": "43.894160",
+            "is_visible": true,
+            "primary_attraction": true
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 23,
+        "fields": {
+            "name": "Rabban Hormizd Monastery",
+            "destination": 2,
+            "category": "religious",
+            "description": "An important monastery of the Chaldean Catholic Church, founded about 640 AD, carved out in the mountains. Thousands of Christians from all over come to celebrate Saint Hormizd in early May.",
+            "latitude": "36.748770",
+            "longitude": "43.115600",
+            "is_visible": true,
+            "primary_attraction": true
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 24,
+        "fields": {
+            "name": "Saddam Hussein's Winter Palace",
+            "destination": 4,
+            "category": "historic",
+            "description": "Definitely the only palace built for Saddam Hussein with the finest views, known as the “bird's nest”, and is perched atop Gara mountain. It was looted like all others in Kurdistan after the first Gulf War in March 1991. Only traces of the Italian marble and Siena green tile remain.",
+            "latitude": "37.011420",
+            "longitude": "43.367340",
+            "is_visible": true,
+            "primary_attraction": true
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 25,
+        "fields": {
+            "name": "Saddam Hussein's Summer Palace",
+            "destination": 4,
+            "category": "historic",
+            "description": "It's estimated that dictator Saddam Hussein built 8o-100 palaces during his 24 year reign. Billions of dollars were spent on lavish structures with gold and marble fittings (no expense spared). They were seen as an expression of his power and authority over Iraq. There was a Saddam Hussein palace built in every town of prominence across Iraq.",
+            "latitude": "37.097840",
+            "longitude": "43.344890",
+            "is_visible": true,
+            "primary_attraction": false
+        }
+    },
+    {
+        "model": "destinations.sight",
+        "pk": 26,
+        "fields": {
+            "name": "Kurdistan Mural",
+            "destination": 4,
+            "category": "memorial",
+            "description": "Massive mural spanning ~300m (1,000ft) celebrating the brave Peshmerga, keeping Iraqi Kurdistan safe.",
+            "latitude": "37.094270",
+            "longitude": "43.359470",
+            "is_visible": true,
+            "primary_attraction": true
+        }
+    }
+]
