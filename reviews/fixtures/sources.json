@@ -1,0 +1,26 @@
+[
+    {
+        "model": "reviews.source",
+        "pk": 1,
+        "fields": {
+            "name": "TripAdvisor",
+            "url": "https://www.tripadvisor.com/Attraction_Review-g659505-d14863085-Reviews-Iraqi_Kurdistan_Guide-Erbil_Erbil_Province.html"
+        }
+    },
+    {
+        "model": "reviews.source",
+        "pk": 2,
+        "fields": {
+            "name": "Google Maps",
+            "url": "https://g.page/IraqiKurdistanGuide"
+        }
+    },
+    {
+        "model": "reviews.source",
+        "pk": 3,
+        "fields": {
+            "name": "Facebook",
+            "url": "https://www.facebook.com/kurdistantourguide"
+        }
+    }
+]
