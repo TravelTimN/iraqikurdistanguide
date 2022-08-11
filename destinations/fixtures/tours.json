@@ -1,0 +1,112 @@
+[
+    {
+        "model": "destinations.tour",
+        "pk": 1,
+        "fields": {
+            "category": "Adventure",
+            "photo": 3,
+            "description": "For travelers that seek adventure, adrenaline, and excitement.",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.tour",
+        "pk": 2,
+        "fields": {
+            "category": "City",
+            "photo": 5,
+            "description": "City tours are an excellent way to immerse yourself quickly.",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.tour",
+        "pk": 3,
+        "fields": {
+            "category": "Cultural",
+            "photo": 12,
+            "description": "Immerse yourself in Kurdistan's rich cultural history!",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.tour",
+        "pk": 4,
+        "fields": {
+            "category": "Food",
+            "photo": 9,
+            "description": "Explore the unique dishes and tastes that form Kurdish cuisine.",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.tour",
+        "pk": 5,
+        "fields": {
+            "category": "Group",
+            "photo": 10,
+            "description": "For groups up to 21 guests, on a fully customized itinerary.",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.tour",
+        "pk": 6,
+        "fields": {
+            "category": "Historical & Heritage",
+            "photo": 7,
+            "description": "Uncover more than 4,000 years of history, dating back to the Middle Assyrian Empire.",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.tour",
+        "pk": 7,
+        "fields": {
+            "category": "Religious",
+            "photo": 2,
+            "description": "Visit religious sights from the many faiths practiced in Kurdistan!",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.tour",
+        "pk": 8,
+        "fields": {
+            "category": "Seasonal",
+            "photo": 11,
+            "description": "Celebrate Newroz, Ramadan, Eid, or one of the many Kurdish festivities!",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.tour",
+        "pk": 9,
+        "fields": {
+            "category": "Sightseeing",
+            "photo": 13,
+            "description": "For those who want to explore Kurdistan's sights and attractions!",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.tour",
+        "pk": 10,
+        "fields": {
+            "category": "Solo Female",
+            "photo": 4,
+            "description": "Female tourists are treated as equals to local men in Kurdistan.",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.tour",
+        "pk": 11,
+        "fields": {
+            "category": "Trekking",
+            "photo": 6,
+            "description": "Explore Kurdistan's stunning scenery off the beaten track!",
+            "is_visible": true
+        }
+    }
+]

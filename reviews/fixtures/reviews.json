@@ -1,0 +1,520 @@
+[
+    {
+        "model": "reviews.review",
+        "pk": 1,
+        "fields": {
+            "author": "Chris Q",
+            "headline": "Simply incredible!",
+            "review": "<p>When those of us from the West think of Kurdistan and the rest of Iraq we are likely to think of a place that is deeply unsafe, wracked by decades of war and strife. Nothing could be further from the truth.<br /><br />It can&rsquo;t be overstated just how far above my expectations both our guide, Govand, and Kurdistan proved themselves to be. This was, without question, one of the best experiences that I&rsquo;ve had in my extensive travels around the world! The Kurdish people are the warmest, friendliest, and most open people I have met.<br /><br />Govand and Haval&rsquo;s knowledge of the region, coupled with their extensive connections, provided for a trip that took in all the best that Kurdistan has to offer. From the stunning vistas of the Hamilton Road and the gorges and canyons in Rowanduz, the cliff hugging Rabban Hormizd Monastery, to the bustling local life in Erbil, Duhok, and Lalish, the depth of their experience allowed us to fully experience these places in a way that we never could have without them.<br /><br />Thank you, Govand and Haval, for your kindness, openness, and showing us just how wonderful Kurdistan really is. I know that we&rsquo;ve made lifelong friends and I can&rsquo;t wait to come back!</p>",
+            "date": "2022-05-15",
+            "country": "IE",
+            "rating": "5",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 2,
+        "fields": {
+            "author": "Tim Nelson",
+            "headline": "One of the best trips we've ever had!",
+            "review": "<p>As seasoned travelers, we've been all around the world, including places like North Korea, and without a doubt, our trip to Kurdistan was by far one of the best trips we've ever experienced! The only unfortunate aspect of our trip was that we didn't book a longer journey. We are 3 colleagues/friends from Ireland, and spent a week in Kurdistan during May 2022 (coincidentally during Ramadan/Eid).<br /><br />Haval was already booked for these dates, so we were fortunate enough to be guided by his amazing brother, Govand! The entire nation is so friendly and welcoming, constantly being invited-in by random strangers to eat or have tea with them, everywhere we went. Despite being Eid, it's people like Govand and Haval that make these types of journeys even better; you need someone that carries a high weight of \"wasta\", allowing us entry to places that were either closed for the holidays, or restricted to locals only. The amount of wasta that Govand has in his country is amazing, allowing us rare experiences such as sitting up-front and center with the leader of the Qadiri Sufi Order while dervish men practiced Dhikr to celebrate Eid, having a private tea session with the third-highest Yazidi leader (Baba Chawish) in the holy city of Lalish, and being the only tourists allowed to visit the Rabban Hormizd Monastery during the celebration of remembrance for thousands of Christian Chaldeans/Syriacs/Assyrians after Easter in Alqosh. Truly, it's \"who you know\" (\"wasta\") that allows such experiences, which is why the only way to travel around Kurdistan is with Govand and/or Haval!<br /><br />You'll want to come prepared with a hungry appetite, because meals are thrice daily in huge proportions, yet extremely tasty, and washed down with tea, ayran, and water, so be sure to bring your eatin' pants! The Kurds/Kurdish people are so amazing, and never once did any of us feel unsafe or unwanted. When you travel to other countries and enter places like bazaars, you're almost guaranteed to be pressure-pushed to buy something. In Kurdistan, it's completely the opposite; when someone invites you into their shop at the bazaar, it's because they want you to have some tea with them as their guest, or take pictures and share with your friends back home, purely to show the world and have others learn about their way of life.<br /><br />If it weren't for Govand (and Haval), we definitely would not have had the same experience on our own around this amazing country, and can't wait to return in the future to see our new lifelong friends. Thank you for giving us the chance to learn, laugh, and love!</p>",
+            "date": "2022-05-09",
+            "country": "IE",
+            "rating": "5",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 3,
+        "fields": {
+            "author": "Heinz Rosenbaum",
+            "headline": "Great guide",
+            "review": "<p>Great guide. I can only recommend Haval.</p>",
+            "date": "2020-02-14",
+            "country": "DE",
+            "rating": "5",
+            "source": 3,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 4,
+        "fields": {
+            "author": "Tasos Christofides",
+            "headline": "Awesome and unique experience",
+            "review": "<div dir=\"auto\">Just returned from my three days trip to Erbil, Kurdistan. Luckily enough I did meet on Facebook after reviewing TripAdvisor comments, tour guide Haval and apart of being my pleasure and privilege to meet him I had awesome and unique experience.</div>\r\n<div dir=\"auto\">Spent the first day in Rawandiz District visiting the Hamilton Road, canyons and other attractions nearby and second day visited the Mar Mattai monastery, Yazidi temple and another important monastery for the Chaldean Catholic Church.</div>\r\n<div dir=\"auto\">The third and my last day of my short stay was spent in Erbil, strolling in the old city and despite the fact that I only stayed three days tour guide Haval with his great help, professionalism, high knowledge, kindness and his smiling approach made me think that I was in the country for more than a week.</div>\r\n<div dir=\"auto\">Without a second thought Haval is strongly recommended as he is the right person to make the stay of any visitor unforgettable.</div>\r\n<div dir=\"auto\">Value for money also!</div>\r\n<div dir=\"auto\">Looking forward to come back in the area soon for some hiking <span class=\"pq6dq46d tbxw36s4 knj5qynh kvgmc6g5 ditlmg2l oygrvhab nvdbi5me sf5mxxl7 gl3lb2sf hhz5lgdu\"><img src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/t80/1/16/1f64f.png\" alt=\"🙏\" width=\"16\" height=\"16\" /></span></div>",
+            "date": "2019-07-17",
+            "country": "AE",
+            "rating": "5",
+            "source": 3,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 5,
+        "fields": {
+            "author": "Fede Quagliotti",
+            "headline": "Totally recommendable",
+            "review": "<p>Incredible experience and great person! Totally recommendable. Thanks for all Haval!</p>",
+            "date": "2019-07-07",
+            "country": "UY",
+            "rating": "5",
+            "source": 3,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 6,
+        "fields": {
+            "author": "Natalia Pestova",
+            "headline": "We were so impressed!",
+            "review": "<p>We were so impressed from trip with Haval. He is the one who knows each single stone in Kurdistan! He can open all the gates and show the real beauty of his country. Thank you Haval for being our guide</p>",
+            "date": "2019-05-10",
+            "country": "RU",
+            "rating": "5",
+            "source": 3,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 7,
+        "fields": {
+            "author": "Marcus Eriksson",
+            "headline": "Haval is an excellent tour guide",
+            "review": "<div class=\"kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x c1et5uql ii04i59q\">\r\n<div dir=\"auto\">Haval is an excellent tour guide. He has a great knowledge of Kurdistan - its history, the beautiful scenery, the people and the food. And he knows the little gems, that you probably wouldn&rsquo;t find on your own.</div>\r\n</div>\r\n<div class=\"cxmmr5t8 oygrvhab hcukyx3x c1et5uql o9v6fnle ii04i59q\">\r\n<div dir=\"auto\">Iraqi Kurdistan is, and feels, as safe as any other country in the world. So don&rsquo;t be afraid of going just because media (or your government) says it dangerous. It one of the most interesting places I&rsquo;ve ever visited. Everyone, Kurdish or Iraqi, are very friendly. Even the militaries at checkpoints are nice and laughs with you. Oh, and they are there to make sure everyone are safe.</div>\r\n</div>\r\n<div class=\"cxmmr5t8 oygrvhab hcukyx3x c1et5uql o9v6fnle ii04i59q\">\r\n<div dir=\"auto\">So, just book Haval and visit one of the less visited places in the world.</div>\r\n</div>",
+            "date": "2018-08-17",
+            "country": "SE",
+            "rating": "5",
+            "source": 3,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 8,
+        "fields": {
+            "author": "David Russell",
+            "headline": "Incredible trip, lifelong memories",
+            "review": "<p>I had the pleasure of having Haval as my tour guide through Iraqi Kurdistan for a three-day trip. Truly, he was professional, knowledgeable, and extremely welcoming from the moment we arrived at Erbil International Airport. We had a fantastic time in the countryside and the city proper. No topic of discussion is taboo and he provided so much insight into this region and the people who live within it. His cars were comfortable, well air-conditioned and spacious. It made the car rides a pleasure. He even had all various chargers when our phones or cameras were running out of battery. He truly thinks of everything possible to ensure it is an enjoyable trip. We even had the pleasure of meeting his family for a traditional Eid dinner and we had so much fun with his boys going down to Iskan street. I highly recommend him to anyone interested in visiting Iraqi Kurdistan. Thanks Haval for an incredible trip and the lifelong memories we created together!</p>",
+            "date": "2018-06-19",
+            "country": "US",
+            "rating": "5",
+            "source": 3,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 9,
+        "fields": {
+            "author": "Tomo Arakawa",
+            "headline": "Great time",
+            "review": "<p>Haval is the trustable guide in Kurdistan Region and for sure you can get the memorable experience with him. He organized everything I wanted to do here though. I had a great time with him visiting Mar Mattai, Lalish, Alqosh, and Mosul Dam. What's more food choice was also good!!</p>",
+            "date": "2018-05-21",
+            "country": "JP",
+            "rating": "5",
+            "source": 3,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 10,
+        "fields": {
+            "author": "Elise Boyle",
+            "headline": "Wonderful tour guide",
+            "review": "<p>Haval is a wonderful tour guide - he was incredibly helpful, providing both transport and translation for my research partner and me in Erbil. Looking forward to another trip with him soon!</p>",
+            "date": "2018-05-20",
+            "country": "GB",
+            "rating": "5",
+            "source": 3,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 11,
+        "fields": {
+            "author": "Adriano Medina",
+            "headline": "One of the best travel decisions I’ve made",
+            "review": "<div class=\"kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x c1et5uql ii04i59q\">\r\n<div dir=\"auto\">I had the luck of learning about Haval on a random Google search and decided to book with him. Turned out to be one of the best travel decisions I&rsquo;ve made.</div>\r\n</div>\r\n<div class=\"cxmmr5t8 oygrvhab hcukyx3x c1et5uql o9v6fnle ii04i59q\">\r\n<div dir=\"auto\">I booked a (very affordable) 3 day tour with Haval and had a really good time. He has a great personality, a really good sense of humor (we were dying laughing in the car and restaurants several times), knows Kurdistan like the back of his hand and knows the history of things really well. Questions aren&rsquo;t off limits to him, and he is someone who is great at giving you insights into Kurdish life and customs. Naturally, he will be curious about your culture as well.</div>\r\n</div>\r\n<div class=\"cxmmr5t8 oygrvhab hcukyx3x c1et5uql o9v6fnle ii04i59q\">\r\n<div dir=\"auto\">Haval is also perfect for those that love taking pictures and insist on taking several because you don&rsquo;t look good on any of the ones you take. He is patient and loves photography. For every spot you go to, he knows where to take the best pictures. My social media was way too lit from the pics Haval took of me.</div>\r\n</div>\r\n<div class=\"cxmmr5t8 oygrvhab hcukyx3x c1et5uql o9v6fnle ii04i59q\">\r\n<div dir=\"auto\">Lastly, I gained a friend in the process. Haval is someone I&rsquo;ll always remember and one of the reasons I felt so sad leaving Kurdistan. Until next me my Friend.</div>\r\n</div>",
+            "date": "2018-05-05",
+            "country": "US",
+            "rating": "5",
+            "source": 3,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 12,
+        "fields": {
+            "author": "Ben Mignardi",
+            "headline": "Friendly, humorous, and, very engaging",
+            "review": "<div class=\"kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x c1et5uql ii04i59q\">\r\n<div dir=\"auto\">My recent visit to Erbil was an amazing adventure. I wish I could have stayed longer than 3 days. As such, I will definitely be back soon!</div>\r\n</div>\r\n<div class=\"cxmmr5t8 oygrvhab hcukyx3x c1et5uql o9v6fnle ii04i59q\">\r\n<div dir=\"auto\">I had the pleasure of visiting the Citadel and the Grand Bazaar; however, I was unaccompanied. Next time I will hire Haval Qahraman.</div>\r\n</div>\r\n<div class=\"cxmmr5t8 oygrvhab hcukyx3x c1et5uql o9v6fnle ii04i59q\">\r\n<div dir=\"auto\">That said, I did use the services of Haval to visit Gara Mountain (home of Saddam Hussein&rsquo;s Palace) and Amadiya, both in Dohuk Province. On this occasion, I was only looking for a day trip.</div>\r\n</div>\r\n<div class=\"cxmmr5t8 oygrvhab hcukyx3x c1et5uql o9v6fnle ii04i59q\">\r\n<div dir=\"auto\">I knew Haval was professional when he returned my message I sent him on his website within an hour. His responses to all of my questions were thorough, complete and honest. He communicates extremely well in English (both written and orally). His time estimate for duration of the day trip were spot on.</div>\r\n</div>\r\n<div class=\"cxmmr5t8 oygrvhab hcukyx3x c1et5uql o9v6fnle ii04i59q\">\r\n<div dir=\"auto\">As a guide, he was friendly, humorous, and, very engaging. Haval is a down-to-earth person who has great passion for his country. He is very knowledgeable of all sites and places to see (and eat).</div>\r\n</div>\r\n<div class=\"cxmmr5t8 oygrvhab hcukyx3x c1et5uql o9v6fnle ii04i59q\">\r\n<div dir=\"auto\">Haval and I got along famously. In fact, I had the pleasure of dining with him and his family the day after my tour with him. I became part of the family!!!</div>\r\n</div>\r\n<div class=\"cxmmr5t8 oygrvhab hcukyx3x c1et5uql o9v6fnle ii04i59q\">\r\n<div dir=\"auto\">If you want to visit Kurdistan and get the most out of your visit of Erbil, or, expand your visit outside Erbil, I highly recommend Haval. I understand he also does multiple-day trips. This is certainly an option I&rsquo;ll consider the next time I return to Erbil.</div>\r\n</div>\r\n<div class=\"cxmmr5t8 oygrvhab hcukyx3x c1et5uql o9v6fnle ii04i59q\">\r\n<div dir=\"auto\">Thank you very kindly Haval!!!</div>\r\n</div>",
+            "date": "2018-05-05",
+            "country": "CA",
+            "rating": "5",
+            "source": 3,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 13,
+        "fields": {
+            "author": "Jordan Schindler",
+            "headline": "Best guide in Kurdistan!",
+            "review": "<div class=\"kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x c1et5uql ii04i59q\">\r\n<div dir=\"auto\">First off: no issues whatsoever with safety or getting a visa on arrival. Haval was absolutely amazing, and showed me around kurdistan with a seasoned level of detail and professionalism. He even took me to dinner with his family and to the airport at midnight for no extra charge. Kurdistan is beautiful and I look forward to coming back. Anything you want, oddly specific or on the beaten path, Haval is your guy. He was a wealth of knowledge and no topics were off limits.</div>\r\n</div>\r\n<div class=\"cxmmr5t8 oygrvhab hcukyx3x c1et5uql o9v6fnle ii04i59q\">\r\n<div dir=\"auto\">Would recommend 100%, no reservations whatsoever. Please feel free to email/message me if you have any questions/concerns: jordan@nufabrx dot com</div>\r\n</div>\r\n<div class=\"cxmmr5t8 oygrvhab hcukyx3x c1et5uql o9v6fnle ii04i59q\">\r\n<div dir=\"auto\">Best guide in Kurdistan!</div>\r\n</div>",
+            "date": "2018-04-28",
+            "country": "US",
+            "rating": "4",
+            "source": 3,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 14,
+        "fields": {
+            "author": "EW Cordon",
+            "headline": "I would be proud to call a friend",
+            "review": "<div>\r\n<div class=\"\" dir=\"auto\">\r\n<div id=\"jsc_c_ha\" class=\"ecm0bbzt hv4rvrfc dati1w0a e5nlhep0\" data-ad-comet-preview=\"message\" data-ad-preview=\"message\">\r\n<div class=\"j83agx80 cbu4d94t ew0dbk1b irj2b8pg\">\r\n<div class=\"qzhwtbm6 knvmm38d\">\r\n<div class=\"kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x c1et5uql ii04i59q\">\r\n<div dir=\"auto\">Just had a tour for three days with Haval Qaraman in Kurdistan, Iraq. We went to many beautiful and interesting places. Don't think I could have visited many of these places without Haval. So glad to have spent those days with him as he is not only a very good guide but a great guy and someone I would be proud to call a friend. He's very knowledgeable about all the places I was interested in and enjoyed sharing information about Kurdistan. If you are considering getting a guide for Iraq then Haval would be a good choice.</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>",
+            "date": "2018-04-09",
+            "country": "US",
+            "rating": "5",
+            "source": 3,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 15,
+        "fields": {
+            "author": "Marija",
+            "headline": "One day Kurdistan trip",
+            "review": "<p>Haval is excelent guide and humble person. We went for one day trip and we really enjoyed it. Haval is very knowledgeable and he will tell you the story of each place you are going to visit. Beside that he knows all good restaurants in the area, so you will have the best meal you can imagine. Haval was treating us as his friends and it was amazing to explore Kurdistan with him.<br />The price of the tour is in line with service provided considering Haval is both driving and guiding, will offer you water, and has good amount of knowledge to share along the way.</p>",
+            "date": "2022-08-05",
+            "country": "RS",
+            "rating": "5",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 16,
+        "fields": {
+            "author": "Marcin",
+            "headline": "Our wonderful adventure",
+            "review": "<p>Me and my wife spent almost a week in Iraqi Kurdistan and thanks to Haval our trip was amazing. We explored several temples, all natural wonders, ancient history of Iraq and Kurdistan, and of course much more! I cannot describe how happy I was. Haval delivered everything we needed and always treated us as friends. We wanted to try some local meals and he always recommended something tasty. We also met his family and his brother Goven who is also a profesional tour guide. Both very friendly and fluent at English.<br />The region of Kurdistan is extremely beautiful and not many foreign tourists there! So if you want to see something wild and unusual, you should definetely ask for Iraqi Kurdistan. Highly recommended!</p>",
+            "date": "2022-07-31",
+            "country": "PL",
+            "rating": "5",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 17,
+        "fields": {
+            "author": "Chaz L",
+            "headline": "Amazing, and satisfying tour of Iraqi Kurdistan",
+            "review": "<p>Haval is an amazing guide for the Kurdish region of Iraq. He is very friendly and very knowledgeable about the places where he takes you. He made me feel very safe and very welcome. The hotels which he reserves for you are very clean and comfortable, the restaurants where he takes you are very good, and his car is very clean as well. He is very flexible so you can do any activities that you might want to do and he was willing to change plans at any time. I had the full Iraqi visa so he was able to take me out of Kurdistan, to go to the city of Kirkuk, which was not on the original schedule. I also got to meet his family, who are also very nice.<br /><br />He was also nice to allow me to reschedule my tour, since I could not come for my original tour date (May 2020).<br /><br />I recommend the full 7-day tour, because he has so many amazing places to take you to.</p>",
+            "date": "2022-07-31",
+            "country": "US",
+            "rating": "5",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 18,
+        "fields": {
+            "author": "João Guerreiro",
+            "headline": "Worth to discover Kurdistan",
+            "review": "<p>Great two-day your in Iraqi Kurdistan with Haval! He is punctual, nice, knowledgeable and I took the opportunity to make many questions about the region regarding culture, history, traditions, society, food, etc. Great way to know the landmarks of the region. I feel like I am travelling with a friend and also we met his kids who were very kind. It is a great tour however I found it a bit pricey, not for all budgets.</p>",
+            "date": "2022-07-30",
+            "country": "LU",
+            "rating": "4",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 19,
+        "fields": {
+            "author": "Savannah E",
+            "headline": "Truly the best decision you could make",
+            "review": "<p>Haval exceeded my expectations by a million! My friend and I booked 2 days with Haval and were kicking ourselves for not booking more. He is incredibly knowledgeable, safe, and just a great human. He took us to amazing swimming holes, saddams palace, waterfalls and more. He was an excellent driver and we laughed and joked the whole time!<br />Haval is an honest man that will give you excellent incite into the culture and history of kurdistan.<br />As a female traveler I can say I felt 200 percent comfortable with Haval and even messaged him after for information and help about kurdistan.<br />Haval gives excellent recommendations but always leaves the final decision up to you! His services are priceless and I have nothing but amazing things to say about him and his service!!!!!<br />Thank you haval !!!!</p>",
+            "date": "2022-07-31",
+            "country": "US",
+            "rating": "5",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 20,
+        "fields": {
+            "author": "Mike Murtagh",
+            "headline": "Unforgettable Trip in Kurdistan - thanks to Govand and Haval",
+            "review": "<p>I'm Mike, from Dublin in Ireland and I travelled to Kurdistan recently with 2 friends, Tim and Chris. I contacted Haval initially who was meticulous with organising the perfect 5 Day itinerary for me around Kurdistan. As Haval already had a tour booked, we were advised that Govand (Haval's brother) was going to be our guide. Govand and Haval were in constant communication with us prior to arrival to ensure we had everything aligned! Govand met us at Erbil International Airport and transferred us to our Hotel. We spent 5 super days exploring Kurdistan, visiting: Erbil, Duhok, Al-qosh, Akre, Amadi, Koya, Rwanduz and Sulemaniyah. Govand has such an excellent sense of humour, he is always punctual, but most of all friendly and very knowledgeable. He has a very evident passion for Kurdistan and shared so much information with us during our trip. It was such a fun and educational trip thanks to him. Govand also kindly invited us into his home where we met Haval and his amazing family and enjoyed such incredible Kurdish hospitality. It was a very memorable occasion and it really proves the kind hearted nature of Govand. I cannot express how impressed and thankful I am for the services provided by Govand and Haval. As a world traveller, I have encountered many, many guides of varying qualities and standards. Govand is simply the best. You cannot and will not find a nicer person who will go the extra mile to help you and advise you. From ordering food, tea, taking photographs, helping with currency exchange - he negotiates everything so you dont need to worry! What a guy! Govand and Haval are now friends for life and I cannot wait to meet them again soon, in fact I am already planning my next trip to Iraq with Haval. If you want a flawless and professional tour, with an added hint of warmth, fun, genuinity, and famous Kurdish hospitality - look no further. These brothers are THE BEST! You will not regret booking a tour with them. I would return in a heart beat!</p>",
+            "date": "2022-05-12",
+            "country": "IE",
+            "rating": "5",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 21,
+        "fields": {
+            "author": "Csaba",
+            "headline": "Daytrip around Rawanduz",
+            "review": "<p>Had the best day trip around Rawanduz Canyon and the Hamilton road (including some beautiful waterfalls). Govand is an excellent guide: knowledeable, smart, speaks good english and has a fun personality. Not to mention his photography skills :) he would take you to the best spots and will take the best photos of you. I&rsquo;m already planning to go back to Kurdistan and It&rsquo;s only go with him.</p>",
+            "date": "2022-05-07",
+            "country": "HU",
+            "rating": "5",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 22,
+        "fields": {
+            "author": "Jean-Mi005",
+            "headline": "Amazing 2 days trip with Govand!",
+            "review": "<p>I contacted Haval via his WhatsApp number and from the very first messages, I knew that he was really good guide and an amazing person. The thing is I was really last minute. I contacted him to organize a daytrip to Lalish village the day before. Even with this tight schedule, Haval made everything to make that happen. He wasn't available but he asked his brother, Govand to guide me. So the morning after, I met Govand at my hotel in Duhok and I'm so glad that I decided to go on a 2 days trip with him! Govand told me everything about Kurdish culture and history. His english was A1 and he really wanted to share his knowledge with me. He also told me everything about the yezidi culture and made my visit to Lalish village (during the Yezidi new year) an amazing experience! In addition, he was really flexible and ask me if I wanted to spend more time at some places. He really care about my confort and my needs. The second day, we went to Saddam Palace, Amedi, Genocide monument and Dore canyon. Again, at every places, he made sure that I had all the information. Overall, the 1 night/2days with Govand was the highlight of my trip to Kurdistan. I usually travel alone by myself but I'm so glad that I chose to hire Haval and Govand for these two days. I must also mention something. I took a shared taxi from Erbil to Dahuk. Unfortunately, I forgot my hat in the taxi. I thought that my hat was lost forever. I told Govand this story and he told me that he would try to find the taxi driver once we get back in Erbil. So, we went to the terminal and ask some drivers and I could finally get my hat back! For me, this story shows how Govand was a amazing guide and also how Kurdish people are one of kind in term of kindness! I cannot recommend you enough to hire Haval and his brother Govand for your next trip to Kurdistan. You will find amazing guide and also friends!</p>",
+            "date": "2022-04-28",
+            "country": "CA",
+            "rating": "5",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 23,
+        "fields": {
+            "author": "eduard r",
+            "headline": "Maravilloso day tour con Haval",
+            "review": "<p>Hicimos un day tour con Haval y fue maravilloso. Persona muy atenta y servicial. Te explica muy bien todo el tour . Sin duda , si alguien quiere un gu&iacute;a experto esta es la persona correcta.</p>",
+            "date": "2022-06-23",
+            "country": "ES",
+            "rating": "5",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 24,
+        "fields": {
+            "author": "Peter V",
+            "headline": "Nejlepsi pruvodce pro poznani skutecneho Kurdistanu",
+            "review": "<p>S Havalem jsme behem 10 dni poznali skutecny Kurdistan. Nestaci jen navstivit zajimava mista. S Havalem jsme se dozvedeli veskere historicke, politicke i nabozenske souvislisti - a ze se toho v techto koncinach udalo. Rozhovory s Havalem nam pomohly pochopit spousty veci a udalosti Haval svou zemi skutecne dobre zna a pokud jsme meli nejaky napad na zmenu programu, vzdy to s prehledem zaridil nebo dobre poradil. Takze za me plny pocet bodu - proste perfektni!</p>",
+            "date": "2022-05-31",
+            "country": "CZ",
+            "rating": "5",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 25,
+        "fields": {
+            "author": "Omar J",
+            "headline": "Nezapomenutelná cesta do Kurdistánu",
+            "review": "<p>10 dn&iacute; v ir&aacute;ck&eacute;m Kurdist&aacute;nu v doprovodu Havala byl mimoř&aacute;dn&yacute; z&aacute;žitek. Kurdist&aacute;n je n&aacute;dhern&yacute;. Najdete tu divokou př&iacute;rodu, hory, kaňony, řeky, vodop&aacute;dy. Ale hlavně pozn&aacute;te neuvěřitelně př&aacute;telsk&eacute; obyvatele a pohostinnost m&iacute;stn&iacute;ch lid&iacute;. Pozn&aacute;te, že je to naprosto bezpečn&aacute; destinace, kde se nem&aacute;te čeho ob&aacute;vat. Sezn&aacute;m&iacute;te se s bohatou a komplikovanou histori&iacute; regionu, roz&scaron;&iacute;ř&iacute;te si obzory a zbav&iacute;te se předsudků. Skvěle se tak&eacute; naj&iacute;te.<br />Rozhodně ale doporučuji cestovat s m&iacute;stn&iacute;m průvodcem. Ne kvůli bezpečnosti, ale protože jedině s n&iacute;m budete m&iacute;t &scaron;anci proniknout hlouběji do v&scaron;ech m&iacute;stn&iacute;ch re&aacute;li&iacute;, zaj&iacute;mavost&iacute;, historie, zvyků, kultury, politiky, př&iacute;rody. Pozn&aacute;te Kurdist&aacute;n opravdu autenticky a do podrobna. M&iacute;stn&iacute; totiž anglicky moc nemluv&iacute;.<br />A k tomu potřebujete opravdu skvěl&eacute;ho průvodce. Někoho, jako je Haval. Profesion&aacute;l, upř&iacute;mn&yacute;, obětav&yacute; a pokorn&yacute;. S neuvěřitelně bohat&yacute;mi znalostmi cel&eacute;ho regionu ve v&scaron;ech oborech. Kter&yacute; m&aacute; zn&aacute;mosti na v&scaron;ech m&iacute;stech a hladce v&aacute;s provede v&scaron;emi checkpointy, třeba až do hor k &iacute;r&aacute;nsk&yacute;m hranic&iacute;m, kam bychom se sami určitě nedostali. Haval je př&aacute;telsk&yacute; a komunikativn&iacute;. Ž&aacute;dn&eacute; t&eacute;ma mu nen&iacute; ciz&iacute; a ž&aacute;dnou ot&aacute;zku nenech&aacute; bez odpovědi. Je velmi otevřen&yacute; a poděl&iacute; se s v&aacute;mi o svůj životn&iacute; př&iacute;běh, kter&yacute; do velk&eacute; m&iacute;ry kop&iacute;ruje dějiny Kurdist&aacute;nu posledn&iacute;ch 40 let. Nav&iacute;c m&aacute; skvěl&eacute; organizačn&iacute; schopnosti a program m&aacute; skvěle vymy&scaron;len&yacute; a z&aacute;roveň je otevřen&yacute; jak&yacute;mkoliv n&aacute;vrhům a změn&aacute;m.<br />D&iacute;ky Havalovi byla cesta do Kurdist&aacute;nu jedn&iacute;m z m&yacute;ch nejsilněj&scaron;&iacute;ch cestovatelsk&yacute;ch z&aacute;žitků.<br />Kak Haval, supas. Na tohle budu dlouho vzpom&iacute;nat.</p>",
+            "date": "2022-05-30",
+            "country": "CZ",
+            "rating": "5",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 26,
+        "fields": {
+            "author": "Biagio A",
+            "headline": "Esperienza",
+            "review": "<p>Grazie Haval Qahraman ! Sei stato una guida eccezionale in questo bellissimo viaggio in kurdistan iracheno . Grazie per l'attenzione , la gentilezza e la disponibilit&agrave; nel rispondere sempre a tutte le infinite domande che ti ponevo.</p>",
+            "date": "2022-05-29",
+            "country": "IT",
+            "rating": "5",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 27,
+        "fields": {
+            "author": "AGTN",
+            "headline": "The perfect guide",
+            "review": "<p>Mi sono trovato benissimo con questa guida, &egrave; stato molto sollecito e pronto ad ogni ogni necessit&agrave;. Si vede che ama il suo paese e gli piace aiutare i suoi ospiti a conoscerlo meglio.</p>",
+            "date": "2022-05-28",
+            "country": "IT",
+            "rating": "5",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 28,
+        "fields": {
+            "author": "Anna B",
+            "headline": "Un viaggio che consiglio a tutti per entrare dentro alla storia e alla realtà del popolo curdo",
+            "review": "<p>Viaggio bellissimo e Aval una guida straordinaria , sempre disponibile , attento e gentile . Lo consiglio a tutti !</p>",
+            "date": "2022-05-28",
+            "country": "IT",
+            "rating": "5",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 29,
+        "fields": {
+            "author": "Adrian C",
+            "headline": "Unforgettable experience with the perfect guide",
+            "review": "<p>We've just spent 8 days in Kurdistan with Haval, and all I can say is that it really wouldn't have been the same without him. His depth of knowledge (born out of curiosity and pride in his land), his humour, intelligence, honesty and openness really made our adventure unforgettable. We had long talks and big laughs with him, alternating with sobering stories of the often sad history of this turbulent region. He took us to experience different foods, drinks and hidden tea houses, little known viewpoints and markets and hikes in beautiful surroundings.<br />If you're thinking Iraq make sure you contact Haval, you won't regret it.</p>",
+            "date": "2022-04-21",
+            "country": "MT",
+            "rating": "5",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 30,
+        "fields": {
+            "author": "chinchilla77",
+            "headline": "Amazing Kurdistan",
+            "review": "<p>As much as Kurdistan is an amazing place, what made it even more special was Haval our guide. Kurdistan has exceeded my expectations. It is truly an amazing place with amazing views, people and culture but what made it truly a memorable experience was Haval. He s not only Knowledgeable about all the attractions but also gave us his first hand experience of most of the places.</p>",
+            "date": "2022-04-14",
+            "country": "CA",
+            "rating": "5",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 31,
+        "fields": {
+            "author": "manudv_77",
+            "headline": "10/10",
+            "review": "<p>Amazing experience. We were six people on a tour visiting Kurdistan and honestly he guided us to the best places and knew every inch of kurdish history. Amazing English!! And always ready to have a laugh, he ended up being a friend not just a guide.</p>",
+            "date": "2022-04-20",
+            "country": "ES",
+            "rating": "5",
+            "source": 1,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 32,
+        "fields": {
+            "author": "Alina Kuczak",
+            "headline": "Unforgetable",
+            "review": "<p>The whole trip was unforgetable! We got to know the culture, history and lifestyle if Kurdish people. Haval is not only a passionate, professional tour guide, but also a super friendly, lovely person!</p>",
+            "date": "2022-08-04",
+            "country": "PL",
+            "rating": "5",
+            "source": 2,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 33,
+        "fields": {
+            "author": "Amanda Zahra",
+            "headline": "Definitely the best guide around",
+            "review": "<p>As much as Kurdistan is an amazing place, what made it even more special was Haval our guide. Kurdistan has exceeded my expectations. It is truly an amazing place with amazing views, people and culture but what made it truly a memorable experience was Haval our guide. He s not only Knowledgeable about all the attractions but also gave us his first hand experience of most of the places. I cannot recommend Haval enough for anyone visiting Kurdistan. Definitely the best guide around.</p>",
+            "date": "2022-05-05",
+            "country": "GB",
+            "rating": "5",
+            "source": 2,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 34,
+        "fields": {
+            "author": "Chiara Raffaelli",
+            "headline": "Professional, experienced, patient, flexible",
+            "review": "<p>For sure you won't regret having Haval as your guide. Last January I went with 2 friends to federal Iraq, Haval arranged everything for us, from the pick up at the airport, to itinerary, food and accommodation. He drove us all the way through Iraqi beauties from Baghdad, to samarra, to Basra, including Babylon, nassyria, kerbala and Najaf. He was so professional, experienced, patient, flexible, he satisfied our dreams and exceeded the expectations. Not only he is an exceptional driver, he can also introduce you to Iraqi culture with passion and deep knowledge, and answer your questions (all of them). Always with a smile on. We had the best time in Iraq with Haval because he knows every spot you need to see, from the famous ones to the hidden gems, he is friendly and we really enjoyed spending time with him. We had the most epic trip and fell in love with Iraq, his people, his food, his history and culture. I had guided tours before but none was like the one with Haval, he really made the difference. I really look forward to meeting him again, hopefully in Kurdistan for another adventure.</p>",
+            "date": "2022-02-11",
+            "country": "IT",
+            "rating": "5",
+            "source": 2,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 35,
+        "fields": {
+            "author": "Zack Madden",
+            "headline": "Amazing. Just amazing!",
+            "review": "<p>Amazing. Just amazing! I am an American traveller in my late 20's, and i came to Iraqi Kurdistan with 3 friends. We had high hopes, and we were just blown away with the experience and tour guide service. Our guide, Haval, was fantastic, his knowledge of the region and his ability to keep us entertained and to keep our bellies full of the best food I've likely ever had. He knows all of the best spots for eating and for other sorts of pleasure. I would give this service 6 stars out of 5 if i could. And would recommend this guide service to any kind of traveller, whether looking for an educational trip to learn about the ancient culture, or just for modern pleasures. Haval will keep you feeling safe. As an American, I was a bit nervous to check out some of the more war-torn areas of Kurdistani Iraq, but was fascinated to see them. Haval provides knowledge of these sites, along with his personal experiences that allow one to really relate with the local people. We became such good friends with Haval, learned so much, and had a life-changing trip overall with this tour guide service. We were sad to leave Kurdistani Iraq.</p>",
+            "date": "2022-01-13",
+            "country": "US",
+            "rating": "5",
+            "source": 2,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 36,
+        "fields": {
+            "author": "Michelle Zammit",
+            "headline": "Super highly recommended!",
+            "review": "<p>I have travelled with Haval for 15 days, all across Federal Iraq and Kurdistan. He was nothing but fantastic and professional throughout the whole trip. He helped each one of us (three ladies) with individual needs, and kept his ears the ground for any safety issues, and he tried to accommodate each one of us throughout the whole trip. Super highly recommended!</p>",
+            "date": "2021-12-15",
+            "country": "GB",
+            "rating": "5",
+            "source": 2,
+            "is_visible": true
+        }
+    },
+    {
+        "model": "reviews.review",
+        "pk": 37,
+        "fields": {
+            "author": "Slawek Troc",
+            "headline": "Sense of humour on expert level",
+            "review": "<p>With a group of seven we spent 3 days in Kurdistan. Haval took care of us like a friend, making us feel comfortable and excited. He has many stories to tell, knows everybody and is very accommodating. Plus, sense of humour on expert level.</p>",
+            "date": "2021-11-11",
+            "country": "PL",
+            "rating": "5",
+            "source": 2,
+            "is_visible": true
+        }
+    }
+]

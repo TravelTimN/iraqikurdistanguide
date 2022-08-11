@@ -1,0 +1,154 @@
+[
+    {
+        "model": "destinations.province",
+        "pk": 1,
+        "fields": {
+            "name": "Al Anbar",
+            "region": "irq"
+        }
+    },
+    {
+        "model": "destinations.province",
+        "pk": 2,
+        "fields": {
+            "name": "Al-Qādisiyyah",
+            "region": "irq"
+        }
+    },
+    {
+        "model": "destinations.province",
+        "pk": 3,
+        "fields": {
+            "name": "Babylon",
+            "region": "irq"
+        }
+    },
+    {
+        "model": "destinations.province",
+        "pk": 4,
+        "fields": {
+            "name": "Baghdad",
+            "region": "irq"
+        }
+    },
+    {
+        "model": "destinations.province",
+        "pk": 5,
+        "fields": {
+            "name": "Basra",
+            "region": "irq"
+        }
+    },
+    {
+        "model": "destinations.province",
+        "pk": 6,
+        "fields": {
+            "name": "Dhi Qar",
+            "region": "irq"
+        }
+    },
+    {
+        "model": "destinations.province",
+        "pk": 7,
+        "fields": {
+            "name": "Diyala",
+            "region": "irq"
+        }
+    },
+    {
+        "model": "destinations.province",
+        "pk": 8,
+        "fields": {
+            "name": "Duhok",
+            "region": "kur"
+        }
+    },
+    {
+        "model": "destinations.province",
+        "pk": 9,
+        "fields": {
+            "name": "Erbil",
+            "region": "kur"
+        }
+    },
+    {
+        "model": "destinations.province",
+        "pk": 10,
+        "fields": {
+            "name": "Halabja",
+            "region": "kur"
+        }
+    },
+    {
+        "model": "destinations.province",
+        "pk": 11,
+        "fields": {
+            "name": "Karbala",
+            "region": "irq"
+        }
+    },
+    {
+        "model": "destinations.province",
+        "pk": 12,
+        "fields": {
+            "name": "Kirkuk",
+            "region": "irq"
+        }
+    },
+    {
+        "model": "destinations.province",
+        "pk": 13,
+        "fields": {
+            "name": "Maysan",
+            "region": "irq"
+        }
+    },
+    {
+        "model": "destinations.province",
+        "pk": 14,
+        "fields": {
+            "name": "Muthanna",
+            "region": "irq"
+        }
+    },
+    {
+        "model": "destinations.province",
+        "pk": 15,
+        "fields": {
+            "name": "Najaf",
+            "region": "irq"
+        }
+    },
+    {
+        "model": "destinations.province",
+        "pk": 16,
+        "fields": {
+            "name": "Nineveh",
+            "region": "irq"
+        }
+    },
+    {
+        "model": "destinations.province",
+        "pk": 17,
+        "fields": {
+            "name": "Saladin",
+            "region": "irq"
+        }
+    },
+    {
+        "model": "destinations.province",
+        "pk": 18,
+        "fields": {
+            "name": "Sulaymaniyah",
+            "region": "kur"
+        }
+    },
+    {
+        "model": "destinations.province",
+        "pk": 19,
+        "fields": {
+            "name": "Wasit",
+            "region": "irq"
+        }
+    }
+]

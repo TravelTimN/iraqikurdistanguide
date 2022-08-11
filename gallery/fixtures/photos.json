@@ -1,0 +1,192 @@
+[
+    {
+        "model": "gallery.photo",
+        "pk": 1,
+        "fields": {
+            "sight": 8,
+            "image": "uploads/erbil/erbil-citadel-220629-210950.webp",
+            "caption": "Erbil Citadel",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "gallery.photo",
+        "pk": 2,
+        "fields": {
+            "sight": 9,
+            "image": "uploads/erbil/jalil-khayat-mosque-220629-191825.webp",
+            "caption": "Jalil Khayat Mosque",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "gallery.photo",
+        "pk": 3,
+        "fields": {
+            "sight": 10,
+            "image": "uploads/rawanduz/shingelbana-resort-220629-192746.webp",
+            "caption": "Shingelbana Resort",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "gallery.photo",
+        "pk": 4,
+        "fields": {
+            "sight": 11,
+            "image": "uploads/rawanduz/hamilton-road-220629-194623.webp",
+            "caption": "Hamilton Road",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "gallery.photo",
+        "pk": 5,
+        "fields": {
+            "sight": 12,
+            "image": "uploads/erbil/castle-fountains-and-gardens-220629-195209.webp",
+            "caption": "Castle Fountains and Gardens",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "gallery.photo",
+        "pk": 6,
+        "fields": {
+            "sight": 13,
+            "image": "uploads/choman/halgurd-mountain-220629-202405.webp",
+            "caption": "Halgurd Mountain",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "gallery.photo",
+        "pk": 7,
+        "fields": {
+            "sight": 14,
+            "image": "uploads/duhok/halamata-cave-220629-210128.webp",
+            "caption": "Halamata Cave",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "gallery.photo",
+        "pk": 8,
+        "fields": {
+            "sight": 15,
+            "image": "uploads/lalish/khinnis-bavian-rock-reliefs-220629-210735.webp",
+            "caption": "Khinnis Bavian Rock Reliefs",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "gallery.photo",
+        "pk": 9,
+        "fields": {
+            "sight": 16,
+            "image": "uploads/duhok/safeen-restaurant-220629-211948.webp",
+            "caption": "Safeen Restaurant",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "gallery.photo",
+        "pk": 10,
+        "fields": {
+            "sight": 17,
+            "image": "uploads/mosul/mosul-road-sign-220629-213142.webp",
+            "caption": "Mosul Road Sign",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "gallery.photo",
+        "pk": 11,
+        "fields": {
+            "sight": 18,
+            "image": "uploads/akre/kala-kavin-mountain-220629-214004.webp",
+            "caption": "Kala Kavin Mountain",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "gallery.photo",
+        "pk": 12,
+        "fields": {
+            "sight": 19,
+            "image": "uploads/erbil/nabaz-cafe-220629-215640.webp",
+            "caption": "Nabaz Cafe",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "gallery.photo",
+        "pk": 13,
+        "fields": {
+            "sight": 20,
+            "image": "uploads/amedi/amedi-220629-220221.webp",
+            "caption": "Amedi",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "gallery.photo",
+        "pk": 14,
+        "fields": {
+            "sight": 21,
+            "image": "uploads/akre/i-akre-sign-220809-102056.webp",
+            "caption": "Sandwiched between old and new Akre.",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "gallery.photo",
+        "pk": 15,
+        "fields": {
+            "sight": 22,
+            "image": "uploads/akre/dervishes-of-akre-220809-102911.webp",
+            "caption": "Qadri Dervishes celebrating their faith",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "gallery.photo",
+        "pk": 16,
+        "fields": {
+            "sight": 23,
+            "image": "uploads/alqosh/rabban-hormizd-monastery-220809-114915.webp",
+            "caption": "Tucked away and camouflaged in the mountains.",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "gallery.photo",
+        "pk": 17,
+        "fields": {
+            "sight": 24,
+            "image": "uploads/amedi/saddam-hussein-s-winter-palace-220809-115958.webp",
+            "caption": "Govand at the palace in winter",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "gallery.photo",
+        "pk": 18,
+        "fields": {
+            "sight": 25,
+            "image": "uploads/amedi/saddam-hussein-s-summer-palace-220809-121220.webp",
+            "caption": "Private lake built for Saddam Hussein",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "gallery.photo",
+        "pk": 19,
+        "fields": {
+            "sight": 26,
+            "image": "uploads/amedi/kurdistan-mural-220809-121932.webp",
+            "caption": "Ey Reqîb! O Enemy!",
+            "is_visible": true
+        }
+    }
+]

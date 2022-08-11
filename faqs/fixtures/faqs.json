@@ -1,0 +1,342 @@
+[
+    {
+        "model": "faqs.faq",
+        "pk": 1,
+        "fields": {
+            "question": "Why book with Iraqi Kurdistan Guide?",
+            "answer": "<p><span style=\"font-weight: 400;\">I've built a wealth of experience since I began offering tours in 2010, and continue to discover more to share about this beautiful country. Every tour is built around you and crafted to include the best that Iraqi Kurdistan and Federal Iraq have to offer.</span></p>\r\n<p><span style=\"font-weight: 400;\">I&rsquo;ve helped hundreds of adventurers discover the real Kurdistan, leave behind the preconceptions they may have, and build memories that will last a lifetime.<br /><br />Be sure to check-out some <a href=\"../../reviews\">reviews</a> from some of my previous trips! Additional reviews can be found on <a href=\"https://www.tripadvisor.com/Attraction_Review-g659505-d14863085-Reviews-Iraqi_Kurdistan_Guide-Erbil_Erbil_Province.html\" target=\"_blank\" rel=\"noopener\">TripAdvisor</a>, <a href=\"https://www.facebook.com/kurdistantourguide\" target=\"_blank\" rel=\"noopener\">Facebook</a>, <a href=\"https://g.page/IraqiKurdistanGuide\" target=\"_blank\" rel=\"noopener\">Google</a>, and <a href=\"https://www.tourhq.com/guide/iq76710/iraqi-kurdistan-guide-haval-qaraman\" target=\"_blank\" rel=\"noopener\">TourHQ</a>.</span></p>",
+            "category": "0",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 2,
+        "fields": {
+            "question": "What's the best time of year to visit?",
+            "answer": "<p>The best months to visit Iraqi Kurdistan are&nbsp;<strong>April</strong>&nbsp;and&nbsp;<strong>May</strong>. This is when the snow has all melted, temperature is mostly mild, and the landscape is a beautiful green, which is a pleasant surprise because most tourists don't expect Iraq to be so lush. <strong>April</strong> and <strong>May</strong> are also the months with the most religious celebrations, offering you a nice glimpse into Kurdish culture.</p>\r\n<p>The next best time to visit is during the fall because temperatures are cooler than the summer. However, like summertime, the landscape will be more dry and brown.</p>\r\n<p>Winter is the most difficult time to travel around Iraqi Kurdistan due to snowfall, particularly in the mountains. Because of this, some attractions might be closed,&nbsp;or impossible to get to.</p>",
+            "category": "0",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 3,
+        "fields": {
+            "question": "What essential documents do I need to take?",
+            "answer": "<p><span style=\"font-weight: 400;\">The documents that you should bring with you on your trip, and should carry with you during the trip are:</span></p>\r\n<ul>\r\n<li style=\"font-weight: 400;\" aria-level=\"1\"><span style=\"font-weight: 400;\">Passport</span></li>\r\n<li style=\"font-weight: 400;\" aria-level=\"1\"><span style=\"font-weight: 400;\">Details of travel and medical insurance</span></li>\r\n<li style=\"font-weight: 400;\" aria-level=\"1\"><span style=\"font-weight: 400;\">COVID-19 vaccination confirmation</span></li>\r\n</ul>\r\n<p><span style=\"font-weight: 400;\">There are frequent checkpoints along major roads to maintain our safety, and they may ask to see your passport to check your identity. It&rsquo;s important that you have your passport on you at all times for this reason.</span></p>",
+            "category": "0",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 4,
+        "fields": {
+            "question": "Will my mobile/cell phone work?",
+            "answer": "<p><span style=\"font-weight: 400;\">Check with your carrier to see if you can avail of roaming service while in Iraq. Cell coverage is widespread, and 4G connectivity is available in larger towns.</span></p>\r\n<p><span style=\"font-weight: 400;\">If your device is carrier unlocked and can take a SIM card, then you may choose to pick up a local SIM from a local carrier here, such as <a href=\"https://www.korektel.com\" target=\"_blank\" rel=\"noopener\">Korek Telecom</a>. Prepay SIMs are available with generous call and data allowances at very reasonable prices.</span></p>",
+            "category": "0",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 5,
+        "fields": {
+            "question": "Will I get internet coverage?",
+            "answer": "<p><span style=\"font-weight: 400;\">Most hotels offer complimentary WiFi, and there are hotspots in many cafes and restaurants, but the best option while away from a hotel is to use a cell phone data plan. Consider picking up a local SIM card while abroad; they're cheap and plentiful.</span></p>",
+            "category": "0",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 6,
+        "fields": {
+            "question": "How will I be able to charge my electrical appliances?",
+            "answer": "<p><span style=\"font-weight: 400;\">Iraq uses <strong>230 V</strong> outlets operating at <strong>50 Hz</strong>, with the most common types being:</span></p>\r\n<ul>\r\n<li><span style=\"font-weight: 400;\"><strong>Type C</strong> (<em>European</em>)</span></li>\r\n<li><span style=\"font-weight: 400;\"><strong>Type G</strong> (<em>UK &amp; Ireland</em>)</span></li>\r\n<li><span style=\"font-weight: 400;\"><strong>Type D</strong> (<em>less common - old UK type</em>)</span></li>\r\n</ul>\r\n<p><span style=\"font-weight: 400;\">Many hotels have multi-type outlets that accept different types of plug, but be sure to bring a suitable travel adapter, and check that your device supports <strong>230 V/50 Hz</strong>, or that you also bring a voltage converter.</span></p>",
+            "category": "0",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 7,
+        "fields": {
+            "question": "Is tipping common in Kurdistan/Iraq?",
+            "answer": "<p><span style=\"font-weight: 400;\">Tipping is welcomed, should you feel that you have received good service, but is not expected/mandatory as in other countries. Tips of 10-15% would be appropriated in many cases, but use your discretion and decide what&rsquo;s best for you given the circumstances.</span></p>",
+            "category": "0",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 8,
+        "fields": {
+            "question": "Can I bring my drone?",
+            "answer": "<p><span style=\"font-weight: 400;\">The use of drones by private individuals is prohibited unless specially licenced by the Kurdish Regional Government or Iraqi Federal Government. Drones were widely used by ISIS insurgents and so their use is carefully regulated. If you are found to have one in your possession by police, or at a checkpoint, then you will be questioned and your drone will be confiscated.<br /><br />Agencies responsible for regulating drones in Iraq: <a href=\"https://icaa.gov.iq/\" target=\"_blank\" rel=\"noopener\">Iraq Civil Aviation Authority (ICAA)</a></span></p>",
+            "category": "0",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 9,
+        "fields": {
+            "question": "What language is used in Kurdistan/Iraq?",
+            "answer": "<p><span style=\"font-weight: 400;\">The primary language used in Iraqi Kurdistan is Kurdish (Sorani dialect), although many younger Kurds will also have some English. Arabic hasn&rsquo;t been taught in Kurdish schools for many years, and so generally only older Kurds can communicate in Arabic.<br /><br />Want to learn more about the Kurdish language? Be sure to check out the various <a href=\"../../resources\">resources</a> pages!</span></p>",
+            "category": "0",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 10,
+        "fields": {
+            "question": "What are the major holidays celebrated in Kurdistan/Iraq?",
+            "answer": "<p>There are 15 public holidays celebrated in Kurdistan, five of which are Islamic celebrations whose dates change year-to-year.</p>\r\n<table border=\"1px\" cellspacing=\"2%\" cellpadding=\"2%\">\r\n<tbody>\r\n<tr>\r\n<td>\r\n<h3>Event</h3>\r\n</td>\r\n<td style=\"text-align: center;\">\r\n<h3 style=\"text-align: center;\">Date</h3>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p>New Year's Day</p>\r\n</td>\r\n<td style=\"text-align: center;\">\r\n<p>01 JAN</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p>Army Day</p>\r\n</td>\r\n<td style=\"text-align: center;\">\r\n<p>06 JAN</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p>National Day of Tolerance and Coexistence</p>\r\n</td>\r\n<td style=\"text-align: center;\">\r\n<p>06 MAR</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p>Nowruz</p>\r\n</td>\r\n<td style=\"text-align: center;\">\r\n<p>21 MAR</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p>Liberation Day</p>\r\n</td>\r\n<td style=\"text-align: center;\">\r\n<p>09 APR</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p>Labour Day</p>\r\n</td>\r\n<td style=\"text-align: center;\">\r\n<p>01 MAY</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p>Republic Day</p>\r\n</td>\r\n<td style=\"text-align: center;\">\r\n<p>04 JUL</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p>National Iraqi Day</p>\r\n</td>\r\n<td style=\"text-align: center;\">\r\n<p>03 OCT</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p>Prophet's Birthday</p>\r\n</td>\r\n<td style=\"text-align: center;\">\r\n<p>07-08 OCT</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p>Victory over Daesh</p>\r\n</td>\r\n<td style=\"text-align: center;\">\r\n<p>10 DEC</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p>Christmas Day</p>\r\n</td>\r\n<td style=\"text-align: center;\">\r\n<p>25 DEC</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p>Islamic New Year</p>\r\n</td>\r\n<td style=\"text-align: center;\">\r\n<p>Variable</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p>Ashura</p>\r\n</td>\r\n<td style=\"text-align: center;\">\r\n<p>Variable</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p>Eid al-Fitr</p>\r\n</td>\r\n<td style=\"text-align: center;\">\r\n<p>Variable</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p>Eid al-Adha</p>\r\n</td>\r\n<td style=\"text-align: center;\">\r\n<p>Variable</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>",
+            "category": "0",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 11,
+        "fields": {
+            "question": "Travelling with children",
+            "answer": "<p><span style=\"font-weight: 400;\">Children are welcome on tours! We can plan your tour to include places and activities that all of you will enjoy. <a href=\"../../contact\">Contact me</a> for more details!</span></p>",
+            "category": "1",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 12,
+        "fields": {
+            "question": "Travelling in a group",
+            "answer": "<p><span style=\"font-weight: 400;\">Group tours are welcome, whether it&rsquo;s 2 or 21 people! Large groups will need more planning and coordination, so please allow as much time as possible when contacting me, so that we can build a tour that will satisfy everyone, and prevent any issues. <a href=\"../../contact\">Contact me</a> for more details!</span></p>",
+            "category": "1",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 13,
+        "fields": {
+            "question": "Travelling solo",
+            "answer": "<p><span style=\"font-weight: 400;\">Solo travel offers opportunities that travelling in a larger group may not, and so is no less rewarding. I am happy to offer day-trips as well as larger tours; you will benefit from one-on-one focus, and places that could be hard to visit in a large group. <a href=\"../../contact\">Contact me</a> for more details!</span></p>",
+            "category": "1",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 14,
+        "fields": {
+            "question": "Solo female travellers",
+            "answer": "<p><span style=\"font-weight: 400;\">With a diverse ethnic and religious population, and wonderful hospitality, Kurdistan is a safe destination for solo women travellers, as well as women in general. Such diversity means that people are used to dealing with others that may not have the same ideas of dress and behaviour as themselves, and so are very relaxed and open. Rural towns are slightly more conservative than larger towns and cities, but even here you will find no problems in speaking to locals or going out alone.</span><span style=\"font-weight: 400;\"><br /></span><span style=\"font-weight: 400;\"><br /></span><span style=\"font-weight: 400;\">You can read a very informative blog on one woman&rsquo;s experience at </span><a href=\"https://againstthecompass.com/en/solo-female-travel-iraqi-kurdistan/\" target=\"_blank\" rel=\"noopener\"><span style=\"font-weight: 400;\">Against the Compass</span></a><span style=\"font-weight: 400;\">, and this is typical of the reception you can expect!</span><span style=\"font-weight: 400;\"><br /></span></p>",
+            "category": "1",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 15,
+        "fields": {
+            "question": "What should I do if I need to cancel or change my trip?",
+            "answer": "<p><span style=\"font-weight: 400;\">Should your plans change at any time, please <a href=\"../../contact\">contact me</a> as soon as possible, and we can make sure that your needs are accommodated. </span></p>",
+            "category": "1",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 16,
+        "fields": {
+            "question": "Travel insurance",
+            "answer": "<p><span style=\"font-weight: 400;\">It&rsquo;s important that you check with your insurance provider whether they offer coverage while in Iraq, as many policies exclude this region. This is due to the past instability of the region. Should you need to find a provider that covers all of Iraq, you can check out a reputable provider, </span><a href=\"https://www.iatitravelinsurance.co.uk/\" target=\"_blank\" rel=\"noopener\"><span style=\"font-weight: 400;\">IATI Insurance</span></a><span style=\"font-weight: 400;\">.</span></p>",
+            "category": "2",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 17,
+        "fields": {
+            "question": "Visa information",
+            "answer": "<p><span style=\"font-weight: 400;\">Getting a visa for Iraqi Kurdistan or Federal Iraq is straightforward, although there are some caveats to bear in mind that depend on which country issues your passport, and whether you wish to visit both Iraqi Kurdistan </span><strong>and</strong><span style=\"font-weight: 400;\"> Federal Iraq, or only Kurdistan.</span></p>\r\n<p><span style=\"font-weight: 400;\">Citizens of more than </span><a href=\"https://gov.krd/english/information-and-services/visitor/\" target=\"_blank\" rel=\"noopener\"><span style=\"font-weight: 400;\">40 countries</span></a><span style=\"font-weight: 400;\"> do not need to make any advance arrangements for entry to Iraqi Kurdistan, and can obtain a 30-day tourist visa upon arrival at Erbil or Sulaymaniyah airports. There is currently a processing fee of $75 USD (cash-only) for this service. Citizens of all other countries will need to contact their closest </span><a href=\"https://gov.krd/dfr-en/krg-representations/\" target=\"_blank\" rel=\"noopener\"><span style=\"font-weight: 400;\">Kurdish Regional Government</span></a><span style=\"font-weight: 400;\"> office for further details. Visas issued by the KRG at the above locations are valid only for travel within Iraqi Kurdistan, and are </span><strong>not valid</strong><span style=\"font-weight: 400;\"> for travel into the rest of Federal Iraq.</span></p>\r\n<p><span style=\"font-weight: 400;\">Visas issued by the authorities in Federal Iraq are valid for travel to all regions of the country, including Iraqi Kurdistan. EU and UK passport holders can get visas upon arrival at any of Iraq&rsquo;s points of entry. Please check the <a href=\"http://www.mofa.gov.iq/visa\" target=\"_blank\" rel=\"noopener\">Ministry of Foreign Affairs Iraq</a>, or with your closest Embassy of Iraq for the requirements of other nationals but, in general, an advanced application will be required before travel.<br /><br />If you're interested in travelling to both Iraqi Kurdistan&nbsp;<strong>and</strong> Federal Iraq, it's recommended to start in Federal Iraq, and finish in Kurdistan. That way you only need to apply for one visa, instead of two separate visas.</span></p>",
+            "category": "2",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 18,
+        "fields": {
+            "question": "What do I do about money?",
+            "answer": "<p><span style=\"font-weight: 400;\">The currency of Iraq is the Iraqi Dinar (code: <strong>IQD</strong>&nbsp;/ symbol: </span><strong>د.ع</strong>). It&rsquo;s recommended that you bring US dollars (USD) or Euros (EUR) with you, as it may be difficult to find IQD before you leave your home country, and USD/EUR are widely accepted in many businesses. Dollars are more widely accepted than the Euro, but both are acceptable in most places. Currency exchange facilities are available in (and around) larger towns/cities, and offer rates that are both very reasonable, and close to market rates.<br /><br />ATMs are also available, and dispense both Dinar and USD.<br /><br /><span style=\"font-weight: 400;\">While major credit cards (Visa, Mastercard) are gaining acceptance in some hotels, the vast majority of businesses use cash only.</span></p>",
+            "category": "2",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 19,
+        "fields": {
+            "question": "How much should I take in credit cards/cash?",
+            "answer": "<p><span style=\"font-weight: 400;\">How much you&rsquo;ll need depends on how much you like to shop! There are many bazaars and other markets where you can buy almost anything that you want. For food, shopping, and other expenses, you should reasonably budget for $75-$100 USD per day, but you can obviously budget for less, depending on how much you plan to purchase.<br /><br /></span><span style=\"font-weight: 400;\">While ATMs are becoming more common, and some places are now accepting major credit cards, you should carry as much cash with you as you think you will need for that day.</span></p>",
+            "category": "2",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 20,
+        "fields": {
+            "question": "What clothes and footwear should I bring? (religious sites, long pants, headscarves, etc.)",
+            "answer": "<p><span style=\"font-weight: 400;\">Your primary concern when it comes to clothing and footwear will be what time of year you plan to make your visit. Winters in Kurdistan are cold, with average temperatures that are often close to freezing. In contrast, the summers are sweltering with temperatures easily reaching 45&deg;C (113&deg;F) or higher daily. Spring and Autumn are the most pleasant times to visit.</span></p>\r\n<p><span style=\"font-weight: 400;\">Many religious sites require that you dress modestly, and this may include covering your legs (pants or long dress) as well as wearing a headscarf for women. The Yazidi holy site of Lalish requires that everyone remove their shoes while visiting, so you will be walking barefoot (or with socks). Important considerations if the weather is very hot or very cold/snowy!</span></p>\r\n<p><span style=\"font-weight: 400;\">Should you wish to take advantage of the many trails and hiking opportunities that the region has to offer, be sure to pack appropriate footwear.</span></p>",
+            "category": "2",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 21,
+        "fields": {
+            "question": "Is Kurdistan/Iraq safe?",
+            "answer": "<p><span style=\"font-weight: 400;\">As an autonomous region of Iraq, Kurdistan is a safer location than the rest of Iraq. Our people are open, welcoming, and crime rates are very low. For example, it is common to see stalls in bazaars for converting currencies with large stacks of banknotes out in the open!&nbsp;</span></p>\r\n<p><span style=\"font-weight: 400;\">Peshmergas, the Kurdish branch of the Iraqi Armed Forces, operate regular checkpoints along all major roads. They may check your identity by requesting your passport and asking about your travel plans, but are friendly and are working to continue protecting the region.</span></p>\r\n<p><span style=\"font-weight: 400;\">While there are increased risks elsewhere in Iraq, on balance the situation is relatively stable, and you should not experience any issues, should you practice normal precautions and situational awareness. Keep informed with local developments nearer the time of your planned trip.</span></p>",
+            "category": "3",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 22,
+        "fields": {
+            "question": "I am concerned about the political stability of Kurdistan/Iraq.",
+            "answer": "<p><span style=\"font-weight: 400;\">While the political situation in Iraq as a whole has been unstable in recent times, this has improved since the defeat of ISIS. Kurdistan, especially, has seen more stability and improvements in the lives of citizens.</span></p>",
+            "category": "3",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 23,
+        "fields": {
+            "question": "How safe are my belongings while on the trip?",
+            "answer": "<p><span style=\"font-weight: 400;\">Crime rates in Kurdistan are very low, so there is a low risk of anything happening to your belongings, should you take the precautions you normally would when travelling. It is common to hear of people leaving phones or bags in a restaurant or tea house, and returning hours later to find them still there.</span></p>\r\n<p><span style=\"font-weight: 400;\">Many hotels also offer in-room safes, but theft from your room would be exceptionally rare. In fact, previous clients of mine tried to leave a tip for housekeeping, and upon returning from our day out travelling, found that housekeeping left the money with a note to say they were concerned that the guests accidentally dropped the money on the way out the door!</span></p>",
+            "category": "3",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 24,
+        "fields": {
+            "question": "What is the best way to carry money?",
+            "answer": "<p><span style=\"font-weight: 400;\">You can keep your money about you in a wallet or purse, as you normally would, without fear that it will be taken. If you have larger amounts of cash on you, then you may wish to take extra precautions such as keeping it in an inaccessible zip pocket, or deeper part of a purse or backpack. Try to not carry more money on you than you reasonably need for the day.</span></p>",
+            "category": "3",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 25,
+        "fields": {
+            "question": "Will refrigeration be available for medicines? (insulin, etc.)",
+            "answer": "<p><span style=\"font-weight: 400;\">While many hotel rooms will have in-room fridges, it is important that if travelling with medication that needs to be refrigerated, that you discuss this as part of the planning of the trip. This means that we can make appropriate recommendations for accommodation, and plan day trips with insulated bags to keep your medication cool.</span></p>",
+            "category": "3",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 26,
+        "fields": {
+            "question": "Accessibility and Mobility",
+            "answer": "<p><span style=\"font-weight: 400;\">Provisions for those with mobility issues are generally good in larger towns and cities, but many historical sites have steps and upper floors that may present challenges. Let me know of any issues you may have, and we can plan your trip accordingly.</span></p>",
+            "category": "3",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 27,
+        "fields": {
+            "question": "What are the medical and vaccination requirements?",
+            "answer": "<p><strong>COVID-19</strong><span style=\"font-weight: 400;\">: As of 1st April 2022, Iraqi and foreign travellers above the age of 12 who have received one dose of Johnson &amp; Johnson, or two doses of any other vaccine, will no longer require evidence of a recent negative PCR test when travelling to Kurdistan/Iraq.</span><span style=\"font-weight: 400;\"><br /></span><span style=\"font-weight: 400;\"><br /></span><span style=\"font-weight: 400;\">In cases where an individual cannot receive a vaccine, proof of a negative PCR test conducted in the previous 72 hours will be required.</span></p>\r\n<p><span style=\"font-weight: 400;\">This is subject to change, so always check the <a href=\"https://gov.krd/coronavirus-en/information/#info-travellers\" target=\"_blank\" rel=\"noopener\">current guidance</a> before travel.</span></p>\r\n<p><strong>General requirements: </strong><span style=\"font-weight: 400;\">There are no specific vaccinations that you must have before entering the country, however make sure you are up-to-date on all routine vaccines before your trip.</span></p>",
+            "category": "3",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 28,
+        "fields": {
+            "question": "What if I get ill or injured on the trip?",
+            "answer": "<p><span style=\"font-weight: 400;\">The health system in Iraq as a whole is public, free, and has been for decades. Some of the best physicians in the country have migrated to Kurdistan in recent years, and the standard of care is high. This being said, the public system is very busy, and access to care can be slow. The quickest access to care, should you need it, is through the private system, so it is important that you have adequate travel insurance, and that the level of cover provided can meet your needs.</span></p>",
+            "category": "3",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 29,
+        "fields": {
+            "question": "Where to stay?",
+            "answer": "<p><span style=\"font-weight: 400;\">There are many hotel options available in the towns and cities you may visit as part of your trip. While there are relatively few large international chains present, local hotels offer comfortable stays at reasonable rates. Some of the recommended hotels while in Kurdistan:<br /><br /><strong>Erbil</strong>:<br /></span></p>\r\n<ul>\r\n<li><span style=\"font-weight: 400;\"><a href=\"https://www.booking.com/hotel/iq/merci-erbil.en-gb.html\" target=\"_blank\" rel=\"noopener\">Merci Hotel</a></span></li>\r\n<li><a href=\"https://erbilinthotel.com/\" target=\"_blank\" rel=\"noopener\"><span style=\"font-weight: 400;\">Erbil International Hotel</span></a></li>\r\n<li><a href=\"https://www.hotelnovasky.com/\" target=\"_blank\" rel=\"noopener\"><span style=\"font-weight: 400;\">Hotel Nova Sky</span></a></li>\r\n</ul>\r\n<p><span style=\"font-weight: 400;\"><br /><strong>Duhok</strong>:</span></p>\r\n<ul>\r\n<li><a href=\"https://www.booking.com/hotel/iq/khani.en-gb.html\" target=\"_blank\" rel=\"noopener\"><span style=\"font-weight: 400;\">Khani Hotel</span></a></li>\r\n</ul>\r\n<p><span style=\"font-weight: 400;\"><br />Please Note: I can offer additional recommendations for other destinations on our journey together that best suit your needs.</span></p>",
+            "category": "4",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 30,
+        "fields": {
+            "question": "Are there western toilets available?",
+            "answer": "<p><span style=\"font-weight: 400;\">Most larger hotels in towns and cities will have western-style toilets available in guest rooms, as will larger restaurants. The norm in Kurdistan and the rest of Iraq is the squat toilet. While these may be intimidating to visitors that have never encountered them, they are straightforward to use.</span></p>",
+            "category": "4",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 31,
+        "fields": {
+            "question": "Is accommodation air-conditioned / heated?",
+            "answer": "<p><span style=\"font-weight: 400;\">Given the large temperature range experienced in Kurdistan over the course of a year, air conditioning and heating are widely used, and will be found in almost all hotels.</span></p>",
+            "category": "4",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 32,
+        "fields": {
+            "question": "Special Dietary Requirements (allergies, vegetarian/vegan, celiac, religious, etc.)",
+            "answer": "<p>In Iraqi Kurdistan, most of our meals consist of&nbsp;<strong>meat</strong>,&nbsp;<strong>rice</strong>,&nbsp;<strong>bread/naan</strong>, and various side dishes like&nbsp;<strong>salads</strong>,&nbsp;<strong>bean soup</strong>, and&nbsp;<strong>stewed okra</strong>. We mainly eat&nbsp;<strong>lamb</strong>,&nbsp;<strong>beef</strong>, and&nbsp;<strong>chicken</strong>. Common main dishes include&nbsp;<strong>roasted chicken</strong>&nbsp;and&nbsp;<strong>rice</strong>,&nbsp;<strong>leg of lamb</strong>&nbsp;and&nbsp;<strong>rice</strong>,&nbsp;<strong>kebabs</strong>&nbsp;and&nbsp;<strong>shwarmas</strong>.&nbsp;</p>\r\n<p>Vegetarians&nbsp;have the option of eating&nbsp;<strong>falafel</strong>,&nbsp;<strong>eggs</strong>,&nbsp;<strong>yogurt</strong>,&nbsp;<strong>rice</strong>,&nbsp;<strong>naan</strong>, and side dishes like&nbsp;<strong>salads</strong>,&nbsp;<strong>bean soup</strong>, and&nbsp;<strong>stewed okra</strong>.<br /><br />Options for&nbsp;vegans are more limited, since we don't really have this concept in Iraq, but is similar to the options available to vegetarians.</p>\r\n<p>When booking with me, please make sure to indicate any special dietary requirements, so we can plan your journey to be both enjoyable and tasty!</p>",
+            "category": "5",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 33,
+        "fields": {
+            "question": "Is the water safe to drink?",
+            "answer": "<p><span style=\"font-weight: 400;\">Water quality in Erbil is generally good enough to drink without issue, however drinking bottled water is the norm. It is not recommended to drink tap water in more rural areas. High quality bottled water is widely available, and <em>extremely</em> cheap! For example, in most markets and bazaars, you can expect to buy a 12-pack of 500ml bottled water for less than $1.</span></p>",
+            "category": "5",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "faqs.faq",
+        "pk": 34,
+        "fields": {
+            "question": "Will I be able to drink and/or buy alcohol?",
+            "answer": "<p><span style=\"font-weight: 400;\">Alcohol is available from many stores in larger towns and cities, and is more commonly sold/consumed in areas with larger non-Muslim comminities. There are also many bars where alcohol may be purchased, and it is also sold in many restaurants. Drinking in public places is generally prohibited.<br /><br />In the northern part of Erbil, the \"Ankawa\" area of the city has a larger community of Christians, and there are plenty of off-license liquor store and bars widely available.<br /><br />Please remember to be courteous when drinking around Muslims, due to the fact that alcohol is considered \"haram\" (prohibited or sinful), and to respect the religion.</span></p>",
+            "category": "5",
+            "is_visible": true
+        }
+    }
+]

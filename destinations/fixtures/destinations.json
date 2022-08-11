@@ -1,0 +1,242 @@
+[
+    {
+        "model": "destinations.destination",
+        "pk": 1,
+        "fields": {
+            "name": "Akre",
+            "province": 8,
+            "description": "Akre is known for its celebrations of Newroz (Kurdish New Year).",
+            "latitude": "36.748910",
+            "longitude": "43.895780",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 2,
+        "fields": {
+            "name": "Alqosh",
+            "province": 8,
+            "description": "The locals of Alqosh are Chaldean Catholic Assyrians, and home to the nearby Rabban Hermizd Chaldean Monastery, tucked away into the mountainside.",
+            "latitude": "36.734320",
+            "longitude": "43.095640",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 3,
+        "fields": {
+            "name": "Basrah",
+            "province": 5,
+            "description": "Basra is Iraq's main port, although it does not have deep water access, which is handled at the port of Umm Qasr. The city is one of the ports from which the fictional Sinbad the Sailor journeyed.",
+            "latitude": "30.485070",
+            "longitude": "47.801260",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 4,
+        "fields": {
+            "name": "Amedi",
+            "province": 8,
+            "description": "Amedi (or Amadiya) is an ancient town, built on a mesa in the broader Great Zab river valley.",
+            "latitude": "37.091230",
+            "longitude": "43.488880",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 5,
+        "fields": {
+            "name": "Baghdad",
+            "province": 4,
+            "description": "Baghdad is the capital of Iraq, and the second-largest city in the Arab world, after Cairo. It is located on the Tigris near the ruins of the ancient Akkadian city of Babylon, and the Sassanid Persian capital of Ctesiphon.",
+            "latitude": "33.290720",
+            "longitude": "44.376960",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 6,
+        "fields": {
+            "name": "Barzan",
+            "province": 9,
+            "description": "Barzan is a village located on the eastern shores of the Great Zab, with beautiful scenery comparable to Horseshoe Bend in the USA.",
+            "latitude": "36.930890",
+            "longitude": "44.039670",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 7,
+        "fields": {
+            "name": "Choman",
+            "province": 9,
+            "description": "Choman is a city located 160-km northeast of Erbil, and the gateway for those wishing to ski or hike Hallgord or Cheekha Dar mountains.",
+            "latitude": "36.636920",
+            "longitude": "44.886980",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 8,
+        "fields": {
+            "name": "Duhok",
+            "province": 8,
+            "description": "Duhok is well-known for its impressive natural landscapes, and is a city of peace and diversity, home to diverse ethnic groups, including Iraqi Kurds, Assyrians, Yazidis, and Arabs.",
+            "latitude": "36.857180",
+            "longitude": "42.991910",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 9,
+        "fields": {
+            "name": "Dukan",
+            "province": 18,
+            "description": "The Dukan Dam was built between 1954 and 1959 as a multi-purpose dam to provide water storage, irrigation and hydroelectricity.",
+            "latitude": "35.932410",
+            "longitude": "44.962960",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 10,
+        "fields": {
+            "name": "Erbil",
+            "province": 9,
+            "description": "Erbil (also called Hawler, Arbil, or Irbil) is the capital and most populated city in the Kurdistan Region of Iraq. The population is estimated to be around 1.2 Million inhabitants.",
+            "latitude": "36.194450",
+            "longitude": "44.009730",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 11,
+        "fields": {
+            "name": "Halabja",
+            "province": 10,
+            "description": "The Halabja Massacre, officially defined by the Supreme Iraqi Criminal Tribunal as a genocidal massacre against the Kurdish people in Iraq under Saddam Hussein, killing between 3,200-5,000 people, and injuring 7,000-10,000 more.",
+            "latitude": "35.177830",
+            "longitude": "45.983740",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 12,
+        "fields": {
+            "name": "Kirkuk",
+            "province": 12,
+            "description": "Kirkuk is home to a diverse population of Turkmens, Arabs, and Kurds. Kirkuk sits on the ruins of the original Kirkuk Citadel, which sits near the Khasa River.",
+            "latitude": "35.468020",
+            "longitude": "44.392610",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 13,
+        "fields": {
+            "name": "Korre",
+            "province": 9,
+            "description": "Korre is the site where the Peshmerga and Kurds fought back against Saddam Hussein's regime, stopping them in their tracks before capturing the north.",
+            "latitude": "36.400190",
+            "longitude": "44.243120",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 14,
+        "fields": {
+            "name": "Koya",
+            "province": 9,
+            "description": "Koya, also called Koye or Koy Sanjaq, is a town east of Erbil, with the Chaldean Catholic church of Mar Yousif, constructed in 1923, and an ancient Caravansary.",
+            "latitude": "36.084730",
+            "longitude": "44.627750",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 15,
+        "fields": {
+            "name": "Lalish",
+            "province": 8,
+            "description": "Lalish is a mountain valley and temple, the holiest temple of the Yazidis. It is the location of the tomb of the Sheikh Adi ibn Musafir, a central figure of the Yazidi faith.",
+            "latitude": "36.771550",
+            "longitude": "43.304010",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 16,
+        "fields": {
+            "name": "Mosul",
+            "province": 16,
+            "description": "Mosul is a major city in northern Iraq, serving as the capital of Nineveh Governorate. The city is considered the second largest city in Iraq in terms of population and area after the capital Baghdad, with a population of over 3.7 million.",
+            "latitude": "36.340740",
+            "longitude": "43.126860",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 17,
+        "fields": {
+            "name": "Rawanduz",
+            "province": 9,
+            "description": "Rawanduz is close to the borders with Iran and Turkey, and home to some of the most beautiful canyons and waterfalls in Kurdistan and Iraq.",
+            "latitude": "36.609670",
+            "longitude": "44.523680",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 18,
+        "fields": {
+            "name": "Sulaymaniyah",
+            "province": 18,
+            "description": "Sulaymaniyah, also called Slemani, is a city in the east of the Kurdistan Region of Iraq, not far from the Iran-Iraq border. It is surrounded by the Azmar, Goizha, and Qaiwan Mountains in the northeast, Baranan Mountain in the south, and the Tasluja Hills in the west.",
+            "latitude": "35.564210",
+            "longitude": "45.432760",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 19,
+        "fields": {
+            "name": "Tikrit",
+            "province": 17,
+            "description": "Tikrit is a city in Iraq, located 140 km northwest of Baghdad, and 220 km southeast of Mosul on the Tigris River.",
+            "latitude": "34.599240",
+            "longitude": "43.684520",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 20,
+        "fields": {
+            "name": "Zakho",
+            "province": 8,
+            "description": "Zakho, also spelled Zaxo, is located a few kilometers from the Iraq-Turkey border. The population of the town rose from about 30,000 in 1950 to 350,000 to 1992, due to Kurds fleeing other areas of the country.",
+            "latitude": "37.139570",
+            "longitude": "42.674680",
+            "is_visible": true
+        }
+    }
+]
