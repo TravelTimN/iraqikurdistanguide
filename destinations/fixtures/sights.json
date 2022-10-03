@@ -18,7 +18,7 @@
         "pk": 2,
         "fields": {
             "name": "Bekhal Waterfall",
-            "destination": 17,
+            "destination": 23,
             "category": "nature",
             "description": "Bekhal Waterfall is located 10 km to the west from Rawanduz City, and 135 km from Erbil. This waterfall is host for many visitors and tourists across the country.",
             "latitude": "36.619350",
@@ -32,7 +32,7 @@
         "pk": 3,
         "fields": {
             "name": "Geli Ali Beg Waterfall",
-            "destination": 17,
+            "destination": 23,
             "category": "nature",
             "description": "The famous Geli Ali Beg Waterfall is 130 km from Erbil, and featured on the 5,000 dinar bill.",
             "latitude": "36.631490",
@@ -46,7 +46,7 @@
         "pk": 4,
         "fields": {
             "name": "Korek Mountain",
-            "destination": 17,
+            "destination": 23,
             "category": "nature",
             "description": "Mount Korek is a tourist attraction with Darin Group. Darin, an Iraqi company, has built a ~4km Doppelmayr Teleferic (cable car) from its Bekhal Bottom station to Mount Korek. The mountain is developed as an international destination. The company has developed 132 villas and several rides, as well as restaurants and cafes. The resort is a summer retreat providing cool environs when the whole region reels under high temperatures. During winters, it turns into a ski resort.",
             "latitude": "36.599030",
@@ -74,7 +74,7 @@
         "pk": 6,
         "fields": {
             "name": "Hiwa Resturant",
-            "destination": 17,
+            "destination": 23,
             "category": "restaurant",
             "description": "Traditional Kurdish food.",
             "latitude": "36.614000",
@@ -86,20 +86,6 @@
     {
         "model": "destinations.sight",
         "pk": 7,
-        "fields": {
-            "name": "Baghdad fake site",
-            "destination": 5,
-            "category": "archaeology",
-            "description": "asdfdasf",
-            "latitude": "33.305140",
-            "longitude": "44.332410",
-            "is_visible": false,
-            "primary_attraction": false
-        }
-    },
-    {
-        "model": "destinations.sight",
-        "pk": 8,
         "fields": {
             "name": "Erbil Citadel",
             "destination": 10,
@@ -113,7 +99,7 @@
     },
     {
         "model": "destinations.sight",
-        "pk": 9,
+        "pk": 8,
         "fields": {
             "name": "Jalil Khayat Mosque",
             "destination": 10,
@@ -127,10 +113,10 @@
     },
     {
         "model": "destinations.sight",
-        "pk": 10,
+        "pk": 9,
         "fields": {
             "name": "Shingelbana Resort",
-            "destination": 17,
+            "destination": 23,
             "category": "recreation",
             "description": "To spend a nice and relaxing time away from the hustle of the city and see beautiful scenery and colorful nature to entertain your family and children, be sure to visit the Shingelbana Tourism Resort.",
             "latitude": "36.614800",
@@ -141,10 +127,10 @@
     },
     {
         "model": "destinations.sight",
-        "pk": 11,
+        "pk": 10,
         "fields": {
             "name": "Hamilton Road",
-            "destination": 17,
+            "destination": 23,
             "category": "historic",
             "description": "This road dates back to 1928, when the British, who took control of Iraq following the fall of the Ottoman Empire, brought in Archibald Hamilton to design a road through the mountainous terrain to the Iranian border. Not only was it a strategic route, but the mere fact that this road exists through such dramatic scenery is really an engineering marvel! Hamilton went on to describe his experience building this road in his book, \"Road Through Kurdistan: The Narrative of an Engineer in Iraq\".",
             "latitude": "36.629440",
@@ -155,7 +141,7 @@
     },
     {
         "model": "destinations.sight",
-        "pk": 12,
+        "pk": 11,
         "fields": {
             "name": "Castle Fountains and Gardens",
             "destination": 10,
@@ -169,7 +155,7 @@
     },
     {
         "model": "destinations.sight",
-        "pk": 13,
+        "pk": 12,
         "fields": {
             "name": "Halgurd Mountain",
             "destination": 7,
@@ -183,7 +169,7 @@
     },
     {
         "model": "destinations.sight",
-        "pk": 14,
+        "pk": 13,
         "fields": {
             "name": "Halamata Cave",
             "destination": 8,
@@ -197,10 +183,10 @@
     },
     {
         "model": "destinations.sight",
-        "pk": 15,
+        "pk": 14,
         "fields": {
             "name": "Khinnis Bavian Rock Reliefs",
-            "destination": 15,
+            "destination": 17,
             "category": "archaeology",
             "description": "Khinnis is an Assyrian archaeological site (also known as Bavian, its neighboring village). It is notable for its rock reliefs, built by king Sennacherib around 690 BC. During the reign of Sennacherib (705-681 BC), Khinnis was built in order to \"celebrate the construction of a complex system of canals whose aim was to supply the capital of the empire, Nineveh, and its hinterland with water\".",
             "latitude": "36.759650",
@@ -211,7 +197,7 @@
     },
     {
         "model": "destinations.sight",
-        "pk": 16,
+        "pk": 15,
         "fields": {
             "name": "Safeen Restaurant",
             "destination": 8,
@@ -225,10 +211,10 @@
     },
     {
         "model": "destinations.sight",
-        "pk": 17,
+        "pk": 16,
         "fields": {
             "name": "Mosul Road Sign",
-            "destination": 16,
+            "destination": 20,
             "category": "recreation",
             "description": "Popular road sign, the closest you can get to Mosul on just the Kurdish Visa. Access to Mosul requires a Republic of Iraq Visa.",
             "latitude": "36.457530",
@@ -239,7 +225,7 @@
     },
     {
         "model": "destinations.sight",
-        "pk": 18,
+        "pk": 17,
         "fields": {
             "name": "Kala Kavin Mountain",
             "destination": 1,
@@ -253,7 +239,7 @@
     },
     {
         "model": "destinations.sight",
-        "pk": 19,
+        "pk": 18,
         "fields": {
             "name": "Nabaz Cafe",
             "destination": 10,
@@ -267,10 +253,10 @@
     },
     {
         "model": "destinations.sight",
-        "pk": 20,
+        "pk": 19,
         "fields": {
             "name": "Amedi",
-            "destination": 4,
+            "destination": 3,
             "category": "historic",
             "description": "Amedi (also Amadiya, Amedya) is built on a mesa in the broader Great Zab river valley. The name Amadiya is eponymous to Imad al-Din Zengi who built a fortress there in 1142.",
             "latitude": "37.092230",
@@ -281,7 +267,7 @@
     },
     {
         "model": "destinations.sight",
-        "pk": 21,
+        "pk": 20,
         "fields": {
             "name": "I❤️AKRE",
             "destination": 1,
@@ -295,7 +281,7 @@
     },
     {
         "model": "destinations.sight",
-        "pk": 22,
+        "pk": 21,
         "fields": {
             "name": "Dervishes of Akre",
             "destination": 1,
@@ -309,7 +295,7 @@
     },
     {
         "model": "destinations.sight",
-        "pk": 23,
+        "pk": 22,
         "fields": {
             "name": "Rabban Hormizd Monastery",
             "destination": 2,
@@ -323,10 +309,10 @@
     },
     {
         "model": "destinations.sight",
-        "pk": 24,
+        "pk": 23,
         "fields": {
             "name": "Saddam Hussein's Winter Palace",
-            "destination": 4,
+            "destination": 3,
             "category": "historic",
             "description": "Definitely the only palace built for Saddam Hussein with the finest views, known as the “bird's nest”, and is perched atop Gara mountain. It was looted like all others in Kurdistan after the first Gulf War in March 1991. Only traces of the Italian marble and Siena green tile remain.",
             "latitude": "37.011420",
@@ -337,10 +323,10 @@
     },
     {
         "model": "destinations.sight",
-        "pk": 25,
+        "pk": 24,
         "fields": {
             "name": "Saddam Hussein's Summer Palace",
-            "destination": 4,
+            "destination": 3,
             "category": "historic",
             "description": "It's estimated that dictator Saddam Hussein built 8o-100 palaces during his 24 year reign. Billions of dollars were spent on lavish structures with gold and marble fittings (no expense spared). They were seen as an expression of his power and authority over Iraq. There was a Saddam Hussein palace built in every town of prominence across Iraq.",
             "latitude": "37.097840",
@@ -351,10 +337,10 @@
     },
     {
         "model": "destinations.sight",
-        "pk": 26,
+        "pk": 25,
         "fields": {
             "name": "Kurdistan Mural",
-            "destination": 4,
+            "destination": 3,
             "category": "memorial",
             "description": "Massive mural spanning ~300m (1,000ft) celebrating the brave Peshmerga, keeping Iraqi Kurdistan safe.",
             "latitude": "37.094270",

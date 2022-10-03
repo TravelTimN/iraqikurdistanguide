@@ -27,18 +27,6 @@
         "model": "destinations.destination",
         "pk": 3,
         "fields": {
-            "name": "Basrah",
-            "province": 5,
-            "description": "Basra is Iraq's main port, although it does not have deep water access, which is handled at the port of Umm Qasr. The city is one of the ports from which the fictional Sinbad the Sailor journeyed.",
-            "latitude": "30.485070",
-            "longitude": "47.801260",
-            "is_visible": true
-        }
-    },
-    {
-        "model": "destinations.destination",
-        "pk": 4,
-        "fields": {
             "name": "Amedi",
             "province": 8,
             "description": "Amedi (or Amadiya) is an ancient town, built on a mesa in the broader Great Zab river valley.",
@@ -49,13 +37,25 @@
     },
     {
         "model": "destinations.destination",
-        "pk": 5,
+        "pk": 4,
         "fields": {
             "name": "Baghdad",
             "province": 4,
             "description": "Baghdad is the capital of Iraq, and the second-largest city in the Arab world, after Cairo. It is located on the Tigris near the ruins of the ancient Akkadian city of Babylon, and the Sassanid Persian capital of Ctesiphon.",
             "latitude": "33.290720",
             "longitude": "44.376960",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 5,
+        "fields": {
+            "name": "Basrah",
+            "province": 5,
+            "description": "Basra is Iraq's main port, although it does not have deep water access, which is handled at the port of Umm Qasr. The city is one of the ports from which the fictional Sinbad the Sailor journeyed.",
+            "latitude": "30.485070",
+            "longitude": "47.801260",
             "is_visible": true
         }
     },
@@ -135,6 +135,30 @@
         "model": "destinations.destination",
         "pk": 12,
         "fields": {
+            "name": "Hīt",
+            "province": 1,
+            "description": "Straddling the Euphrates River, the city of Hīt was originally a small walled town surrounded by a halt moat and built on two mounds on the site of the ancient city of Is.",
+            "latitude": "33.644851",
+            "longitude": "42.826355",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 13,
+        "fields": {
+            "name": "Karbala",
+            "province": 11,
+            "description": "The city, best known as the location of the Battle of Karbala in 680 CE, or the shrines of Imam Husayn and Abbas, is considered a holy city for Shia Muslims, in the same way as Mecca, Medina and Jerusalem.",
+            "latitude": "32.606829",
+            "longitude": "44.026480",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 14,
+        "fields": {
             "name": "Kirkuk",
             "province": 12,
             "description": "Kirkuk is home to a diverse population of Turkmens, Arabs, and Kurds. Kirkuk sits on the ruins of the original Kirkuk Citadel, which sits near the Khasa River.",
@@ -145,7 +169,7 @@
     },
     {
         "model": "destinations.destination",
-        "pk": 13,
+        "pk": 15,
         "fields": {
             "name": "Korre",
             "province": 9,
@@ -157,7 +181,7 @@
     },
     {
         "model": "destinations.destination",
-        "pk": 14,
+        "pk": 16,
         "fields": {
             "name": "Koya",
             "province": 9,
@@ -169,7 +193,7 @@
     },
     {
         "model": "destinations.destination",
-        "pk": 15,
+        "pk": 17,
         "fields": {
             "name": "Lalish",
             "province": 8,
@@ -181,7 +205,31 @@
     },
     {
         "model": "destinations.destination",
-        "pk": 16,
+        "pk": 18,
+        "fields": {
+            "name": "Mar Mattai",
+            "province": 16,
+            "description": "Dayro d-Mor Mattai is home to a Syriac Orthodox Church monastery on Mount Alfaf, located 20 kilometers northwest of the city of Mosul, Iraq.",
+            "latitude": "36.490784",
+            "longitude": "43.442410",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 19,
+        "fields": {
+            "name": "Marshlands",
+            "province": 6,
+            "description": "The Mesopotamian Marshes, also known as the Iraqi Marshes, are a wetland area primarily located on the floodplains of the Euphrates and Tigris rivers",
+            "latitude": "30.966940",
+            "longitude": "47.051983",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 20,
         "fields": {
             "name": "Mosul",
             "province": 16,
@@ -193,7 +241,31 @@
     },
     {
         "model": "destinations.destination",
-        "pk": 17,
+        "pk": 21,
+        "fields": {
+            "name": "Najaf",
+            "province": 15,
+            "description": "Also known as Baniqia, or An-Najaf al-Ashraf, and is widely considered amongst the holiest cities of Shia Islam and one of its spiritual capitals, whilst also remaining the center of Shia political power in Iraq.",
+            "latitude": "32.014851",
+            "longitude": "44.325817",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 22,
+        "fields": {
+            "name": "Nasiriyah",
+            "province": 6,
+            "description": "Nasiriyah is a major hub for transportation, inhabited predominantly by Shia muslims, and the center of a date-growing area. The Euphrates merges for the final time with Tigris about 10km from the city.",
+            "latitude": "31.036457",
+            "longitude": "46.265112",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 23,
         "fields": {
             "name": "Rawanduz",
             "province": 9,
@@ -205,7 +277,7 @@
     },
     {
         "model": "destinations.destination",
-        "pk": 18,
+        "pk": 24,
         "fields": {
             "name": "Sulaymaniyah",
             "province": 18,
@@ -217,7 +289,7 @@
     },
     {
         "model": "destinations.destination",
-        "pk": 19,
+        "pk": 25,
         "fields": {
             "name": "Tikrit",
             "province": 17,
@@ -229,7 +301,31 @@
     },
     {
         "model": "destinations.destination",
-        "pk": 20,
+        "pk": 26,
+        "fields": {
+            "name": "Ur",
+            "province": 6,
+            "description": "Ur was an important Sumerian city-state in ancient Mesopotamia, and was once a coastal city near the mouth of the Euphrates on the Persian Gulf, the coastline has shifted, and the city is now well inland, on the south bank of the Euphrates.",
+            "latitude": "30.961002",
+            "longitude": "46.105012",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 27,
+        "fields": {
+            "name": "Uruk",
+            "province": 14,
+            "description": "Also known as Warka(h), it played a leading role in the early urbanization of Sumer in the mid-4th millennium BC, and was the largest urban area in the world at the time.",
+            "latitude": "31.324515",
+            "longitude": "45.638760",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "destinations.destination",
+        "pk": 28,
         "fields": {
             "name": "Zakho",
             "province": 8,
