@@ -7,8 +7,9 @@
         <div class="container-sm">
             <!-- logo -->
             <a href="{% url 'home' %}" class="navbar-brand w-50 align-middle me-auto">
-                <img src="{% static 'img/favicon.webp' %}" alt="Iraqi Kurdistan Guide" class="responsive-img me-3">
-                Iraqi Kurdistan Guide
+                <img src="{% static 'img/flags/ikg-flags-logo.webp' %}" alt="Iraqi Kurdistan Guide" id="ikg-flags-logo" class="responsive-img me-3">
+                <span class="d-none d-sm-inline-block">Iraqi Kurdistan Guide</span>
+                <span class="d-sm-none" title="Iraqi Kurdistan Guide">I K G</span>
             </a>
             <!-- offcanvas toggle button -->
             <button id="offcanvas-toggle-btn" class="btn btn-light" type="button" data-bs-toggle="offcanvas"
