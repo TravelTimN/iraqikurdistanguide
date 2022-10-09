@@ -10,10 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = int(os.environ.get("DEVELOPMENT", default=0))
 
-ALLOWED_HOSTS = []
-host = os.environ.get("SITE_NAME")
-if host:
-    ALLOWED_HOSTS.append(host)
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -74,19 +71,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "main.wsgi.application"
 
-if "DATABASE_URL" in os.environ:
-    print("connected to PostgreSQL")
-    DATABASES = {
-        "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+DATABASES = {
+    "default": {
+        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
+        "USER": os.environ.get("SQL_USER", "user"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+        "HOST": os.environ.get("SQL_HOST", "localhost"),
+        "PORT": os.environ.get("SQL_PORT", "5432"),
     }
-else:
-    print("connected to db.sqlite3")
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
-    }
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
