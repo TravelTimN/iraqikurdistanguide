@@ -146,22 +146,6 @@ let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 });
 
 // handling localStorage for "destinations"
-let wishlist = localStorage.getItem("wishlist");
-
-let destinationIcons = $("[id^='wishlist-icon_']");
-$(destinationIcons).each(function() {
-    let iconId = $(this).attr("id").split("_")[1];
-    wishlist = localStorage.getItem("wishlist").split(",");
-    for (let place in wishlist) {
-        if (wishlist.hasOwnProperty(place)) {
-            if (wishlist[place] == iconId) {
-                // set solid-heart and 'remove' text
-                setInWishlist($(this), $(this).siblings("span[id^='wishlist-text_']"));
-            }
-        }
-    }
-});
-
 $("body").on("click", ".destination-card-text", function(e) {
     e.preventDefault();
     let destination = $(this).data("destination");
@@ -175,6 +159,22 @@ $("body").on("click", ".destination-card-text", function(e) {
         // removing existing wishlist destination
         removeWishlistDestination(this, destination);
         setNotInWishlist(wishlistIcon, wishlistText);
+    }
+});
+
+let wishlist = localStorage.getItem("wishlist");
+
+let destinationIcons = $("[id^='wishlist-icon_']");
+$(destinationIcons).each(function() {
+    let iconId = $(this).attr("id").split("_")[1];
+    wishlist = localStorage.getItem("wishlist")?.split(",");
+    for (let place in wishlist) {
+        if (wishlist.hasOwnProperty(place)) {
+            if (wishlist[place] == iconId) {
+                // set solid-heart and 'remove' text
+                setInWishlist($(this), $(this).siblings("span[id^='wishlist-text_']"));
+            }
+        }
     }
 });
 
@@ -194,7 +194,7 @@ function addWishlistDestination(e, destination) {
     // check if localStorage wishlist exists
     if (localStorage.getItem("wishlist")) {
         // exists - split the values
-        wishlist = localStorage.getItem("wishlist").split(",");
+        wishlist = localStorage.getItem("wishlist")?.split(",");
         if (!wishlist.includes(destination)) {
             // only add destination if not already in the list
             wishlist.push(destination);
@@ -209,7 +209,7 @@ function addWishlistDestination(e, destination) {
 
 function removeWishlistDestination(e, destination) {
     // wishlist MUST exist if calling this function, so remove the clicked 'destination'
-    let wishlist = localStorage.getItem("wishlist").split(",");
+    wishlist = localStorage.getItem("wishlist")?.split(",");
     for (let place in wishlist) {
         if (wishlist.hasOwnProperty(place)) {
             if (wishlist[place] == destination) {
