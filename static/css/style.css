@@ -943,6 +943,14 @@ input[type="checkbox"][name="itinerary"][id^="id_itinerary_"] {
     color: rgba(var(--white), 1);
 }
 
+.leaflet-popup-content a {
+    color: rgba(var(--white), 1);
+}
+
+.leaflet-popup-content a:hover {
+    color: rgba(var(--kurdish-red), 1);
+}
+
 .leaflet-container a.leaflet-popup-close-button {
     color: rgba(var(--white), 1);
     font-size: 2em;
