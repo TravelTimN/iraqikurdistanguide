@@ -16,7 +16,7 @@ class ContactForm(forms.ModelForm):
     """
 
     destinations = forms.ModelMultipleChoiceField(
-        queryset = Destination.objects.filter(is_visible=True),
+        queryset = Destination.objects.filter(is_visible=True).order_by("name"),
         widget = forms.CheckboxSelectMultiple(attrs={"class": "list-unstyled"}),
         required = True,
     )
