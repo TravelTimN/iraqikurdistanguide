@@ -168,7 +168,7 @@
     // set class for each destination input item
     $(document).ready(function() {
         $(`label[for^="id_destinations_"]`).each(function() {
-            let labelText = $(this).text().trim();
+            let labelText = $(this).text().trim().replace(" ", "").replace("-", "").replace("&", "").toLowerCase();
             $(this).children("input").addClass(`destination-${labelText}`);
         });
 
@@ -176,7 +176,8 @@
         wishlist = localStorage.getItem("wishlist").split(",");
         for (let place in wishlist) {
             if (wishlist.hasOwnProperty(place)) {
-                let wishlistInput = $(`input[id^="id_destinations_"].destination-${wishlist[place]}`);
+                let placeFixed = wishlist[place].replace(" ", "").replace("-", "").replace("&", "").toLowerCase();
+                let wishlistInput = $(`input[id^="id_destinations_"].destination-${placeFixed}`);
                 // set checkbox pre-checked if in wishlist
                 $(wishlistInput).prop("checked", true);
             }
