@@ -306,6 +306,7 @@ aside#overlay.hide {
 header#navbar-header {
     position: sticky;
     top: 0;
+    min-height: 76px;
     z-index: 999;
     transition: all 0.2s ease-in-out;
 }
@@ -475,9 +476,9 @@ ol.breadcrumb ul.dropdown-menu.show .dropdown-divider {
     opacity: 1 !important;
 }
 
-/* hide all breadcrumbs except the last 2, on mobile only */
+/* hide all breadcrumbs except the last 3, on mobile only */
 @media (max-width: 500px) {
-    .breadcrumb-item:not(:nth-last-of-type(-n+2)) {
+    .breadcrumb-item:not(:nth-last-of-type(-n+3)) {
         display: none;
     }
 }

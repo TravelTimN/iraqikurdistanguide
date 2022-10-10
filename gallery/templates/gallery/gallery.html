@@ -18,7 +18,7 @@
 {% block content %}
 
 <!-- regroup gallery by destination -->
-{% regroup photos by sight.destination as photo_list %}
+{% regroup photos|dictsort:"sight.destination.name" by sight.destination as photo_list %}
 
 <div class="container-fluid py-5">
     <div class="row">
@@ -43,7 +43,14 @@
     <section id="{{ sight|lower|cut:' '|cut:'-'|cut:'&' }}" class="container scroll-margin-top">
         <div class="row py-5 px-md-5">
             <div class="col-12">
-                <h2 class="text-center fw-bold text-dark">{{ sight }}</h2>
+                <h2 class="text-center fw-bold text-dark">
+                    {{ sight }}
+                    {% if sight.province.region == "kur" %}
+                        <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                    {% elif sight.province.region == "irq" %}
+                        <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                    {% endif %}
+                </h2>
                 <div class="row card-deck d-flex justify-content-center">
                     {% for photo in photo_group %}
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-2">
