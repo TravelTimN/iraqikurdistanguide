@@ -302,6 +302,10 @@ aside#overlay.hide {
     opacity: 1;
 }
 
+#banner-cookies {
+    z-index: 999;
+}
+
 /* NAVBAR */
 header#navbar-header {
     position: sticky;
@@ -1277,6 +1281,11 @@ footer .fas:hover {
 
 .footer-social-img {
     width: 3em;
+    transition: all 0.3s ease-in-out;
+}
+
+.footer-social-img:hover {
+    filter: grayscale(1);
 }
 
 /* BOOTSTRAP: SMALL */
