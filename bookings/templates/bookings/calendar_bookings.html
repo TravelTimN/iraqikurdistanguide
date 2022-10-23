@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item active" aria-current="page">Calendar</li>
+    <li class="breadcrumb-item"><a href="{% url 'all_bookings' %}">All</a></li>
+    <li class="breadcrumb-item">
+        <a href="{% url 'add_booking' %}">
+            <i class="fas fa-plus-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Booking"></i>
+        </a>
+    </li>
+{% endblock %}
+
+{% block content %}
+
+<section class="container-fluid">
+    <div class="row my-5 mx-1">
+        <div class="d-none d-md-block col-md-3">
+            <div class="row">
+                <div class="col text-center">
+                    <a href="{% url 'all_bookings' %}" class="btn btn-lg btn-success">All Bookings</a>
+                </div>
+            </div>
+            <hr class="w-100">
+            <h3 class="text-center">BOOKINGS</h3>
+            {% for booking in bookings %}
+                <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ booking.id }}">
+                    <div class="card my-2 bg-success text-white">
+                        <!-- corner ribbon -->
+                        <div class="ribbon">
+                            <span class="kurdistan">
+                                {{ booking.get_guide_display }}
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ booking.guest_name }}</h5>
+                            <p class="card-text">
+                                Start: {{ booking.start_date }}<br>
+                                End: {{ booking.end_date }}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            {% empty %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-danger">No Bookings Found</h5>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-12 col-md-9">
+            <div class="row d-block d-md-none mb-5">
+                <div class="col-12 text-center">
+                    <a href="{% url 'all_bookings' %}" class="btn btn-lg btn-success">All Bookings</a>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <a class="btn btn-outline-success" href="{% url 'calendar_bookings' %}?month={% now 'Y-n' %}">Today</a>
+                    <a class="btn btn-outline-primary rounded-circle" href="{% url 'calendar_bookings' %}?{{ prev_month }}"><i class="fas fa-angle-left"></i></a>
+                    <a class="btn btn-outline-primary rounded-circle" href="{% url 'calendar_bookings' %}?{{ next_month }}"><i class="fas fa-angle-right"></i></a>
+                </div>
+            </div>
+
+            <!-- get current month/year -->
+            <div class="row">
+                <!-- month dropdown -->
+                <div class="col-12 col-md-6">
+                    <select class="form-select form-select-lg my-1 month-year" name="select_month" id="select_month">
+                        <option value="" disabled>Month</option>
+                        {% with months="January February March April May June July August September October November December" %}
+                            {% for month in months.split %}
+                                <option data-month="{{ month }}" data-counter="{{ forloop.counter }}">{{ month }}</option>
+                            {% endfor %}
+                        {% endwith %}
+                    </select>
+                </div>
+                <!-- year dropdown -->
+                {% now "Y" as current_year %}
+                <div class="col-12 col-md-6">
+                    <select class="form-select form-select-lg my-1 month-year" name="select_year" id="select_year">
+                        <option value="" disabled>Year</option>
+                        <option data-year="{{ current_year|add:-1 }}">{{ current_year|add:-1 }}</option>
+                        <option data-year="{{ current_year|add:0 }}">{{ current_year|add:0 }}</option>
+                        <option data-year="{{ current_year|add:1 }}">{{ current_year|add:1 }}</option>
+                        <option data-year="{{ current_year|add:2 }}">{{ current_year|add:2 }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- full calendar -->
+            {{ booking_calendar|safe }}
+
+            {% for booking in bookings %}
+
+                <!-- attach booking modal -->
+                {% include "bookings/partials/booking_modal.html" %}
+
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block js %}
+<script>
+    // update <select> fields for month/year with current data
+    const getMonthYear = $("#calendar-header").text();
+    const getMonth = getMonthYear.split(" ")[0];
+    const getYear = getMonthYear.split(" ")[1];
+    $(`[data-month="${getMonth}"]`).prop("selected", true);
+    $(`[data-year="${getYear}"]`).prop("selected", true);
+
+    // on month|year selection, update the URL accordingly
+    $(".month-year").on("change", getNewMonthYear);
+    function getNewMonthYear() {
+        let selectedMonth = $("#select_month").find(":selected").data("counter");
+        let selectedYear = $("#select_year").find(":selected").data("year");
+        window.location = `{% url 'calendar_bookings' %}?month=${selectedYear}-${selectedMonth}`;
+    }
+</script>
+{% endblock %}
