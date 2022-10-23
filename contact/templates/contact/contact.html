@@ -173,7 +173,7 @@
         });
 
         // find localStorage() wishlist items
-        wishlist = localStorage.getItem("wishlist").split(",");
+        wishlist = localStorage.getItem("wishlist")?.split(",");
         for (let place in wishlist) {
             if (wishlist.hasOwnProperty(place)) {
                 let placeFixed = wishlist[place].replace(" ", "").replace("-", "").replace("&", "").toLowerCase();

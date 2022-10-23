@@ -41,8 +41,8 @@
                     <div class="col-12 py-4 mx-auto text-center">
                         <!-- wishlist / handled via main script.js -->
                         <p class="btn btn-outline-danger destination-card-text" data-destination="{{ destination }}">
-                            <i id="wishlist-icon_{{ destination }}" class="far fa-heart text-kur-red"></i>
-                            <span id="wishlist-text_{{ destination }}">add to</span> wishlist
+                            <i id="wishlist-icon_{{ destination|lower|cut:' '|cut:'-'|cut:'&' }}" class="far fa-heart text-kur-red"></i>
+                            <span id="wishlist-text_{{ destination|lower|cut:' '|cut:'-'|cut:'&' }}">add to</span> wishlist
                         </p>
                     </div>
                 </div>
