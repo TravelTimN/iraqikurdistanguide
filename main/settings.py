@@ -98,7 +98,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # allauth settings
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 AUTHENTICATION_BACKENDS = (
     # needed to login by username in Django admin, regardless of `allauth`
     "django.contrib.auth.backends.ModelBackend",
@@ -123,6 +122,16 @@ LOGIN_REDIRECT_URL = "/"
 LOGIN_URL = f"/{os.environ.get('AUTH_URL')}/login"
 ACCOUNT_LOGOUT_REDIRECT_URL = f"/{os.environ.get('AUTH_URL')}/login"
 ACCOUNT_LOGOUT_ON_GET = True  # avoid allauth signout confirmation page
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_KEY")
+DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_HOST_USER")
+DEFAULT_OWNER_EMAIL = os.environ.get("DEFAULT_OWNER_EMAIL")
 
 
 LANGUAGE_CODE = "en-us"
