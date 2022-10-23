@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'calendar_bookings' %}">Calendar</a></li>
+    <li class="breadcrumb-item active" aria-current="page">All</li>
+    <li class="breadcrumb-item">
+        <a href="{% url 'add_booking' %}">
+            <i class="fas fa-plus-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Booking"></i>
+        </a>
+    </li>
+{% endblock %}
+
+{% block content %}
+
+<!-- page header -->
+<div class="container-fluid py-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 id="page-header" class="text-dark fw-bold">All Bookings</h1>
+        </div>
+    </div>
+    <!-- helper text -->
+    <div class="row mt-5">
+        <div class="col-12 text-center fs-4">
+            <i class="fas fa-mouse-pointer text-kur-red"></i>
+            Click a booking to view full details.
+        </div>
+    </div>
+</div>
+
+<section class="container">
+
+    <!-- current bookings -->
+    <div class="row mt-2 mb-5 mx-1">
+        <div class="col-12">
+            <!-- header -->
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h3 class="text-dark fw-bold">Current Bookings</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                    {% for booking in current_bookings %}
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ booking.id }}">
+                            <div class="card my-2 bg-success text-white">
+                                <!-- corner ribbon -->
+                                <div class="ribbon">
+                                    <span class="kurdistan">
+                                        {{ booking.get_guide_display }}
+                                    </span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ booking.guest_name }}</h5>
+                                    <p class="card-text">
+                                        {{ booking.start_date }} - {{ booking.end_date }}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- attach booking modal -->
+                        {% include "bookings/partials/booking_modal.html" %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- future bookings -->
+    <div class="row my-5 mx-1">
+        <div class="col-12">
+            <!-- header -->
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h3 class="text-dark fw-bold">Future Bookings</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                    {% for booking in future_bookings %}
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ booking.id }}">
+                            <div class="card my-2 bg-primary text-white">
+                                <!-- corner ribbon -->
+                                <div class="ribbon">
+                                    <span class="kurdistan">
+                                        {{ booking.get_guide_display }}
+                                    </span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ booking.guest_name }}</h5>
+                                    <p class="card-text">
+                                        {{ booking.start_date }} - {{ booking.end_date }}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- attach booking modal -->
+                        {% include "bookings/partials/booking_modal.html" %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- past bookings -->
+    <div class="row my-5 mx-1">
+        <div class="col-12">
+            <!-- header -->
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h3 class="text-dark fw-bold">Past Bookings</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                    {% for booking in past_bookings reversed %}
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ booking.id }}">
+                            <div class="card my-2 bg-danger text-white">
+                                <!-- corner ribbon -->
+                                <div class="ribbon">
+                                    <span class="kurdistan">
+                                        {{ booking.get_guide_display }}
+                                    </span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ booking.guest_name }}</h5>
+                                    <p class="card-text">
+                                        {{ booking.start_date }} - {{ booking.end_date }}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- attach booking modal -->
+                        {% include "bookings/partials/booking_modal.html" %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}
