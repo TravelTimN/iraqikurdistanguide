@@ -1,5 +1,15 @@
 /* ----- jshint esversion: 11, jquery: true ----- */
 
+
+/* ----- BOOTSTRAP COMPONENTS ----- */
+
+// tooltips
+let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+});
+
+
 /* ----- PRELOADER ----- */
 
 // remove preloader animation once page is fully loaded
@@ -105,7 +115,7 @@ function closeReviewBanner() {
 }
 
 
-/* ----- COOKIES ----- */
+/* ----- COOKIES BANNER ----- */
 
 // localStorage: remember if user closed the "cookies banner"
 const btnCloseCookies = document.getElementById("btn-close-cookies");
@@ -189,15 +199,6 @@ breadcrumbDropdown.forEach(dropdown => {
 });
 
 
-/* ----- BOOTSTRAP COMPONENTS ----- */
-
-// tooltips
-let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl);
-});
-
-
 /* ----- WISHLIST (destinations) ----- */
 
 // handling localStorage for "destinations"
@@ -225,7 +226,8 @@ $(destinationIcons).each(function() {
     wishlist = localStorage.getItem("wishlist")?.split(",");
     for (let place in wishlist) {
         if (wishlist.hasOwnProperty(place)) {
-            if (wishlist[place] == iconId) {
+            let wishlistPlace = wishlist[place].replace(" ", "").replace("-", "").replace("&", "").toLowerCase();
+            if (wishlistPlace == iconId) {
                 // set solid-heart and 'remove' text
                 setInWishlist($(this), $(this).siblings("span[id^='wishlist-text_']"));
             }
