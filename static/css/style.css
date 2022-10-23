@@ -302,6 +302,10 @@ aside#overlay.hide {
     opacity: 1;
 }
 
+#banner-cookies {
+    z-index: 999;
+}
+
 /* NAVBAR */
 header#navbar-header {
     position: sticky;
@@ -324,6 +328,7 @@ nav.navbar {
     background-color: rgba(var(--black), 0.25);
     box-shadow: 0 2px 9px 0 rgba(var(--black), 0.2);
     transition: all 0.5s ease-in-out;
+    min-height: 76px;
 }
 
 #ikg-flags-logo {
@@ -1277,6 +1282,11 @@ footer .fas:hover {
 
 .footer-social-img {
     width: 3em;
+    transition: all 0.3s ease-in-out;
+}
+
+.footer-social-img:hover {
+    filter: grayscale(1);
 }
 
 /* BOOTSTRAP: SMALL */

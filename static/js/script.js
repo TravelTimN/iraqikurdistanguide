@@ -1,4 +1,16 @@
-/* jshint esversion: 11, jquery: true */
+/* ----- jshint esversion: 11, jquery: true ----- */
+
+
+/* ----- BOOTSTRAP COMPONENTS ----- */
+
+// tooltips
+let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+});
+
+
+/* ----- PRELOADER ----- */
 
 // remove preloader animation once page is fully loaded
 $(document).ready(function() {
@@ -9,6 +21,9 @@ $(document).ready(function() {
 //     $("body").removeClass("page-load-complete");
 // });
 
+
+/* ----- TO TOP BUTTON ----- */
+
 // scroll to top button
 let btnTop = document.getElementById("btn-top");
 window.addEventListener("load", viewportMagic, true);
@@ -16,11 +31,14 @@ window.addEventListener("resize", viewportMagic, true);
 window.addEventListener("scroll", viewportMagic, true);
 function viewportMagic() {
     if (window.scrollY > 750) {
-        btnTop.style.cssText = "bottom: 0.5em;";
+        btnTop.style.cssText = "bottom: 0.25em;";
     } else {
         btnTop.style.cssText = "bottom: -3em;";
     }
 }
+
+
+/* ----- NAVBAR LINKS ----- */
 
 // update nav-links with 'active' state
 let activeLink;
@@ -47,8 +65,13 @@ if (location.pathname.includes("/about/")) {
 $(`[id^="nav-link-${activeLink}"]`).removeClass("list-group-item-dark").addClass("active list-group-item-light").prop("aria-current", true);
 
 
+/* ----- COPYRIGHT ----- */
+
 // update copyright year
 document.getElementById("year").innerText = new Date().getFullYear();
+
+
+/* ----- KURDISH TIME ----- */
 
 // get local time in Kurdistan/Iraq
 function updateTime() {
@@ -69,6 +92,9 @@ $("#offcanvas-toggle-btn").on("click", function() {
     $("#nav-link-time").html(updateTime());
 });
 
+
+/* ----- REVIEW BANNER ----- */
+
 // localStorage: remember if user closed the "review banner"
 const btnCloseReview = document.getElementById("btn-close-review");
 const reviewBanner = document.getElementById("banner-review");
@@ -87,6 +113,39 @@ if (!JSON.parse(localStorage.getItem("reviewClosed"))) {
 function closeReviewBanner() {
     localStorage.setItem("reviewClosed", JSON.stringify({"reviewClosed": true}));
 }
+
+
+/* ----- COOKIES BANNER ----- */
+
+// localStorage: remember if user closed the "cookies banner"
+const btnCloseCookies = document.getElementById("btn-close-cookies");
+const cookiesBanner = document.getElementById("banner-cookies");
+
+// adjust padding-bottom on body to accommodate fixed-banner size
+$(window).on("load resize", function() {
+    let cookiesBannerHeight = $(cookiesBanner).height();
+    document.body.style.paddingBottom = `${cookiesBannerHeight}px`;
+
+    // check for existing localStorage of "cookies banner" being closed previously
+    if (!JSON.parse(localStorage.getItem("cookiesClosed"))) {
+        // none found / allow clicking to close banner
+        btnCloseCookies?.addEventListener("click", closeCookiesBanner);
+    } else {
+        // previously closed / auto-hide banner from now on
+        cookiesBanner.classList.remove("show");
+        cookiesBanner.classList.add("d-none");
+        document.body.style.paddingBottom = "unset";
+    }
+});
+
+// add localStorage for "cookies banner" being closed
+function closeCookiesBanner() {
+    localStorage.setItem("cookiesClosed", JSON.stringify({"cookiesClosed": true}));
+    document.body.style.paddingBottom = "unset";
+}
+
+
+/* ----- ALERTS ----- */
 
 // auto-hide alerts
 const alerts = document.querySelectorAll("aside.alert");
@@ -113,6 +172,9 @@ if (alerts.length > 0) {
     }
 }
 
+
+/* ----- BREADCRUMBS  ----- */
+
 // auto-expand/collapse breadcrumb dropdown-menu on hover
 let breadcrumbDropdown = document.querySelectorAll(".breadcrumb-item.dropdown");
 breadcrumbDropdown.forEach(dropdown => {
@@ -136,14 +198,8 @@ breadcrumbDropdown.forEach(dropdown => {
     });
 });
 
-/*
-    Initialize Bootstrap Components
-*/
-// tooltips
-let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl);
-});
+
+/* ----- WISHLIST (destinations) ----- */
 
 // handling localStorage for "destinations"
 $("body").on("click", ".destination-card-text", function(e) {
@@ -170,7 +226,8 @@ $(destinationIcons).each(function() {
     wishlist = localStorage.getItem("wishlist")?.split(",");
     for (let place in wishlist) {
         if (wishlist.hasOwnProperty(place)) {
-            if (wishlist[place] == iconId) {
+            let wishlistPlace = wishlist[place].replace(" ", "").replace("-", "").replace("&", "").toLowerCase();
+            if (wishlistPlace == iconId) {
                 // set solid-heart and 'remove' text
                 setInWishlist($(this), $(this).siblings("span[id^='wishlist-text_']"));
             }
@@ -225,7 +282,10 @@ function removeWishlistDestination(e, destination) {
     
 }
 
-// CRUD functionality: disable first <option> in each <select> input (exception: booking guide defaults to Haval)
+
+/* ----- CRUD Functionality ----- */
+
+// disable first <option> in each <select> input (exception: booking guide defaults to Haval)
 $("select:not(#id_guide)").each(function() {
     $(this).children("option:first").prop("disabled", true);
 });

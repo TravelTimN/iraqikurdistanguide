@@ -37,7 +37,7 @@ class BookingCalendar(calendar.HTMLCalendar):
                         <small class="col d-md-none text-center">{calendar.day_name[weekday]}</small>
                         <span class="col-1"></span>
                     </p>
-                    <p class="d-md-none">No Bookings</p>
+                    <p class="d-md-none text-danger">No Bookings</p>
                     {d}
                 </div>
                 """

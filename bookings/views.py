@@ -42,8 +42,8 @@ def get_next_month(d):
 
 
 @validate_user()
-def bookings(request):
-    """ A view to return the admin-only Bookings page """
+def calendar_bookings(request):
+    """ A view to return the admin-only Calendar Bookings page """
     # generate utils.BookingCalendar using month-args
     d = get_date(request.GET.get("month", None))
     calendar = BookingCalendar(d.year, d.month)
@@ -57,12 +57,42 @@ def bookings(request):
         (Q(end_date__month=d.month) | Q(end_date__month__gt=d.month) | Q(end_date__year__gt=d.year)) &
         (Q(start_date__year=d.year) | Q(end_date__year__gte=d.year))
     )
-    template = "bookings/bookings.html"
+    template = "bookings/calendar_bookings.html"
     context = {
         "bookings": bookings,
         "prev_month": prev_month,
         "next_month": next_month,
         "booking_calendar": booking_calendar,
+    }
+    return render(request, template, context)
+
+
+@validate_user()
+def all_bookings(request):
+    """ A view to return the admin-only 'All' Bookings page """
+    # query db only once to get all bookings
+    every_booking = Booking.objects.all().order_by("start_date")
+
+    # filter only "current" bookings
+    current_bookings = every_booking.filter(
+        Q(start_date__lte=datetime.today()) & Q(end_date__gte=datetime.today())
+    )
+
+    # filter only "future" bookings
+    future_bookings = every_booking.filter(
+        Q(start_date__gt=datetime.today())
+    )
+
+    # filter only "past" bookings
+    past_bookings = every_booking.filter(
+        Q(end_date__lt=datetime.today())
+    )
+
+    template = "bookings/all_bookings.html"
+    context = {
+        "current_bookings": current_bookings,
+        "future_bookings": future_bookings,
+        "past_bookings": past_bookings,
     }
     return render(request, template, context)
 
@@ -111,4 +141,4 @@ def delete_booking(request, id):
     booking = get_object_or_404(Booking, id=id)
     booking.delete()
     messages.success(request, "Booking Deleted!")
-    return redirect(reverse("bookings"))
+    return redirect(reverse("calendar_bookings"))
