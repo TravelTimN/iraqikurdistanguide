@@ -121,6 +121,8 @@ function closeReviewBanner() {
 const btnCloseCookies = document.getElementById("btn-close-cookies");
 const cookiesBanner = document.getElementById("banner-cookies");
 
+$(cookiesBanner).slideToggle(1500);
+
 // adjust padding-bottom on body to accommodate fixed-banner size
 $(window).on("load resize", function() {
     let cookiesBannerHeight = $(cookiesBanner).height();
@@ -142,6 +144,7 @@ $(window).on("load resize", function() {
 function closeCookiesBanner() {
     localStorage.setItem("cookiesClosed", JSON.stringify({"cookiesClosed": true}));
     document.body.style.paddingBottom = "unset";
+    $(cookiesBanner).slideToggle("slow");
 }
 
 

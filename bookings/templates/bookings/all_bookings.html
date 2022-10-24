@@ -63,6 +63,8 @@
                         </a>
                         <!-- attach booking modal -->
                         {% include "bookings/partials/booking_modal.html" %}
+                    {% empty %}
+                        <h4 class="text-danger text-center">No Current Bookings</h4>
                     {% endfor %}
                 </div>
             </div>
@@ -99,6 +101,8 @@
                         </a>
                         <!-- attach booking modal -->
                         {% include "bookings/partials/booking_modal.html" %}
+                    {% empty %}
+                        <h4 class="text-danger text-center">No Future Bookings</h4>
                     {% endfor %}
                 </div>
             </div>
@@ -135,6 +139,8 @@
                         </a>
                         <!-- attach booking modal -->
                         {% include "bookings/partials/booking_modal.html" %}
+                    {% empty %}
+                        <h4 class="text-danger text-center">No Past Bookings</h4>
                     {% endfor %}
                 </div>
             </div>
