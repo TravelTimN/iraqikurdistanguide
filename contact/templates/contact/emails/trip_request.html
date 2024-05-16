@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Verdana, Tahoma, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        <strong>!! DO NOT REPLY !!</strong><br>
+        This is an automated email sent from the
+        <a href="https://iraqikurdistanguide.com">Iraqi Kurdistan Guide website</a>.
+    </p>
+
+    <hr>
+
+    <p>Hello Haval,</p>
+
+    <p>A new travel request has arrived. Please see details below:</p>
+
+    <p>
+        <strong>Booking Status:</strong> {{ form_context.status }}<br>
+        <strong>Full Name:</strong> {{ form_context.name }}<br>
+        <strong>Email Address:</strong> {{ form_context.email }}<br>
+        <strong>Phone Number:</strong> {{ form_context.phone_num }}<br>
+        <strong>Country:</strong> {{ form_context.country }}
+    </p>
+
+    <p>
+        <strong>Travel Start Date (requested):</strong> {{ form_context.start_date }}<br>
+        <strong>Travel End Date (requested):</strong> {{ form_context.end_date }}<br>
+        <strong>Trip Duration:</strong> {{ form_context.num_days }} day(s)<br>
+        <strong>Number of Visitors:</strong> {{ form_context.num_guests }}
+    </p>
+
+    <p>
+        <strong>Wishlist Destinations:</strong><br>
+        {{ form_context.destinations }}
+    </p>
+
+    <p>
+        <strong>Additional Notes from {{ form_context.name }}:</strong><br>
+        {{ form_context.message }}
+    </p>
+
+    <hr>
+
+    <p>
+        <a href="https://iraqikurdistanguide.com/bookings/update/{{ form_context.id }}">Click Here to Edit this Booking</a>
+    </p>
+
+    <p>
+        <a href="https://iraqikurdistanguide.com/bookings/?month={{ form_context.yyyy_mm }}">View all bookings for {{ form_context.yyyy_mm }}</a>
+    </p>
+
+    <hr>
+
+    <p>
+        Kind Regards,<br>
+        2BN-DEV<br>
+        Tim Nelson & Chris Quinn
+    </p>
+
+</body>
+
+</html>
