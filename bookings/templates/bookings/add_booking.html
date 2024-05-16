@@ -23,6 +23,15 @@
 
 					<div class="card-body">
 
+						<!-- status field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-hourglass-half fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ booking_form.status }}
+                                <label for="id_status">* Booking Status</label>
+                            </div>
+						</div>
+
 						<!-- guide field -->
 						<div class="input-group mb-3">
                             <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-user-friends fa-fw"></i></span>
