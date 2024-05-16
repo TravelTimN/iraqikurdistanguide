@@ -75,12 +75,13 @@ def contact(request):
             subject = "New Website Trip Request (Iraqi Kurdistan Guide)"
             from_email = settings.DEFAULT_FROM_EMAIL  # from 2BN-DEV
             to_email = [settings.DEFAULT_OWNER_EMAIL]  # to Haval
-            bcc_email = [settings.DEFAULT_FROM_EMAIL]  # bcc: 2BN-DEV
+            # bcc_email = [settings.DEFAULT_FROM_EMAIL]  # bcc: 2BN-DEV
 
             text_content = render_to_string("contact/emails/trip_request.txt", {"form_context": form_context})  # noqa
             html_content = render_to_string("contact/emails/trip_request.html", {"form_context": form_context})  # noqa
 
-            email = EmailMultiAlternatives(subject, text_content, from_email, to_email, bcc=bcc_email)  # noqa
+            email = EmailMultiAlternatives(subject, text_content, from_email, to_email)  # noqa
+            # email = EmailMultiAlternatives(subject, text_content, from_email, to_email, bcc=bcc_email)  # noqa
             email.attach_alternative(html_content, "text/html")
             email.send()
 
