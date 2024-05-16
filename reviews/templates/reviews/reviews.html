@@ -24,15 +24,9 @@
             <h1 id="page-header" class="text-dark fw-bold">Reviews</h1>
         </div>
     </div>
-    <!-- helper text -->
-    <div class="row mt-5">
-        <div class="col-12 text-center fs-4">
-            Click the source icons to read the full review, plus more!
-        </div>
-    </div>
 </div>
 
-<section class="container my-5">
+<section class="container mb-5">
     <div class="row">
         <!-- loop reviews (ordered by newest first) -->
         {% for review in reviews|dictsort:"date" reversed %}
@@ -80,8 +74,8 @@
                         <!-- flag icon -->
                         <img src="{{ review.country.flag }}" class="me-2" alt="Flag Icon of {{ review.country.name }}"
                             data-bs-toggle="tooltip" data-bs-placement="top" title="{{ review.country.name }}">
-                        <!-- review date -->
-                        <small class="flex-grow-1">{{ review.date|date:"d F, Y" }}</small>
+                        <!-- review country -->
+                        <small class="flex-grow-1">{{ review.country.name }}</small>
                         <!-- visibility (admin-only) -->
                         {% if review.is_visible != True %}
                             <span class="text-danger">
