@@ -25,7 +25,13 @@ class BookingCalendar(calendar.HTMLCalendar):
         for booking in bookings_per_day:
             # truncate longer guest names
             guest = (booking.guest_name[:15] + "..") if len(booking.guest_name) > 15 else booking.guest_name
-            d += f"<a href='#' class='d-block py-1 px-2 w-100 mb-1 rounded text-truncate small bg-success text-white' data-bs-toggle='modal' data-bs-target='#modal{booking.id}'>{guest}</a>"
+            if booking.status == "new request":
+                booking_status = "bg-warning text-dark"
+            elif booking.status == "confirmed":
+                booking_status = "bg-success text-white"
+            elif booking.status == "cancelled" or booking.status == "rejected":
+                booking_status = "bg-danger text-white"
+            d += f"<a href='#' class='d-block py-1 px-2 w-100 mb-1 rounded text-truncate small {booking_status}' data-bs-toggle='modal' data-bs-target='#modal{booking.id}'>{guest}</a>"
 
         if day != 0:
             # if the day of month is "today", this year specifically
