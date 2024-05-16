@@ -513,7 +513,7 @@ ol.breadcrumb ul.dropdown-menu.show .dropdown-divider {
 #home-divider-parallax-01 {
     height: 50vh;
     position: relative;
-    background-position: bottom left;
+    background-position: bottom right;
     background-image: url("../img/wallpaper/barzan-dore-canyon-haval.png");
 }
 
@@ -1081,6 +1081,12 @@ p.lightbox-caption {
     margin: 1em;
 }
 
+.accordion-body.faq-answer a {
+    font-weight: bold;
+    color: rgba(var(--kurdish-green), 1);
+    text-decoration: underline;
+}
+
 .accordion-button {
     transition: all 0.2s ease-in-out;
 }
@@ -1246,7 +1252,6 @@ footer a {
 footer .fab,
 footer .fas {
     font-size: 1.5em;
-    margin: 0 20px;
     vertical-align: middle;
     color: rgba(var(--light-grey), 1);
     text-shadow: 2px 2px 2px rgba(var(--black), 0.5);
