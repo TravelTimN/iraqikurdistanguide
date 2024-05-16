@@ -46,7 +46,7 @@
                 <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                     {% for booking in current_bookings %}
                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ booking.id }}">
-                            <div class="card my-2 bg-success text-white">
+                            <div class="card my-2 {% if booking.status == 'new request' %}bg-warning text-dark{% elif booking.status == 'confirmed' %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
                                 <!-- corner ribbon -->
                                 <div class="ribbon">
                                     <span class="kurdistan">
@@ -54,8 +54,9 @@
                                     </span>
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ booking.guest_name }}</h5>
+                                    <h5 class="card-title">{{ booking.status|upper }}</h5>
                                     <p class="card-text">
+                                        <strong>{{ booking.guest_name }}</strong><br>
                                         {{ booking.start_date }} - {{ booking.end_date }}
                                     </p>
                                 </div>
@@ -84,7 +85,7 @@
                 <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                     {% for booking in future_bookings %}
                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ booking.id }}">
-                            <div class="card my-2 bg-primary text-white">
+                            <div class="card my-2 {% if booking.status == 'new request' %}bg-warning text-dark{% elif booking.status == 'confirmed' %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
                                 <!-- corner ribbon -->
                                 <div class="ribbon">
                                     <span class="kurdistan">
@@ -92,8 +93,9 @@
                                     </span>
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ booking.guest_name }}</h5>
+                                    <h5 class="card-title">{{ booking.status|upper }}</h5>
                                     <p class="card-text">
+                                        <strong>{{ booking.guest_name }}</strong><br>
                                         {{ booking.start_date }} - {{ booking.end_date }}
                                     </p>
                                 </div>
@@ -122,7 +124,7 @@
                 <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                     {% for booking in past_bookings reversed %}
                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ booking.id }}">
-                            <div class="card my-2 bg-danger text-white">
+                            <div class="card my-2 {% if booking.status == 'new request' %}bg-warning text-dark{% elif booking.status == 'confirmed' %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
                                 <!-- corner ribbon -->
                                 <div class="ribbon">
                                     <span class="kurdistan">
@@ -130,8 +132,9 @@
                                     </span>
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ booking.guest_name }}</h5>
+                                    <h5 class="card-title">{{ booking.status|upper }}</h5>
                                     <p class="card-text">
+                                        <strong>{{ booking.guest_name }}</strong><br>
                                         {{ booking.start_date }} - {{ booking.end_date }}
                                     </p>
                                 </div>
