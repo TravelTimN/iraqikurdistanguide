@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django_countries.fields import CountryField
 from destinations.models import Destination
 
@@ -10,6 +10,7 @@ class Booking(models.Model):
     """
     GUIDES = [("haval", "Haval"), ("govand", "Govand"),]
     CURRENCY = [("usd", "$"), ("eur", "€"), ("iqd", "د.ع"),]
+    STATUS = [("new request", "New Request"), ("confirmed", "Confirmed"), ("cancelled", "Cancelled"), ("rejected", "Rejected")]
 
     guide = models.CharField(
         choices=GUIDES, default="Haval",
@@ -32,6 +33,7 @@ class Booking(models.Model):
     itinerary = models.ManyToManyField(
         Destination, blank=True, related_name="itinerary_destinations")
     notes = models.TextField(null=True, blank=True)
+    status = models.CharField(choices=STATUS, default="New Request", max_length=25)
 
     class Meta:
         ordering = ["start_date", "guide"]

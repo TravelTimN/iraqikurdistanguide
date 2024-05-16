@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django_countries.fields import CountryField
 from destinations.models import Destination
 
 
@@ -9,6 +10,7 @@ class Contact(models.Model):
     name = models.CharField(max_length=75, blank=False, null=False)
     email = models.EmailField(max_length=256, blank=False, null=False)
     phone_num = models.CharField(max_length=30, null=True)
+    country = CountryField(blank_label="Your Country", null=False, blank=False)
     start_date = models.DateField(blank=False, null=False)
     num_days = models.IntegerField(
         validators=[
