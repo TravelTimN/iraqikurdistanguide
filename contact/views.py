@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from django.shortcuts import get_object_or_404, render, redirect, reverse
 from django.conf import settings
 from django.contrib import messages
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django_countries.fields import Country
 from .models import Contact
@@ -71,16 +71,18 @@ def contact(request):
                 "destinations": ", ".join([destination.name for destination in destinations]),  # noqa
             }
 
-            # send email
-            send_mail(
-                "New Website Trip Request (Iraqi Kurdistan Guide)",
-                render_to_string(
-                    "contact/emails/trip_request.txt",
-                    {"form_context": form_context}
-                ),
-                settings.DEFAULT_FROM_EMAIL,
-                [settings.DEFAULT_OWNER_EMAIL],
-            )
+            # send multi-part email (plain text and HTML)
+            subject = "New Website Trip Request (Iraqi Kurdistan Guide)"
+            from_email = settings.DEFAULT_FROM_EMAIL  # from 2BN-DEV
+            to_email = [settings.DEFAULT_OWNER_EMAIL]  # to Haval
+            bcc_email = [settings.DEFAULT_FROM_EMAIL]  # bcc: 2BN-DEV
+
+            text_content = render_to_string("contact/emails/trip_request.txt", {"form_context": form_context})  # noqa
+            html_content = render_to_string("contact/emails/trip_request.html", {"form_context": form_context})  # noqa
+
+            email = EmailMultiAlternatives(subject, text_content, from_email, to_email, bcc=bcc_email)  # noqa
+            email.attach_alternative(html_content, "text/html")
+            email.send()
 
             return redirect(reverse("home"))
     template = "contact/contact.html"
