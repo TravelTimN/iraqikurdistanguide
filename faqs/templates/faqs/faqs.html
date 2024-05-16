@@ -64,7 +64,7 @@
                             </h2>
                             <!-- the 'answer' to FAQ -->
                             <div id="collapse{{ faq.id }}" class="accordion-collapse collapse" aria-labelledby="header{{ faq.id }}" data-bs-parent="#accordion{{ forloop.parentloop.counter }}">
-                                <div class="accordion-body">
+                                <div class="accordion-body faq-answer">
                                     {% if request.user|has_group:"Site Admin" and faq.is_visible != True %}
                                     <!-- admin-only notice of hidden FAQ -->
                                         <p class="w-100 text-center mx-auto text-danger fw-bold">
@@ -93,7 +93,7 @@
 <!-- additional FAQs? contact Haval -->
 <div class="container-fluid bg-warning bg-opacity-75 text-black py-5">
     <div class="row">
-        <div class="col-12 text-center">
+        <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
             <h5>
                 This list of FAQs is not exhaustive, but it should hopefully provide a helpful insight while planning your trip with me in Kurdistan!
                 <hr class="w-50 mx-auto">
