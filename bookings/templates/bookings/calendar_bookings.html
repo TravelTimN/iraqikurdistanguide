@@ -27,7 +27,7 @@
             <h3 class="text-center">BOOKINGS</h3>
             {% for booking in bookings %}
                 <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ booking.id }}">
-                    <div class="card my-2 bg-success text-white">
+                    <div class="card my-2 {% if booking.status == 'new request' %}bg-warning text-dark{% elif booking.status == 'confirmed' %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
                         <!-- corner ribbon -->
                         <div class="ribbon">
                             <span class="kurdistan">
@@ -35,8 +35,10 @@
                             </span>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">{{ booking.guest_name }}</h5>
+                            <h5 class="card-title">{{ booking.status|upper }}</h5>
                             <p class="card-text">
+                                <strong>{{ booking.guest_name }}</strong>
+                                <br>
                                 Start: {{ booking.start_date }}<br>
                                 End: {{ booking.end_date }}
                             </p>
@@ -84,6 +86,8 @@
                 <div class="col-12 col-md-6">
                     <select class="form-select form-select-lg my-1 month-year" name="select_year" id="select_year">
                         <option value="" disabled>Year</option>
+                        <option data-year="{{ current_year|add:-3 }}">{{ current_year|add:-3 }}</option>
+                        <option data-year="{{ current_year|add:-2 }}">{{ current_year|add:-2 }}</option>
                         <option data-year="{{ current_year|add:-1 }}">{{ current_year|add:-1 }}</option>
                         <option data-year="{{ current_year|add:0 }}">{{ current_year|add:0 }}</option>
                         <option data-year="{{ current_year|add:1 }}">{{ current_year|add:1 }}</option>
