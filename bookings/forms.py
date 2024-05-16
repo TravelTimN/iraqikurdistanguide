@@ -41,3 +41,5 @@ class BookingForm(forms.ModelForm):
 
         # generate list of available currencies
         self.fields["currency"].choices = [("", "Currency"),] + list(self.fields["currency"].choices)[1:]
+        # generate list of statuses
+        self.fields["status"].choices = [("", "Booking Status"),] + list(self.fields["status"].choices)[0:]
