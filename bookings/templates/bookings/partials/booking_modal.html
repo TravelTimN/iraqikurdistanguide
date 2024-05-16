@@ -7,6 +7,7 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body bg-light text-dark">
+                <strong>Status:</strong> {{ booking.status|upper }}<br>
                 <strong>Guide:</strong> {{ booking.get_guide_display }}<br>
                 <strong>Guest Name:</strong> {{ booking.guest_name }}<br>
                 <strong>Guest Email:</strong> {{ booking.guest_email }}<br>
