@@ -44,7 +44,7 @@ def contact(request):
                 currency="usd",
                 total_price=0,
                 amount_paid=0,
-                status="new request",
+                status="new",
                 notes=request.POST.get("message"),
             )
             booking.itinerary.set(destinations)
@@ -57,7 +57,7 @@ def contact(request):
             # form data collection for email
             form_context = {
                 "id": booking_id,
-                "status": "New Request",
+                "status": "New",
                 "name": request.POST.get("name"),
                 "email": request.POST.get("email"),
                 "phone_num": request.POST.get("phone_num"),
@@ -67,8 +67,9 @@ def contact(request):
                 "num_days": request.POST.get("num_days"),
                 "yyyy_mm": start_date.strftime("%Y-%m"),
                 "num_guests": request.POST.get("num_guests"),
-                "message": request.POST.get("message"),
-                "destinations": ", ".join([destination.name for destination in destinations]),  # noqa
+                "message": request.POST.get("message").replace("\n", "<br>"),
+                "destinations": destinations,  # noqa
+                # "destinations": ", ".join([destination.name for destination in destinations]),  # noqa
             }
 
             # send multi-part email (plain text and HTML)

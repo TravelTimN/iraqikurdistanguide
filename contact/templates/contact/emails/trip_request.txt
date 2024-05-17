@@ -1,5 +1,5 @@
 !! DO NOT REPLY !!
-This is an automated email sent from the Iraqi Kurdistan Guide website.
+This is an automated email sent from iraqikurdistanguide.com.
 
 ------------
 
@@ -8,15 +8,15 @@ Hello Haval,
 A new travel request has arrived. Please see details below:
 
 Booking Status: {{ form_context.status }}
-Full Name: {{ form_context.name }}
-Email Address: {{ form_context.email }}
-Phone Number: {{ form_context.phone_num }}
-Country: {{ form_context.country }}
+Name: {{ form_context.name }}
+Email: {{ form_context.email }}
+Telephone: {{ form_context.phone_num }}
+From: {{ form_context.country }}
 
-Travel Start Date (requested): {{ form_context.start_date }}
-Travel End Date (requested): {{ form_context.end_date }}
-Trip Duration: {{ form_context.num_days }} day(s)
-Number of Visitors: {{ form_context.num_guests }}
+Start: {{ form_context.start_date }}
+End: {{ form_context.end_date }}
+Duration: {{ form_context.num_days }} day(s)
+Visitors: {{ form_context.num_guests }}
 
 Wishlist Destinations:
 {{ form_context.destinations }}
@@ -29,11 +29,9 @@ Additional Notes from {{ form_context.name }}:
 Edit this booking:
 https://iraqikurdistanguide.com/bookings/update/{{ form_context.id }}
 
-View all bookings for {{ form_context.yyyy_mm }}:
+View Calendar for {{ form_context.yyyy_mm }}:
 https://iraqikurdistanguide.com/bookings/?month={{ form_context.yyyy_mm }}
 
 ------------
 
-Kind Regards,
-2BN-DEV
-Tim Nelson & Chris Quinn
+Sent by: 2BN-DEV
