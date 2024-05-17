@@ -56,7 +56,8 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ booking.status|upper }}</h5>
                                     <p class="card-text">
-                                        <strong>{{ booking.guest_name }}</strong><br>
+                                        <strong>{{ booking.guest_name }}</strong> <small>(+{{ booking.total_guests|add:-1 }} guest{{ booking.total_guests|add:-1|pluralize }})</small>
+                                        <br>
                                         {{ booking.start_date }} - {{ booking.end_date }}
                                     </p>
                                 </div>
@@ -95,7 +96,8 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ booking.status|upper }}</h5>
                                     <p class="card-text">
-                                        <strong>{{ booking.guest_name }}</strong><br>
+                                        <strong>{{ booking.guest_name }}</strong> <small>(+{{ booking.total_guests|add:-1 }} guest{{ booking.total_guests|add:-1|pluralize }})</small>
+                                        <br>
                                         {{ booking.start_date }} - {{ booking.end_date }}
                                     </p>
                                 </div>
@@ -134,7 +136,8 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ booking.status|upper }}</h5>
                                     <p class="card-text">
-                                        <strong>{{ booking.guest_name }}</strong><br>
+                                        <strong>{{ booking.guest_name }}</strong> <small>(+{{ booking.total_guests|add:-1 }} guest{{ booking.total_guests|add:-1|pluralize }})</small>
+                                        <br>
                                         {{ booking.start_date }} - {{ booking.end_date }}
                                     </p>
                                 </div>
