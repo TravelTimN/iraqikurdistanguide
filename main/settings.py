@@ -11,9 +11,10 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = int(os.environ.get("DEVELOPMENT", default=0))
 
 ALLOWED_HOSTS = []
-host = os.environ.get("SITE_NAME")
+host = os.environ.get("DJANGO_ALLOWED_HOSTS")
 if host:
-    ALLOWED_HOSTS.append(host)
+    hosts = host.split()
+    ALLOWED_HOSTS.extend(hosts)
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -74,13 +75,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "main.wsgi.application"
 
-if "DATABASE_URL" in os.environ:
-    print("connected to PostgreSQL")
+if "SQL_ENGINE" in os.environ:
+    print("connected to Postgres (production: Docker)")
+    DATABASES = {
+        "default": {
+            "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+            "NAME": os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
+            "USER": os.environ.get("SQL_USER", "user"),
+            "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+            "HOST": os.environ.get("SQL_HOST", "localhost"),
+            "PORT": os.environ.get("SQL_PORT", "5432"),
+        }
+    }
+elif "DATABASE_URL" in os.environ:
+    print("connected to Postgres (development: local)")
     DATABASES = {
         "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
 else:
-    print("connected to db.sqlite3")
+    print("connected to db.sqlite3 (testing)")
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
@@ -129,15 +142,18 @@ LOGIN_URL = f"/{os.environ.get('AUTH_URL')}/login"
 ACCOUNT_LOGOUT_REDIRECT_URL = f"/{os.environ.get('AUTH_URL')}/login"
 ACCOUNT_LOGOUT_ON_GET = True  # avoid allauth signout confirmation page
 
-
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_KEY")
-DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_HOST_USER")
-DEFAULT_OWNER_EMAIL = os.environ.get("DEFAULT_OWNER_EMAIL")
+if "DEVELOPMENT" in os.environ:
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+    DEFAULT_FROM_EMAIL = "ikg@test.com"
+else:
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = "smtp.gmail.com"
+    EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_KEY")
+    DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_HOST_USER")
+    DEFAULT_OWNER_EMAIL = os.environ.get("DEFAULT_OWNER_EMAIL")
 
 
 LANGUAGE_CODE = "en-us"
