@@ -34,19 +34,19 @@
 <section class="container">
 
     <!-- current bookings -->
-    <div class="row mt-2 mb-5 mx-1">
+    <div class="row mt-2 mb-5 mx-1 p-3 rounded bg-secondary bg-gradient bg-opacity-25 shadow-sm">
         <div class="col-12">
             <!-- header -->
             <div class="row">
                 <div class="col-12 text-center">
-                    <h3 class="text-dark fw-bold">Current Bookings</h3>
+                    <h3 class="text-dark fw-bold text-uppercase">Current Bookings</h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                     {% for booking in current_bookings %}
                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ booking.id }}">
-                            <div class="card my-2 {% if booking.status == 'new request' %}bg-warning text-dark{% elif booking.status == 'confirmed' %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
+                            <div class="card my-2 {% if booking.status == 'new' %}bg-warning text-dark{% elif booking.status == 'confirmed' %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
                                 <!-- corner ribbon -->
                                 <div class="ribbon">
                                     <span class="kurdistan">
@@ -65,7 +65,7 @@
                         <!-- attach booking modal -->
                         {% include "bookings/partials/booking_modal.html" %}
                     {% empty %}
-                        <h4 class="text-danger text-center">No Current Bookings</h4>
+                        <h4 class="text-danger text-center">None Found</h4>
                     {% endfor %}
                 </div>
             </div>
@@ -73,19 +73,19 @@
     </div>
 
     <!-- future bookings -->
-    <div class="row my-5 mx-1">
+    <div class="row my-5 mx-1 p-3 rounded bg-secondary bg-gradient bg-opacity-25 shadow-sm">
         <div class="col-12">
             <!-- header -->
             <div class="row">
                 <div class="col-12 text-center">
-                    <h3 class="text-dark fw-bold">Future Bookings</h3>
+                    <h3 class="text-dark fw-bold text-uppercase">Future Bookings</h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                     {% for booking in future_bookings %}
                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ booking.id }}">
-                            <div class="card my-2 {% if booking.status == 'new request' %}bg-warning text-dark{% elif booking.status == 'confirmed' %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
+                            <div class="card my-2 {% if booking.status == 'new' %}bg-warning text-dark{% elif booking.status == 'confirmed' %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
                                 <!-- corner ribbon -->
                                 <div class="ribbon">
                                     <span class="kurdistan">
@@ -104,7 +104,7 @@
                         <!-- attach booking modal -->
                         {% include "bookings/partials/booking_modal.html" %}
                     {% empty %}
-                        <h4 class="text-danger text-center">No Future Bookings</h4>
+                        <h4 class="text-danger text-center">None Found</h4>
                     {% endfor %}
                 </div>
             </div>
@@ -112,19 +112,19 @@
     </div>
 
     <!-- past bookings -->
-    <div class="row my-5 mx-1">
+    <div class="row my-5 mx-1 p-3 rounded bg-secondary bg-gradient bg-opacity-25 shadow-sm">
         <div class="col-12">
             <!-- header -->
             <div class="row">
                 <div class="col-12 text-center">
-                    <h3 class="text-dark fw-bold">Past Bookings</h3>
+                    <h3 class="text-dark fw-bold text-uppercase">Past Bookings</h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                     {% for booking in past_bookings reversed %}
                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ booking.id }}">
-                            <div class="card my-2 {% if booking.status == 'new request' %}bg-warning text-dark{% elif booking.status == 'confirmed' %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
+                            <div class="card my-2 {% if booking.status == 'new' %}bg-warning text-dark{% elif booking.status == 'confirmed' %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
                                 <!-- corner ribbon -->
                                 <div class="ribbon">
                                     <span class="kurdistan">
@@ -143,7 +143,7 @@
                         <!-- attach booking modal -->
                         {% include "bookings/partials/booking_modal.html" %}
                     {% empty %}
-                        <h4 class="text-danger text-center">No Past Bookings</h4>
+                        <h4 class="text-danger text-center">None Found</h4>
                     {% endfor %}
                 </div>
             </div>

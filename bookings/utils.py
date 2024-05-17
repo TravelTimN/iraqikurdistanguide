@@ -25,7 +25,7 @@ class BookingCalendar(calendar.HTMLCalendar):
         for booking in bookings_per_day:
             # truncate longer guest names
             guest = (booking.guest_name[:15] + "..") if len(booking.guest_name) > 15 else booking.guest_name
-            if booking.status == "new request":
+            if booking.status == "new":
                 booking_status = "bg-warning text-dark"
             elif booking.status == "confirmed":
                 booking_status = "bg-success text-white"

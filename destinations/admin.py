@@ -4,12 +4,12 @@ from .models import Province, Destination, Sight, Tour
 
 @admin.register(Province)
 class ProvinceAdmin(admin.ModelAdmin):
-    list_display = ("name", "region")
+    list_display = ("name", "id", "region")
 
 
 @admin.register(Destination)
 class DestinationAdmin(admin.ModelAdmin):
-    list_display = ("name", "province", "region", "is_visible")
+    list_display = ("name", "id", "province", "region", "is_visible")
 
     @admin.display()
     def region(self, response):
@@ -19,7 +19,7 @@ class DestinationAdmin(admin.ModelAdmin):
 @admin.register(Sight)
 class SightAdmin(admin.ModelAdmin):
     list_display = (
-        "name", "category", "destination", "province",
+        "name", "id", "category", "destination", "province",
         "region", "is_visible", "primary_attraction")
     list_filter = (
         "category", "destination", "destination__province__region",
@@ -37,4 +37,4 @@ class SightAdmin(admin.ModelAdmin):
 @admin.register(Tour)
 class TourAdmin(admin.ModelAdmin):
     readonly_fields = ("image_preview", )
-    list_display = ("category", "image_preview", "description", "is_visible")
+    list_display = ("category", "id", "image_preview", "description", "is_visible")

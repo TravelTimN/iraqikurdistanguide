@@ -27,7 +27,7 @@
             <h3 class="text-center">BOOKINGS</h3>
             {% for booking in bookings %}
                 <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ booking.id }}">
-                    <div class="card my-2 {% if booking.status == 'new request' %}bg-warning text-dark{% elif booking.status == 'confirmed' %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
+                    <div class="card my-2 {% if booking.status == 'new' %}bg-warning text-dark{% elif booking.status == 'confirmed' %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
                         <!-- corner ribbon -->
                         <div class="ribbon">
                             <span class="kurdistan">
