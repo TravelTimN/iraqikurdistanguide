@@ -37,7 +37,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ booking.status|upper }}</h5>
                             <p class="card-text">
-                                <strong>{{ booking.guest_name }}</strong>
+                                <strong>{{ booking.guest_name }}</strong> <small>(+{{ booking.total_guests|add:-1 }} guest{{ booking.total_guests|add:-1|pluralize }})</small>
                                 <br>
                                 Start: {{ booking.start_date }}<br>
                                 End: {{ booking.end_date }}
