@@ -11,3 +11,8 @@ def has_group(user, group_name):
         return group in user.groups.all()
     else:
         return False
+
+
+@register.filter(name="subtract")
+def subtract(val1, val2):
+    return val1 - val2
