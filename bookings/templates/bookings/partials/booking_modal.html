@@ -1,31 +1,87 @@
+{% load custom_filters %}
+
 <!-- Modal -->
 <div class="modal fade" id="modal{{ booking.id }}" tabindex="-1" aria-labelledby="modal{{ booking.id }}Label" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content bg-dark">
             <div class="modal-header bg-danger bg-opacity-50 text-light">
-                <h5 class="modal-title" id="modal{{ booking.id }}Label">{{ booking.guest_name }}</h5>
+                <h5 class="modal-title" id="modal{{ booking.id }}Label">BOOKING</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body bg-light text-dark">
-                <strong>Status:</strong> {{ booking.status|upper }}<br>
-                <strong>Guide:</strong> {{ booking.get_guide_display }}<br>
-                <strong>Guest Name:</strong> {{ booking.guest_name }}<br>
-                <strong>Guest Email:</strong> {{ booking.guest_email }}<br>
-                <strong>Guest Phone:</strong> {{ booking.guest_phone }}<br>
-                <strong>Guest Country:</strong>
-                <img src="{{ booking.guest_country.flag }}" alt="Flag Icon of {{ booking.guest_country.name }}">
-                {{ booking.guest_country.name }}<br>
-                <strong>Total Guests:</strong> {{ booking.total_guests }}<br>
-                <strong>Start Date:</strong> {{ booking.start_date }}<br>
-                <strong>End Date:</strong> {{ booking.end_date }}<br>
-                <strong>Total Price:</strong> {{ booking.get_currency_display }}{{ booking.total_price }} {{ booking.currency|upper }}<br>
-                <strong>Amount Paid:</strong> {{ booking.get_currency_display }}{{ booking.amount_paid }} {{ booking.currency|upper }}<br>
-                <strong>Itinerary:</strong>
-                {% for destination in booking.itinerary.all %}
-                    {{ destination }}{% if not forloop.last %}, {% endif %}
-                {% endfor %}
-                <br>
-                <strong>Notes:</strong> {{ booking.notes }}<br>
+                <div class="card shadow">
+                    <div class="card-header {% if booking.status == 'new' %}bg-warning text-dark{% elif booking.status == 'confirmed' %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
+                        <div class="row d-flex justify-content-between">
+                            <div class="col">
+                                <strong>Status:</strong> {{ booking.status|upper }}
+                            </div>
+                            <div class="col text-end">
+                                with <strong>{{ booking.get_guide_display }}</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>{{ booking.guest_name }}</strong></h5>
+                        <p class="card-text">
+                            <strong>EMAIL</strong>:
+                            <a href="mailto:{{ booking.guest_email }}?subject=Iraqi Kurdistan Guide: booking for {{ booking.start_date }}" target="_blank" rel="noopener nofollow" class="text-primary">
+                                {{ booking.guest_email }}
+                            </a>
+                            <br>
+                            <strong>PHONE</strong>:
+                            <a href="tel:{{ booking.guest_phone }}">
+                                {{ booking.guest_phone }}
+                            </a>
+                            <br>
+                            <strong>FROM</strong>:
+                            <img src="{{ booking.guest_country.flag }}" alt="Flag Icon of {{ booking.guest_country.name }}">
+                            <strong>{{ booking.guest_country.name }}</strong>
+                            <br>
+                            <hr>
+                            <strong>START:</strong> {{ booking.start_date|date:"l, d F, Y" }}<br>
+                            <strong>END:</strong> {{ booking.end_date|date:"l, d F, Y" }}<br>
+                            <strong>GUESTS:</strong> {{ booking.total_guests }}<br>
+
+                            <hr>
+
+                            <strong>ITINERARY:</strong><br>
+                            {% for destination in booking.itinerary.all %}
+                                {{ destination }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+
+                            <hr>
+
+                            <strong>NOTES:</strong><br>
+                            {{ booking.notes|safe|linebreaksbr }}
+                        </p>
+
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="row d-flex justify-content-between text-center">
+                            <div class="col">
+                                <strong>TOTAL:</strong>
+                                <br>
+                                <span class="badge bg-success text-white">{{ booking.get_currency_display }}{{ booking.total_price }} {{ booking.currency|upper }}</span>
+                            </div>
+                            <div class="col">
+                                <strong>PAID:</strong>
+                                <br>
+                                <span class="badge bg-{% if booking.amount_paid|add:0 >= booking.total_price|add:0 %}success{% else %}danger{% endif %}">
+                                    {{ booking.get_currency_display }}{{ booking.amount_paid }} {{ booking.currency|upper }}
+                                </span>
+                            </div>
+                            <div class="col">
+                                <strong>DUE:</strong>
+                                <br>
+                                <span class="badge bg-{% if booking.amount_paid|add:0 >= booking.total_price|add:0 %}success{% else %}danger{% endif %}">
+                                    {{ booking.get_currency_display }}{{ booking.total_price|subtract:booking.amount_paid }} {{ booking.currency|upper }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer bg-success bg-opacity-50">
                 <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
