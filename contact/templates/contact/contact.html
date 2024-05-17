@@ -29,7 +29,7 @@
 <section class="container-fluid py-5 bg-secondary bg-opacity-25">
     <div class="row">
         <div class="col-12 col-lg-10 col-xl-8 mx-auto">
-            <form method="POST" action="{% url 'contact' %}" class="shadow">
+            <form method="POST" action="{% url 'contact' %}" id="contact-form" class="shadow">
                 {% csrf_token %}
 
                 <fieldset class="card">
@@ -153,7 +153,7 @@
 						<div class="row my-3">
 							<div class="col text-center">
 								<!-- submit contact form -->
-                                <button type="submit" class="btn btn-warning">Submit</button>
+                                <button type="submit" id="submit-btn" class="btn btn-warning">Submit</button>
 							</div>
 						</div>
 					</div>
@@ -191,6 +191,19 @@
                 $(wishlistInput).prop("checked", true);
             }
         }
+
+        // add preloader animation once form is valid
+        $("#submit-btn").on("click", function(event) {
+            let form = $("#contact-form")[0];
+            if (form.checkValidity()) {
+                // load the animation to prevent multiple clicks
+                $("submit-btn").addClass("disable");
+                $("body").removeClass("page-load-complete");
+            } else {
+                event.preventDefault(); // prevent form submission if invalid
+                form.reportValidity(); // display validation error messages
+            }
+        });
     });
 
 </script>
