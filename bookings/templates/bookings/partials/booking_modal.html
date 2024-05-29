@@ -36,7 +36,9 @@
                             <br>
                             <strong>FROM</strong>:
                             <img src="{{ booking.guest_country.flag }}" alt="Flag Icon of {{ booking.guest_country.name }}">
-                            <strong>{{ booking.guest_country.name }}</strong>
+                            {{ booking.guest_country.name }}
+                            <br>
+                            <em>(sent request on {{ booking.date_created|date:"l, d F, Y" }})</em>
                             <br>
                             <hr>
                             <strong>START:</strong> {{ booking.start_date|date:"l, d F, Y" }}<br>

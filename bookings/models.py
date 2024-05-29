@@ -34,6 +34,7 @@ class Booking(models.Model):
         Destination, blank=True, related_name="itinerary_destinations")
     notes = models.TextField(null=True, blank=True)
     status = models.CharField(choices=STATUS, default="New", max_length=25)
+    date_created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ["start_date", "guide"]
