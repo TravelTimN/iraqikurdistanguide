@@ -130,78 +130,115 @@
             }
         });
 
-        let lat, lng, marker;
         let markerArray = [];
         // display destination on map
-        lat = {{ destination.latitude }};
-        lng = {{ destination.longitude }};
-        marker = L.marker([lat, lng]).bindPopup(`{{ destination }}`).addTo(map);
+        let lat = {{ destination.latitude }};
+        let lng = {{ destination.longitude }};
+        let marker = L.marker([lat, lng]).bindPopup(`{{ destination }}`).addTo(map);
         markerArray.push(marker);
-        
-        // loop 'visible' marker sights and add to map
-        {% for sight in sights %}
-            lat = {{ sight.sight.latitude }};
-            lng = {{ sight.sight.longitude }};
 
-            // marker category
-            var markerCategory = L.ExtraMarkers.icon({
-                {% if sight.sight.get_category_display == "Accommodation" %}
-                    prefix: "fas", icon: "fa-bed", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
-                {% elif sight.sight.get_category_display == "Airport" %}
-                    prefix: "fas", icon: "fa-plane", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
-                {% elif sight.sight.get_category_display == "Archaeology" %}
-                    prefix: "fas", icon: "fa-search", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
-                {% elif sight.sight.get_category_display == "Historic" %}
-                    prefix: "fas", icon: "fa-archway", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
-                {% elif sight.sight.get_category_display == "Memorial" %}
-                    prefix: "fas", icon: "fa-monument", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
-                {% elif sight.sight.get_category_display == "Museum" %}
-                    prefix: "fas", icon: "fa-landmark", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
-                {% elif sight.sight.get_category_display == "Nature" %}
-                    prefix: "fas", icon: "fa-tree", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
-                {% elif sight.sight.get_category_display == "Recreation" %}
-                    prefix: "fas", icon: "fa-hiking", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
-                {% elif sight.sight.get_category_display == "Religious" %}
-                    prefix: "fas", icon: "fa-place-of-worship", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
-                {% elif sight.sight.get_category_display == "Restaurant" %}
-                    prefix: "fas", icon: "fa-utensils", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
-                {% elif sight.sight.get_category_display == "Shopping" %}
-                    prefix: "fas", icon: "fa-tags", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
-                {% elif sight.sight.get_category_display == "Tea Shop" %}
-                    prefix: "fas", icon: "fa-mug-hot", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
-                {% else %}
-                    prefix: "fas", icon: "fa-route", markerColor: "orange-dark", shape: "circle", iconColor: "white", extraClasses: "icon-shadow"
-                {% endif %}
+        // generate an array of sight data using Django templating
+        let sightsData = [
+            {% for sight in sights %}
+                {
+                    index: {{ forloop.counter }},
+                    lat: {{ sight.sight.latitude }},
+                    lng: {{ sight.sight.longitude }},
+                    containerId: `sight-container-{{ forloop.counter }}`,
+                    category: "{{ sight.sight.get_category_display }}"
+                }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+
+        // helper: get appropriate marker icon (font awesome)
+        function getMarkerIcon(category) {
+            switch (category) {
+                case "Accommodation": return "fa-bed";
+                case "Airport": return "fa-plane";
+                case "Archaeology": return "fa-search";
+                case "Historic": return "fa-archway";
+                case "Memorial": return "fa-monument";
+                case "Museum": return "fa-landmark";
+                case "Nature": return "fa-tree";
+                case "Recreation": return "fa-hiking";
+                case "Religious": return "fa-place-of-worship";
+                case "Restaurant": return "fa-utensils";
+                case "Shopping": return "fa-tags";
+                case "Tea Shop": return "fa-mug-hot";
+                default: return "fa-route";
+            }
+        }
+
+        // update data attributes
+        function updateSightDataAttributes() {
+            sightsData.forEach(sight => {
+                let sightContainer = $(`#${sight.containerId}`);
+                let sightTop = Math.round($(sightContainer).offset().top) - ($(window).height() / 2);
+                // ensure sightTop is not negative
+                sightTop = Math.max(sightTop, 0);
+                let sightBottom = sightTop + $(sightContainer).outerHeight(true);
+
+                // set each data-attribute -- cannot use .data("foobar")
+                $(sightContainer).attr("data-top", sightTop);
+                $(sightContainer).attr("data-bottom", sightBottom);
+                $(sightContainer).attr("data-lat", sight.lat);
+                $(sightContainer).attr("data-lng", sight.lng);
+
+                // add marker for each sight
+                let markerCategory = L.ExtraMarkers.icon({
+                    prefix: "fas",
+                    icon: getMarkerIcon(sight.category),
+                    markerColor: "orange-dark",
+                    shape: "circle",
+                    iconColor: "white",
+                    extraClasses: "icon-shadow"
+                });
+
+                // bind the marker to the map, and push to markerArray
+                let sightMarker = L.marker([sight.lat, sight.lng], { icon: markerCategory }).bindPopup(sight.containerId).addTo(map);
+                markerArray.push(sightMarker);
+
+                // click event to scroll to the sight container when user clicks on a marker
+                $(sightMarker).on("click", function() {
+                    let markerLat = this._latlng.lat;
+                    let markerLng = this._latlng.lng;
+                    let findSight = $(`[id^="sight-container-"][data-lat="${markerLat}"][data-lng="${markerLng}"]`).attr("data-top");
+                    // scroll to the sight container
+                    $(window).scrollTop(findSight);
+                });
             });
+        }
 
-            marker = L.marker([lat, lng], {icon: markerCategory}).bindPopup(`{{ sight.sight }}`).addTo(map);
-            markerArray.push(marker);
+        // initial data attribute setting
+        updateSightDataAttributes();
 
-            // get each sight's "top" and "bottom" px distance from top of window -- must use 'var'
-            var sightContainer = $(`#sight-container-{{ forloop.counter }}`);
-            var sightTop = Math.round($(sightContainer).offset().top) - ($(window).height() / 2);
-            var sightBottom = sightTop + $(sightContainer).outerHeight(true);
+        // update data attributes on window resize
+        $(window).resize(debounce(updateSightDataAttributes, 50));
 
-            // set each data-attribute -- cannot use .data("foobar")
-            $(sightContainer).attr("data-top", sightTop);
-            $(sightContainer).attr("data-bottom", sightBottom);
-            $(sightContainer).attr("data-lat", lat);
-            $(sightContainer).attr("data-lng", lng);
+        // debounce: ensure no rapid firing of fns all at once on page-scroll; give short timeout
+        function debounce(func, wait) {
+            let timeout;
+            return function() {
+                clearTimeout(timeout);
+                timeout = setTimeout(func, wait);
+            };
+        }
 
-            var getSightTop, getSightBottom, getSightLat, getSightLng;
+        // on scroll, check distance from top
+        $(document).scroll(debounce(function() {
+            let distanceFromTop = Math.round($(this).scrollTop());
 
-            // on scroll, check distance from top
-            $(document).scroll(function() {
-                let distanceFromTop = Math.round($(this).scrollTop());
-                // must re-define top/bottom/lat/lng and retrieve data-values
-                getSightTop = $("#sight-container-{{ forloop.counter }}").attr("data-top");
-                getSightBottom = $("#sight-container-{{ forloop.counter }}").attr("data-bottom");
-                getSightLat = $("#sight-container-{{ forloop.counter }}").attr("data-lat");
-                getSightLng = $("#sight-container-{{ forloop.counter }}").attr("data-lng");
+            sightsData.forEach(function(sight) {
+                let sightContainer = $(`#${sight.containerId}`);
+                let getSightTop = parseInt($(sightContainer).attr("data-top"));
+                let getSightBottom = parseInt($(sightContainer).attr("data-bottom"));
+                let getSightLat = parseFloat($(sightContainer).attr("data-lat"));
+                let getSightLng = parseFloat($(sightContainer).attr("data-lng"));
 
-                if (distanceFromTop >= getSightTop && distanceFromTop < getSightBottom) {
+                // container is halfway up the page
+                if (distanceFromTop >= getSightTop && distanceFromTop <= getSightBottom) {
                     $(`[id^="sight-container-"]`).removeClass("map-in-focus").addClass("map-out-focus");
-                    $("#sight-container-{{ forloop.counter }}").removeClass("map-out-focus").addClass("map-in-focus");
+                    $(sightContainer).removeClass("map-out-focus").addClass("map-in-focus");
                     // fly to sight, fully zoomed-in
                     map.flyTo([getSightLat, getSightLng], 18);
                 }
@@ -211,18 +248,7 @@
                     map.flyToBounds(markerGroup.getBounds().pad(0.25), {duration: 1});
                 }
             });
-
-            // clicking a marker scrolls to that sight's container
-            $(marker).on("click", function() {
-                // use the marker's lat/lng to find appropriate container
-                let markerLat = this._latlng.lat;
-                let markerLng = this._latlng.lng;
-                let findSight = $(`[id^="sight-container-"][data-lat="${markerLat}"][data-lng="${markerLng}"]`).attr("data-top");
-                // scroll to the sight container
-                $(window).scrollTop(findSight);
-            });
-
-        {% endfor %}
+        }, 50));
 
         // ensure map is zoomed to show only the markers
         let markerGroup = L.featureGroup(markerArray).addTo(map);
