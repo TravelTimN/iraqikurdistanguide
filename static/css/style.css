@@ -1081,7 +1081,7 @@ p.lightbox-caption {
     margin: 1em;
 }
 
-.accordion-body.faq-answer a {
+.accordion-body.faq-answer a:not(.btn) {
     font-weight: bold;
     color: rgba(var(--kurdish-green), 1);
     text-decoration: underline;
