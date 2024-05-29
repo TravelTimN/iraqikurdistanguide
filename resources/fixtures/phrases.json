@@ -6,9 +6,9 @@
             "category": "0",
             "english_phrase": "Hello",
             "sorani_script": "سڵاو",
-            "sorani_latin": "sllau",
+            "sorani_latin": "slaw",
             "arabic_script": "مرحبًا",
-            "arabic_latin": "mrhban",
+            "arabic_latin": "marhaban",
             "is_visible": true
         }
     },
@@ -17,50 +17,11 @@
         "pk": 2,
         "fields": {
             "category": "0",
-            "english_phrase": "Welcome",
+            "english_phrase": "Welcome!",
             "sorani_script": "بەخێربێیت",
-            "sorani_latin": "bexêr bêyt",
-            "arabic_script": "أهلا بك",
-            "arabic_latin": "'ahlan bik",
-            "is_visible": true
-        }
-    },
-    {
-        "model": "resources.phrase",
-        "pk": 3,
-        "fields": {
-            "category": "2",
-            "english_phrase": "Airport",
-            "sorani_script": "فڕۆکەخانە",
-            "sorani_latin": "frokexane",
-            "arabic_script": "مطار",
-            "arabic_latin": "matar",
-            "is_visible": true
-        }
-    },
-    {
-        "model": "resources.phrase",
-        "pk": 4,
-        "fields": {
-            "category": "2",
-            "english_phrase": "Train station",
-            "sorani_script": "وێستگه‌ی شه‌مه‌نده‌فه‌ر",
-            "sorani_latin": "wêstgei shemendefer",
-            "arabic_script": "محطة القطار",
-            "arabic_latin": "mahatat alqitar",
-            "is_visible": true
-        }
-    },
-    {
-        "model": "resources.phrase",
-        "pk": 5,
-        "fields": {
-            "category": "3",
-            "english_phrase": "Hotel",
-            "sorani_script": "ئوتێل",
-            "sorani_latin": "autêl",
-            "arabic_script": "الفندق",
-            "arabic_latin": "alfunduq",
+            "sorani_latin": "baxer beyt",
+            "arabic_script": "أهلاً وسهلاً",
+            "arabic_latin": "ahlan wa sahlan",
             "is_visible": true
         }
     },
@@ -79,118 +40,1262 @@
     },
     {
         "model": "resources.phrase",
-        "pk": 7,
+        "pk": 15,
         "fields": {
-            "category": "4",
-            "english_phrase": "I'm allergic to...",
-            "sorani_script": "من حەساسیەتم بە...",
-            "sorani_latin": "mn hesasietm be...",
-            "arabic_script": "لدى حساسيه من...",
-            "arabic_latin": "ladaa hasaasayh min...",
+            "category": "0",
+            "english_phrase": "Good morning",
+            "sorani_script": "بەیانی باش",
+            "sorani_latin": "bayani bash",
+            "arabic_script": "صباح الخير",
+            "arabic_latin": "sabah alkhayr",
             "is_visible": true
         }
     },
     {
         "model": "resources.phrase",
-        "pk": 8,
+        "pk": 16,
+        "fields": {
+            "category": "0",
+            "english_phrase": "Good afternoon",
+            "sorani_script": "نیوەڕۆ باش",
+            "sorani_latin": "niwaro bash",
+            "arabic_script": "مساء الخير",
+            "arabic_latin": "masa' alkhayr",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 17,
+        "fields": {
+            "category": "0",
+            "english_phrase": "Good evening",
+            "sorani_script": "ئێوارە باش",
+            "sorani_latin": "ewara bash",
+            "arabic_script": "مساء الخير",
+            "arabic_latin": "masa' alkhayr",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 18,
+        "fields": {
+            "category": "0",
+            "english_phrase": "Good night",
+            "sorani_script": "شەو باش",
+            "sorani_latin": "shaw bash",
+            "arabic_script": "تصبح على خير",
+            "arabic_latin": "tusbih 'ala khayr",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 19,
+        "fields": {
+            "category": "0",
+            "english_phrase": "Goodbye",
+            "sorani_script": "خواحافیز",
+            "sorani_latin": "xwa hafiz",
+            "arabic_script": "وداعًا",
+            "arabic_latin": "wada'an",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 20,
+        "fields": {
+            "category": "1",
+            "english_phrase": "Please",
+            "sorani_script": "تکایه",
+            "sorani_latin": "takaya",
+            "arabic_script": "من فضلك",
+            "arabic_latin": "min fadlik",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 21,
+        "fields": {
+            "category": "1",
+            "english_phrase": "Thank you",
+            "sorani_script": "سوپاس",
+            "sorani_latin": "supas",
+            "arabic_script": "شكرًا",
+            "arabic_latin": "shukran",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 22,
+        "fields": {
+            "category": "1",
+            "english_phrase": "You're welcome",
+            "sorani_script": "بەخێربێی",
+            "sorani_latin": "baxer beyi",
+            "arabic_script": "عفواً",
+            "arabic_latin": "'afwan",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 23,
+        "fields": {
+            "category": "1",
+            "english_phrase": "Yes",
+            "sorani_script": "بەڵێ",
+            "sorani_latin": "bale",
+            "arabic_script": "نعم",
+            "arabic_latin": "na'am",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 24,
+        "fields": {
+            "category": "1",
+            "english_phrase": "No",
+            "sorani_script": "نا",
+            "sorani_latin": "na",
+            "arabic_script": "لا",
+            "arabic_latin": "la",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 25,
+        "fields": {
+            "category": "4",
+            "english_phrase": "Water",
+            "sorani_script": "ئاو",
+            "sorani_latin": "aw",
+            "arabic_script": "ماء",
+            "arabic_latin": "ma'",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 26,
+        "fields": {
+            "category": "4",
+            "english_phrase": "Bread",
+            "sorani_script": "نان",
+            "sorani_latin": "nan",
+            "arabic_script": "خبز",
+            "arabic_latin": "khubz",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 27,
+        "fields": {
+            "category": "4",
+            "english_phrase": "Rice",
+            "sorani_script": "برنج",
+            "sorani_latin": "brinj",
+            "arabic_script": "أرز",
+            "arabic_latin": "'arz",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 28,
+        "fields": {
+            "category": "4",
+            "english_phrase": "Egg",
+            "sorani_script": "ھەڵک",
+            "sorani_latin": "halk",
+            "arabic_script": "بيضة",
+            "arabic_latin": "bayda",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 29,
+        "fields": {
+            "category": "4",
+            "english_phrase": "Breakfast",
+            "sorani_script": "نانی بەیانی",
+            "sorani_latin": "nani bayani",
+            "arabic_script": "إفطار",
+            "arabic_latin": "'iftar",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 30,
+        "fields": {
+            "category": "4",
+            "english_phrase": "Lunch",
+            "sorani_script": "نانی نیوەڕۆ",
+            "sorani_latin": "nani niwaro",
+            "arabic_script": "غداء",
+            "arabic_latin": "ghada'",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 31,
+        "fields": {
+            "category": "4",
+            "english_phrase": "Dinner",
+            "sorani_script": "نانی ئێوارە",
+            "sorani_latin": "nani ewara",
+            "arabic_script": "عشاء",
+            "arabic_latin": "'asha'",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 32,
+        "fields": {
+            "category": "4",
+            "english_phrase": "Dessert",
+            "sorani_script": "شیرینی",
+            "sorani_latin": "shirini",
+            "arabic_script": "حلوى",
+            "arabic_latin": "halwa",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 33,
+        "fields": {
+            "category": "4",
+            "english_phrase": "Beverages",
+            "sorani_script": "خواردنەوەکان",
+            "sorani_latin": "xwardnewekan",
+            "arabic_script": "مشروبات",
+            "arabic_latin": "mashrubat",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 34,
+        "fields": {
+            "category": "1",
+            "english_phrase": "Do you speak English?",
+            "sorani_script": "ئینگلیزی قسەدەکەی؟",
+            "sorani_latin": "ingilizi qasedakay?",
+            "arabic_script": "هل تتحدث الإنجليزية؟",
+            "arabic_latin": "hal tatahaddath al'iinjlizia?",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 35,
+        "fields": {
+            "category": "1",
+            "english_phrase": "I'm sorry",
+            "sorani_script": "ببورە",
+            "sorani_latin": "bboora",
+            "arabic_script": "أنا آسف",
+            "arabic_latin": "ana asif",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 36,
+        "fields": {
+            "category": "1",
+            "english_phrase": "Excuse me",
+            "sorani_script": "ببورە",
+            "sorani_latin": "bboora",
+            "arabic_script": "عفواً",
+            "arabic_latin": "'afwan",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 37,
+        "fields": {
+            "category": "7",
+            "english_phrase": "Help!",
+            "sorani_script": "هاوکاری!",
+            "sorani_latin": "hawkari!",
+            "arabic_script": "النجدة!",
+            "arabic_latin": "alnajda!",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 38,
+        "fields": {
+            "category": "7",
+            "english_phrase": "I need help",
+            "sorani_script": "پێویستم بە هاوکاریە",
+            "sorani_latin": "pewistm ba hawkariya",
+            "arabic_script": "أحتاج إلى مساعدة",
+            "arabic_latin": "ahtaj 'iilaa musa'ada",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 39,
+        "fields": {
+            "category": "7",
+            "english_phrase": "I'm lost",
+            "sorani_script": "کەم بووە",
+            "sorani_latin": "kem buwe",
+            "arabic_script": "أنا ضائع",
+            "arabic_latin": "ana daayi'",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 40,
+        "fields": {
+            "category": "7",
+            "english_phrase": "Please call the police",
+            "sorani_script": "تکایه پۆلیسەکە بکەوە",
+            "sorani_latin": "takaya polisekay bakawa",
+            "arabic_script": "اتصل بالشرطة من فضلك",
+            "arabic_latin": "itsil bialshurta min fadlik",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 41,
+        "fields": {
+            "category": "7",
+            "english_phrase": "I need a doctor",
+            "sorani_script": "پێویستم بە پزیشکم",
+            "sorani_latin": "pewistm ba pazishkam",
+            "arabic_script": "أحتاج إلى طبيب",
+            "arabic_latin": "ahtaj 'iilaa tabib",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 42,
+        "fields": {
+            "category": "7",
+            "english_phrase": "I need medicine",
+            "sorani_script": "پێویستم بە دەرمانە",
+            "sorani_latin": "pewistm ba darwana",
+            "arabic_script": "أحتاج إلى دواء",
+            "arabic_latin": "ahtaj 'iilaa dawa'",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 43,
+        "fields": {
+            "category": "7",
+            "english_phrase": "Where is the pharmacy?",
+            "sorani_script": "خانووە دارووکە کەیە؟",
+            "sorani_latin": "xanwe darwaka kaye?",
+            "arabic_script": "أين الصيدلية؟",
+            "arabic_latin": "'ayn alssidalia?",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 44,
+        "fields": {
+            "category": "1",
+            "english_phrase": "I don't understand",
+            "sorani_script": "تێ ناگەم",
+            "sorani_latin": "te nagem",
+            "arabic_script": "لا أفهم",
+            "arabic_latin": "la afham",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 45,
+        "fields": {
+            "category": "1",
+            "english_phrase": "I don't speak Kurdish",
+            "sorani_script": "کوردی قسە ناکەم",
+            "sorani_latin": "kurdi qese nakem",
+            "arabic_script": "لا أتحدث الكردية",
+            "arabic_latin": "la atahadath alkurdiya",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 46,
+        "fields": {
+            "category": "1",
+            "english_phrase": "I don't speak Arabic",
+            "sorani_script": "عەرەبی قسە ناکەم",
+            "sorani_latin": "arabi qese nakem",
+            "arabic_script": "لا أتحدث العربية",
+            "arabic_latin": "la atahadath alearabia",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 47,
+        "fields": {
+            "category": "1",
+            "english_phrase": "I don't speak English",
+            "sorani_script": "ئینگلیزی قسە ناکەم",
+            "sorani_latin": "ingilizi qese nakem",
+            "arabic_script": "لا أتحدث الإنجليزية",
+            "arabic_latin": "la atahadath al'iinjlizia",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 48,
+        "fields": {
+            "category": "1",
+            "english_phrase": "I am from...",
+            "sorani_script": "من لە ...",
+            "sorani_latin": "mn la ...",
+            "arabic_script": "أنا من ...",
+            "arabic_latin": "ana min ...",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 49,
+        "fields": {
+            "category": "1",
+            "english_phrase": "Where are you from?",
+            "sorani_script": "تۆ لە کوێیت؟",
+            "sorani_latin": "to la kwayet?",
+            "arabic_script": "من أين أنت؟",
+            "arabic_latin": "min ayna ant?",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 50,
+        "fields": {
+            "category": "1",
+            "english_phrase": "My name is...",
+            "sorani_script": "ناوم ...",
+            "sorani_latin": "nawm ...",
+            "arabic_script": "اسمي ...",
+            "arabic_latin": "ismi ...",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 51,
+        "fields": {
+            "category": "1",
+            "english_phrase": "How are you?",
+            "sorani_script": "چۆنیت؟",
+            "sorani_latin": "chonit?",
+            "arabic_script": "كيف حالك؟",
+            "arabic_latin": "kayf halik?",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 52,
+        "fields": {
+            "category": "1",
+            "english_phrase": "I'm fine, thank you.",
+            "sorani_script": "من باشم سوپاس",
+            "sorani_latin": "mn bashm supas",
+            "arabic_script": "أنا بخير شكرًا",
+            "arabic_latin": "ana bikhayr shukran",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 53,
+        "fields": {
+            "category": "0",
+            "english_phrase": "Nice to meet you",
+            "sorani_script": "خۆشحاڵم بە ناسینت",
+            "sorani_latin": "xoshhalm ba nasinet",
+            "arabic_script": "سررت بلقائك",
+            "arabic_latin": "surirt biliqayik",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 54,
+        "fields": {
+            "category": "7",
+            "english_phrase": "I'm allergic to...",
+            "sorani_script": "من حساسم بە ...",
+            "sorani_latin": "mn hassasm ba ...",
+            "arabic_script": "أنا أعاني من حساسية ل ...",
+            "arabic_latin": "ana 'aeani min hasasia l ...",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 55,
         "fields": {
             "category": "4",
             "english_phrase": "I don't eat...",
-            "sorani_script": "من ناخۆم...",
-            "sorani_latin": "mn naxom...",
-            "arabic_script": "أنا لا آكل ...",
-            "arabic_latin": "'ana la akil ...",
+            "sorani_script": "من ... ناخوەم",
+            "sorani_latin": "mn ... naxwim",
+            "arabic_script": "لا أتناول ...",
+            "arabic_latin": "la 'atanawal ...",
             "is_visible": true
         }
     },
     {
         "model": "resources.phrase",
-        "pk": 9,
+        "pk": 56,
+        "fields": {
+            "category": "7",
+            "english_phrase": "I lost my passport",
+            "sorani_script": "پاسپۆرتم کەم بووە",
+            "sorani_latin": "pasportm kem buwe",
+            "arabic_script": "فقدت جواز سفري",
+            "arabic_latin": "faqadat jawaz safri",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 57,
+        "fields": {
+            "category": "7",
+            "english_phrase": "I lost my suitcase",
+            "sorani_script": "سامەڕام کەم بووە",
+            "sorani_latin": "samarim kem buwe",
+            "arabic_script": "فقدت حقيبتي",
+            "arabic_latin": "faqadat haqibati",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 58,
+        "fields": {
+            "category": "2",
+            "english_phrase": "Train station",
+            "sorani_script": "ستەیشنە ڕێل",
+            "sorani_latin": "steshne rel",
+            "arabic_script": "محطة القطار",
+            "arabic_latin": "mahatat alqitar",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 59,
+        "fields": {
+            "category": "2",
+            "english_phrase": "Bus station",
+            "sorani_script": "ستەیشنە ئوتۆبوس",
+            "sorani_latin": "steshne otobus",
+            "arabic_script": "محطة الحافلات",
+            "arabic_latin": "mahatat alhafilat",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 60,
+        "fields": {
+            "category": "2",
+            "english_phrase": "Airport",
+            "sorani_script": "فڕۆکەخانە",
+            "sorani_latin": "forokexana",
+            "arabic_script": "مطار",
+            "arabic_latin": "matar",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 61,
+        "fields": {
+            "category": "3",
+            "english_phrase": "Hotel",
+            "sorani_script": "هوتێل",
+            "sorani_latin": "hotel",
+            "arabic_script": "فندق",
+            "arabic_latin": "funduq",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 62,
+        "fields": {
+            "category": "4",
+            "english_phrase": "Restaurant",
+            "sorani_script": "چێشتخانە",
+            "sorani_latin": "cheshtxana",
+            "arabic_script": "مطعم",
+            "arabic_latin": "mat eam",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 63,
+        "fields": {
+            "category": "7",
+            "english_phrase": "Hospital",
+            "sorani_script": "نەخۆشخانە",
+            "sorani_latin": "nexoshxana",
+            "arabic_script": "مستشفى",
+            "arabic_latin": "mustashfaa",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 64,
+        "fields": {
+            "category": "2",
+            "english_phrase": "Bank",
+            "sorani_script": "بانک",
+            "sorani_latin": "bank",
+            "arabic_script": "بنك",
+            "arabic_latin": "bank",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 65,
+        "fields": {
+            "category": "2",
+            "english_phrase": "ATM",
+            "sorani_script": "کەشپۆڵ",
+            "sorani_latin": "keshpol",
+            "arabic_script": "ماكينة صراف آلي",
+            "arabic_latin": "makina siraf ali",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 66,
+        "fields": {
+            "category": "2",
+            "english_phrase": "Where is the embassy?",
+            "sorani_script": "نوێری کەیە؟",
+            "sorani_latin": "neweri kaye?",
+            "arabic_script": "أين السفارة؟",
+            "arabic_latin": "'ayn alsifara?",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 67,
+        "fields": {
+            "category": "2",
+            "english_phrase": "Where is the restroom?",
+            "sorani_script": "توالەت کەیە؟",
+            "sorani_latin": "twalet kaye?",
+            "arabic_script": "أين دورة المياه؟",
+            "arabic_latin": "'ayn dawrat almyah?",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 68,
+        "fields": {
+            "category": "1",
+            "english_phrase": "Men - Man",
+            "sorani_script": "پیاوان - پیاو",
+            "sorani_latin": "pyawan - pyaw",
+            "arabic_script": "رجال - رجل",
+            "arabic_latin": "rijal - rajul",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 69,
+        "fields": {
+            "category": "1",
+            "english_phrase": "Women - Woman",
+            "sorani_script": "ژنان - ژن",
+            "sorani_latin": "zhnan - zhn",
+            "arabic_script": "نساء - امرأة",
+            "arabic_latin": "nisa' - imra'",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 70,
+        "fields": {
+            "category": "1",
+            "english_phrase": "How much does this cost?",
+            "sorani_script": "ئەمە بە چندە؟",
+            "sorani_latin": "ema ba chanda?",
+            "arabic_script": "كم سعر هذا؟",
+            "arabic_latin": "kam siier hadha?",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 71,
+        "fields": {
+            "category": "2",
+            "english_phrase": "Where is...",
+            "sorani_script": "کوێیە ...؟",
+            "sorani_latin": "koye ...?",
+            "arabic_script": "أين ...؟",
+            "arabic_latin": "'ayn ...?",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 72,
+        "fields": {
+            "category": "1",
+            "english_phrase": "What time is it?",
+            "sorani_script": "کاتژمێر چەندە؟",
+            "sorani_latin": "katjmer chanda?",
+            "arabic_script": "كم الساعة؟",
+            "arabic_latin": "kam alsaea?",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 73,
+        "fields": {
+            "category": "1",
+            "english_phrase": "Who",
+            "sorani_script": "کێ",
+            "sorani_latin": "ke",
+            "arabic_script": "من",
+            "arabic_latin": "min",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 74,
+        "fields": {
+            "category": "1",
+            "english_phrase": "Where",
+            "sorani_script": "کوێ",
+            "sorani_latin": "kwe",
+            "arabic_script": "أين",
+            "arabic_latin": "'ayn",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 75,
+        "fields": {
+            "category": "1",
+            "english_phrase": "What",
+            "sorani_script": "چی",
+            "sorani_latin": "chi",
+            "arabic_script": "ماذا",
+            "arabic_latin": "madha",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 76,
+        "fields": {
+            "category": "1",
+            "english_phrase": "When",
+            "sorani_script": "کەی",
+            "sorani_latin": "kay",
+            "arabic_script": "متى",
+            "arabic_latin": "mata",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 77,
+        "fields": {
+            "category": "1",
+            "english_phrase": "Why",
+            "sorani_script": "بۆچی",
+            "sorani_latin": "bochi",
+            "arabic_script": "لماذا",
+            "arabic_latin": "limadha",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 78,
+        "fields": {
+            "category": "1",
+            "english_phrase": "How",
+            "sorani_script": "چۆن",
+            "sorani_latin": "chon",
+            "arabic_script": "كيف",
+            "arabic_latin": "kayf",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 79,
+        "fields": {
+            "category": "1",
+            "english_phrase": "Currency exchange",
+            "sorani_script": "گۆڕینی دراو",
+            "sorani_latin": "gorini draw",
+            "arabic_script": "تحويل العملة",
+            "arabic_latin": "tahwil aleumla",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 80,
+        "fields": {
+            "category": "5",
+            "english_phrase": "zero (0)",
+            "sorani_script": "سێفەر (٠)",
+            "sorani_latin": "sefar",
+            "arabic_script": "صفر (٠)",
+            "arabic_latin": "sifr",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 81,
         "fields": {
             "category": "5",
             "english_phrase": "one (1)",
-            "sorani_script": "(١) یەک",
-            "sorani_latin": "iek",
-            "arabic_script": "(١) واحد",
+            "sorani_script": "یەک (١)",
+            "sorani_latin": "yek",
+            "arabic_script": "واحد (١)",
             "arabic_latin": "wahid",
             "is_visible": true
         }
     },
     {
         "model": "resources.phrase",
-        "pk": 10,
+        "pk": 82,
         "fields": {
             "category": "5",
             "english_phrase": "two (2)",
-            "sorani_script": "(٢) دوو",
-            "sorani_latin": "duu",
-            "arabic_script": "(٢) اثنين",
-            "arabic_latin": "aithnayn",
+            "sorani_script": "دوو (٢)",
+            "sorani_latin": "du",
+            "arabic_script": "اثنان (٢)",
+            "arabic_latin": "ithnan",
             "is_visible": true
         }
     },
     {
         "model": "resources.phrase",
-        "pk": 11,
+        "pk": 83,
+        "fields": {
+            "category": "5",
+            "english_phrase": "three (3)",
+            "sorani_script": "سێ (٣)",
+            "sorani_latin": "se",
+            "arabic_script": "ثلاثة (٣)",
+            "arabic_latin": "thalatha",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 84,
+        "fields": {
+            "category": "5",
+            "english_phrase": "four (4)",
+            "sorani_script": "چوار (٤)",
+            "sorani_latin": "chwar",
+            "arabic_script": "أربعة (٤)",
+            "arabic_latin": "arbaea",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 85,
+        "fields": {
+            "category": "5",
+            "english_phrase": "five (5)",
+            "sorani_script": "پێنج (٥)",
+            "sorani_latin": "pench",
+            "arabic_script": "خمسة (٥)",
+            "arabic_latin": "khamsa",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 86,
+        "fields": {
+            "category": "5",
+            "english_phrase": "six (6)",
+            "sorani_script": "شەش (٦)",
+            "sorani_latin": "shesh",
+            "arabic_script": "ستة (٦)",
+            "arabic_latin": "sitta",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 87,
+        "fields": {
+            "category": "5",
+            "english_phrase": "seven (7)",
+            "sorani_script": "حەوت (٧)",
+            "sorani_latin": "hawt",
+            "arabic_script": "سبعة (٧)",
+            "arabic_latin": "sab'a",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 88,
+        "fields": {
+            "category": "5",
+            "english_phrase": "eight (8)",
+            "sorani_script": "هەشت (٨)",
+            "sorani_latin": "hasht",
+            "arabic_script": "ثمانية (٨)",
+            "arabic_latin": "thamania",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 89,
+        "fields": {
+            "category": "5",
+            "english_phrase": "nine (9)",
+            "sorani_script": "نۆ (٩)",
+            "sorani_latin": "no",
+            "arabic_script": "تسعة (٩)",
+            "arabic_latin": "tis'a",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 90,
+        "fields": {
+            "category": "5",
+            "english_phrase": "ten (10)",
+            "sorani_script": "دە (١٠)",
+            "sorani_latin": "da",
+            "arabic_script": "عشرة (١٠)",
+            "arabic_latin": "ashar",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 91,
+        "fields": {
+            "category": "5",
+            "english_phrase": "twenty (20)",
+            "sorani_script": "بیست (٢٠)",
+            "sorani_latin": "bist",
+            "arabic_script": "عشرون (٢٠)",
+            "arabic_latin": "eshroon",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 92,
+        "fields": {
+            "category": "5",
+            "english_phrase": "thirty (30)",
+            "sorani_script": "سی (٣٠)",
+            "sorani_latin": "si",
+            "arabic_script": "ثلاثون (٣٠)",
+            "arabic_latin": "thalathoon",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 93,
+        "fields": {
+            "category": "5",
+            "english_phrase": "forty (40)",
+            "sorani_script": "چەڵ (٤٠)",
+            "sorani_latin": "chal",
+            "arabic_script": "أربعون (٤٠)",
+            "arabic_latin": "arba'oon",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 94,
+        "fields": {
+            "category": "5",
+            "english_phrase": "fifty (50)",
+            "sorani_script": "پەنجا (٥٠)",
+            "sorani_latin": "panja",
+            "arabic_script": "خمسون (٥٠)",
+            "arabic_latin": "khamsoon",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 95,
+        "fields": {
+            "category": "5",
+            "english_phrase": "sixty (60)",
+            "sorani_script": "شەست (٦٠)",
+            "sorani_latin": "shast",
+            "arabic_script": "ستون (٦٠)",
+            "arabic_latin": "sittoon",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 96,
+        "fields": {
+            "category": "5",
+            "english_phrase": "seventy (70)",
+            "sorani_script": "حەفتا (٧٠)",
+            "sorani_latin": "hafta",
+            "arabic_script": "سبعون (٧٠)",
+            "arabic_latin": "sab'oon",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 97,
+        "fields": {
+            "category": "5",
+            "english_phrase": "eighty (80)",
+            "sorani_script": "هەشتا (٨٠)",
+            "sorani_latin": "hashta",
+            "arabic_script": "ثمانون (٨٠)",
+            "arabic_latin": "thamanoon",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 98,
+        "fields": {
+            "category": "5",
+            "english_phrase": "ninety (90)",
+            "sorani_script": "نەوەد (٩٠)",
+            "sorani_latin": "nawad",
+            "arabic_script": "تسعون (٩٠)",
+            "arabic_latin": "tis'oon",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 99,
+        "fields": {
+            "category": "5",
+            "english_phrase": "one hundred (100)",
+            "sorani_script": "سەد (١٠٠)",
+            "sorani_latin": "sad",
+            "arabic_script": "مائة (١٠٠)",
+            "arabic_latin": "mi'a",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 100,
         "fields": {
             "category": "6",
             "english_phrase": "red",
-            "sorani_script": "سوور",
-            "sorani_latin": "suur",
+            "sorani_script": "سور",
+            "sorani_latin": "sor",
             "arabic_script": "أحمر",
-            "arabic_latin": "'ahmar",
+            "arabic_latin": "ahmar",
             "is_visible": true
         }
     },
     {
         "model": "resources.phrase",
-        "pk": 12,
+        "pk": 101,
         "fields": {
             "category": "6",
             "english_phrase": "orange",
-            "sorani_script": "نارنجی",
-            "sorani_latin": "narnedji",
-            "arabic_script": "البرتقالي",
-            "arabic_latin": "alburtuqaliu",
+            "sorani_script": "پورتەقاڵی",
+            "sorani_latin": "porteqali",
+            "arabic_script": "برتقالي",
+            "arabic_latin": "burtuqali",
             "is_visible": true
         }
     },
     {
         "model": "resources.phrase",
-        "pk": 13,
+        "pk": 102,
         "fields": {
-            "category": "7",
-            "english_phrase": "Help!",
-            "sorani_script": "یارمەتیدان!",
-            "sorani_latin": "iarmetidan!",
-            "arabic_script": "مساعدة!",
-            "arabic_latin": "musaeidatun!",
+            "category": "6",
+            "english_phrase": "yellow",
+            "sorani_script": "زەرد",
+            "sorani_latin": "zard",
+            "arabic_script": "أصفر",
+            "arabic_latin": "asfar",
             "is_visible": true
         }
     },
     {
         "model": "resources.phrase",
-        "pk": 14,
+        "pk": 103,
         "fields": {
-            "category": "7",
-            "english_phrase": "I need help",
-            "sorani_script": "من پێویستیم بە یارمەتییە",
-            "sorani_latin": "mn pêoistim be iarmetiie",
-            "arabic_script": "انا بحاجة الى مساعدة",
-            "arabic_latin": "ana bihajat alaa musaeida",
+            "category": "6",
+            "english_phrase": "green",
+            "sorani_script": "سەوز",
+            "sorani_latin": "sawz",
+            "arabic_script": "أخضر",
+            "arabic_latin": "akhdar",
             "is_visible": true
         }
     },
     {
         "model": "resources.phrase",
-        "pk": 15,
+        "pk": 104,
         "fields": {
-            "category": "0",
-            "english_phrase": "Good morning",
-            "sorani_script": "بەیانیت باش",
-            "sorani_latin": "beianit bash",
-            "arabic_script": "صباح الخير",
-            "arabic_latin": "sabah alkhayr",
+            "category": "6",
+            "english_phrase": "blue",
+            "sorani_script": "شین",
+            "sorani_latin": "shin",
+            "arabic_script": "أزرق",
+            "arabic_latin": "azraq",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 105,
+        "fields": {
+            "category": "6",
+            "english_phrase": "purple",
+            "sorani_script": "مەور",
+            "sorani_latin": "mor",
+            "arabic_script": "أرجواني",
+            "arabic_latin": "urjuwani",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 106,
+        "fields": {
+            "category": "6",
+            "english_phrase": "black",
+            "sorani_script": "ڕەش",
+            "sorani_latin": "resh",
+            "arabic_script": "أسود",
+            "arabic_latin": "aswad",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 107,
+        "fields": {
+            "category": "6",
+            "english_phrase": "white",
+            "sorani_script": "سپی",
+            "sorani_latin": "spi",
+            "arabic_script": "أبيض",
+            "arabic_latin": "abyad",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 108,
+        "fields": {
+            "category": "6",
+            "english_phrase": "brown",
+            "sorani_script": "قاوەی",
+            "sorani_latin": "qawi",
+            "arabic_script": "بني",
+            "arabic_latin": "buni",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 109,
+        "fields": {
+            "category": "6",
+            "english_phrase": "pink",
+            "sorani_script": "پەمەی",
+            "sorani_latin": "pame",
+            "arabic_script": "وردي",
+            "arabic_latin": "wardi",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 110,
+        "fields": {
+            "category": "6",
+            "english_phrase": "gold",
+            "sorani_script": "زەڕین",
+            "sorani_latin": "zarin",
+            "arabic_script": "ذهبي",
+            "arabic_latin": "dhahabi",
+            "is_visible": true
+        }
+    },
+    {
+        "model": "resources.phrase",
+        "pk": 111,
+        "fields": {
+            "category": "6",
+            "english_phrase": "silver",
+            "sorani_script": "زێوە",
+            "sorani_latin": "zewa",
+            "arabic_script": "فضي",
+            "arabic_latin": "faddi",
             "is_visible": true
         }
     }
