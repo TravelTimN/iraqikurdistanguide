@@ -131,6 +131,8 @@
         });
 
         let markerArray = [];
+        let markerGroup = L.featureGroup(markerArray).addTo(map);
+
         // display destination on map
         let lat = {{ destination.latitude }};
         let lng = {{ destination.longitude }};
@@ -142,6 +144,7 @@
             {% for sight in sights %}
                 {
                     index: {{ forloop.counter }},
+                    name: `{{ sight.sight.name }}`,
                     lat: {{ sight.sight.latitude }},
                     lng: {{ sight.sight.longitude }},
                     containerId: `sight-container-{{ forloop.counter }}`,
@@ -171,6 +174,10 @@
 
         // update data attributes
         function updateSightDataAttributes() {
+            // remove existing markers from the map to avoid duplicates
+            markerGroup.clearLayers();
+            markerArray = [];
+
             sightsData.forEach(sight => {
                 let sightContainer = $(`#${sight.containerId}`);
                 let sightTop = Math.round($(sightContainer).offset().top) - ($(window).height() / 2);
@@ -195,8 +202,9 @@
                 });
 
                 // bind the marker to the map, and push to markerArray
-                let sightMarker = L.marker([sight.lat, sight.lng], { icon: markerCategory }).bindPopup(sight.containerId).addTo(map);
+                let sightMarker = L.marker([sight.lat, sight.lng], {icon: markerCategory}).bindPopup(sight.name).addTo(map);
                 markerArray.push(sightMarker);
+                markerGroup.addLayer(sightMarker);
 
                 // click event to scroll to the sight container when user clicks on a marker
                 $(sightMarker).on("click", function() {
@@ -207,6 +215,9 @@
                     $(window).scrollTop(findSight);
                 });
             });
+
+            // ensure map is zoomed to show only the markers
+            map.fitBounds(markerGroup.getBounds().pad(0.5));
         }
 
         // initial data attribute setting
@@ -251,7 +262,6 @@
         }, 50));
 
         // ensure map is zoomed to show only the markers
-        let markerGroup = L.featureGroup(markerArray).addTo(map);
         map.fitBounds(markerGroup.getBounds().pad(0.5));
     });
 </script>
