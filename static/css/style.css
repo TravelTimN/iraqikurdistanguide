@@ -979,6 +979,66 @@ input[type="checkbox"][name="itinerary"][id^="id_itinerary_"] {
 }
 
 /* GALLERY */
+
+/* fancybox */
+.fancybox__container {
+    z-index: var(--fancybox-zIndex, 1200);
+}
+
+.gallery-fancybox .card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.gallery-fancybox .card-body {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    /* height: calc(100% - 53px); */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(var(--black), 0.75);
+    color: rgba(var(--white), 1);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
+}
+
+.gallery-fancybox .card:hover .card-body {
+    top: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+.gallery-fancybox .card:hover img:not(.flag) {
+    transform: scale(1.25);
+    outline-color: transparent;
+}
+
+.gallery-fancybox img:not(.flag) {
+    min-height: 200px;
+    max-height: 200px;
+    object-fit: cover;
+    outline: 0.75em solid rgba(var(--white), 0.5);
+    outline-offset: -2em;
+    transition: all 0.3s ease-in-out;
+}
+
+.gallery-fancybox .card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(var(--black), 0.5) !important;
+}
+
+.gallery-fancybox .card-footer {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(var(--white), 1);
+}
+
 figcaption.card-img-overlay {
     transform: translateY(100%);
     transition: transform 0.18s ease-in;
