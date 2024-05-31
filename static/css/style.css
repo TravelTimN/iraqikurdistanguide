@@ -392,6 +392,11 @@ nav.navbar {
     border-color: rgba(var(--black), 1);
 }
 
+.list-group-item-action:focus,
+.list-group-item-action:hover {
+    z-index: 3;
+}
+
 /* BREADCRUMBS */
 #breadcrumb-container {
     position: sticky !important;
