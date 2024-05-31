@@ -9,9 +9,9 @@ from main.decorators import validate_user
 def gallery(request):
     """ A view to return the gallery page """
     if request.user.groups.filter(name="Site Admin"):
-        photos = Photo.objects.all().order_by("sight__destination")
+        photos = Photo.objects.all().select_related("sight", "sight__destination").order_by("sight__destination")
     else:
-        photos = Photo.objects.filter(is_visible=True).order_by("sight__destination")
+        photos = Photo.objects.filter(is_visible=True).select_related("sight", "sight__destination").order_by("sight__destination")
     template = "gallery/gallery.html"
     context = {
         "photos": photos,
