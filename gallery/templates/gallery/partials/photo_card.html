@@ -1,21 +1,20 @@
 {% load custom_filters %}
 
-<figure class="card text-white">
-    <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" class="card-img img-fluid"
-        onError="this.onerror=null;this.src='{{ MEDIA_URL }}no-image.png';">
-    <figcaption class="d-flex flex-column justify-content-center card-img-overlay text-center">
-        <h3 class="card-title">{{ photo.sight }}</h3>
-        <p class="card-text">{{ photo.sight.destination }}</p>
-        <!-- lightbox setup -->
-        <a href="{{ photo.image.url }}" class="btn btn-primary" data-toggle="lightbox"
-            data-gallery="lightbox-gallery" data-caption="{{ photo.caption }} ({{ photo.sight.destination }})">
-            Full Size
-            <i class="fas fa-expand fa-fw"></i>
-        </a>
-        <br>
+<div class="card shadow h-100" aria-hidden="true">
+    <a href="{{ photo.image.url }}" data-fancybox="gallery-{{ forloop.parentloop.counter }}" data-caption="{{ photo.caption }}">
+        <img src="{{ photo.image.url }}" data-src="{{ photo.image.url }}" class="card-img-top img-fluid"
+            alt="{{ photo.caption }}" onError="this.onerror=null;this.src='{{ MEDIA_URL }}placeholder.png';">
+        <div class="card-body text-center">
+            <h5 class="card-title">{{ photo.sight }}</h5>
+        </div>
+    </a>
+    {% if request.user|has_group:"Site Admin" %}
         <!-- site-admin 'Edit' tools -->
-        {% if request.user|has_group:"Site Admin" %}
-            <a href="{% url 'update_photo' photo.id %}" class="btn btn-success">Edit <i class="fas fa-edit fa-fw"></i></a>
+        <div class="card-footer text-center">
+            <!-- <small class="text-body-secondary">Last updated 3 mins ago</small> -->
+            <a href="{% url 'update_photo' photo.id %}" class="btn btn-success">
+                Edit <i class="fas fa-edit fa-fw"></i>
+            </a>
             {% if photo.is_visible != True %}
                 <br><br>
                 <span class="text-danger">
@@ -23,6 +22,6 @@
                     Hidden
                 </span>
             {% endif %}
-        {% endif %}
-    </figcaption>
-</figure>
+        </div>
+    {% endif %}
+</div>
