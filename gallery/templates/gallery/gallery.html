@@ -30,7 +30,7 @@
         <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
             <!-- generate badges for each destination for easy-scrolling -->
             {% for sight, photo_group in photo_list %}
-                <a href="#{{ sight|lower|cut:' '|cut:'-'|cut:'&' }}">
+                <a href="#{{ sight|lower|cut:' '|cut:'-'|cut:'&'|cut:'('|cut:')' }}">
                     <span class="badge bg-success fs-6 my-1">{{ sight }}</span>
                 </a>
             {% endfor %}
@@ -40,21 +40,20 @@
 
 <!-- loop through each photo (sorted by sight/destination) -->
 {% for sight, photo_group in photo_list %}
-    <section id="{{ sight|lower|cut:' '|cut:'-'|cut:'&' }}" class="container scroll-margin-top">
+    <section id="{{ sight|lower|cut:' '|cut:'-'|cut:'&'|cut:'('|cut:')' }}" class="container-fluid {% cycle 'bg-dark text-white' 'bg-light text-dark' %} gallery-fancybox scroll-margin-top">
         <div class="row py-5 px-md-5">
             <div class="col-12">
-                <h2 class="text-center fw-bold text-dark">
+                <h2 class="text-center fw-bold mb-3">
                     {{ sight }}
                     {% if sight.province.region == "kur" %}
-                        <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid">
+                        <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid flag">
                     {% elif sight.province.region == "irq" %}
-                        <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid">
+                        <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid flag">
                     {% endif %}
                 </h2>
-                <div class="row card-deck d-flex justify-content-center">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-4">
                     {% for photo in photo_group %}
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-2">
-                            <!-- include photo-card partial -->
+                        <div class="col mx-auto">
                             {% include "gallery/partials/photo_card.html" %}
                         </div>
                     {% endfor %}
@@ -62,11 +61,14 @@
             </div>
         </div>
     </section>
+{% endfor %}
 
-    {% if not forloop.last %}
-        <hr class="w-50 mx-auto">
-    {% endif %}
 
-    {% endfor %}
+{% endblock %}
 
+{% block js %}
+<script>
+    // fancybox initialization
+    Fancybox.bind("[data-fancybox]", {});
+</script>
 {% endblock %}
