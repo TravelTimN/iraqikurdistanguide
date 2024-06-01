@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row my-5 py-md-5">
+        <div class="col-12 col-md-6 text-center">
+            <h1 class="text-kur-red">Oops! Bad Request</h1>
+            <br>
+            <p class="fs-4">
+                It seems like we've hit a bump in the road!
+                <br><br>
+                Your request didn't quite make it through.
+                Maybe try reloading the page or double-checking the URL.
+                <br><br>
+                If the issue persists, feel free to reach out for assistance.
+            </p>
+            <p>
+                <a href="{% url 'home' %}" class="btn btn-lg btn-success m-1">Home</a>
+                <a href="{% url 'destinations' %}" class="btn btn-lg btn-warning m-1">Destinations</a>
+                <a href="{% url 'contact' %}" class="btn btn-lg btn-danger m-1">Contact</a>
+            </p>
+            <p>
+                <small class="text-kur-green fw-bold fs-6">ERROR: 400</small>
+            </p>
+        </div>
+        <div class="col-12 col-md-6 text-center">
+            <img src="{% static 'img/error.webp' %}" alt="" class="img-fluid img-thumbnail rounded shadow">
+        </div>
+    </div>
+</div>
+{% endblock %}

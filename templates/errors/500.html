@@ -1,41 +1,33 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block head %}
-<meta http-equiv="refresh" content="10;url={% url 'home' %}">
-{% endblock %}
-
 {% block content %}
 <div class="container">
-    <div class="row my-5 mx-3 mx-md-5 py-md-5">
-        <div class="col text-center mx-auto">
-            <h1 class="text-danger">Internal Server Error (500)</h1>
-            <p class="fs-4">Oops! Something happened on our side!</p>
-            <p class="fs-5">
-                <span id="redirecting"></span>
-                <span id="time-remaining">
-                    You will be redirected back to the
-                    <a href="{% url 'home' %}" class="text-kur-green fw-bold">home page</a>
-                    in <span id="countdown">10 seconds</span>.
-                </span>
+    <div class="row my-5 py-md-5">
+        <div class="col-12 col-md-6 text-center">
+            <h1 class="text-kur-red">Uh-oh! Something Went Wrong</h1>
+            <br>
+            <p class="fs-4">
+                It seems even our digital journey has hit a rough patch!
+                <br><br>
+                Our servers are taking a break, just like a weary traveler in need of some rest.
+                <br></br>
+                While we fix this, why not explore some of our popular
+                <a href="{% url 'destinations' %}" class="text-kur-green fw-bold">destinations</a>
+                around the breathtaking and unforgettable landscapes of Kurdistan and Federal Iraq?
             </p>
+            <p>
+                <a href="{% url 'home' %}" class="btn btn-lg btn-success m-1">Home</a>
+                <a href="{% url 'destinations' %}" class="btn btn-lg btn-warning m-1">Destinations</a>
+                <a href="{% url 'contact' %}" class="btn btn-lg btn-danger m-1">Contact</a>
+            </p>
+            <p>
+                <small class="text-kur-green fw-bold fs-6">ERROR: 500</small>
+            </p>
+        </div>
+        <div class="col-12 col-md-6 text-center">
+            <img src="{% static 'img/error.webp' %}" alt="" class="img-fluid img-thumbnail rounded shadow">
         </div>
     </div>
 </div>
-{% endblock %}
-
-{% block js %}
-<script>
-    let timeleft = 10;
-    let countdownTimer = setInterval(function() {
-        if (timeleft <= 0) {
-            clearInterval(countdownTimer);
-            document.getElementById("redirecting").innerHTML = "... redirecting ...";
-            document.getElementById("time-remaining").innerHTML = "";
-        } else {
-            document.getElementById("countdown").innerHTML = timeleft + " seconds";
-        }
-        timeleft -= 1;
-    }, 1000);
-</script>
 {% endblock %}

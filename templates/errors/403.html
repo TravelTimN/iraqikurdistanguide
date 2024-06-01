@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row my-5 py-md-5">
+        <div class="col-12 col-md-6 text-center">
+            <h1 class="text-kur-red">Forbidden</h1>
+            <br>
+            <p class="fs-4">
+                Hold on! You don't have permission to access this page.
+                <br><br>
+                It looks like you're trying to go somewhere you're not allowed.
+                <br><br>
+                If you think this is a mistake, let us know and we'll help you get back on track.
+            </p>
+            <p>
+                <a href="{% url 'home' %}" class="btn btn-lg btn-success m-1">Home</a>
+                <a href="{% url 'destinations' %}" class="btn btn-lg btn-warning m-1">Destinations</a>
+                <a href="{% url 'contact' %}" class="btn btn-lg btn-danger m-1">Contact</a>
+            </p>
+            <p>
+                <small class="text-kur-green fw-bold fs-6">ERROR: 403</small>
+            </p>
+        </div>
+        <div class="col-12 col-md-6 text-center">
+            <img src="{% static 'img/error.webp' %}" alt="" class="img-fluid img-thumbnail rounded shadow">
+        </div>
+    </div>
+</div>
+{% endblock %}
