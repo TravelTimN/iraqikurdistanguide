@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}" class="trigger-preloader"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item active" aria-current="page">Itineraries</li>
+    {% if request.user|has_group:"Site Admin" %}
+        <!-- <li class="breadcrumb-item">
+            <a href="" class="trigger-preloader">
+                <i class="fas fa-plus-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Itinerary"></i>
+            </a>
+        </li> -->
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 id="page-header" class="text-dark fw-bold">Itineraries</h1>
+        </div>
+    </div>
+    <!-- helper text -->
+    <div class="row mt-5">
+        <div class="col-10 mx-auto text-center fs-4">
+            These sample itineraries are just a glimpse of the amazing experiences that I can curate for you.
+            <br><br>
+            For a more <em>personalized and customized</em> itinerary tailored to your unique preferences and needs, please
+            <a href="{% url 'contact' %}" class="text-kur-green fw-bold trigger-preloader">contact me</a>
+            directly!
+        </div>
+    </div>
+</div>
+
+<!-- loop through each itinerary -->
+{% for itinerary in itineraries %}
+    <section class="container-fluid {% cycle 'bg-secondary bg-opacity-25' 'bg-secondary bg-opacity-10' %} pb-5">
+        <div class="row pt-5 px-md-5">
+            <div class="col-12">
+                <!-- itinerary title -->
+                <h2 class="text-center fw-bold bg-kur-gold rounded text-uppercase font-alegreya mt-5 p-5">
+                    {{ itinerary.title }}
+                    <br>
+                    <small><em>{{ itinerary.days.count }} day{{ itinerary.days.count|pluralize }}</em></small>
+                </h2>
+                <div class="accordion mb-3" id="accordion{{ forloop.counter }}">
+                    <!-- each itinerary day -->
+                    {% for day in itinerary.days.all|dictsort:'id' %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="header{{ day.id }}">
+                                <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse{{ day.id }}" aria-expanded="{% if forloop.first %}{% else %}false{% endif %}" aria-controls="collapse{{ day.id }}">
+                                    <span class="badge rounded-pill bg-kur-gold text-dark fs-6 me-2">DAY {{ day.day_number }}</span>
+                                    {{ day }}
+                                </button>
+                            </h2>
+                            <!-- the day's plans -->
+                            <div id="collapse{{ day.id }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="header{{ day.id }}" data-bs-parent="#accordion{{ forloop.parentloop.counter }}">
+                                <div class="accordion-body itinerary-day">
+                                    <!-- the plans in "safe" format -->
+                                    <strong>Itinerary</strong>:
+                                    <br><br>
+                                    {{ day.plan|safe }}
+                                    <hr>
+                                    <strong>Accommodation</strong>:
+                                    <br>
+                                    {{ day.hotel }}
+                                    <br>
+                                    <span class="badge bg-kur-green text-white fs-6 m-2">{{ day.overnight_city }}</span>
+                                    {% if day.overnight_city.province.region == "kur" %}
+                                        <img src="{% static 'img/flags/kurdistan.png' %}" alt="Flag of Kurdistan" class="img-fluid flag-sm">
+                                    {% elif day.overnight_city.province.region == "irq" %}
+                                        <img src="{% static 'img/flags/iraq.png' %}" alt="Flag of Iraq" class="img-fluid flag-sm">
+                                    {% endif %}
+                                    {% if request.user|has_group:"Site Admin" %}
+                                    <!-- admin-only edit button -->
+                                        <!-- <hr>
+                                        <p class="w-100 text-center my-0 mx-auto">
+                                            <a href="" class="btn btn-success trigger-preloader">Edit <i class="fas fa-edit"></i></a>
+                                        </p> -->
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-10 col-lg-8 mx-auto">
+                <!-- itinerary map -->
+                <div id="itin-map-{{ forloop.counter }}" class="rounded shadow my-5"></div>
+            </div>
+        </div>
+    </section>
+{% endfor %}
+
+{% endblock %}
+
+{% block js %}
+<script>
+    // basic leaflet map of Iraq
+    let origLat = 33.25;
+    let origLng = 44;
+    // generate multiple map data for each itinerary
+    let itinerariesData = [
+        {% for itinerary in itineraries %}
+            {
+                id: "itin-map-{{ forloop.counter }}",
+                destinations: [
+                    {% for day in itinerary.days.all|dictsort:'id' %}
+                        {% for destination in day.destinations.all %}
+                            {
+                                name: `{{ destination.name }}`,
+                                region: `{{ destination.province.region }}`,
+                                latitude: {{ destination.latitude }},
+                                longitude: {{ destination.longitude }}
+                            }{% if not forloop.parentloop.last or not forloop.last %},{% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                ]
+            }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ];
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // loop the map data collected above for each itinerary
+        itinerariesData.forEach(itinerary => {
+            let map = L.map(itinerary.id, {
+                // stops users from loading infinite tiles outside of Iraq
+                maxBounds: [[28.5, 38], [38.5, 50]],
+                maxBoundsViscosity: 0.5,
+            }).setView([origLat, origLng], 6);
+
+            L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
+            attribution: "Map data &copy; <a href='https://www.openstreetmap.org/copyright' target='_blank' rel='noopener'>OpenStreetMap</a> contributors, Imagery © <a href='https://www.mapbox.com' target='_blank' rel='noopener'>Mapbox</a>",
+                maxZoom: 18,
+                minZoom: 5,
+                id: "mapbox/streets-v11",
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: mapUrl
+            }).addTo(map);
+
+            // adding custom marker
+            let customIcon = L.Icon.extend({
+                options: {
+                    iconSize: [25, 35],
+                    iconAnchor: [12.5, 35],
+                }
+            });
+            // extend from base icon for 'kur' and 'irq' icons
+            let kurIcon = new customIcon({ iconUrl: "{% static 'img/marker-kurdistan.png' %}" });
+            let irqIcon = new customIcon({ iconUrl: "{% static 'img/marker-iraq.png' %}" });
+
+            let markerArray = [];
+            // avoid duplicate destinations with a Set()
+            let uniqueDestinations = new Set();
+
+            // loop through each itinerary's destinations
+            itinerary.destinations.forEach(destination => {
+                let destinationName = destination.name;
+                if (!uniqueDestinations.has(destinationName)) {
+                    // check for existing destination on Set()
+                    uniqueDestinations.add(destinationName);
+                    let marker = L.marker([destination.latitude, destination.longitude], {icon: destination.region === "kur" ? kurIcon : irqIcon})
+                        .bindTooltip(destination.name);
+                    markerArray.push(marker);
+                    marker.addTo(map);
+                }
+            });
+
+            if (markerArray.length > 0) {
+                let markerGroup = L.featureGroup(markerArray);
+                map.fitBounds(markerGroup.getBounds().pad(0.5));
+            }
+        });
+    });
+</script>
+{% endblock %}
