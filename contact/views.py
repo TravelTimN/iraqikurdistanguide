@@ -57,7 +57,6 @@ def contact(request):
             # form data collection for email
             form_context = {
                 "id": booking_id,
-                "status": "New",
                 "name": request.POST.get("name"),
                 "email": request.POST.get("email"),
                 "phone_num": request.POST.get("phone_num"),
@@ -65,25 +64,23 @@ def contact(request):
                 "start_date": datetime.strptime(request.POST.get("start_date"), "%Y-%m-%d").strftime("%d %B, %Y"),  # noqa
                 "end_date": (datetime.strptime(request.POST.get("start_date"), "%Y-%m-%d") + timedelta(int(request.POST.get("num_days")))).strftime("%d %B, %Y"),  # noqa
                 "num_days": request.POST.get("num_days"),
-                "yyyy_mm": start_date.strftime("%Y-%m"),
                 "num_guests": request.POST.get("num_guests"),
                 "message": request.POST.get("message").replace("\n", "<br>"),
-                "destinations": destinations,  # noqa
-                # "destinations": ", ".join([destination.name for destination in destinations]),  # noqa
+                "destinations": destinations,
             }
 
             # send multi-part email (plain text and HTML)
             subject = "New Travel Request (Iraqi Kurdistan Guide)"
-            from_email = settings.DEFAULT_FROM_EMAIL  # from 2BN-DEV
-            to_email = [settings.DEFAULT_OWNER_EMAIL]  # to Haval
-            # bcc_email = [settings.DEFAULT_FROM_EMAIL]  # bcc: 2BN-DEV
+            from_email = settings.DEFAULT_FROM_EMAIL  # from Developer
+            to_email = [settings.DEFAULT_OWNER_EMAIL]  # to Owner
+            reply_to_email = request.POST.get("email")
+            # bcc_email = [settings.DEFAULT_FROM_EMAIL]  # bcc: Developer
 
             text_content = render_to_string("contact/emails/trip_request.txt", {"form_context": form_context})  # noqa
             html_content = render_to_string("contact/emails/trip_request.html", {"form_context": form_context})  # noqa
 
-            user_email = request.POST.get("email")
-            email = EmailMultiAlternatives(subject, text_content, from_email, to_email, reply_to=[user_email])  # Add reply-to field
-            # email = EmailMultiAlternatives(subject, text_content, from_email, to_email, bcc=bcc_email, reply_to=[user_email])  # Add reply-to field, and bcc
+            email = EmailMultiAlternatives(subject, text_content, from_email, to_email, reply_to=[reply_to_email])  # noqa
+            # email = EmailMultiAlternatives(subject, text_content, from_email, to_email, bcc=bcc_email, reply_to=[reply_to_email])  # reply-to and bcc  # noqa
             email.attach_alternative(html_content, "text/html")
             email.send()
 
