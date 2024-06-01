@@ -50,6 +50,8 @@ if (location.pathname.includes("/about/")) {
     activeLink = "faqs";
 } else if (location.pathname.includes("/gallery/")) {
     activeLink = "gallery";
+} else if (location.pathname.includes("/itineraries/")) {
+    activeLink = "itineraries";
 } else if (location.pathname.includes("/resources/")) {
     activeLink = "resources";
 } else if (location.pathname.includes("/reviews/")) {
