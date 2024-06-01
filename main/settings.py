@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "faqs",
     "gallery",
     "home",
+    "itineraries",
     "resources",
     "reviews",
     "django_cleanup.apps.CleanupConfig",  # MUST be last

@@ -17,6 +17,7 @@ urlpatterns = [
     path("destinations/", include("destinations.urls")),
     path("faqs/", include("faqs.urls")),
     path("gallery/", include("gallery.urls")),
+    path("itineraries/", include("itineraries.urls")),
     path("resources/", include("resources.urls")),
     path("reviews/", include("reviews.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
