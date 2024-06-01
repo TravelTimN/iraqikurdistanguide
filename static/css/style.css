@@ -83,6 +83,10 @@ a, a:hover {
     background-repeat: no-repeat;
 }
 
+.font-alegreya {
+    font-family: "Alegreya Sans SC", sans-serif;
+}
+
 .text-underline-red {
     width: fit-content;
     padding: 2px;
@@ -909,6 +913,10 @@ input[type="checkbox"][name="itinerary"][id^="id_itinerary_"] {
     height: 25vh;
 }
 
+[id^=itin-map-] {
+    height: 35vh;
+}
+
 /* individual maps should span full-height for scroll-story mode */
 #map-single-destination {
     width: 100%;
@@ -925,6 +933,10 @@ input[type="checkbox"][name="itinerary"][id^="id_itinerary_"] {
 
 .flag-marker {
     height: 25px;
+}
+
+.flag-sm {
+    max-height: 25px;
 }
 
 .icon-shadow {
@@ -1146,7 +1158,8 @@ p.lightbox-caption {
     margin: 1em;
 }
 
-.accordion-body.faq-answer a:not(.btn) {
+.accordion-body.faq-answer a:not(.btn),
+.accordion-body.itinerary-day a:not(.btn) {
     font-weight: bold;
     color: rgba(var(--kurdish-green), 1);
     text-decoration: underline;
