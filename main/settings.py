@@ -145,7 +145,8 @@ ACCOUNT_LOGOUT_ON_GET = True  # avoid allauth signout confirmation page
 
 if "DEVELOPMENT" in os.environ:
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-    DEFAULT_FROM_EMAIL = "ikg@test.com"
+    DEFAULT_FROM_EMAIL = "dev@test.com"
+    DEFAULT_OWNER_EMAIL = "owner@test.com"
 else:
     EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
     EMAIL_USE_TLS = True
