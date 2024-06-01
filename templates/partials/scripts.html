@@ -51,5 +51,14 @@
     let markerFooter = L.marker([36.207132, 44.025733], {icon: kurIconFooter}).bindPopup(`Iraqi Kurdistan Guide`).addTo(mapFooter);
 </script>
 
+<!-- show the preloader animation for specific triggered links -->
+<script>
+    $(document).ready(function() {
+        $(".trigger-preloader").on("click", function() {
+            $("body").removeClass("page-load-complete");
+        });
+    });
+</script>
+
 <!-- js / scripts -->
 <script src="{% static 'js/script.js' %}"></script>

@@ -6,7 +6,7 @@
     <nav class="navbar navbar-dark bg-dark navbar-expand-md justify-content-center">
         <div class="container-sm">
             <!-- logo -->
-            <a href="{% url 'home' %}" class="navbar-brand w-50 align-middle me-auto">
+            <a href="{% url 'home' %}" class="navbar-brand w-50 align-middle me-auto trigger-preloader">
                 <img src="{% static 'img/flags/ikg-flags-logo.webp' %}" alt="Iraqi Kurdistan Guide" id="ikg-flags-logo" class="responsive-img me-3">
                 <span class="d-none d-sm-inline-block">Iraqi Kurdistan Guide</span>
                 <span class="d-sm-none" title="Iraqi Kurdistan Guide">I K G</span>
@@ -26,7 +26,7 @@
         
         {% if not request.user.is_authenticated %}
             <!-- user is not logged-in -->
-            <a href="{% url 'account_login' %}">
+            <a href="{% url 'account_login' %}" class="trigger-preloader">
                 <i class="fas fa-certificate text-kur-gold fs-4 align-middle"></i>
             </a>
         {% else %}
@@ -36,7 +36,7 @@
     </div>
     <div class="offcanvas-header my-3 text-center">
         <h4 id="offcanvasRightLabel" class="m-0 mx-auto p-0">
-            <a href="{% url 'home' %}">
+            <a href="{% url 'home' %}" class="trigger-preloader">
                 Iraqi Kurdistan Guide
             </a>
         </h4>
@@ -45,23 +45,23 @@
 
         <!-- links -->
         <div id="offcanvas-list-group" class="list-group list-group-flush">
-            <a href="{% url 'home' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0" id="nav-link-home">
+            <a href="{% url 'home' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0 trigger-preloader" id="nav-link-home">
                 <i class="fas fa-home fa-fw fs-5 me-3"></i>
                 Home
             </a>
-            <a href="{% url 'about' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0" id="nav-link-about">
+            <a href="{% url 'about' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0 trigger-preloader" id="nav-link-about">
                 <i class="fas fa-info-circle fa-fw fs-5 me-3"></i>
                 About
             </a>
-            <a href="{% url 'destinations' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0" id="nav-link-destinations">
+            <a href="{% url 'destinations' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0 trigger-preloader" id="nav-link-destinations">
                 <i class="fas fa-map-marked-alt fa-fw fs-5 me-3"></i>
                 Destinations
             </a>
-            <a href="{% url 'faqs' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0" id="nav-link-faqs">
+            <a href="{% url 'faqs' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0 trigger-preloader" id="nav-link-faqs">
                 <i class="fas fa-question-circle fa-fw fs-5 me-3"></i>
                 FAQs
             </a>
-            <a href="{% url 'gallery' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0" id="nav-link-gallery">
+            <a href="{% url 'gallery' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0 trigger-preloader" id="nav-link-gallery">
                 <i class="fas fa-images fa-fw fs-5 me-3"></i>
                 Gallery
             </a>
@@ -74,36 +74,36 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark w-100 border-0" aria-labelledby="offcanvas-resources-dropdown">
                     <li>
-                        <a class="dropdown-item bg-dark" href="{% url 'resources' %}">
+                        <a class="dropdown-item bg-dark trigger-preloader" href="{% url 'resources' %}">
                             All Resources
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item bg-dark" href="{% url 'alphabet' %}">
+                        <a class="dropdown-item bg-dark trigger-preloader" href="{% url 'alphabet' %}">
                             <i class="fas fa-font fa-fw fs-5 me-3"></i>
                             Alphabet
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item bg-dark" href="{% url 'phrases' %}">
+                        <a class="dropdown-item bg-dark trigger-preloader" href="{% url 'phrases' %}">
                             <i class="fas fa-language fa-fw fs-5 me-3"></i>
                             Phrases
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item bg-dark" href="{% url 'entertainment' %}">
+                        <a class="dropdown-item bg-dark trigger-preloader" href="{% url 'entertainment' %}">
                             <i class="fas fa-music fa-fw fs-5 me-3"></i>
                             Entertainment
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item bg-dark" href="{% url 'holidays' %}">
+                        <a class="dropdown-item bg-dark trigger-preloader" href="{% url 'holidays' %}">
                             <i class="fas fa-calendar-alt fa-fw fs-5 me-3"></i>
                             Holidays
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item bg-dark" href="{% url 'weather' %}">
+                        <a class="dropdown-item bg-dark trigger-preloader" href="{% url 'weather' %}">
                             <i class="fas fa-cloud-sun fa-fw fs-5 me-3"></i>
                             Weather
                         </a>
@@ -111,11 +111,11 @@
                 </ul>
             </div>
 
-            <a href="{% url 'reviews' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0" id="nav-link-reviewsX">
+            <a href="{% url 'reviews' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0 trigger-preloader" id="nav-link-reviewsX">
                 <i class="fas fa-comment-dots fa-fw fs-5 me-3"></i>
                 Reviews
             </a>
-            <a href="{% url 'contact' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0" id="nav-link-contact">
+            <a href="{% url 'contact' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0 trigger-preloader" id="nav-link-contact">
                 <i class="fas fa-at fa-fw fs-5 me-3"></i>
                 Contact
             </a>
@@ -125,7 +125,7 @@
                 <span class="list-group-item bg-dark text-light text-center">ADMIN</span>
                 {% if request.user|has_group:"Site Admin" %}
                     <!-- user is a Site Admin -->
-                    <a href="{% url 'calendar_bookings' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0" id="nav-link-bookings">
+                    <a href="{% url 'calendar_bookings' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0 trigger-preloader" id="nav-link-bookings">
                         <i class="fas fa-calendar-alt fa-fw fs-5 me-3"></i>
                         Calendar
                     </a>
@@ -138,7 +138,7 @@
                         Django Admin
                     </a>
                 {% endif %}
-                <a href="{% url 'account_logout' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0">
+                <a href="{% url 'account_logout' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0 trigger-preloader">
                     <i class="fas fa-sign-out-alt fa-fw fs-5 me-3"></i>
                     Logout
                 </a>

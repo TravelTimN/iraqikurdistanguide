@@ -3,7 +3,7 @@
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
-    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}" class="trigger-preloader"><i class="fas fa-home"></i></a></li>
     <li class="breadcrumb-item active dropdown" aria-current="page">
         <span class="dropdown-toggle" href="#" role="button" id="dropdownResourceBreadcrumb" data-bs-toggle="dropdown" aria-expanded="false">
             Resources
@@ -11,12 +11,12 @@
 
         <!-- breadcrumb dropdown -->
         <ul class="dropdown-menu" aria-labelledby="dropdownResourceBreadcrumb">
-            <li><a class="dropdown-item" href="{% url 'alphabet' %}">Alphabet</a></li>
-            <li><a class="dropdown-item" href="{% url 'phrases' %}">Phrases</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'alphabet' %}">Alphabet</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'phrases' %}">Phrases</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{% url 'entertainment' %}">Entertainment</a></li>
-            <li><a class="dropdown-item" href="{% url 'holidays' %}">Holidays</a></li>
-            <li><a class="dropdown-item" href="{% url 'weather' %}">Weather</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'entertainment' %}">Entertainment</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'holidays' %}">Holidays</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'weather' %}">Weather</a></li>
         </ul>
     </li>
 {% endblock %}
@@ -37,7 +37,7 @@
 
         <!-- alphabet -->
         <div class="col-12 col-md-6 list-group px-3 px-md-5">
-            <a href="{% url 'alphabet' %}" class="list-group-item list-group-item-action my-3 resources-card bg-kur-red-linear shadow">
+            <a href="{% url 'alphabet' %}" class="list-group-item list-group-item-action my-3 resources-card bg-kur-red-linear shadow trigger-preloader">
                 <i class="fas fa-font fa-fw resources-card-icon"></i>
                 <div class="d-flex flex-column w-100 justify-content-center align-items-center my-5">
                     <h2 class="fs-2 fw-bold">Alphabet</h2>
@@ -48,7 +48,7 @@
 
         <!-- phrases -->
         <div class="col-12 col-md-6 list-group px-3 px-md-5">
-            <a href="{% url 'phrases' %}" class="list-group-item list-group-item-action my-3 resources-card bg-kur-gold-linear shadow">
+            <a href="{% url 'phrases' %}" class="list-group-item list-group-item-action my-3 resources-card bg-kur-gold-linear shadow trigger-preloader">
                 <i class="fas fa-language fa-fw resources-card-icon"></i>
                 <div class="d-flex flex-column w-100 justify-content-center align-items-center my-5">
                     <h2 class="fs-2 fw-bold">Phrases</h2>
@@ -59,7 +59,7 @@
 
         <!-- entertainment -->
         <div class="col-12 col-md-6 list-group px-3 px-md-5">
-            <a href="{% url 'entertainment' %}" class="list-group-item list-group-item-action my-3 resources-card bg-kur-green-linear shadow">
+            <a href="{% url 'entertainment' %}" class="list-group-item list-group-item-action my-3 resources-card bg-kur-green-linear shadow trigger-preloader">
                 <i class="fas fa-music fa-fw resources-card-icon"></i>
                 <div class="d-flex flex-column w-100 justify-content-center align-items-center my-5">
                     <h2 class="fs-2 fw-bold">Entertainment</h2>
@@ -70,7 +70,7 @@
 
         <!-- holidays -->
         <div class="col-12 col-md-6 list-group px-3 px-md-5">
-            <a href="{% url 'holidays' %}" class="list-group-item list-group-item-action my-3 resources-card bg-kur-red-linear shadow">
+            <a href="{% url 'holidays' %}" class="list-group-item list-group-item-action my-3 resources-card bg-kur-red-linear shadow trigger-preloader">
                 <i class="fas fa-calendar-alt fa-fw resources-card-icon"></i>
                 <div class="d-flex flex-column w-100 justify-content-center align-items-center my-5">
                     <h2 class="fs-2 fw-bold">Holidays</h2>
@@ -81,7 +81,7 @@
 
         <!-- weather -->
         <div class="col-12 col-md-6 list-group px-3 px-md-5">
-            <a href="{% url 'weather' %}" class="list-group-item list-group-item-action my-3 resources-card bg-kur-gold-linear shadow">
+            <a href="{% url 'weather' %}" class="list-group-item list-group-item-action my-3 resources-card bg-kur-gold-linear shadow trigger-preloader">
                 <i class="fas fa-cloud-sun fa-fw resources-card-icon"></i>
                 <div class="d-flex flex-column w-100 justify-content-center align-items-center my-5">
                     <h2 class="fs-2 fw-bold">Weather</h2>

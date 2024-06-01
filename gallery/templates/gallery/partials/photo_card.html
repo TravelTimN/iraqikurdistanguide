@@ -11,8 +11,7 @@
     {% if request.user|has_group:"Site Admin" %}
         <!-- site-admin 'Edit' tools -->
         <div class="card-footer text-center">
-            <!-- <small class="text-body-secondary">Last updated 3 mins ago</small> -->
-            <a href="{% url 'update_photo' photo.id %}" class="btn btn-success">
+            <a href="{% url 'update_photo' photo.id %}" class="btn btn-success trigger-preloader">
                 Edit <i class="fas fa-edit fa-fw"></i>
             </a>
             {% if photo.is_visible != True %}

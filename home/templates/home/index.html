@@ -82,20 +82,23 @@
                                 </span>
                             </div>
                             <p>
-                                Hi, I'm <a href="{% url 'about' %}" class="link-success fw-bold">Haval Qaraman</a>, and I've been helping travelers create lifelong memories with my bespoke tours of Kurdistan since 2010.
+                                Hi, I'm <a href="{% url 'about' %}" class="link-success fw-bold trigger-preloader">Haval Qaraman</a>,
+                                and I've been helping travelers create lifelong memories with my bespoke tours of Kurdistan since 2010.
                             </p>
                             <p>
-                                Featured in the 2012 edition of "<cite data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="Lonely Planet Middle East<br><em>(Travel Guide) 2012</em>">Lonely Planet</cite>",
+                                Featured in the 2012 edition of
+                                "<cite data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="Lonely Planet Middle East<br><em>(Travel Guide) 2012</em>">Lonely Planet</cite>",
                                 I have a wealth of knowledge around Kurdistan and Iraq,
                                 and it would be my pleasure to show you everything this beautiful country has to offer.
                             </p>
                             <p>
                                 My tours operate year-round, and tend to fill-up fast, so be sure to check out the
-                                <a href="{% url 'destinations' %}" class="link-success fw-bold">destinations</a>.
-                                When you're ready, <a href="{% url 'contact' %}" class="link-success fw-bold">contact me</a>, and we'll begin planning the journey of a lifetime!
+                                <a href="{% url 'destinations' %}" class="link-success fw-bold trigger-preloader">destinations</a>.
+                                When you're ready, <a href="{% url 'contact' %}" class="link-success fw-bold trigger-preloader">contact me</a>,
+                                and we'll begin planning the journey of a lifetime!
                             </p>
                             <p>
-                                <a href="{% url 'destinations' %}" class="btn btn-lg btn-success">Explore Kurdistan</a>
+                                <a href="{% url 'destinations' %}" class="btn btn-lg btn-success trigger-preloader">Explore Kurdistan</a>
                             </p>
                         </div>
                     </div>
@@ -121,7 +124,7 @@
                     </blockquote>
                     <figcaption class="blockquote-footer text-light mt-2">
                         <a href="https://www.tripadvisor.in/ShowUserReviews-g659505-d14863085-r838591057-Iraqi_Kurdistan_Guide-Erbil_Erbil_Province.html?m=19905"
-                            target="_blank" rel="noopener" class="text-white">
+                            target="_blank" rel="noopener nofollow" class="text-white">
                             Chris Quinn
                             on <cite title="TripAdvisor">TripAdvisor</cite>
                         </a>
@@ -153,16 +156,16 @@
                                 Iraqi Kurdistan is a semi-autonomous region in Northern Iraq, and is much safer than the rest of the country.
                                 The travel blog,
                                 <a href="https://againstthecompass.com/en/is-it-safe-to-travel-to-iraq/"
-                                    target="_blank" rel="noopender" class="link-success fw-bold">Against The Compass</a>,
+                                    target="_blank" rel="noopener nofollow" class="link-success fw-bold">Against The Compass</a>,
                                 provides a great write-up on the safety of Iraqi Kurdistan, and an excellent guide to traveling the country in general.
 
                             </p>
                             <p>
                                 Further information, along with many other frequently asked questions, can be found in the
-                                <a href="{% url 'faqs' %}" class="link-success fw-bold">FAQs</a> section.
+                                <a href="{% url 'faqs' %}" class="link-success fw-bold trigger-preloader">FAQs</a> section.
                             </p>
                             <p>
-                                <a href="{% url 'faqs' %}" class="btn btn-lg btn-success">Read FAQs</a>
+                                <a href="{% url 'faqs' %}" class="btn btn-lg btn-success trigger-preloader">Read FAQs</a>
                             </p>
                         </div>
                     </div>
@@ -240,7 +243,7 @@
                     </blockquote>
                     <figcaption class="blockquote-footer mt-2">
                         <a href="https://www.tripadvisor.in/ShowUserReviews-g659505-d14863085-r837820991-Iraqi_Kurdistan_Guide-Erbil_Erbil_Province.html?m=19905"
-                            target="_blank" rel="noopener" class="text-dark">
+                            target="_blank" rel="noopener nofollow" class="text-dark">
                             Tim Nelson
                             on <cite title="TripAdvisor">TripAdvisor</cite>
                         </a>
@@ -281,7 +284,7 @@
                                                         Hidden
                                                     </span>
                                                 {% endif %}
-                                                <a href="{% url 'update_tour' tour.id %}" class="btn btn-success">Edit</a>
+                                                <a href="{% url 'update_tour' tour.id %}" class="btn btn-success trigger-preloader">Edit</a>
                                             </div>
                                         {% endif %}
                                     </div>
@@ -300,7 +303,7 @@
             {% if request.user.is_authenticated and request.user|has_group:"Site Admin" %}
                 <div class="row">
                     <div class="col-12 mx-auto w-100 text-center">
-                        <a href="{% url 'add_tour' %}" class="btn btn-danger btn-lg">Add Tour</a>
+                        <a href="{% url 'add_tour' %}" class="btn btn-danger btn-lg trigger-preloader">Add Tour</a>
                     </div>
                 </div>
             {% endif %}

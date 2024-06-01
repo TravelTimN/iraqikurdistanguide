@@ -4,11 +4,11 @@
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
-    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}" class="trigger-preloader"><i class="fas fa-home"></i></a></li>
     <li class="breadcrumb-item active" aria-current="page">FAQs</li>
     {% if request.user|has_group:"Site Admin" %}
         <li class="breadcrumb-item">
-            <a href="{% url 'add_faq' %}">
+            <a href="{% url 'add_faq' %}" class="trigger-preloader">
                 <i class="fas fa-plus-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add FAQ"></i>
             </a>
         </li>
@@ -77,7 +77,7 @@
                                     {% if request.user|has_group:"Site Admin" %}
                                         <hr>
                                         <p class="w-100 text-center my-0 mx-auto">
-                                            <a href="{% url 'update_faq' faq.id %}" class="btn btn-success">Edit <i class="fas fa-edit"></i></a>
+                                            <a href="{% url 'update_faq' faq.id %}" class="btn btn-success trigger-preloader">Edit <i class="fas fa-edit"></i></a>
                                         </p>
                                     {% endif %}
                                 </div>
@@ -97,7 +97,7 @@
             <h5>
                 This list of FAQs is not exhaustive, but it should hopefully provide a helpful insight while planning your trip with me in Kurdistan!
                 <hr class="w-50 mx-auto">
-                Please <a href="{% url 'contact' %}" class="fw-bold text-black">contact me</a> if you have any additional questions prior to your trip!
+                Please <a href="{% url 'contact' %}" class="fw-bold text-black trigger-preloader">contact me</a> if you have any additional questions prior to your trip!
             </h5>
         </div>
     </div>

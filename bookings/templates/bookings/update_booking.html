@@ -3,8 +3,8 @@
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
-    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
-    <li class="breadcrumb-item"><a href="{% url 'calendar_bookings' %}">Calendar</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}" class="trigger-preloader"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'calendar_bookings' %}" class="trigger-preloader">Calendar</a></li>
     <li class="breadcrumb-item active" aria-current="page" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ booking.guest_name }}">EDIT</li>
 {% endblock %}
 
@@ -173,7 +173,7 @@
 								<!-- submit form -->
                                 <button type="submit" class="btn btn-warning" id="submit-btn">Submit</button>
                                 <!-- cancel button -->
-                                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
+                                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger trigger-preloader">Cancel</a>
                                 <!-- delete button -->
                                 <a class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
                                 <!-- Modal -->
@@ -200,7 +200,7 @@
                                             </div>
                                             <div class="modal-footer bg-success bg-opacity-50">
                                                 <button type="button" class="btn btn-warning" data-bs-dismiss="modal">No</button>
-                                                <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Yes</a>
+                                                <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger trigger-preloader">Yes</a>
                                             </div>
                                         </div>
                                     </div>

@@ -4,7 +4,7 @@
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
-    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}" class="trigger-preloader"><i class="fas fa-home"></i></a></li>
     <li class="breadcrumb-item dropdown">
         <a class="dropdown-toggle" href="#" role="button" id="dropdownResourceBreadcrumb" data-bs-toggle="dropdown" aria-expanded="false">
             Resources
@@ -12,20 +12,20 @@
 
         <!-- breadcrumb dropdown -->
         <ul class="dropdown-menu" aria-labelledby="dropdownResourceBreadcrumb">
-            <li><a class="dropdown-item" href="{% url 'resources' %}">Resources</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'resources' %}">Resources</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{% url 'alphabet' %}">Alphabet</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'alphabet' %}">Alphabet</a></li>
             <li><a class="dropdown-item active" aria-current="page">Phrases</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{% url 'entertainment' %}">Entertainment</a></li>
-            <li><a class="dropdown-item" href="{% url 'holidays' %}">Holidays</a></li>
-            <li><a class="dropdown-item" href="{% url 'weather' %}">Weather</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'entertainment' %}">Entertainment</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'holidays' %}">Holidays</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'weather' %}">Weather</a></li>
         </ul>
     </li>
     <li class="breadcrumb-item active" aria-current="page">Phrases</li>
     {% if request.user|has_group:"Site Admin" %}
         <li class="breadcrumb-item">
-            <a href="{% url 'add_phrase' %}">
+            <a href="{% url 'add_phrase' %}" class="trigger-preloader">
                 <i class="fas fa-plus-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Phrase"></i>
             </a>
         </li>
@@ -120,8 +120,9 @@
                         {% if request.user|has_group:"Site Admin" %}
                             <div class="card-footer d-flex align-items-center justify-content-center bg-secondary bg-opacity-25">
                                 <span class="w-100">
-                                    <a href="{% url 'update_phrase' phrase.id %}" class="btn btn-primary">Edit <i
-                                            class="fas fa-edit"></i></a>
+                                    <a href="{% url 'update_phrase' phrase.id %}" class="btn btn-primary trigger-preloader">
+                                        Edit <i class="fas fa-edit"></i>
+                                    </a>
                                 </span>
                                 {% if phrase.is_visible != True %}
                                 <i class="fas fa-eye-slash text-danger fs-3" data-bs-toggle="tooltip" data-bs-placement="left"

@@ -9,7 +9,7 @@
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
-    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}" class="trigger-preloader"><i class="fas fa-home"></i></a></li>
     <li class="breadcrumb-item dropdown">
         <a class="dropdown-toggle" href="#" role="button" id="dropdownResourceBreadcrumb" data-bs-toggle="dropdown" aria-expanded="false">
             Resources
@@ -17,13 +17,13 @@
 
         <!-- breadcrumb dropdown -->
         <ul class="dropdown-menu" aria-labelledby="dropdownResourceBreadcrumb">
-            <li><a class="dropdown-item" href="{% url 'resources' %}">Resources</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'resources' %}">Resources</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{% url 'alphabet' %}">Alphabet</a></li>
-            <li><a class="dropdown-item" href="{% url 'phrases' %}">Phrases</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'alphabet' %}">Alphabet</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'phrases' %}">Phrases</a></li>
         </ul>
     </li>
-    <li class="breadcrumb-item"><a href="{% url 'phrases' %}">Phrases</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'phrases' %}" class="trigger-preloader">Phrases</a></li>
     {% if request.user|has_group:"Site Admin" %}
         <li class="breadcrumb-item active" aria-current="page">EDIT</li>
     {% endif %}
@@ -123,7 +123,7 @@
 								<!-- submit form -->
                                 <button type="submit" class="btn btn-warning" id="submit-btn">Submit</button>
                                 <!-- cancel button -->
-                                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
+                                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger trigger-preloader">Cancel</a>
                                 <!-- delete button -->
                                 <a class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
                                 <!-- Modal -->
@@ -152,7 +152,7 @@
                                             </div>
                                             <div class="modal-footer bg-success bg-opacity-50">
                                                 <button type="button" class="btn btn-warning" data-bs-dismiss="modal">No</button>
-                                                <a href="{% url 'delete_phrase' phrase.id %}" class="btn btn-danger">Yes</a>
+                                                <a href="{% url 'delete_phrase' phrase.id %}" class="btn btn-danger trigger-preloader">Yes</a>
                                             </div>
                                         </div>
                                     </div>

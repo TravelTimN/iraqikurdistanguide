@@ -4,11 +4,11 @@
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
-    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}" class="trigger-preloader"><i class="fas fa-home"></i></a></li>
     <li class="breadcrumb-item active" aria-current="page">Gallery</li>
     {% if request.user|has_group:"Site Admin" %}
         <li class="breadcrumb-item">
-            <a href="{% url 'add_photo' %}">
+            <a href="{% url 'add_photo' %}" class="trigger-preloader">
                 <i class="fas fa-plus-square" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Photo"></i>
             </a>
         </li>

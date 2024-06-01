@@ -4,11 +4,11 @@
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
-    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}" class="trigger-preloader"><i class="fas fa-home"></i></a></li>
     <li class="breadcrumb-item active" aria-current="page">Reviews</li>
     {% if request.user|has_group:"Site Admin" %}
         <li class="breadcrumb-item">
-            <a href="{% url 'add_review' %}">
+            <a href="{% url 'add_review' %}" class="trigger-preloader">
                 <i class="fas fa-plus-square" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Review"></i>
             </a>
         </li>
@@ -56,7 +56,7 @@
                             <!-- admin: edit review -->
                             {% if request.user|has_group:"Site Admin" %}
                                 <small>
-                                    <a href="{% url 'update_review' review.id %}" class="btn btn-sm btn-success badge">Edit <i class="fas fa-edit"></i></a>
+                                    <a href="{% url 'update_review' review.id %}" class="btn btn-sm btn-success badge trigger-preloader">Edit <i class="fas fa-edit"></i></a>
                                 </small>
                             {% endif %}
                         </span>

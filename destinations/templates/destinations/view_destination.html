@@ -4,17 +4,17 @@
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
-    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
-    <li class="breadcrumb-item"><a href="{% url 'destinations' %}">Destinations</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}" class="trigger-preloader"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'destinations' %}" class="trigger-preloader">Destinations</a></li>
     <li class="breadcrumb-item active" aria-current="page">{{ destination }}</li>
     {% if request.user|has_group:"Site Admin" %}
         <li class="breadcrumb-item">
-            <a href="{% url 'update_destination' destination.id %}">
+            <a href="{% url 'update_destination' destination.id %}" class="trigger-preloader">
                 <i class="fas fa-edit" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit Destination"></i>
             </a>
         </li>
         <li class="breadcrumb-item">
-            <a href="{% url 'add_sight' destination.id %}">
+            <a href="{% url 'add_sight' destination.id %}" class="trigger-preloader">
                 <i class="fas fa-plus-square" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Sight"></i>
             </a>
         </li>
@@ -84,7 +84,7 @@
                         <p class="card-text">{{ sight.sight.description }}</p>
                         {% if request.user|has_group:"Site Admin" %}
                             <p class="card-text">
-                                <a href="{% url 'update_sight' destination.id sight.sight.id %}" class="btn btn-success">
+                                <a href="{% url 'update_sight' destination.id sight.sight.id %}" class="btn btn-success trigger-preloader">
                                     Edit
                                     <i class="fas fa-edit"></i>
                                 </a>

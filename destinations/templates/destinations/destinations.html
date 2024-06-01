@@ -4,11 +4,11 @@
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
-    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}" class="trigger-preloader"><i class="fas fa-home"></i></a></li>
     <li class="breadcrumb-item active" aria-current="page">Destinations</li>
     {% if request.user|has_group:"Site Admin" %}
         <li class="breadcrumb-item">
-            <a href="{% url 'add_destination' %}">
+            <a href="{% url 'add_destination' %}" class="trigger-preloader">
                 <i class="fas fa-plus-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Destination"></i>
             </a>
         </li>
@@ -31,7 +31,7 @@
         <div class="col-12 text-center fs-4">
             <i class="fas fa-heart text-kur-red"></i>
             Add destinations to your Wishlist for easier planning via the
-            <a href="{% url 'contact' %}" class="text-kur-green fw-bold">Contact</a> page!
+            <a href="{% url 'contact' %}" class="text-kur-green fw-bold trigger-preloader">Contact</a> page!
         </div>
     </div>
 </div>
@@ -41,7 +41,7 @@
     <div class="row">
         {% for destination in destinations|dictsort:"destination.name" %}
             <div class="col-12 col-md-6 col-lg-4">
-                <a href="{% url 'view_destination' destination.destination.id %}">
+                <a href="{% url 'view_destination' destination.destination.id %}" class="trigger-preloader">
                     <div class="card destination-card bg-dark text-light my-3 mx-2 shadow">
                         <!-- corner ribbon -->
                         <div class="ribbon">
@@ -121,7 +121,7 @@
             {% else %}
                 region = irqIcon;
             {% endif %}
-            marker = L.marker([lat, lng], {icon: region}).bindPopup(`<a href="{% url 'view_destination' destination.destination.id %}">{{ destination.destination }}</a>`).addTo(map);
+            marker = L.marker([lat, lng], {icon: region}).bindPopup(`<a href="{% url 'view_destination' destination.destination.id %}" class="trigger-preloader">{{ destination.destination }}</a>`).addTo(map);
             markerArray.push(marker);
         {% endif %}
     {% endfor %}

@@ -3,7 +3,7 @@
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
-    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}" class="trigger-preloader"><i class="fas fa-home"></i></a></li>
     <li class="breadcrumb-item active dropdown" aria-current="page">
         <span class="dropdown-toggle" href="#" role="button" id="dropdownLegalBreadcrumb" data-bs-toggle="dropdown" aria-expanded="false">
             Legal
@@ -11,10 +11,10 @@
 
         <!-- breadcrumb dropdown -->
         <ul class="dropdown-menu" aria-labelledby="dropdownLegalBreadcrumb">
-            <li><a class="dropdown-item" href="{% url 'booking_terms' %}">Bookings</a></li>
-            <li><a class="dropdown-item" href="{% url 'privacy_policy' %}#cookies">Cookies</a></li>
-            <li><a class="dropdown-item" href="{% url 'privacy_policy' %}">Privacy</a></li>
-            <li><a class="dropdown-item active" aria-current="page">T&Cs</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'booking_terms' %}">Bookings</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'privacy_policy' %}#cookies">Cookies</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'privacy_policy' %}">Privacy</a></li>
+            <li><a class="dropdown-item trigger-preloader active" aria-current="page">T&Cs</a></li>
         </ul>
     </li>
     <li class="breadcrumb-item active" aria-current="page">T&Cs</li>
@@ -113,7 +113,7 @@
                 Policy of the Company. Our Privacy Policy describes Our policies and procedures on the collection, use, and
                 disclosure of Your personal information when You use the Application or the Website, and tells You about Your
                 privacy rights, and how the law protects You.
-                Please read <a href="{% url 'privacy_policy' %}" class="text-kur-green text-break">Our Privacy Policy</a>
+                Please read <a href="{% url 'privacy_policy' %}" class="text-kur-green text-break trigger-preloader">Our Privacy Policy</a>
                 carefully before using Our Service.
             </p>
             <h2 class="text-underline-green mt-5 mb-4">Links to Other Websites</h2>

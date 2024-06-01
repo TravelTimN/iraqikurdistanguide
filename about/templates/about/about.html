@@ -3,7 +3,7 @@
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
-    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}" class="trigger-preloader"><i class="fas fa-home"></i></a></li>
     <li class="breadcrumb-item active" aria-current="page">About</li>
 {% endblock %}
 
@@ -199,7 +199,7 @@
                                             <div class="list-group-item list-group-item-action">
                                                 <div class="d-flex w-100 justify-content-between">
                                                     <h5 class="mb-1">
-                                                        <a href="{% url 'view_destination' destination.id %}">
+                                                        <a href="{% url 'view_destination' destination.id %}" class="trigger-preloader">
                                                             {{ destination.name }}
                                                         </a>
                                                         {% if destination.is_visible != True %}

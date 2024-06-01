@@ -3,8 +3,8 @@
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
-    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
-    <li class="breadcrumb-item"><a href="{% url 'calendar_bookings' %}">Calendar</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}" class="trigger-preloader"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'calendar_bookings' %}" class="trigger-preloader">Calendar</a></li>
     <li class="breadcrumb-item active" aria-current="page">NEW</li>
 {% endblock %}
 
@@ -173,7 +173,7 @@
 								<!-- submit form -->
                                 <button type="submit" class="btn btn-warning" id="submit-btn">Submit</button>
                                 <!-- cancel button -->
-                                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger">Cancel</a>
+                                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger trigger-preloader">Cancel</a>
 							</div>
 						</div>
 					</div>

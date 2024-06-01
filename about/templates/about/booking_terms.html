@@ -3,7 +3,7 @@
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
-    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}" class="trigger-preloader"><i class="fas fa-home"></i></a></li>
     <li class="breadcrumb-item active dropdown" aria-current="page">
         <span class="dropdown-toggle" href="#" role="button" id="dropdownLegalBreadcrumb" data-bs-toggle="dropdown" aria-expanded="false">
             Legal
@@ -12,9 +12,9 @@
         <!-- breadcrumb dropdown -->
         <ul class="dropdown-menu" aria-labelledby="dropdownLegalBreadcrumb">
             <li><a class="dropdown-item active" aria-current="page">Bookings</a></li>
-            <li><a class="dropdown-item" href="{% url 'privacy_policy' %}#cookies">Cookies</a></li>
-            <li><a class="dropdown-item" href="{% url 'privacy_policy' %}">Privacy</a></li>
-            <li><a class="dropdown-item" href="{% url 'terms_conditions' %}">T&Cs</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'privacy_policy' %}#cookies">Cookies</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'privacy_policy' %}">Privacy</a></li>
+            <li><a class="dropdown-item trigger-preloader" href="{% url 'terms_conditions' %}">T&Cs</a></li>
         </ul>
     </li>
     <li class="breadcrumb-item active" aria-current="page">Bookings</li>

@@ -3,11 +3,11 @@
 
 {% block breadcrumbs %}
     <!-- breadcrumbs -->
-    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
-    <li class="breadcrumb-item"><a href="{% url 'calendar_bookings' %}">Calendar</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}" class="trigger-preloader"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'calendar_bookings' %}" class="trigger-preloader">Calendar</a></li>
     <li class="breadcrumb-item active" aria-current="page">All</li>
     <li class="breadcrumb-item">
-        <a href="{% url 'add_booking' %}">
+        <a href="{% url 'add_booking' %}" class="trigger-preloader">
             <i class="fas fa-plus-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Booking"></i>
         </a>
     </li>
