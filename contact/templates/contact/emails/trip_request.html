@@ -17,19 +17,22 @@
     <hr>
 
     <p>
-        <strong>!! DO NOT REPLY !!</strong><br>
-        This is an automated email sent from
-        <a href="https://iraqikurdistanguide.com">iraqikurdistanguide.com</a>.
+        <strong>Reply To: {{ form_context.email }}</strong><br>
+        <em>
+            This is an automated email sent from
+            <a href="https://iraqikurdistanguide.com">iraqikurdistanguide.com</a>
+        </em>
     </p>
 
     <hr>
 
-    <p>Hello Haval,</p>
+    <p>Dear Haval,</p>
 
-    <p>A new travel request has arrived. Please see details below:</p>
+    <p>{{ form_context.message|safe }}</p>
+
+    <hr>
 
     <p>
-        <strong>Booking Status:</strong> {{ form_context.status }}<br>
         <strong>Name:</strong> {{ form_context.name }}<br>
         <strong>Email:</strong> {{ form_context.email }}<br>
         <strong>Telephone:</strong> {{ form_context.phone_num }}<br>
@@ -54,25 +57,10 @@
         </ul>
     </p>
 
-    <p>
-        <strong>Additional Notes from {{ form_context.name }}:</strong><br>
-        {{ form_context.message|safe }}
-    </p>
-
     <hr>
 
     <p>
-        <a href="https://iraqikurdistanguide.com/bookings/update/{{ form_context.id }}">Edit this Booking</a>
-    </p>
-
-    <p>
-        <a href="https://iraqikurdistanguide.com/bookings/?month={{ form_context.yyyy_mm }}">View Calendar for {{ form_context.yyyy_mm }}</a>
-    </p>
-
-    <hr>
-
-    <p>
-        Sent by: 2BN-DEV
+        <a href="https://iraqikurdistanguide.com/bookings/update/{{ form_context.id }}">Manage this Request</a>
     </p>
 
 </body>

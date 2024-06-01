@@ -1,13 +1,14 @@
-!! DO NOT REPLY !!
-This is an automated email sent from iraqikurdistanguide.com.
+Reply To: {{ form_context.email }}
+This is an automated email sent from iraqikurdistanguide.com
 
 ------------
 
-Hello Haval,
+Dear Haval,
 
-A new travel request has arrived. Please see details below:
+{{ form_context.message }}
 
-Booking Status: {{ form_context.status }}
+------------
+
 Name: {{ form_context.name }}
 Email: {{ form_context.email }}
 Telephone: {{ form_context.phone_num }}
@@ -21,17 +22,7 @@ Visitors: {{ form_context.num_guests }}
 Wishlist Destinations:
 {{ form_context.destinations }}
 
-Additional Notes from {{ form_context.name }}:
-{{ form_context.message }}
-
 ------------
 
-Edit this booking:
+Manage this Request:
 https://iraqikurdistanguide.com/bookings/update/{{ form_context.id }}
-
-View Calendar for {{ form_context.yyyy_mm }}:
-https://iraqikurdistanguide.com/bookings/?month={{ form_context.yyyy_mm }}
-
-------------
-
-Sent by: 2BN-DEV
