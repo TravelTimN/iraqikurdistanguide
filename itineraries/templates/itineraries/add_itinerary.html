@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}" class="trigger-preloader"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'itineraries' %}" class="trigger-preloader">Itineraries</a></li>
+    <li class="breadcrumb-item active" aria-current="page">NEW</li>
+{% endblock %}
+
+{% block content %}
+
+<section class="container-fluid">
+    <div class="row">
+
+        <!-- form data -->
+        <div class="col-12 col-md-10 col-lg-8 mx-auto my-5">
+            <form method="POST" action="{% url 'add_itinerary' %}">
+                {% csrf_token %}
+
+                <fieldset class="card shadow">
+					<legend class="card-header bg-kur-green text-light text-center">New Itinerary</legend>
+
+					<div class="card-body">
+
+						<!-- title field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-heading fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ itinerary_form.title }}
+                                <label for="id_title">* Itinerary Title</label>
+                            </div>
+						</div>
+
+                        <!-- is_visible field -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark px-3">
+                                {{ itinerary_form.is_visible }}
+                            </span>
+                            <span class="form-control" aria-label="Publicly Visible Checkbox">* Publicly Visible?</span>
+                        </div>
+
+                        <!-- hidden fields -->
+                        <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+
+                        <!-- form errors (if applicable) -->
+						{% if itinerary_form.errors %}
+						<div class="alert alert-danger">
+							{% for key, value in itinerary_form.errors.items %}
+								{{ key|escape }}
+								{{ value|escape }}
+							{% endfor %}
+						</div>
+						{% endif %}
+
+					</div>
+
+					<div class="card-footer bg-kur-green text-light">
+						<div class="row my-3">
+							<div class="col text-center">
+								<!-- submit form -->
+                                <button type="submit" class="btn btn-warning" id="submit-btn">Submit</button>
+                                <!-- cancel button -->
+                                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger trigger-preloader">Cancel</a>
+							</div>
+						</div>
+					</div>
+
+				</fieldset>
+
+            </form>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
