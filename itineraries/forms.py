@@ -70,13 +70,13 @@ class ItineraryDayForm(forms.ModelForm):
         provinces = Province.objects.all()
         for province in provinces:
             region_name = province.get_region_display()
-            destinations = Destination.objects.filter(province=province).values_list("id", "name")  # noqa
+            destinations = Destination.objects.filter(province=province).order_by("name").values_list("id", "name")  # noqa
             if destinations:
                 choices[region_name].extend([(dest_id, dest_name) for dest_id, dest_name in destinations])  # noqa
         
         # build the final choices list with optgroups
         final_choices = [("", "Overnight City")] + [
-            ("Kurdistan", choices["Kurdistan"]),
-            ("Iraq", choices["Iraq"])
+            ("Kurdistan", sorted(choices["Kurdistan"], key=lambda x: x[1])),
+            ("Iraq", sorted(choices["Iraq"], key=lambda x: x[1]))
         ]
         return final_choices
