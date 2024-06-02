@@ -7,11 +7,11 @@
     <li class="breadcrumb-item"><a href="{% url 'home' %}" class="trigger-preloader"><i class="fas fa-home"></i></a></li>
     <li class="breadcrumb-item active" aria-current="page">Itineraries</li>
     {% if request.user|has_group:"Site Admin" %}
-        <!-- <li class="breadcrumb-item">
-            <a href="" class="trigger-preloader">
+        <li class="breadcrumb-item">
+            <a href="{% url 'add_itinerary' %}" class="trigger-preloader">
                 <i class="fas fa-plus-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Itinerary"></i>
             </a>
-        </li> -->
+        </li>
     {% endif %}
 {% endblock %}
 
@@ -45,7 +45,19 @@
                     {{ itinerary.title }}
                     <br>
                     <small><em>{{ itinerary.days.count }} day{{ itinerary.days.count|pluralize }}</em></small>
+
+                    {% if request.user|has_group:"Site Admin" %}
+                    <!-- admin-only: public/private? and Edit button -->
+                        <br>
+                        <a href="{% url 'update_itinerary' itinerary.id %}" class="btn btn-success trigger-preloader">
+                            Edit <i class="fas fa-edit"></i>
+                        </a>
+                        {% if not itinerary.is_visible %}
+                            <span class="badge rounded-pill bg-kur-red text-white fw-bold">PRIVATE</span>
+                        {% endif %}
+                    {% endif %}
                 </h2>
+
                 <div class="accordion mb-3" id="accordion{{ forloop.counter }}">
                     <!-- each itinerary day -->
                     {% for day in itinerary.days.all|dictsort:'id' %}
@@ -61,6 +73,12 @@
                             <div id="collapse{{ day.id }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="header{{ day.id }}" data-bs-parent="#accordion{{ forloop.parentloop.counter }}">
                                 <div class="accordion-body itinerary-day">
                                     <!-- the plans in "safe" format -->
+                                    <strong>Destinations</strong>:
+                                    <br>
+                                    {% for destination in day.destinations.all %}
+                                        {{ destination.name }}{% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                    <hr>
                                     <strong>Itinerary</strong>:
                                     <br><br>
                                     {{ day.plan|safe }}
@@ -77,10 +95,12 @@
                                     {% endif %}
                                     {% if request.user|has_group:"Site Admin" %}
                                     <!-- admin-only edit button -->
-                                        <!-- <hr>
+                                        <hr>
                                         <p class="w-100 text-center my-0 mx-auto">
-                                            <a href="" class="btn btn-success trigger-preloader">Edit <i class="fas fa-edit"></i></a>
-                                        </p> -->
+                                            <a href="{% url 'update_itinerary_day' itinerary.id day.id %}" class="btn btn-success trigger-preloader">
+                                                Edit Day {{ day.day_number }} <i class="fas fa-edit"></i>
+                                            </a>
+                                        </p>
                                     {% endif %}
                                 </div>
                             </div>
@@ -89,6 +109,19 @@
                 </div>
             </div>
         </div>
+        {% if request.user|has_group:"Site Admin" %}
+        <!-- admin-only: add a new day to this itinerary -->
+            <div class="row">
+                <div class="col-12 text-center mx-auto my-3 my-sm-5">
+                    <a href="{% url 'add_itinerary_day' itinerary.id %}" class="trigger-preloader">
+                        <span class="fs-5 bg-danger bg-opacity-10 text-danger fw-bold box-dashed p-3 p-sm-5">
+                            <i class="fas fa-plus-circle"></i>
+                            Add Day {{ itinerary.days.count|add:"1" }}
+                        </span>
+                    </a>
+                </div>
+            </div>
+        {% endif %}
         <div class="row">
             <div class="col-12 col-sm-10 col-lg-8 mx-auto">
                 <!-- itinerary map -->
