@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    <!-- TinyMCE Widget -->
+    {{ itinerary_day_form.media }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <!-- breadcrumbs -->
+    <li class="breadcrumb-item"><a href="{% url 'home' %}" class="trigger-preloader"><i class="fas fa-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'itineraries' %}" class="trigger-preloader">Itineraries</a></li>
+    <li class="breadcrumb-item active" aria-current="page">UPDATE DAY</li>
+{% endblock %}
+
+{% block content %}
+
+<section class="container-fluid">
+    <div class="row">
+
+        <!-- form data -->
+        <div class="col-12 col-md-10 col-lg-8 mx-auto my-5">
+            <form method="POST" action="{% url 'update_itinerary_day' itinerary.id itinerary_day.id %}">
+                {% csrf_token %}
+
+                <fieldset class="card shadow">
+					<legend class="card-header bg-kur-green text-light text-center">Update Day {{ day_number }} on "{{ itinerary.title }}"</legend>
+
+					<div class="card-body itinerary-day-card-body">
+
+						<!-- day number field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-sort-numeric-down fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ itinerary_day_form.day_number }}
+                                <label for="id_day_number">* Day Number</label>
+                            </div>
+						</div>
+
+						<!-- headline field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-heading fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ itinerary_day_form.headline }}
+                                <label for="id_headline">* Day {{ day_number }} Headline</label>
+                            </div>
+						</div>
+
+						<!-- day's plan: TinyMCE -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-clipboard-list fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ itinerary_day_form.plan }}
+                                <label for="id_plan">* Today's Agenda</label>
+                            </div>
+						</div>
+
+						<!-- overnight city field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-city fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ itinerary_day_form.overnight_city }}
+                                <label for="id_overnight_city">* Select</label>
+                            </div>
+						</div>
+
+						<!-- hotel field -->
+						<div class="input-group mb-3">
+                            <span class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex"><i class="fas fa-bed fa-fw"></i></span>
+                            <div class="form-floating flex-grow-1">
+                                {{ itinerary_day_form.hotel }}
+                                <label for="id_hotel">* Suggested Hotel(s)</label>
+                            </div>
+						</div>
+
+						<!-- destinations field -->
+                        <div class="row">
+                            <div class="col-12 mx-auto text-center fw-bold fs-5">
+                                Today's Destinations
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col-12 mx-auto">
+                                {{ itinerary_day_form.destinations }}
+                            </div>
+                        </div>
+
+                        <!-- hidden fields -->
+                        <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+
+                        <!-- form errors (if applicable) -->
+						{% if itinerary_day_form.errors %}
+						<div class="alert alert-danger">
+							{% for key, value in itinerary_day_form.errors.items %}
+								{{ key|escape }}
+								{{ value|escape }}
+							{% endfor %}
+						</div>
+						{% endif %}
+
+					</div>
+
+					<div class="card-footer bg-kur-green text-light">
+						<div class="row my-3">
+							<div class="col text-center">
+								<!-- submit form -->
+                                <button type="submit" class="btn btn-warning" id="submit-btn">Submit</button>
+                                <!-- cancel button -->
+                                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger trigger-preloader">Cancel</a>
+                                <!-- delete button -->
+                                <a class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
+                                <!-- Delete Modal -->
+                                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content bg-dark">
+                                            <div class="modal-header bg-danger bg-opacity-50 text-light">
+                                                <h5 class="modal-title" id="deleteModalLabel">Delete Day {{ day_number }}?</h5>
+                                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body bg-light text-dark">
+                                                Are you sure you want to delete Day {{ day_number }} from "{{ itinerary }}"?
+                                                <br>
+                                                This cannot be undone.
+                                            </div>
+                                            <div class="modal-footer bg-success bg-opacity-50">
+                                                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">No</button>
+                                                <a href="{% url 'delete_itinerary_day' itinerary.id itinerary_day.id %}" class="btn btn-danger trigger-preloader">Yes</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+							</div>
+						</div>
+					</div>
+
+				</fieldset>
+
+            </form>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
