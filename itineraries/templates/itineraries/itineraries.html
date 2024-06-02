@@ -60,7 +60,7 @@
 
                 <div class="accordion mb-3" id="accordion{{ forloop.counter }}">
                     <!-- each itinerary day -->
-                    {% for day in itinerary.days.all|dictsort:'id' %}
+                    {% for day in itinerary.days.all|dictsort:'day_number' %}
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="header{{ day.id }}">
                                 <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse"
