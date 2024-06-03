@@ -61,7 +61,7 @@
                         <!-- hidden fields -->
                         <input type="hidden" name="latitude" step="0.000001" id="id_latitude" required>
                         <input type="hidden" name="longitude" step="0.000001" id="id_longitude" required>
-                        <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+                        <input type="hidden" name="next" value="">
 
                         <!-- form errors (if applicable) -->
 						{% if destination_form.errors %}
@@ -86,7 +86,7 @@
 								<!-- submit form -->
                                 <button type="submit" class="btn btn-warning" id="submit-btn" disabled>Submit</button>
                                 <!-- cancel button -->
-                                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger trigger-preloader">Cancel</a>
+                                <a href="{% url 'destinations' %}" class="btn btn-danger trigger-preloader">Cancel</a>
 							</div>
 						</div>
 					</div>

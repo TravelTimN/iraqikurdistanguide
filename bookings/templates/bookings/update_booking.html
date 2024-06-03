@@ -153,7 +153,7 @@
 						</div>
 
                         <!-- hidden fields -->
-                        <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+                        <input type="hidden" name="next" value="">
 
                         <!-- form errors (if applicable) -->
 						{% if booking_form.errors %}
@@ -173,7 +173,7 @@
 								<!-- submit form -->
                                 <button type="submit" class="btn btn-warning" id="submit-btn">Submit</button>
                                 <!-- cancel button -->
-                                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger trigger-preloader">Cancel</a>
+                                <a href="{% url 'calendar_bookings' %}" class="btn btn-danger trigger-preloader">Cancel</a>
                                 <!-- delete button -->
                                 <a class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
                                 <!-- Modal -->

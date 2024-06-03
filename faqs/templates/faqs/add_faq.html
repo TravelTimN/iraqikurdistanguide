@@ -64,7 +64,7 @@
                         </div>
 
                         <!-- hidden fields -->
-                        <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+                        <input type="hidden" name="next" value="">
 
                         <!-- form errors (if applicable) -->
 						{% if faq_form.errors %}
@@ -84,7 +84,7 @@
 								<!-- submit form -->
                                 <button type="submit" class="btn btn-warning" id="submit-btn">Submit</button>
                                 <!-- cancel button -->
-                                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger trigger-preloader">Cancel</a>
+                                <a href="{% url 'faqs' %}" class="btn btn-danger trigger-preloader">Cancel</a>
 							</div>
 						</div>
 					</div>

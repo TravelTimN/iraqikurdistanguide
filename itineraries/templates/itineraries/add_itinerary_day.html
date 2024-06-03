@@ -86,7 +86,7 @@
                         </div>
 
                         <!-- hidden fields -->
-                        <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+                        <input type="hidden" name="next" value="">
                         <!-- determine if adding more days, or just this one? (see JS at bottom) -->
                         <input type="hidden" id="submit-type" name="submit_type" value="">
 
@@ -136,14 +136,13 @@
                                             </div>
                                             <div class="modal-footer bg-success bg-opacity-50">
                                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                                <!-- <a href="" class="btn btn-danger trigger-preloader">Yes</a> -->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- cancel button -->
-                                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger m-1 trigger-preloader">Cancel</a>
+                                <a href="{% url 'itineraries' %}" class="btn btn-danger trigger-preloader">Cancel</a>
 
 							</div>
 						</div>

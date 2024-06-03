@@ -20,43 +20,50 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{% static 'js/leaflet-attribution.js' %}"></script>
 
-<!-- footer map -->
 <script>
-    // leaflet map of Erbil
+    // mapbox
     const mapUrl = `{{ map_url }}`; // used across all map pages
-    let mapFooter = L.map("map-footer", {
-        // stops users from loading infinite tiles outside of Iraq
-        maxBounds: [[28.5, 38], [38.5, 50]],
-        maxBoundsViscosity: 0.5,
-    }).setView([36.19117, 44.00917], 11);
-    let mapTileLayersFooter = L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
-        maxZoom: 18,
-        minZoom: 5,
-        id: "mapbox/streets-v11",
-        tileSize: 512,
-        zoomOffset: -1,
-        accessToken: mapUrl
-    }).addTo(mapFooter);
 
-    // adding custom marker
-    let customIconFooter = L.Icon.extend({
-        options: {iconSize: [25, 35], iconAnchor: [12.5, 35],}
-    });
-    // extend from base icon for kurdish flag marker
-    let kurIconFooter = new customIconFooter({
-        iconUrl: `{% static 'img/marker-kurdistan.png' %}`
-    });
-
-    // add marker to footer map
-    let markerFooter = L.marker([36.207132, 44.025733], {icon: kurIconFooter}).bindPopup(`Iraqi Kurdistan Guide`).addTo(mapFooter);
-</script>
-
-<!-- show the preloader animation for specific triggered links -->
-<script>
     $(document).ready(function() {
+
+        // footer map of Erbil
+        let mapFooter = L.map("map-footer", {
+            // stops users from loading infinite tiles outside of Iraq
+            maxBounds: [[28.5, 38], [38.5, 50]],
+            maxBoundsViscosity: 0.5,
+        }).setView([36.19117, 44.00917], 11);
+        let mapTileLayersFooter = L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
+            maxZoom: 18,
+            minZoom: 5,
+            id: "mapbox/streets-v11",
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: mapUrl
+        }).addTo(mapFooter);
+
+        // adding custom marker
+        let customIconFooter = L.Icon.extend({
+            options: {iconSize: [25, 35], iconAnchor: [12.5, 35],}
+        });
+        // extend from base icon for kurdish flag marker
+        let kurIconFooter = new customIconFooter({
+            iconUrl: `{% static 'img/marker-kurdistan.png' %}`
+        });
+
+        // add marker to footer map
+        let markerFooter = L.marker([36.207132, 44.025733], {icon: kurIconFooter}).bindPopup(`Iraqi Kurdistan Guide`).addTo(mapFooter);
+
+
+        // show the preloader animation for specific triggered links
         $(".trigger-preloader").on("click", function() {
             $("body").removeClass("page-load-complete");
         });
+        
+        // update the "next" buttons for referrer URL
+        let referrer = document.referrer;
+        if (referrer && referrer !== window.location.href) {
+            $(`input[name="next"]`).val(referrer);
+        }
     });
 </script>
 
