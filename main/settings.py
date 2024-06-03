@@ -185,7 +185,6 @@ TINYMCE_DEFAULT_CONFIG = {
     "quickbars_image_toolbar": "false",
     "quickbars_selection_toolbar": "bold italic underline | forecolor backcolor | quicklink blockquote",
     "height": 500,  # set the default height on the HTMLField (textarea)
-    "forced_root_block": "",  # disable automatic generation of <p> tags
     "valid_children": "-p[p]",  # disallow <p> under <p>
 }
 
