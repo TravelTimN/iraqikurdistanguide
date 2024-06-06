@@ -37,7 +37,7 @@
                     <div class="d-flex align-items-center">
                         <!-- social media logo static image -->
                         <a href="{{ review.source.url }}" target="_blank" rel="noopener">
-                            <img src="{% static '' %}img/icons/social/{{ review.source.name|lower|cut:' ' }}.png" alt="{{ review.source.name }} logo" class="review-icon">
+                            <img src="{% static 'img/icons/social/'|add:review.source.name|lower|cut:' '|add:'.png' %}" alt="{{ review.source.name }} logo" class="review-icon">
                         </a>
                         <!-- review author -->
                         <h5 class="flex-grow-1 mx-1 fw-bold">{{ review.author|truncatechars:20 }}</h5>
