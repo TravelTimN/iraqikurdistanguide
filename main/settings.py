@@ -145,6 +145,25 @@ ACCOUNT_LOGOUT_REDIRECT_URL = f"/{os.environ.get('AUTH_URL')}/login"
 ACCOUNT_LOGOUT_ON_GET = True  # avoid allauth signout confirmation page
 
 if "DEVELOPMENT" in os.environ:
+    # django_errors.log (dev-only)
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'file': {
+                'level': 'ERROR',
+                'class': 'logging.FileHandler',
+                'filename': 'django_errors.log',
+            },
+        },
+        'loggers': {
+            'django': {
+                'handlers': ['file'],
+                'level': 'ERROR',
+                'propagate': True,
+            },
+        },
+    }
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
     DEFAULT_FROM_EMAIL = "dev@test.com"
     DEFAULT_OWNER_EMAIL = "owner@test.com"
