@@ -53,17 +53,27 @@
         // add marker to footer map
         let markerFooter = L.marker([36.207132, 44.025733], {icon: kurIconFooter}).bindPopup(`Iraqi Kurdistan Guide`).addTo(mapFooter);
 
-
         // show the preloader animation for specific triggered links
         $(".trigger-preloader").on("click", function() {
             $("body").removeClass("page-load-complete");
         });
+        
+        // ensure the preloader is hidden on initial page load
+        $("body").addClass("page-load-complete");
         
         // update the "next" buttons for referrer URL
         let referrer = document.referrer;
         if (referrer && referrer !== window.location.href) {
             $(`input[name="next"]`).val(referrer);
         }
+
+        // listen for "pageshow" event to handle "back" navigation
+        $(window).on("pageshow", function(e) {
+            if (e.originalEvent.persisted) {
+                $("body").addClass("page-load-complete");
+            }
+        });
+
     });
 </script>
 
