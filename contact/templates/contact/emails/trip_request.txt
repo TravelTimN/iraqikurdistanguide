@@ -21,8 +21,3 @@ Visitors: {{ form_context.num_guests }}
 
 Wishlist Destinations:
 {{ form_context.destinations }}
-
-------------
-
-Manage this Request:
-https://iraqikurdistanguide.com/bookings/update/{{ form_context.id }}
