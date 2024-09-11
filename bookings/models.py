@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django_countries.fields import CountryField
+from contact.models import Contact
 from destinations.models import Destination
 
 
@@ -34,6 +35,9 @@ class Booking(models.Model):
         Destination, blank=True, related_name="itinerary_destinations")
     notes = models.TextField(null=True, blank=True)
     status = models.CharField(choices=STATUS, default="New", max_length=25)
+    contact_message = models.ForeignKey(
+        Contact, on_delete=models.CASCADE, null=True, blank=True
+    )
     date_created = models.DateTimeField(auto_now_add=True)
 
     class Meta:

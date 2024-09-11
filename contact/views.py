@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from django.shortcuts import get_object_or_404, render, redirect, reverse
 from django.conf import settings
 from django.contrib import messages
-from django.core.mail import send_mail, EmailMultiAlternatives
+from django.core.mail import send_mail, EmailMultiAlternatives, BadHeaderError
 from django.template.loader import render_to_string
 from django_countries.fields import Country
 from .models import Contact
@@ -16,11 +16,7 @@ def contact(request):
     contact_form = ContactForm(request.POST or None)
     if request.method == "POST":
         if contact_form.is_valid():
-            contact_form.save()
-            messages.success(
-                request,
-                "Thank You! We'll be in touch with you soon!"
-            )
+            new_contact = contact_form.save()
 
             # generate list of wishlist destinations
             destinations = []
@@ -45,6 +41,7 @@ def contact(request):
                 total_price=0,
                 amount_paid=0,
                 status="new",
+                contact_message=new_contact,
                 notes=request.POST.get("message"),
             )
             booking.itinerary.set(destinations)
@@ -79,12 +76,26 @@ def contact(request):
             text_content = render_to_string("contact/emails/trip_request.txt", {"form_context": form_context})  # noqa
             html_content = render_to_string("contact/emails/trip_request.html", {"form_context": form_context})  # noqa
 
-            email = EmailMultiAlternatives(subject, text_content, from_email, to_email, reply_to=[reply_to_email])  # noqa
-            # email = EmailMultiAlternatives(subject, text_content, from_email, to_email, bcc=bcc_email, reply_to=[reply_to_email])  # reply-to and bcc  # noqa
-            email.attach_alternative(html_content, "text/html")
-            email.send()
+            try:
+                email = EmailMultiAlternatives(subject, text_content, from_email, to_email, reply_to=[reply_to_email])  # noqa
+                # email = EmailMultiAlternatives(subject, text_content, from_email, to_email, bcc=bcc_email, reply_to=[reply_to_email])  # reply-to and bcc  # noqa
+                email.attach_alternative(html_content, "text/html")
+                email.send()
+                messages.success(
+                    request,
+                    "Thank You! We'll be in touch with you soon!"
+                )
+                return redirect(reverse("home"))
 
-            return redirect(reverse("home"))
+            except BadHeaderError:
+                messages.error(request, "Error: Invalid Header Found.")
+                return redirect(reverse("contact"))
+
+            except Exception as e:
+                print(f"Error sending email: {e}")
+                messages.error(request, "Error: Please Try Again.")
+                return redirect(reverse("contact"))
+
     template = "contact/contact.html"
     context = {
         "contact_form": contact_form,
