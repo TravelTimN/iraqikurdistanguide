@@ -796,9 +796,9 @@ ol.breadcrumb ul.dropdown-menu.show .dropdown-divider {
     background-color: rgba(var(--black), 1) !important;
 }
 
-.contact-card-body ul#id_destinations,
-.itinerary-day-card-body ul#id_destinations,
-#booking-form-itinerary ul#id_itinerary {
+.contact-card-body #id_destinations,
+.itinerary-day-card-body #id_destinations,
+#booking-form-itinerary #id_itinerary {
     columns: 2;
 }
 
@@ -1448,9 +1448,9 @@ footer .fas:hover {
     }
 
     /* contact */
-    .contact-card-body ul#id_destinations,
-    .itinerary-day-card-body ul#id_destinations,
-    #booking-form-itinerary ul#id_itinerary {
+    .contact-card-body #id_destinations,
+    .itinerary-day-card-body #id_destinations,
+    #booking-form-itinerary #id_itinerary {
         columns: 3;
     }
 }
@@ -1482,9 +1482,9 @@ footer .fas:hover {
     }
 
     /* contact */
-    .contact-card-body ul#id_destinations,
-    .itinerary-day-card-body ul#id_destinations,
-    #booking-form-itinerary ul#id_itinerary {
+    .contact-card-body #id_destinations,
+    .itinerary-day-card-body #id_destinations,
+    #booking-form-itinerary #id_itinerary {
         columns: 4;
     }
 }
