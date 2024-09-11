@@ -11,10 +11,12 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = int(os.environ.get("DEVELOPMENT", default=0))
 
 ALLOWED_HOSTS = []
+CSRF_TRUSTED_ORIGINS = []
 host = os.environ.get("DJANGO_ALLOWED_HOSTS")
 if host:
     hosts = host.split()
     ALLOWED_HOSTS.extend(hosts)
+    CSRF_TRUSTED_ORIGINS.extend([f"https://{host}" for host in hosts])
 
 INSTALLED_APPS = [
     "django.contrib.admin",
