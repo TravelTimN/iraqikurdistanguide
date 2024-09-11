@@ -127,12 +127,14 @@
             {% if request.user.is_authenticated %}
                 <!-- user is logged-in -->
                 <span class="list-group-item bg-dark text-light text-center">ADMIN</span>
-                {% if request.user.is_superuser %}
-                    <!-- user is superuser/dev -->
+                {% if request.user|has_group:"Site Admin" %}
+                    <!-- user is a Site Admin -->
                     <a href="{% url 'calendar_bookings' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0 trigger-preloader" id="nav-link-bookings">
                         <i class="fas fa-calendar-alt fa-fw fs-5 me-3"></i>
                         Calendar
                     </a>
+                {% endif %}
+                    <!-- user is superuser/dev -->
                     <a href="{% url 'admin:index' %}" class="list-group-item list-group-item-action list-group-item-secondary border-0"
                         target="_blank" rel="noopener">
                         <i class="fas fa-user-cog fa-fw fs-5 me-3"></i>
